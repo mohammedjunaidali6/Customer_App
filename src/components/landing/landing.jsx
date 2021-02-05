@@ -8,7 +8,7 @@ export default function Landing(props) {
 
     return (
         <div id="landing-container" className="">
-            <div style={{height: "238px"}}></div>
+            <div></div>
             <div style={{height: "72px", width: "227px"}}></div>
             <div className="welcome-to-coupon-wo">
                 Welcome to Coupon World
@@ -16,7 +16,9 @@ export default function Landing(props) {
             <div className="explore-great-coupon">
                 Explore Great Coupons, Deals and Offers Let’s try How Lucky are You Today
             </div>
-            <button type="button" className="surface"><span className="button-text" onClick={() => loginClickFn()}>LOGIN</span></button>
+            <button type="button" className="surface" onClick={() => loginClickFn()}>
+                <span className="button-text">LOGIN</span>
+            </button>
             <div className="exit">
                 Exit
             </div>

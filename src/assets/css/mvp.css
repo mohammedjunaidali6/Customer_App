@@ -1,3 +1,9 @@
+input[type="button"] {
+    cursor: pointer;
+    outline: none;
+}
+.w-100 {width: 100% !important}
+.w-50 {width: 50% !important}
 #landing-container { text-align: center;}
 #landing-container .buttons-contained-enabled-copy {
     height: 47px;
@@ -50,7 +56,7 @@
 }
 .explore-great-coupon {
     height: 56px;
-    /* width: 383px; */
+    width: 70%;
     color: #808A8F;
     font-family: Roboto;
     font-size: 17px;
@@ -94,13 +100,9 @@
 }
 
 #login-container {
-    height: 505px;
-    /* width: 386px; */
-    /* margin: 102px 32px 0 32px; */
+    margin-top: 15%;
 }
 .sign-in {
-    height: 40px;
-    width: 93px;
     color: #3F4045;
     font-family: Roboto;
     font-size: 31px;
@@ -108,11 +110,9 @@
     letter-spacing: 0;
     line-height: 40px;
     text-align: center;
-    margin: 0 146px 23.4px 146px;
+    margin: 0 auto;
 }
 .sign-in-with-social {
-    height: 23px;
-    width: 185px;
     color: #808A8F;
     font-family: Roboto;
     font-size: 17px;
@@ -120,30 +120,28 @@
     letter-spacing: 0;
     line-height: 23px;
     text-align: center;
-    margin: 0 100.5px;
+    margin: 0 auto;
 }
 .socials {
-    height: 46px;
-    /* width: 383px; */
+    height: 74px;
     margin:79.04px 1.5px 0 1.5px;
+    text-align: center;
 }
 #fb-rectangle {
     height: 44.28px;
-    /* width: 190.65px; */
+    width: 96%;
     border-radius: 22.14px;
     background-color: #6B9CF3;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 1px -1px rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.2);
-    display: inline-block;
-    float: left;
+    border: none;
 }
 #google-rectangle {
     height: 44.28px;
-    /* width: 184.5px; */
+    width: 96%;
     border-radius: 22.14px;
     background-color: #FFFFFF;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 1px -1px rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.2);
-    display: inline-block;
-    float: left;
+    border: none;
 }
 .login-with-facebook {
     height: 26px;
@@ -156,13 +154,42 @@
     line-height: 13px;
 }
 .or-login-with-email {
-    height: 13px;
+    /* height: 13px; */
     /* width: 158px; */
     color: #3F4045;
     font-family: Roboto;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 700;
     letter-spacing: 0;
     line-height: 13px;
-    margin: 30.71px 115.49px 21.7px 112.51px;
+    margin: 0 auto;
+    text-align: center;
+}
+#sign-in-container {
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+#sign-in-container #btn-sign-in {
+    height: 46.74px;
+    width: 96%;
+    border-radius: 23.37px;
+    background-color: #706AE2;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 1px -1px rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.2);
+    border: none;
+}
+#sign-in-container #btn-sign-in .button-text {
+    height: 15px;
+    width: 55px;
+    color: #FFFFFF;
+    font-family: "Open Sans";
+    font-size: 12.57px;
+    font-weight: 600;
+    letter-spacing: 1.12px;
+    line-height: 14.37px;
+    text-align: center;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root {
+    border-radius: 20px;
 }
