@@ -1,13 +1,30 @@
 import React from 'react';
-import { FormBuilder, FieldGroup, FieldControl, Validators } from 'react-reactive-form';
-import { TextInput } from '../common/utils/textInput';
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+import TextField from '@material-ui/core/TextField';
 
 export default function Login(props) {
   
-    const loginForm = FormBuilder.group({
-        Email: ['', Validators.required],
-        Password: ['', Validators.required]
+    // form validation rules 
+    const validationSchema = Yup.object().shape({
+        email: Yup.string()
+            .required('Email is required')
+            .email('Email is invalid'),
+        password: Yup.string()
+            .required('Password is required')
     });
+
+    // functions to build form returned by useForm() hook
+    const { register, handleSubmit, reset, errors } = useForm({
+        resolver: yupResolver(validationSchema)
+    });
+
+    function loginSubmitFn(data) {
+        console.log('data', data);
+        // display form data on success
+        alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
+    }
 
     return (
         <div id="login-container" className="">
@@ -26,34 +43,37 @@ export default function Login(props) {
             <div className="or-login-with-email mb-4">
                 or login with email address
             </div>
-            <div className="">
-                <FieldGroup control={loginForm}
-                    render={({get, invalid}) => (
-                        <form>
-                            <div className="col-md-12 float-left clearfix w-100 mb-2">
-                                <FieldControl 
-                                    name="Email"
-                                    render={TextInput}
-                                    meta={{ id: 'login-txt-email', label: 'Email address', maxlen: 1024, colval: 12 }}
-                                />
-                            </div>
-                            <div className="col-md-12 float-left clearfix w-100 mb-2">
-                                <FieldControl 
-                                    name="Password"
-                                    render={TextInput}
-                                    meta={{ id: 'login-txt-password', label: 'Password', maxlen: 1024, colval: 12, type: 'password' }}
-                                />
-                            </div>
-                        </form>
-                    )}
-                />
-            </div>
-            <div id="sign-in-container" className="mt-4">
-                <button type="button" id="btn-sign-in">
-                    <span className="button-text">SIGN IN</span>
-                </button>
-            </div>
-
+            <form onSubmit={handleSubmit(loginSubmitFn)} onReset={reset} id="login-form-container">
+                <div className="col-md-12 float-left clearfix w-100 mb-2">
+                    <input name="email" type="text" ref={register} placeholder="Email address" className={`form-control ${errors.email ? 'is-invalid' : ''}`} />
+                    {/* <TextField 
+                        label="Email address"
+                        variant="outlined" 
+                        name="email" 
+                        type="text" 
+                        ref={register} 
+                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                    /> */}
+                    <div className="invalid-feedback">{errors.email?.message}</div>
+                </div>
+                <div className="col-md-12 float-left clearfix w-100 mb-2">
+                    <input name="password" type="password" ref={register} placeholder="********" className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
+                    {/* <TextField 
+                        label="Password"
+                        variant="outlined" 
+                        name="password" 
+                        type="password" 
+                        ref={register} 
+                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                    /> */}
+                    <div className="invalid-feedback">{errors.password?.message}</div>
+                </div>
+                <div id="sign-in-container" className="mt-4">
+                    <button type="submit" id="btn-sign-in">
+                        <span className="button-text">SIGN IN</span>
+                    </button>
+                </div>
+            </form>
         </div>
     )
 }

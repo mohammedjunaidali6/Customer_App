@@ -4,6 +4,11 @@ input[type="button"] {
 }
 .w-100 {width: 100% !important}
 .w-50 {width: 50% !important}
+button:disabled,
+button[disabled]{
+    opacity: 0.7;
+    cursor: not-allowed;
+}
 #landing-container { text-align: center;}
 #landing-container .buttons-contained-enabled-copy {
     height: 47px;
@@ -191,5 +196,9 @@ input[type="button"] {
 }
 
 .MuiTextField-root .MuiOutlinedInput-root {
+    border-radius: 20px;
+}
+
+#login-form-container input[type="text"], #login-form-container input[type="password"] {
     border-radius: 20px;
 }
