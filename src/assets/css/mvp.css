@@ -4,6 +4,7 @@ input[type="button"] {
 }
 .w-100 {width: 100% !important}
 .w-50 {width: 50% !important}
+.text-bold {font-weight: bold !important;}
 button:disabled,
 button[disabled]{
     opacity: 0.7;
@@ -201,4 +202,126 @@ button[disabled]{
 
 #login-form-container input[type="text"], #login-form-container input[type="password"] {
     border-radius: 20px;
+}
+
+#back-container {
+    height: 128px;
+    /* width: 450px; */
+    background: linear-gradient(36.11deg, #4753DA 0%, #C79CFF 100%);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.06);
+}
+
+#back-banner-container {
+    display: flex;
+    justify-content: center;
+}
+#back-banner-container .back-banner-your-ranking {
+    margin-top: -76px;
+}
+.ranking-whole-box {
+    width: 50%;
+    float: left;
+    padding: 2%;
+}
+.ranking-mask-box {
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(95,97,101,0.4);
+    display: inline-flex;
+    flex-direction: column;
+    /* background-color: #004C80; */
+    position: relative;
+    overflow: hidden;
+    margin: 3% 0 0 0;
+    /* background-image: url("../img/Mask.svg");
+    background-repeat: no-repeat; */
+}
+.ranking-item-box {
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(95,97,101,0.4);
+    display: inline-flex;
+    flex-direction: column;
+    /* background-color: #004C80; */
+    position: relative;
+    overflow: hidden;
+    /* margin: 3%; */
+}
+.ranking-item-box-content {
+    padding: 10px 13px;
+}
+.curve-div {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: #FFF;
+    background-color: #edeff2;
+}
+.ranking-item-box-top { top: -10px; }
+.ranking-item-box-bottom { bottom: -10px; }
+.ranking-item-box-left { left: -10px; }
+.ranking-item-box-right { right: -10px; }
+.dashed-line-div {
+    box-sizing: border-box;
+    height: 1px;
+    border: 1px dashed #B1BCC2;
+    opacity: 0.4;
+}
+.text-winners {
+    height: 10px;
+    width: 45px;
+    color: #808A8F;
+    font-family: Roboto;
+    font-size: 10px;
+    letter-spacing: -0.02px;
+    line-height: 10px;
+    text-decoration: underline;
+}
+.text-expire {
+    height: 10px;
+    width: 62px;
+    color: #808A8F;
+    font-family: Roboto;
+    font-size: 10px;
+    letter-spacing: -0.02px;
+    line-height: 10px;
+}
+.btn-ranking-item-playnow {
+    width: 100%;
+    border-radius: 0 0 12px 12px;
+    background-color: #706AE2;
+    border: solid 1px #706AE2;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 1px -1px rgb(0 0 0 / 12%), 0 1px 2px 0 rgb(0 0 0 / 20%);
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+}
+.btn-ranking-item-playnow .button-text {
+    height: 12px;
+    width: 52px;
+    color: #FFFFFF;
+    font-family: "Open Sans";
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 11.68px;
+    text-align: center;
+}
+.ranking-item-box .text-offer {
+    color: #5F6165;
+    font-family: Roboto;
+    font-size: 11px;
+    letter-spacing: -0.03px;
+    line-height: 17px;
+}
+.ranking-item-box .ranking-item-box-content .text-rank-actual {
+    font-weight: bold;
+    font-size: 32px;
+}
+.ranking-item-box .ranking-item-box-content .text-rank-of {
+    font-weight: bold;
+    font-size: 20px;
 }

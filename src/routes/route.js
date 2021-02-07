@@ -6,6 +6,7 @@ import NotFound from '../components/common/notFound.jsx';
 import Landing from '../components/landing/landing.jsx';
 import HomeContatiner from '../containers/home/homeContainer';
 import LoginContatiner from '../containers/login/loginContainer';
+import Ranking from '../components/ranking/ranking';
 
 export default function AppRoute() {
   InterceptorsFn();
@@ -16,6 +17,7 @@ export default function AppRoute() {
           {/* <Route exact path="/" component={HomeContatiner}/> */}
           <Route exact path="/" component={Landing}/>
           <Route exact path="/login" component={LoginContatiner}/>
+          <Route exact path="/ranking" component={Ranking}/>
           <Route path="*" component={NotFound} />
         </Switch>
       </BrowserRouter>
