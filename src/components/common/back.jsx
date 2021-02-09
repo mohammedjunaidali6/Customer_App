@@ -3,7 +3,7 @@ import React from 'react';
 export default function Back(props) {
 
     return (
-        <div id="back-container" className="">
+        <div id="back-container" className="" style={{height: `${props.height}px`}}>
             <div className="back-container-content" >
                 <i className="arrow left ml-2"></i>
                 <span className="back-header">Back to Reward Zone</span>

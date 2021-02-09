@@ -107,3 +107,21 @@
     margin: 0px 20px 20px 20px;
     display: flow-root;
 }
+
+#reward-zone-detail-box-container {
+    position: absolute;
+    top: 44px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#reward-zone-detail-box-container .detail-box-content {
+    width: 41.5%;
+    display: flex;
+    flex-direction: row;
+    float: left;
+    padding: 8px 2px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgb(95 97 101 / 40%);
+}
