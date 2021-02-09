@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import firstReducer from '../reducers/first/firstReducer';
 import HomeReducer from '../reducers/home/homeReducer';
 import LoginReducer from '../reducers/login/loginReducer';
+import RewardZoneReducer from "../reducers/rewardZone/rewardZoneReducer";
 
 function saveToSessionStorage(state) {
   try {
@@ -27,7 +28,8 @@ function loadFromSessionStorage(state) {
 const reducer = combineReducers({
   First: firstReducer,
   HomeReducer: HomeReducer,
-  LoginReducer: LoginReducer
+  LoginReducer: LoginReducer,
+  RewardZoneReducer: RewardZoneReducer
 });
 
 // To persist your Store use sessionStorage after hard reoad
