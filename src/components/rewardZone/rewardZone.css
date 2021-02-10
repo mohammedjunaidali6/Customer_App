@@ -109,14 +109,13 @@
 }
 
 #reward-zone-detail-box-container {
-    position: absolute;
-    top: 44px;
     width: 100%;
-    margin: 0 auto;
+    display: inline-block;
+    padding: 14px 20px 20px 20px;
 }
 
 #reward-zone-detail-box-container .detail-box-content {
-    width: 41.5%;
+    width: 46%;
     display: flex;
     flex-direction: row;
     float: left;

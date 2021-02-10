@@ -7,10 +7,6 @@ import invitation_src from '../../assets/img/rewardZone/invitation.svg';
 import invitation_bg_src from '../../assets/img/rewardZone/invite_bg.png';
 import basketball_src from '../../assets/img/rewardZone/game1.png';
 import bingo_src from '../../assets/img/rewardZone/game2.png';
-import point_box_src from '../../assets/img/rewardZone/gem_home.svg';
-import trophy_src from '../../assets/img/rewardZone/trophy_home.svg';
-import rank_src from '../../assets/img/rewardZone/Rank__home.svg';
-import rupee_src from '../../assets/img/rewardZone/rupee_home.svg';
 import './rewardZone.css';
 import RewardBox from "../common/rewardBox";
 import ProgressBar from "../common/progressBar";
@@ -54,8 +50,8 @@ export default function RewardZone(props) {
     
     return (
         <Fragment>
-            <Back height="190" />
-            <div id="reward-zone-detail-box-container">
+            <Back height="190" fromReward={true} />
+            {/* <div id="reward-zone-detail-box-container">
                 <div id="point-box" className="detail-box-content mb-3 ml-4">
                     <img className="float-left" src={point_box_src} />
                     <div className="float-left">
@@ -108,7 +104,7 @@ export default function RewardZone(props) {
                         }}>Rank</div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div id="reward-zone-container" className="">
                 <div id="reward-zone-status-container">
                     <div className="reward-zone-status-logo">
