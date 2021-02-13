@@ -3,8 +3,20 @@ input[type="button"] {
     outline: none;
 }
 .w-100 {width: 100% !important}
+.w-90 {width: 90% !important}
+.w-80 {width: 80% !important}
+.w-70 {width: 70% !important}
+.w-60 {width: 60% !important}
 .w-50 {width: 50% !important}
+.w-48 {width: 48% !important}
+.w-40 {width: 40% !important}
+.w-30 {width: 30% !important}
+.w-20 {width: 20% !important}
+.w-10 {width: 10% !important}
 .text-bold {font-weight: bold !important;}
+.disp-flex-root {
+    display: flow-root !important;
+}
 button:disabled,
 button[disabled]{
     opacity: 0.7;
@@ -33,6 +45,15 @@ button[disabled]{
 .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+}
+
+.common-divider {
+    float: left;
+    box-sizing: border-box;
+    width: 1px;
+    border: 1px dashed #B1BCC2;
+    opacity: 0.4;
+    margin-left: 4px;
 }
 
 .notification-box {
@@ -469,6 +490,7 @@ button[disabled]{
     transform: scaleY(-1);
     border-radius: 10px;
     background-color: #DBDDDE;
+    margin: 0 auto;
 }
 .progress-bar > span {
     display: block;

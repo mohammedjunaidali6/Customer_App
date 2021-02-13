@@ -4,6 +4,7 @@ import firstReducer from '../reducers/first/firstReducer';
 import HomeReducer from '../reducers/home/homeReducer';
 import LoginReducer from '../reducers/login/loginReducer';
 import RewardZoneReducer from "../reducers/rewardZone/rewardZoneReducer";
+import GameDetailsReducer from "../reducers/gameDetails/gameDetailsReducer";
 
 function saveToSessionStorage(state) {
   try {
@@ -29,7 +30,8 @@ const reducer = combineReducers({
   First: firstReducer,
   HomeReducer: HomeReducer,
   LoginReducer: LoginReducer,
-  RewardZoneReducer: RewardZoneReducer
+  RewardZoneReducer: RewardZoneReducer,
+  GameDetailsReducer: GameDetailsReducer
 });
 
 // To persist your Store use sessionStorage after hard reoad

@@ -21,8 +21,9 @@ export default function RewardBox(props) {
                 <div className="w-100 reward-item-box-content mt-2 pb-0">
                     <span className="text-rank-of">{props.dataObj.offerText}</span>
                 </div>
-                <div className="reward-item-box-progress"></div>
-                <ProgressBar percentage={props.dataObj.progress} />
+                <div class="w-100">
+                    <ProgressBar percentage={props.dataObj.progress} />
+                </div>
                 <div className="reward-item-box-progress-msg">
                     <span>You are very close to winning</span>
                 </div>
