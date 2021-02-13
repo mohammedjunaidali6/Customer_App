@@ -9,6 +9,7 @@ import LoginContatiner from '../containers/login/loginContainer';
 import Ranking from '../components/ranking/ranking';
 import RewardZoneContatiner from "../containers/rewardZone/rewardZoneContainer";
 import GameDetailsContainer from "../containers/gameDetails/gameDetailsContainer";
+import UserRewardsContatiner from "../containers/userRewards/userRewardsContainer";
 
 export default function AppRoute() {
   InterceptorsFn();
@@ -22,6 +23,7 @@ export default function AppRoute() {
           <Route exact path="/ranking" component={Ranking}/>
           <Route exact path="/rewardzone" component={RewardZoneContatiner}/>
           <Route exact path="/gamedetail" component={GameDetailsContainer}/>
+          <Route exact path="/userrewards" component={UserRewardsContatiner}/>
           <Route path="*" component={NotFound} />
         </Switch>
       </BrowserRouter>

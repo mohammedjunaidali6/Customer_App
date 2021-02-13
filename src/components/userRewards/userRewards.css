@@ -1,0 +1,263 @@
+#userrewards-user-info-container, #userrewards-user-dailyreward-container, .your-winnings {
+    margin: 14px 20px;
+}
+
+#userrewards-container {
+    position: relative;
+}
+
+/* for user info components */
+#userrewards-user-info-container {
+    height: 205px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    margin-top: -79px;
+}
+.urd-user-info-name {
+    height: 20px;
+    color: #3F4045;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.05px;
+    line-height: 19.6px;
+    margin-bottom: 8px;
+}
+.urd-user-info-edit {
+    height: 20px;
+    color: #5F6165;
+    font-size: 12px;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+.urd-user-info-edit-pencil {
+    margin-top: -2px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+.urd-user-info-logo {
+    padding: 15px 0;
+}
+.urd-user-info-logo img {
+    height: 61px;
+    border-radius: 50%;
+}
+.urd-user-rewards-detail-count {
+    height: 20px;
+    color: #5F6165;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.05px;
+    line-height: 19.6px;
+}
+.urd-user-rewards-detail-desc {
+    height: 20px;
+    color: #3F4045;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: -0.02px;
+    line-height: 19.6px;
+}
+
+/* for user daily reward component */
+#userrewards-user-dailyreward-container {
+    height: 81px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    padding: 10px;
+}
+.urd-dailyreward-content-header {
+    height: 20px;
+    color: #3F4045;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+.urd-dailyreward-content-desc {
+    height: 36px;
+    opacity: 0.6;
+    color: #5F6165;
+    font-size: 10px;
+    letter-spacing: -0.02px;
+    line-height: 12px;
+}
+.urd-dailyreward-logo {
+    padding-top: 6px;
+}
+.urd-dailyreward-logo-value {
+    height: 20px;
+    color: #3F4045;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+    text-align: center;
+}
+.urd-dailyreward-date {
+    height: 20px;
+    opacity: 0.5;
+    color: #5F6165;
+    font-size: 10px;
+    letter-spacing: -0.02px;
+    line-height: 19.6px;
+    text-align: center;
+}
+.urd-dailyreward-btn {
+    /* height: 26px; */
+    width: 59.97px;
+    border-radius: 13px;
+    background-color: #706AE2;
+    border: solid 1px #726cea;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    cursor: pointer;
+    outline: none;
+}
+.urd-dailyreward-btn-text {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+
+/* for your winnings component */
+#userrewards-user-winnings-container {
+    padding: 0 20px;
+}
+.your-winnings {
+    height: 20px;
+    color: #3F4045;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.your-winnings-box {
+    height: 93px;
+    /* width: 110px; */
+    /* opacity: 0.03; */
+    /* transform: scaleX(-1) scaleY(-1); */
+    /* background-color: #000000; */
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.06);
+    border-radius: 10px;
+    margin: 0px 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.your-winnings-box img {
+    margin-top: 15px;
+}
+.your-winnings-box-title {
+    height: 19.6px;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: -0.02px;
+    line-height: 19.6px;
+    text-align: center;
+}
+
+/* for user winning box component */
+.blue-box { background: #5f94de !important;}
+.gold-box { background: #c6742e !important;}
+.pink-box { background: #df598a !important;}
+.winniner-whole-box {
+    margin: 14px 20px 20px 20px;
+    position: relative;
+}
+.winniner-top-box {
+    height: 72px;
+    background-color: #FFFFFF;
+    position: relative;
+}
+.winner-bottom-box {
+    height: 87px;
+    background: #fff;
+    position: relative;
+    margin-top: -11px;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 6%);
+}
+.wtb-offer {
+    height: 20px;
+    color: #3F4045;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.wtb-offer-desc {
+    height: 20px;
+    color: #5F6165;
+    font-size: 13px;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+.wtb-btn {
+    border-radius: 13px;
+    background-color: #6B9CF3;
+    border: solid 1px #6B9CF3;
+    cursor: pointer;
+    outline: none;
+}
+.wtb-btn-text {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+.wbb-lbl {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+.wbb-view-more {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 10px;
+    letter-spacing: -0.02px;
+    line-height: 19.6px;
+    text-decoration: underline;
+}
+.wbb-expiring-lbl {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 10px;
+    letter-spacing: -0.02px;
+    line-height: 19.6px;
+}
+.wbb-middle-box {
+    border-radius: 10px;
+}
+.wbb-middle-code {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+    height: 38px;
+    width: 94%;
+    border-radius: 6px;
+    background-color: rgba(0,0,0,0.12);
+    box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 8%);
+    margin: 0 auto;
+    padding-top: 9px;
+    position: relative;
+}
+.wbb-middle-code-copy {
+    opacity: 0.5;
+    height: 15px;
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    cursor: pointer;
+}

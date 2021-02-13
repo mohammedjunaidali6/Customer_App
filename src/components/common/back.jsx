@@ -8,7 +8,7 @@ import rupee_src from '../../assets/img/rewardZone/rupee_home.svg';
 export default function Back(props) {
 
     return (
-        <div id="back-container" className="" style={{position: 'relative', height: `${props.height}px`}}>
+        <div id="back-container" className="" style={{height: `${props.height}px`}}>
             <div className="back-container-content" >
                 <i className="arrow left ml-2"></i>
                 <span className="back-header">Back to Reward Zone</span>
