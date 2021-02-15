@@ -1,7 +1,7 @@
 import { GET_USER_REWARDS } from '../../constants/actionTypes';
 
 const initialState = {
-    userRewards: undefined
+    userRewards: null
 };
 const UserRewardsReducer = (state = initialState, action) => {
   switch (action.type) {

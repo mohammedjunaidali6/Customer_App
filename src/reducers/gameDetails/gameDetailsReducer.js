@@ -1,7 +1,7 @@
 import { GET_GAME_DETAIL } from '../../constants/actionTypes';
 
 const initialState = {
-  gameDetail: undefined
+  gameDetail: null
 };
 const GameDetailsReducer = (state = initialState, action) => {
   switch (action.type) {

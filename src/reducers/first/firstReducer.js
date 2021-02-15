@@ -1,7 +1,7 @@
 import { SHOW_FIRSTDATA_ALL } from '../../constants/actionTypes';
 
 const initialState = {
-  firstRecord: undefined
+  firstRecord: null
 };
 const firstReducer = (state = initialState, action) => {
   switch (action.type) {

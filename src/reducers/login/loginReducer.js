@@ -1,7 +1,7 @@
 import { LOGIN } from '../../constants/actionTypes';
 
 const initialState = {
-    loginUser: undefined
+    loginUser: null
 };
 const LoginReducer = (state = initialState, action) => {
   switch (action.type) {

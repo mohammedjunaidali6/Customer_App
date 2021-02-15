@@ -1,7 +1,7 @@
 import { GET_USERS } from '../../constants/actionTypes';
 
 const initialState = {
-  allUsers: undefined
+  allUsers: null
 };
 const HomeReducer = (state = initialState, action) => {
   switch (action.type) {
