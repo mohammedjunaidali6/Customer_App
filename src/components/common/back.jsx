@@ -35,9 +35,11 @@ export default function Back(props) {
             <div className="back-container-content" >
                 <i className="arrow left ml-4" onClick={() => bactToRewardFn()} ></i>
                 <span className="back-header">{props.backTitle ? props.backTitle : `Back to Reward Zone`}</span>
-                <AiOutlineClose className="close-box mr-2" onClick={() => closeAppFn()} />
+                {props.fromRewardZone ? (
+                    <AiOutlineClose className="close-box mr-2" onClick={() => closeAppFn()} />
+                ) : null}
                 <BsFillBellFill className="notification-box mr-2" ></BsFillBellFill>
-                <span className="notification-count">6</span>
+                <span className={`notification-count ${props.fromRewardZone ? `n-c-right25` : `n-c-right2`}`} >6</span>
                 {/* <div className="notification-box">
                     <span className="notification-count">6</span>
                     <div className="notification-bell">

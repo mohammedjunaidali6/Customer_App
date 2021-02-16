@@ -142,7 +142,7 @@ button[disabled]{
     position: absolute;
     z-index: 100;
     top: 6px;
-    right: 25px;
+    /* right: 25px; */
     width: 14px;
     height: 14px;
     line-height: 14px;
@@ -152,6 +152,12 @@ button[disabled]{
     color: #fff;
     text-align: center;
     /* animation: zoom 3s 3s both infinite; */
+  }
+  .n-c-right25 {
+    right: 25px;
+  }
+  .n-c-right2 {
+    right: 2px;
   }
   @keyframes bell {
     0% { transform: rotate(0); }
@@ -581,17 +587,17 @@ button[disabled]{
     100% {
       transform: scale(1);
     }
-  }
-  @keyframes customLeaveOverlayAnimation {
+}
+@keyframes customLeaveOverlayAnimation {
     0% {
       transform: scale(1);
     }
     100% {
       transform: scale(0);
     }
-  }
+}
   
-  @keyframes customEnterModalAnimation {
+@keyframes customEnterModalAnimation {
     0% {
       transform: scale(0.2);
     }
@@ -606,7 +612,7 @@ button[disabled]{
     100% {
       transform: scale(0.2);
     }
-  }
+}
 
 .rzdb-header {
     height: 20px;
