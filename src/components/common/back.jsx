@@ -47,7 +47,7 @@ export default function Back(props) {
                         <span className="bell-rad"></span>
                     </div>
                 </div> */}
-                {props.fromReward ? (
+                {props.fromRewardZone ? (
                     <div id="reward-zone-detail-box-container">
                         <div id="point-box" className="detail-box-content mb-3" onClick={() => props.pointsOpenFn()}>
                             <img className="float-left" src={point_box_src} />

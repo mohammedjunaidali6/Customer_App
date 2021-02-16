@@ -60,7 +60,7 @@ export default function RewardZone(props) {
     return (
         <Fragment>
             <Back height="190" 
-                fromReward={true} 
+                fromRewardZone={true} 
                 parentProps={props} 
                 rewardOpenFn={rewardOpenFn} 
                 rankingOpenFn={rankingOpenFn} 
