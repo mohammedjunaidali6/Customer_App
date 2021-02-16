@@ -24,9 +24,8 @@ input[type="button"] {
 .text-bold {font-weight: bold !important;}
 .disp-inline { display: inline !important; }
 .c-pointer {cursor: pointer !important; }
-.disp-flex-root {
-    display: flow-root !important;
-}
+.disp-flex { display: flex !important; }
+.disp-flex-root { display: flow-root !important; }
 .m-0-auto { margin: 0 auto !important;}
 .b-r-10 { border-radius: 10px !important; }
 .bg-white { background: white !important;}
@@ -34,6 +33,7 @@ input[type="button"] {
     background: white !important;
     box-shadow: 0 1px 4px 0 rgb(30 36 39 / 30%);
 }
+.mvp-link { text-decoration: underline; cursor: pointer;}
 button:disabled,
 button[disabled]{
     opacity: 0.7;

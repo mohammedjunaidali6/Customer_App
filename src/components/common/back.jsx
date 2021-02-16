@@ -8,17 +8,18 @@ import rupee_src from '../../assets/img/rewardZone/rupee_home.svg';
 export default function Back(props) {
 
     return (
+        // default back container height will be 128px
         <div id="back-container" className="" style={{height: `${props.height}px`}}>
             <div className="back-container-content" >
                 <i className="arrow left ml-2"></i>
-                <span className="back-header">Back to Reward Zone</span>
-                <div class="notification-box">
-                    <span class="notification-count">6</span>
-                    <div class="notification-bell">
-                        <span class="bell-top"></span>
-                        <span class="bell-middle"></span>
-                        <span class="bell-bottom"></span>
-                        <span class="bell-rad"></span>
+                <span className="back-header">{props.backTitle ? props.backTitle : `Back to Reward Zone`}</span>
+                <div className="notification-box">
+                    <span className="notification-count">6</span>
+                    <div className="notification-bell">
+                        <span className="bell-top"></span>
+                        <span className="bell-middle"></span>
+                        <span className="bell-bottom"></span>
+                        <span className="bell-rad"></span>
                     </div>
                 </div>
                 {props.fromReward ? (

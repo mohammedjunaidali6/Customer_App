@@ -1,0 +1,194 @@
+#leaderboard-container {
+    overflow-y: auto;
+}
+.urs-leaderboard {
+    height: 101px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    position: absolute;
+    top: 52px;
+    margin: 10px 20px 14px 20px;
+    z-index: 1;
+}
+.urs-leaderboard-logo, .leaderboard-winners-list-logo {
+    height: 47px;
+    border: solid 1px #efefef;
+    border-radius: 10px;
+}
+.urs-leaderboard-content {
+    height: 65px;
+    padding: 11px 12px;
+}
+.urs-leaderboard-desc-outer {
+    height: 36px;
+    background: #706ae2;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-align: center;
+}
+.urs-leaderboard-desc {
+    height: 14.6px;
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 12px;
+    letter-spacing: -0.03px;
+    line-height: 14.6px;
+    text-align: center;
+}
+.urs-leaderboard-lbl-pos {
+    height: 20px;
+    color: #3F4045;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.urs-leaderboard-lbl-coins {
+    height: 20px;
+    color: #3F4045;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.leaderboard-back-header {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.leaderboard-back-header-s {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 19.6px;
+}
+
+/* leaderboard others playing component */
+#leaderboard-othersplaying-container {
+    margin: 49px 20px 14px 20px;
+}
+.others-playing-header {
+    height: 20px;
+    color: #808A8F;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.leaderboard-othersplaying-sec {
+    height: 63px;
+    /* width: 85%; */
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    margin-right: 14px;
+    padding: 8px;
+}
+.leaderboard-othersplaying-header {
+    height: 20px;
+    color: #5F6165;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+.leaderboard-othersplaying-desc {
+    height: 20px;
+    color: #808A8F;
+    font-size: 12px;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+.leaderboard-othersplaying-btn {
+    border-radius: 13px;
+    width: 59.97px;
+    background-color: #706AE2;
+    border: solid 1px #726cea;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    cursor: pointer;
+    outline: none;
+}
+.leaderboard-othersplaying-btn-text {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+
+/* for leader board winners component */
+#leaderboard-winners-container {
+    margin: 14px 20px;
+}
+.leaderboard-winners-list-box {
+    height: 74px;
+    margin-bottom: 11px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    padding: 14px 12px;
+}
+.ranking-oval {
+    height: 19.95px;
+    width: 19.95px;
+    background-color: #6B9CF3;
+    box-shadow: 0 1px 4px 0 rgba(128,138,143,0.18);
+    position: absolute;
+    top: 0;
+    border-radius: 50%;
+    line-height: 18px;
+}
+.ranking-oval-text {
+    height: 20px;
+    /* width: 6px; */
+    color: #FFFFFF;
+    font-size: 10px;
+    letter-spacing: -0.02px;
+    line-height: 19.6px;
+}
+.leaderboard-winners-list-lbl {
+    height: 20px;
+    color: #3F4045;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.leaderboard-winners-list-lbl-coins {
+    height: 20px;
+    color: #3F4045;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.leaderboard-winners-box {
+    height: 200px;
+    position: relative;
+}
+.leaderboard-winners-box-title {
+    height: 58px;
+    border-radius: 10px;
+    background-color: #F1F1F1;
+    box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.15);
+    position: absolute;
+    bottom: 0;
+}
+.leaderboard-winners-box-title-middle {
+    height: 84px;
+    border-radius: 10px;
+    background-color: #F1F1F1;
+    box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.15);
+    position: absolute;
+    bottom: 0;
+}
+.leaderboard-winners-top {
+    position: relative;
+}

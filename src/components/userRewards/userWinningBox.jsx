@@ -32,7 +32,7 @@ export default function UserWinningBox(props) {
                                 <div className="w-100" style={{padding: "0px 0px 0px 16px"}}>
                                     <span className="wbb-lbl">Your voucher code</span>
                                 </div>
-                                <div class="w-100 wbb-middle-box">
+                                <div className="w-100 wbb-middle-box">
                                     <div className="wbb-middle-code text-center">
                                         {obj.offerCode}
                                         <img src={copy_src} className="wbb-middle-code-copy" />
