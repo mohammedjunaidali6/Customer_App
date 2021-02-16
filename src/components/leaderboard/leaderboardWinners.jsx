@@ -88,26 +88,53 @@ export default function LeaderBoardWinners(props) {
     return (
         <div id="leaderboard-winners-container">
             <div className="w-100 disp-flex leaderboard-winners-top mt-4 mb-2">
-                <div className="w-33 text-center float-left m-0-auto" >
+                <div className="w-33 text-center float-left m-0-auto" style={{paddingTop: "27px"}} >
                     <div className="leaderboard-winners-box" >
-                        <img src={secondorthird_src} />
-                        <div className="leaderboard-winners-box-title">All Rewards</div>
+                        <div className="float-left clearfix text-center leaderboard-winners-box-logo">
+                            <img src={defaultuser_src} className="p-1" />
+                        </div>
+                        <div className="w-b-img-container-2">
+                            <img src={secondorthird_src} />
+                        </div>
+                        <div className="leaderboard-winners-box-title text-center">
+                            <div className="winner-box-name">{first3Place[0].name}</div>
+                            <img src={coin_src} style={{marginBottom: "3px"}} />
+                            <span className="leaderboard-winners-list-lbl-coins pl-1">{first3Place[0].amount}</span>
+                        </div>
                     </div>
                 </div>
                 <div className="w-33 text-center float-left m-0-auto" >
                     <div className="leaderboard-winners-box">
-                        <img src={first_src} />
-                        <div className="leaderboard-winners-box-title-middle">Unclaimed</div>
+                        <div className="float-left clearfix text-center leaderboard-winners-box-logo">
+                            <img src={defaultuser_src} className="p-1" />
+                        </div>
+                        <div className="w-b-img-container-1">
+                            <img src={first_src} />
+                        </div>
+                        <div className="leaderboard-winners-box-title-middle">
+                            <div className="winner-box-name">{first3Place[1].name}</div>
+                            <img src={coin_src} style={{marginBottom: "3px"}} />
+                            <span className="leaderboard-winners-list-lbl-coins pl-1">{first3Place[1].amount}</span>
+                        </div>
                     </div>
                 </div>
-                <div className="w-33 text-center float-left m-0-auto" >
+                <div className="w-33 text-center float-left m-0-auto" style={{paddingTop: "27px"}} >
                     <div className="leaderboard-winners-box">
-                        <img src={secondorthird_src} />
-                        <div className="leaderboard-winners-box-title">Expiring soon</div>
+                        <div className="float-left clearfix text-center leaderboard-winners-box-logo">
+                            <img src={defaultuser_src} className="p-1" />
+                        </div>
+                        <div className="w-b-img-container-2">
+                            <img src={secondorthird_src} />
+                        </div>
+                        <div className="leaderboard-winners-box-title">
+                            <div className="winner-box-name">{first3Place[2].name}</div>
+                            <img src={coin_src} style={{marginBottom: "3px"}} />
+                            <span className="leaderboard-winners-list-lbl-coins pl-1">{first3Place[2].amount}</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="w-100 leaderboard-winners-list">
+            <div className="w-100 disp-flex-root leaderboard-winners-list mt-4 mb-4">
                 {remainingPlaces && remainingPlaces.length > 0 ? (
                     remainingPlaces.map((obj) => (
                         <div key={obj.id} className="w-100 float-left clearfix leaderboard-winners-list-box">
