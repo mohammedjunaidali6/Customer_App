@@ -48,9 +48,23 @@ const tempArray = [
 
 export default function RewardZone(props) {
     
+    function rewardOpenFn() {
+        props.history.push('/userrewards');
+    }
+    function rankingOpenFn() {
+        props.history.push('/ranking');
+    }
+    function pointsOpenFn() {
+        props.history.push('/transactionhistory');
+    }
     return (
         <Fragment>
-            <Back height="190" fromReward={true} />
+            <Back height="190" 
+                fromReward={true} 
+                parentProps={props} 
+                rewardOpenFn={rewardOpenFn} 
+                rankingOpenFn={rankingOpenFn} 
+                pointsOpenFn={pointsOpenFn} />
             {/* <div id="reward-zone-detail-box-container">
                 <div id="point-box" className="detail-box-content mb-3 ml-4">
                     <img className="float-left" src={point_box_src} />

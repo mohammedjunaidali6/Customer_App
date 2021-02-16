@@ -119,8 +119,9 @@
     display: flex;
     flex-direction: row;
     float: left;
-    padding: 8px 2px;
+    padding: 8px;
     border-radius: 10px;
     background-color: #FFFFFF;
     box-shadow: 0 2px 4px 0 rgb(95 97 101 / 40%);
+    cursor: pointer;
 }

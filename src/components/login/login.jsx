@@ -23,7 +23,8 @@ export default function Login(props) {
     function loginSubmitFn(data) {
         console.log('data', data);
         // display form data on success
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
+        // alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
+        props.history.push('/rewardzone');
     }
 
     return (

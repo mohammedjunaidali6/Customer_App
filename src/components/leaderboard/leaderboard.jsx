@@ -18,7 +18,7 @@ export default function LeaderBoard(props) {
     bodyOverflowHiddenFn();
     return (
         <div id="leaderboard-outer-container">
-            <Back fromLeaderBoard={true} backTitle={backTitle} />
+            <Back parentProps={props} fromLeaderBoard={true} backTitle={backTitle} />
             <div id="leaderboard-container" style={{height: containerHeightCalcFn(128)}}>
                 <div className="urs-leaderboard">
                     <div className="w-100 float-left clearfix urs-leaderboard-content">

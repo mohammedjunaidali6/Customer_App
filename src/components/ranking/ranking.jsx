@@ -13,7 +13,7 @@ export default function Ranking(props) {
     
     return (
         <div id="ranking-container" className="">
-            <Back />
+            <Back parentProps={props} />
             <BackBanner />
             <h5 className="text-bold mt-2 ml-3 mb-0">Ranking in all games</h5>
             {tempArray && tempArray.length > 0 ? (
