@@ -57,6 +57,10 @@ export default function RewardZone(props) {
     function pointsOpenFn() {
         props.history.push('/transactionhistory');
     }
+    function gameDetailFn(data) {
+        console.log('data', data);
+        props.history.push('/gamedetail');
+    }
     return (
         <Fragment>
             <Back height="190" 
@@ -157,7 +161,7 @@ export default function RewardZone(props) {
                     <div className="reward-zone-handpicked-items">
                         <Fragment>
                             {tempArray.map((obj) => (
-                                <RewardBox dataObj={obj} key={obj.id} />
+                                <RewardBox dataObj={obj} key={obj.id} gameDetailFn={gameDetailFn} />
                             ))}
                         </Fragment>
                     </div>
