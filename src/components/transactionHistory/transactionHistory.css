@@ -1,5 +1,5 @@
 .t-h-heading {
-    margin: 14px 20px 0 20px;
+    margin: 92px 20px 0 20px;
 }
 .t-h-header {
     height: 20px;
@@ -59,4 +59,23 @@
 .t-h-b-contentbox {
     padding-left: 10px;
     margin-top: 8px;
+}
+.t-h-b-topbox {
+    
+}
+.lbl-banner-points {
+    height: 20px;
+    color: #3F4045;
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.07px;
+    line-height: 19.6px;
+}
+.lbl-banner-pointsdesc {
+    height: 20px;
+    color: #3F4045;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
 }

@@ -385,17 +385,23 @@ button[disabled]{
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.06);
 }
 .back-banner-container-bg {
+  height: 142px;
+  border-radius: 20px;
   background-color: #FFFFFF;
-  box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+  box-shadow: 0 1px 4px 0 rgb(30 36 39 / 30%);
+  position: absolute;
+  top: 58px;
 }
 
 #back-banner-container {
     display: flex;
     justify-content: center;
+    margin: 0 20px;
 }
 #back-banner-container .back-banner-your-ranking {
-    margin-top: -76px;
+    margin-top: -54px;
     border-radius: 20px;
+    width:100%
 }
 .ranking-whole-box {
     width: 50%;

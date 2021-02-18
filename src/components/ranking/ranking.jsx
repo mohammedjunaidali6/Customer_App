@@ -14,14 +14,14 @@ export default function Ranking(props) {
     return (
         <div id="ranking-container" className="">
             <Back parentProps={props} />
-            <BackBanner />
-            <h5 className="text-bold mt-2 ml-3 mb-0">Ranking in all games</h5>
+            <BackBanner fromRanking={true} />
+            <h5 className="text-bold pl-2" style={{margin: "14px 20px 0 20px"}}>Ranking in all games</h5>
             {tempArray && tempArray.length > 0 ? (
-                <Fragment>
+                <div style={{margin: "0 20px"}}>
                     {tempArray.map((obj) => (
-                        <RankingBox dataObj={obj} key={obj.id} />
+                        <RankingBox dataObj={obj} key={obj.id} style={{margin: "14px 20px"}} />
                     ))}
-                </Fragment>
+                </div>
             ): null}
         </div>
     )

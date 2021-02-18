@@ -99,7 +99,7 @@ export default function TransactionHistory(props) {
     return (
         <div id="transaction-history-container">
             <Back parentProps={props} fromTransactionHistory={true} />
-            <BackBanner fromTransaction={true} bannerLogo={gem_src} />
+            <BackBanner fromTransaction={true} />
             <div className="t-h-heading">
                 <span className="t-h-header">Transaction History</span>
             </div>
