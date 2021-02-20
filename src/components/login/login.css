@@ -10,6 +10,7 @@
     line-height: 40px;
     text-align: center;
     margin: 0 auto;
+    height: 40px;
 }
 .sign-in-with-social {
     color: #808A8F;
@@ -61,16 +62,6 @@
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 1px -1px rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.2);
     border: none;
 }
-.login-with-facebook {
-    height: 26px;
-    /* width: 94px; */
-    color: #FFFFFF;
-    font-family: Roboto;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 13px;
-}
 .or-login-with-email {
     /* height: 13px; */
     /* width: 158px; */
@@ -90,4 +81,42 @@
 }
 #login-form-container input[type="text"], #login-form-container input[type="password"] {
     border-radius: 20px;
+}
+#fb-rectangle .login-with-facebook {
+    height: 26px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 13px;
+    text-align: left;
+    width: 94px;
+}
+#google-rectangle .login-with-google {
+    height: 26px;
+    color: #6A6976;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 13px;
+    text-align: left;
+    width: 79px;
+}
+.dont-have-an-account {
+    height: 17px;
+    width: 132px;
+    color: #3F4045;
+    font-size: 12.57px;
+    letter-spacing: -0.04px;
+    line-height: 16px;
+}
+.sign-link {
+    height: 17px;
+    width: 41px;
+    color: #3F4045;
+    font-size: 12.57px;
+    font-weight: bold;
+    letter-spacing: -0.04px;
+    line-height: 16px;
+    cursor: pointer;
 }

@@ -1,4 +1,7 @@
-#landing-container { text-align: center;}
+#landing-container { 
+    text-align: center;
+    background-color: #fff;
+}
 #landing-container .buttons-contained-enabled-copy {
     height: 47px;
     /* width: 383px; */
@@ -24,7 +27,7 @@
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 1px -1px rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.2);
     cursor: pointer;
     outline: none;
-    padding: 0 30%;
+    padding: 0 35%;
 }
 #landing-container .surface:hover {
     border: none;
@@ -86,4 +89,9 @@
     background-color: #9B9B9B;
     display: inline-block;
     float: left;
+}
+.welcome-top-sec {
+    background-image: url(../../assets/img/landing/welcome.png);
+    background-repeat: no-repeat;
+    height: 340px;
 }
