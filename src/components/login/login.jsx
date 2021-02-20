@@ -4,6 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import TextField from '@material-ui/core/TextField';
 
+import './login.css';
+
 export default function Login(props) {
   
     // form validation rules 
