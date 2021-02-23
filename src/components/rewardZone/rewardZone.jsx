@@ -61,6 +61,10 @@ export default function RewardZone(props) {
         console.log('data', data);
         props.history.push('/gamedetail');
     }
+    function leaderBoardFn() {
+        props.history.push('/leaderboard');
+    }
+
     return (
         <Fragment>
             <Back height="190" 
@@ -69,60 +73,6 @@ export default function RewardZone(props) {
                 rewardOpenFn={rewardOpenFn} 
                 rankingOpenFn={rankingOpenFn} 
                 pointsOpenFn={pointsOpenFn} />
-            {/* <div id="reward-zone-detail-box-container">
-                <div id="point-box" className="detail-box-content mb-3 ml-4">
-                    <img className="float-left" src={point_box_src} />
-                    <div className="float-left">
-                        <div style={{marginBottom: "2px", fontSize: "12px", color: "#3F4045"}}>2102</div>
-                        <div style={{
-                            height: "20px",
-                            color: "#3F4045",
-                            fontSize: "11px",
-                            letterSpacing: "-0.03px",
-                            lineHeight: "19.6px"
-                        }}>Winners</div>
-                    </div>
-                </div>
-                <div id="amount-saved-box" className="detail-box-content mb-3 ml-4">
-                    <img className="float-left" src={rupee_src} />
-                    <div className="float-left">
-                        <div style={{marginBottom: "2px", fontSize: "12px", color: "#3F4045"}}>$3234</div>
-                        <div style={{
-                            height: "20px",
-                            color: "#3F4045",
-                            fontSize: "11px",
-                            letterSpacing: "-0.03px",
-                            lineHeight: "19.6px"
-                        }}>Amount Saved</div>
-                    </div>
-                </div>
-                <div id="rewards-box" className="detail-box-content ml-4">
-                    <img className="float-left" src={trophy_src} />
-                    <div className="float-left">
-                        <div style={{marginBottom: "2px", fontSize: "12px", color: "#3F4045"}}>3</div>
-                        <div style={{
-                            height: "20px",
-                            color: "#3F4045",
-                            fontSize: "11px",
-                            letterSpacing: "-0.03px",
-                            lineHeight: "19.6px"
-                        }}>Rewards</div>
-                    </div>
-                </div>
-                <div id="rank-box" className="detail-box-content ml-4">
-                    <img className="float-left" src={rank_src} />
-                    <div className="float-left">
-                        <div style={{marginBottom: "2px", fontSize: "12px", color: "#3F4045"}}>12</div>
-                        <div style={{
-                            height: "20px",
-                            color: "#3F4045",
-                            fontSize: "11px",
-                            letterSpacing: "-0.03px",
-                            lineHeight: "19.6px"
-                        }}>Rank</div>
-                    </div>
-                </div>
-            </div> */}
             <div id="reward-zone-container" className="">
                 <div id="reward-zone-status-container">
                     <div className="reward-zone-status-logo">
@@ -161,7 +111,7 @@ export default function RewardZone(props) {
                     <div className="reward-zone-handpicked-items">
                         <Fragment>
                             {tempArray.map((obj) => (
-                                <RewardBox dataObj={obj} key={obj.id} gameDetailFn={gameDetailFn} />
+                                <RewardBox dataObj={obj} key={obj.id} gameDetailFn={gameDetailFn} leaderBoardFn={leaderBoardFn} />
                             ))}
                         </Fragment>
                     </div>

@@ -7,7 +7,7 @@ import '../../assets/css/rewardBox.css';
 import ProgressBar from "../common/progressBar";
 
 export default function RewardBox(props) {
-    
+
     return (
         <div className="reward-whole-box">
             <div className="reward-mask-box">
@@ -38,7 +38,7 @@ export default function RewardBox(props) {
                         <div className="">
                             <img style={{width: "19px", float: "left", marginRight: "6px"}} src={trophy_src} />
                         </div>
-                        <div>
+                        <div style={{cursor: "pointer"}}  onClick={() => props.leaderBoardFn()}>
                             <div style={{marginBottom: "2px", fontSize: "12px", color: "#3F4045"}}>{props.dataObj.winners}</div>
                             <div style={{
                                 height: "7px",

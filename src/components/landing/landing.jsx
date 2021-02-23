@@ -8,7 +8,7 @@ import welcome_gift_src from "../../assets/img/landing/welcome_gift.svg";
 export default function Landing(props) {
   
     function loginClickFn() {
-        props.history.push('login');
+        props.history.push('rewardzone');
     }
 
     return (

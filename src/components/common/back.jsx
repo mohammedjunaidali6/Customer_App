@@ -33,8 +33,12 @@ export default function Back(props) {
         <>
         <div id="back-container" className="" style={{height: `${props.height}px`}}>
             <div className="back-container-content" >
-                <i className="arrow left ml-4" onClick={() => bactToRewardFn()} ></i>
-                <span className="back-header" onClick={() => bactToRewardFn()}>{props.backTitle ? props.backTitle : `Back to Reward Zone`}</span>
+                {!props.fromRewardZone ? (
+                    <i className="arrow left ml-4" onClick={() => bactToRewardFn()} ></i>
+                ) : null }
+                <span className={`back-header ${props.fromRewardZone ? `ml-4` : ``}`} 
+                    onClick={() => bactToRewardFn()}>
+                        {props.fromRewardZone ? `` : `Back to `}{props.backTitle ? props.backTitle : `Reward Zone`}</span>
                 {props.fromRewardZone ? (
                     <AiOutlineClose className="close-box mr-2" onClick={() => closeAppFn()} />
                 ) : null}
