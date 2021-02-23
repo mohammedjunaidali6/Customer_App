@@ -12,6 +12,8 @@ import GameDetailsContainer from "../containers/gameDetails/gameDetailsContainer
 import UserRewardsContatiner from "../containers/userRewards/userRewardsContainer";
 import LeaderBoardContatiner from "../containers/leaderboard/leaderboardContainer";
 import TransactionHistoryContainer from "../containers/transactionHistory/transactionHistoryContainer";
+import NotificationContainer from "../containers/notification/notificationContainer";
+import StatusContainer from "../containers/status/statusContainer"
 
 export default function AppRoute() {
   InterceptorsFn();
@@ -28,6 +30,8 @@ export default function AppRoute() {
           <Route exact path="/userrewards" component={UserRewardsContatiner}/>
           <Route exact path="/leaderboard" component={LeaderBoardContatiner}/>
           <Route exact path="/transactionhistory" component={TransactionHistoryContainer}/>
+          <Route exact path="/notification" component={NotificationContainer}/>
+          <Route exact path="/status" component={StatusContainer}/>
           <Route path="*" component={NotFound} />
         </Switch>
       </BrowserRouter>
