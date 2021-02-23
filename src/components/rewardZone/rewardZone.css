@@ -28,6 +28,7 @@
     width: 74%;
     float: left;
     padding-left: 10px;
+    cursor: pointer;
 }
 
 .reward-zone-status-progress {

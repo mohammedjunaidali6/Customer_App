@@ -21,18 +21,18 @@
 }
 
 .members-list{
-  height: 1284px;
-  padding: 15px;
+  /* height: 1284px; */
+  padding: 14px 20px;
   /* overflow-y: auto; */
   border-radius: 1px;
   background-color: #EDEFF2;
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.5);
+  /* box-shadow: 0 2px 8px 0 rgba(0,0,0,0.5); */
+  display: flow-root;
 }
 
 .member{
   height: 83px;
-  margin: 20px 0px;
-  padding: auto 15px;
+  margin-bottom: 16px;
   border-radius: 10px;
   background-color: #FFFFFF;
   box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);

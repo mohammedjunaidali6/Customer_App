@@ -64,6 +64,9 @@ export default function RewardZone(props) {
     function leaderBoardFn() {
         props.history.push('/leaderboard');
     }
+    function statusFn() {
+        props.history.push('/status');
+    }
 
     return (
         <Fragment>
@@ -79,7 +82,7 @@ export default function RewardZone(props) {
                         <img src={master_src} />
                     </div>
                     <div className="reward-zone-status-divider"></div>
-                    <div className="reward-zone-status-content">
+                    <div className="reward-zone-status-content" onClick={() => statusFn()}>
                         <div>
                             <h5 className="mb-1">Master</h5>
                         </div>

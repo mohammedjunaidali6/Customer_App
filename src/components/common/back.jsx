@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { BsFillBellFill } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import { Modal } from 'react-responsive-modal';
@@ -24,8 +24,16 @@ export default function Back(props) {
         setOpen(true);
     }
 
+    function closeNotificationFn() {
+        props.parentProps.history.push('/rewardzone');
+    }
+
     function exitApp() {
         props.parentProps.history.push('/');
+    }
+
+    function notificationFn() {
+        props.parentProps.history.push('/notification');
     }
 
     return (
@@ -33,17 +41,24 @@ export default function Back(props) {
         <>
         <div id="back-container" className="" style={{height: `${props.height}px`}}>
             <div className="back-container-content" >
-                {!props.fromRewardZone ? (
+                {!props.fromRewardZone && !props.fromNotification ? (
                     <i className="arrow left ml-4" onClick={() => bactToRewardFn()} ></i>
                 ) : null }
-                <span className={`back-header ${props.fromRewardZone ? `ml-4` : ``}`} 
+                <span className={`back-header ${props.fromRewardZone || props.fromNotification ? `ml-4` : ``}`} 
                     onClick={() => bactToRewardFn()}>
-                        {props.fromRewardZone ? `` : `Back to `}{props.backTitle ? props.backTitle : `Reward Zone`}</span>
+                        {props.fromRewardZone || props.fromNotification ? `` : `Back to `}{props.backTitle ? props.backTitle : `Reward Zone`}</span>
                 {props.fromRewardZone ? (
                     <AiOutlineClose className="close-box mr-2" onClick={() => closeAppFn()} />
                 ) : null}
-                <BsFillBellFill className="notification-box mr-2" ></BsFillBellFill>
-                <span className={`notification-count ${props.fromRewardZone ? `n-c-right25` : `n-c-right2`}`} >6</span>
+                {props.fromNotification ? (
+                    <AiOutlineClose className="close-box mr-2" onClick={() => closeNotificationFn()} />
+                ) : null}
+                {!props.fromNotification ? (
+                    <Fragment>
+                        <BsFillBellFill className="notification-box mr-2" onClick={() => notificationFn()} ></BsFillBellFill>
+                        <span className={`notification-count ${props.fromRewardZone ? `n-c-right25` : `n-c-right2`}`} >6</span>
+                    </Fragment>
+                ) : null}
                 {/* <div className="notification-box">
                     <span className="notification-count">6</span>
                     <div className="notification-bell">

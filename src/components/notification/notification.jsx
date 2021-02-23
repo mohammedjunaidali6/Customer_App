@@ -39,7 +39,7 @@ const tempArray =[
 export default function Notification(props){
     return(
         <div>
-            <Back />
+            <Back fromNotification={true} parentProps={props} height="54" backTitle="Notifications" />
              <div className='w-100 members-list'>
                 {tempArray.map((user)=>(
                     <div className='w-100 float-left member '>

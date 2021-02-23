@@ -6,18 +6,16 @@ import Novice_src from '../../assets/img/rewardZone/Novice.svg';
 import ProgressBar from "../common/progressBar";
 import "./status.css";
 
-export default function Status(){
+export default function Status(props){
     return(
         <div>
-            <Back />
+            <Back fromStatus={true} parentProps={props} />
                 <div className='w-100 status-container'>
                  <div className='w-100 status-box '>
-                    <div className='status-item text-center'>
+                    <div className='w-100 status-item text-center'>
                         <img src="https://images.all-free-download.com/images/graphicthumb/glowing_green_box_311775.jpg" className='status-image' alt=""/>
-                        
                         <div className='status-title text-center '>Status-B</div>
                         <div className='status-intro text-center'>Perform 2 more task to reach status B</div>
-                        
                     </div>
                 </div> 
                 <div className='status-progress w-100 disp-flex'>
@@ -39,7 +37,7 @@ export default function Status(){
                 </div>
                 
                 <div className='w-100 description-box'>
-                    <div className='description-title'>Benifits of Step-up</div>
+                    <div className='description-title text-left'>Benifits of Step-up</div>
                     <div className='description-content'>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled 
                     </div>

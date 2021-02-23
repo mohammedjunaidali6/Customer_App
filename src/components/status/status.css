@@ -1,5 +1,5 @@
 .status-container{
-    padding:  30px;
+    padding:  14px 20px;
 }
 
 .status-image{
@@ -33,18 +33,17 @@
 }
 .status-item{
     height: 142px;
-    width: 356px;
     border-radius: 20px;
     background-color: #FFFFFF;
     box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
     text-align: center;
-    margin-top: -100px;
+    margin-top: -79px;
 }
 
 .status-progress{
     align-items: center;
     padding-top: 30px;
-    padding-bottom: 30px;
+    /* padding-bottom: 30px; */
 }
 
 .status-progress-image{
@@ -64,9 +63,9 @@
 }
 
 .description-box{
-    height: 417px;
+    /* height: 417px; */
     /* width: 397px; */
-    margin-top: 70px;
+    margin-top: 42px;
     border-radius: 20px;
     background-color: #FFFFFF;
     box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
