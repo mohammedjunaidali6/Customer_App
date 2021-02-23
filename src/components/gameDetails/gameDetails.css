@@ -4,6 +4,7 @@
 
 /* for game ifo component */
 
+.gamedetail-gameinfo-left { cursor: pointer; }
 .gamedetail-gameinfo-items {
     height: 54px;
     padding-top: 6px;

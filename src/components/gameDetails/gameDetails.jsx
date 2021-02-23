@@ -54,7 +54,7 @@ export default function GameDetail(props) {
     return (
         <Fragment>
             <Back parentProps={props} height="190" fromGameDetail={true} />
-            <GameDetailGameInfo />
+            <GameDetailGameInfo parentProps={props} />
             <GameDetailScratchNow />
             <div className="w-90 disp-flex-root common-divider float-left ml-4"></div>
             <GameDetailRewards />

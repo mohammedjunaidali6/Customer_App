@@ -5,9 +5,13 @@ import rupee_src from '../../assets/img/gameDetails/rupee.svg';
 
 export default function GameDetailGameInfo(props) {
     
+    function leaderBoardFn() {
+        props.parentProps.history.push('/leaderboard');
+    }
+
     return (
         <div className="disp-flex-root gamedetail-gameinfo-items">
-            <div className="w-48 float-left gamedetail-gameinfo-left">
+            <div className="w-48 float-left gamedetail-gameinfo-left" onClick={() => leaderBoardFn()}>
                 <div className="w-50 float-left">
                     <img src={trophy_src} className="float-right mt-2 mr-2" />
                 </div>

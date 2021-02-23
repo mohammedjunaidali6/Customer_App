@@ -46,7 +46,7 @@ export default function Back(props) {
                 ) : null }
                 <span className={`back-header ${props.fromRewardZone || props.fromNotification ? `ml-4` : ``}`} 
                     onClick={() => bactToRewardFn()}>
-                        {props.fromRewardZone || props.fromNotification ? `` : `Back to `}{props.backTitle ? props.backTitle : `Reward Zone`}</span>
+                        {props.fromRewardZone || props.fromNotification || props.fromLeaderBoard ? `` : `Back to `}{props.backTitle ? props.backTitle : `Reward Zone`}</span>
                 {props.fromRewardZone ? (
                     <AiOutlineClose className="close-box mr-2" onClick={() => closeAppFn()} />
                 ) : null}
