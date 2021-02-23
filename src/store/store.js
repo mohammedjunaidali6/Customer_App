@@ -8,7 +8,8 @@ import GameDetailsReducer from "../reducers/gameDetails/gameDetailsReducer";
 import UserRewardsReducer from "../reducers/userRewards/userRewardsReducer";
 import LeaderBoardReducer from "../reducers/leaderboard/leaderboardReducer";
 import TransactionHistoryReducer from "../reducers/transactionHistory/transactionHistoryReducer";
-
+import NotificationReducer from "../reducers/notification/notificationReducer";
+import StatusReducer from "../reducers/status/statusReducer";
 function saveToSessionStorage(state) {
   try {
     const serializedState = JSON.stringify(state);
@@ -37,7 +38,9 @@ const reducer = combineReducers({
   GameDetailsReducer: GameDetailsReducer,
   UserRewardsReducer: UserRewardsReducer,
   LeaderBoardReducer: LeaderBoardReducer,
-  TransactionHistoryReducer: TransactionHistoryReducer
+  TransactionHistoryReducer: TransactionHistoryReducer,
+  NotificationReducer: NotificationReducer,
+  StatusReducer: StatusReducer
 });
 
 // To persist your Store use sessionStorage after hard reoad
