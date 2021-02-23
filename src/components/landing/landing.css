@@ -1,0 +1,97 @@
+#landing-container { 
+    text-align: center;
+    background-color: #fff;
+}
+#landing-container .buttons-contained-enabled-copy {
+    height: 47px;
+    /* width: 383px; */
+}
+#landing-container .button-text {
+    height: 15px;
+    width: 50px;
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1.34px;
+    line-height: 14.37px;
+    text-align: center;
+}
+#landing-container .surface {
+    height: 46.74px;
+    /* width: 382.02px; */
+    border-radius: 23.37px;
+    background-color: #706AE2;
+    border: solid 1px #726cea;
+    margin-top: 88px;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 1px -1px rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+    outline: none;
+    padding: 0 35%;
+}
+#landing-container .surface:hover {
+    border: none;
+    outline: none;
+}
+.welcome-to-coupon-wo {
+    height: 20px;
+    /* width: 350px; */
+    color: #3F4045;
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: -0.07px;
+    line-height: 19.6px;
+    text-align: center;
+    margin-top: 38px;
+    margin: 38px auto 28px auto;
+}
+.explore-great-coupon {
+    height: 56px;
+    width: 70%;
+    color: #808A8F;
+    font-family: Roboto;
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 28px;
+    text-align: center;
+    margin: 0 auto;
+}
+.exit {
+    height: 24px;
+    /* width: 38px; */
+    opacity: 0.5;
+    color: #6A6976;
+    font-family: Roboto;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 24px;
+    text-align: center;
+    margin: 32px auto 0 auto;
+}
+.powered-by {
+    height: 19px;
+    /* width: 72px; */
+    color: #808A8F;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 19px;
+    text-align: center;
+    display: inline-block;
+    float: left;
+}
+.powered-by-logo {
+    height: 32px;
+    /* width: 101px; */
+    background-color: #9B9B9B;
+    display: inline-block;
+    float: left;
+}
+.welcome-top-sec {
+    background-image: url(../../assets/img/landing/welcome.png);
+    background-repeat: no-repeat;
+    height: 340px;
+}

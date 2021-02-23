@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 
+import './landing.css';
+import logo_src from "../../assets/img/landing/logo.png";
+import welcome_src from "../../assets/img/landing/welcome.png";
+import welcome_gift_src from "../../assets/img/landing/welcome_gift.svg";
+
 export default function Landing(props) {
   
     function loginClickFn() {
@@ -8,8 +13,12 @@ export default function Landing(props) {
 
     return (
         <div id="landing-container" className="">
-            <div></div>
-            <div style={{height: "72px", width: "227px"}}></div>
+            <div className="welcome-top-sec">
+                <img src={welcome_gift_src} style={{paddingTop: "64px"}} />
+            </div>
+            <div className="text-center">
+                <img src={logo_src} />
+            </div>
             <div className="welcome-to-coupon-wo">
                 Welcome to Coupon World
             </div>

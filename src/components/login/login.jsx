@@ -4,6 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import TextField from '@material-ui/core/TextField';
 
+import './login.css';
+import fb_src from '../../assets/img/login/facebook-icon.svg';
+import g_src from '../../assets/img/login/google-icon.svg';
+
 export default function Login(props) {
   
     // form validation rules 
@@ -35,10 +39,16 @@ export default function Login(props) {
             </div>
             <div className="socials">
                 <div className="w-50 float-left text-center">
-                    <button type="button" id="fb-rectangle">LOGIN WITH FACEBOOK</button>
+                    <button type="button" id="fb-rectangle" className="pt-1">
+                        <img src={fb_src} className="float-left ml-4 mr-2" />
+                        <div className="login-with-facebook float-left">LOGIN WITH FACEBOOK</div>
+                    </button>
                 </div>
                 <div className="w-50 float-left text-center">
-                    <button type="button" id="google-rectangle">LOGIN WITH GOOGLE</button>
+                    <button type="button" id="google-rectangle" className="pt-2">
+                        <img src={g_src} className="float-left ml-4 mr-2" />
+                        <div className="login-with-google float-left">LOGIN WITH GOOGLE</div>
+                    </button>
                 </div>
             </div>
             <div className="or-login-with-email mb-4">
@@ -73,6 +83,10 @@ export default function Login(props) {
                     <button type="submit" id="btn-sign-in">
                         <span className="button-text">SIGN IN</span>
                     </button>
+                    <div className="text-left" style={{margin: '12px'}}>
+                        <span className="dont-have-an-account">Don’t have an account?</span>
+                        <span className="sign-link pl-1">Sign In</span>
+                    </div>
                 </div>
             </form>
         </div>

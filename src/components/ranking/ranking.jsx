@@ -3,6 +3,8 @@ import Back from "../common/back";
 import BackBanner from "../common/backBanner";
 import RankingBox from "../common/rankingBox";
 
+import './ranking.css';
+
 const tempArray = [
     {id: 1, inVal: 14, ofVal: 1247, offerText: 'Flat 20% Off On Order of Rs.899 and Above', winnersCount: 241, expireMessage: 'Expaire in 2 Days'},
     {id: 2, inVal: 241, ofVal: 2851, offerText: 'Flat 10% Off On Order of Rs.699 and Above', winnersCount: 24, expireMessage: 'Expaire in 4 Days'},
