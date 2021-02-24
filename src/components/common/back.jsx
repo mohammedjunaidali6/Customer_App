@@ -7,6 +7,7 @@ import point_box_src from '../../assets/img/rewardZone/gem_home.svg';
 import trophy_src from '../../assets/img/rewardZone/trophy_home.svg';
 import rank_src from '../../assets/img/rewardZone/Rank__home.svg';
 import rupee_src from '../../assets/img/rewardZone/rupee_home.svg';
+import share_src from '../../assets/img/gameDetails/share.svg';
 // import { GlobalModal } from "./global";
 
 export default function Back(props) {
@@ -54,7 +55,10 @@ export default function Back(props) {
                 {props.fromNotification ? (
                     <AiOutlineClose className="close-box mr-2" onClick={() => closeNotificationFn()} />
                 ) : null}
-                {!props.fromNotification ? (
+                {props.fromGameDetail ? (
+                    <img src={share_src} alt="Share" className="share-img" />
+                ) : null}
+                {!props.fromNotification && !props.fromGameDetail && !props.fromLeaderBoard ? (
                     <Fragment>
                         <BsFillBellFill className="notification-box mr-2" onClick={() => notificationFn()} ></BsFillBellFill>
                         <span className={`notification-count ${props.fromRewardZone ? `n-c-right25` : `n-c-right2`}`} >6</span>

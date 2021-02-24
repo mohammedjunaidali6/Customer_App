@@ -41,7 +41,7 @@ export default function UserRewards(props) {
     console.log('UserRewards props', props);
     return (
         <div id="userrewards-container">
-            <Back parentProps={props} fromGameDetail={true} />
+            <Back parentProps={props} fromUserRewards={true} />
             <UserRewardsUserInfo parentProps={props} />
             <UserDailyReward parentProps={props} />
             <UserWinnings parentProps={props} />

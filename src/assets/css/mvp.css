@@ -195,6 +195,11 @@ button[disabled]{
     border-radius: 20px;
 }
 
+.share-img {
+  float: right;
+  margin-right: 20px;
+}
+
 #back-container {
   height: 128px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.06);
