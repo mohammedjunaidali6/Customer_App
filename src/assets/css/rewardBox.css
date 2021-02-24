@@ -73,12 +73,12 @@
 
 .btn-reward-item-playnow {
     width: 90%;
-    border: solid 1px #706AE2;
     outline: none;
     cursor: pointer;
     padding: 5px;
     border-radius: 15px;
-    background-color: #837DF0;
+    background-color: var(--buttonBg);
+    border: solid 1px var(--buttonBorder);
     box-shadow: 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 1px -1px rgb(0 0 0 / 12%), 0 1px 2px 0 rgb(0 0 0 / 20%);
     margin-bottom: 10px;
 }

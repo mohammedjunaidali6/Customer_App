@@ -22,7 +22,7 @@
 }
 .urs-leaderboard-desc-outer {
     height: 36px;
-    background: #706ae2;
+    background: var(--buttonBg);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     text-align: center;
@@ -108,8 +108,8 @@
 .leaderboard-othersplaying-btn {
     border-radius: 13px;
     width: 59.97px;
-    background-color: #706AE2;
-    border: solid 1px #726cea;
+    background-color: var(--buttonBg);
+    border: solid 1px var(--buttonBorder);
     box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
     cursor: pointer;
     outline: none;

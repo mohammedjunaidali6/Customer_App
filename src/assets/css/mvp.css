@@ -485,8 +485,8 @@ button[disabled]{
 #modal-container #modal-yes {
     height: 40px;
     border-radius: 20px;
-    background-color: #837DF0;
-    border: solid 1px #726cea;
+    background-color: var(--buttonBg);
+    border: solid 1px var(--buttonBorder);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 1px -1px rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.2);
     cursor: pointer;
     outline: none;
@@ -504,8 +504,8 @@ button[disabled]{
 #modal-container #modal-no {
     height: 40px;
     border-radius: 20px;
-    background-color: #FFFFFF;
-    border: solid 1px #d1d1d3;
+    background-color: var(--buttonNegativeBg);
+    border: solid 1px var(--buttonNegativeBorder);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 1px -1px rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.2);
     padding: 6px 32px;
     cursor: pointer;
