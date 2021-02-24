@@ -13,6 +13,7 @@ export default function Back(props) {
     const [open, setOpen] = React.useState(false);
     
     function bactToRewardFn() {
+        if(props.backTitle && props.backTitle === 'Notifications') { return false; }
         if(props.parentProps && props.parentProps.history) {
             if(props.parentProps.history.location.pathname !== '/rewardzone') {
                 props.parentProps.history.push('/rewardzone');

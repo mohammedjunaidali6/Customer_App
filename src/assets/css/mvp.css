@@ -197,8 +197,9 @@ button[disabled]{
 
 #back-container {
   height: 128px;
-  background: linear-gradient(36.11deg, #4753DA 0%, #C79CFF 100%);
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.06);
+  background: url(../img/layer1.png) no-repeat, linear-gradient(36.11deg, var(--backGradientStart) 0%, var(--backGradientEnd) 100%);
+  background-size: cover;
 }
 .back-banner-container-bg {
   height: 142px;

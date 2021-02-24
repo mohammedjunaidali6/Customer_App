@@ -3,6 +3,7 @@ import Back from "../common/back";
 import master_src from '../../assets/img/rewardZone/master.svg';
 import Champion_src from '../../assets/img/rewardZone/Champion.svg';
 import Novice_src from '../../assets/img/rewardZone/Novice.svg';
+import Group_src from '../../assets/img/status/Group.svg';
 import ProgressBar from "../common/progressBar";
 import "./status.css";
 
@@ -13,7 +14,7 @@ export default function Status(props){
                 <div className='w-100 status-container'>
                  <div className='w-100 status-box '>
                     <div className='w-100 status-item text-center'>
-                        <img src="https://images.all-free-download.com/images/graphicthumb/glowing_green_box_311775.jpg" className='status-image' alt=""/>
+                        <img src={Group_src} className='status-image' alt=""/>
                         <div className='status-title text-center '>Status-B</div>
                         <div className='status-intro text-center'>Perform 2 more task to reach status B</div>
                     </div>

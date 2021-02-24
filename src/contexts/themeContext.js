@@ -55,12 +55,16 @@ const lightTheme = [
   '--buttonBg: #837DF0',
   '--buttonBorder: #706AE2',
   '--buttonNegativeBg: #FFFFFF',
-  '--buttonNegativeBorder: #d1d1d3'
+  '--buttonNegativeBorder: #d1d1d3',
+  '--backGradientStart: #4753DA',
+  '--backGradientEnd: #C79CFF ',
 ];
 
 const darkTheme = [
   '--buttonBg: #837DF0',
   '--buttonBorder: #706AE2',
   '--buttonNegativeBg: #FFFFFF',
-  '--buttonNegativeBorder: #d1d1d3'
+  '--buttonNegativeBorder: #d1d1d3',
+  '--backGradientStart: #4753DA',
+  '--backGradientEnd: #C79CFF ',
 ];
