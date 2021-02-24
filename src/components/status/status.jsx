@@ -11,7 +11,7 @@ export default function Status(props){
     return(
         <div>
             <Back fromStatus={true} parentProps={props} />
-                <div className='w-100 status-container'>
+            <div className='w-100 status-container'>
                  <div className='w-100 status-box '>
                     <div className='w-100 status-item text-center'>
                         <img src={Group_src} className='status-image' alt=""/>
@@ -43,7 +43,7 @@ export default function Status(props){
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled 
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     )
 }

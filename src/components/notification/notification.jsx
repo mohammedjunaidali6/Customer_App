@@ -1,6 +1,7 @@
 import React from 'react';
 import "./notificationPage.css"
 import Back from "../common/back";
+import { containerHeightCalcFn } from "../common/global";
 import defaultuser_src from "../../assets/img/gameDetails/default_user.png";
 // import NotificationDisplayBox from "./notificationDisplayBox.jsx";
 
@@ -40,7 +41,7 @@ export default function Notification(props){
     return(
         <div>
             <Back fromNotification={true} parentProps={props} height="54" backTitle="Notifications" />
-             <div className='w-100 members-list'>
+             <div className='w-100 members-list' style={{height: containerHeightCalcFn(54), overflowY: 'auto'}}>
                 {tempArray.map((user)=>(
                     <div className='w-100 float-left member '>
                         <img src={defaultuser_src} className='profile-pic'alt=""/>

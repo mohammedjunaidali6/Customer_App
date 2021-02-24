@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { ThemeProvider } from '../contexts/themeContext';
 import InterceptorsFn from "./interceptor";
+import { bodyOverflowHiddenFn } from "../components/common/global";
 import NotFound from '../components/common/notFound.jsx';
 import Landing from '../components/landing/landing.jsx';
 import HomeContatiner from '../containers/home/homeContainer';
@@ -18,6 +19,7 @@ import StatusContainer from "../containers/status/statusContainer";
 
 export default function AppRoute() {
   InterceptorsFn();
+  bodyOverflowHiddenFn();
   return (
     <ThemeProvider>
       <div id="app-route-container">

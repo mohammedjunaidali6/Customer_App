@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import defaultuser_src from "../../assets/img/gameDetails/default_user.png";
 import coin_src from "../../assets/img/leaderboard/coin.svg";
 import Back from "../common/back";
-import { containerHeightCalcFn, bodyOverflowHiddenFn } from "../common/global";
+import { containerHeightCalcFn } from "../common/global";
 import OthersPlaying from "./leaderboardOthersPlaying";
 import LeaderBoardWinners from "./leaderboardWinners";
 
@@ -15,11 +15,10 @@ const backTitle = <span>
 </span>;
 
 export default function LeaderBoard(props) {
-    bodyOverflowHiddenFn();
     return (
         <div id="leaderboard-outer-container">
             <Back parentProps={props} fromLeaderBoard={true} backTitle={backTitle} />
-            <div id="leaderboard-container" style={{height: containerHeightCalcFn(128)}}>
+            <div id="leaderboard-container" style={{height: containerHeightCalcFn()}}>
                 <div className="urs-leaderboard">
                     <div className="w-100 float-left clearfix urs-leaderboard-content">
                         <div className="w-15 float-left clearfix text-center">

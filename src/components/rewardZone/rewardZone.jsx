@@ -8,6 +8,7 @@ import invitation_bg_src from '../../assets/img/rewardZone/invite_bg.png';
 import basketball_src from '../../assets/img/rewardZone/game1.png';
 import bingo_src from '../../assets/img/rewardZone/game2.png';
 import './rewardZone.css';
+import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
 import ProgressBar from "../common/progressBar";
 
@@ -76,7 +77,7 @@ export default function RewardZone(props) {
                 rewardOpenFn={rewardOpenFn} 
                 rankingOpenFn={rankingOpenFn} 
                 pointsOpenFn={pointsOpenFn} />
-            <div id="reward-zone-container" className="">
+            <div id="reward-zone-container" className="" style={{height: containerHeightCalcFn(190), overflowY: 'auto'}}>
                 <div id="reward-zone-status-container">
                     <div className="reward-zone-status-logo">
                         <img src={master_src} />

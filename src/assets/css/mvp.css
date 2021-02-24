@@ -219,6 +219,7 @@ button[disabled]{
     display: flex;
     justify-content: center;
     margin: 0 20px;
+    z-index: 1;
 }
 #back-banner-container .back-banner-your-ranking {
     margin-top: -54px;

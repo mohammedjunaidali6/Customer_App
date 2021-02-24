@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Back from "../common/back";
+import { containerHeightCalcFn } from "../common/global";
 import BackBanner from "../common/backBanner";
 import RankingBox from "../common/rankingBox";
 
@@ -14,17 +15,19 @@ const tempArray = [
 export default function Ranking(props) {
     
     return (
-        <div id="ranking-container" className="">
+        <Fragment>
             <Back parentProps={props} />
             <BackBanner fromRanking={true} />
-            <h5 className="text-bold pl-2" style={{margin: "14px 20px 0 20px"}}>Ranking in all games</h5>
-            {tempArray && tempArray.length > 0 ? (
-                <div style={{margin: "0 20px"}}>
-                    {tempArray.map((obj) => (
-                        <RankingBox dataObj={obj} key={obj.id} style={{margin: "14px 20px"}} />
-                    ))}
-                </div>
-            ): null}
-        </div>
+            <div id="ranking-container" className="" style={{height: containerHeightCalcFn(228), overflowY: 'auto'}} >
+                <h5 className="text-bold pl-2" style={{margin: "14px 20px 0 20px"}}>Ranking in all games</h5>
+                {tempArray && tempArray.length > 0 ? (
+                    <div style={{margin: "0 20px"}}>
+                        {tempArray.map((obj) => (
+                            <RankingBox dataObj={obj} key={obj.id} style={{margin: "14px 20px"}} />
+                        ))}
+                    </div>
+                ): null}
+            </div>
+        </Fragment>
     )
 }

@@ -6,6 +6,7 @@ import unclaimed_src from '../../assets/img/userRewards/Unclaimed.svg';
 import expiringsoon_src from '../../assets/img/userRewards/Expiringsoon.svg';
 import missed_src from '../../assets/img/userRewards/missed.svg';
 import './userRewards.css';
+import { containerHeightCalcFn } from "../common/global";
 import UserRewardsUserInfo from "./userInfo";
 import UserDailyReward from "./userDailyReward";
 import UserWinnings from "./userWinnings";
@@ -40,11 +41,13 @@ const tempArray = [
 export default function UserRewards(props) {
     console.log('UserRewards props', props);
     return (
-        <div id="userrewards-container">
+        <Fragment>
             <Back parentProps={props} fromUserRewards={true} />
             <UserRewardsUserInfo parentProps={props} />
-            <UserDailyReward parentProps={props} />
-            <UserWinnings parentProps={props} />
-        </div>
+            <div id="userrewards-container" style={{height: containerHeightCalcFn(268), overflowY: 'auto'}}>
+                <UserDailyReward parentProps={props} />
+                <UserWinnings parentProps={props} />
+            </div>
+        </Fragment>
     )
 }

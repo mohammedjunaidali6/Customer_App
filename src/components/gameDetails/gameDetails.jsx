@@ -8,6 +8,7 @@ import invitation_bg_src from '../../assets/img/rewardZone/invite_bg.png';
 import basketball_src from '../../assets/img/rewardZone/game1.png';
 import bingo_src from '../../assets/img/rewardZone/game2.png';
 import './gameDetails.css';
+import { containerHeightCalcFn } from "../common/global";
 import GameDetailGameInfo from './gameInfo';
 import GameDetailScratchNow from "./scratchNow";
 import GameDetailRewards from "./rewards";
@@ -55,11 +56,13 @@ export default function GameDetail(props) {
         <Fragment>
             <Back parentProps={props} height="190" fromGameDetail={true} />
             <GameDetailGameInfo parentProps={props} />
-            <GameDetailScratchNow />
-            <div className="w-90 disp-flex-root common-divider float-left ml-4"></div>
-            <GameDetailRewards />
-            <GameDetailWhoElseplaying />
-            <GameDetailHowToPlay />
+            <div style={{height: containerHeightCalcFn(254), overflowY: 'auto'}}>
+                <GameDetailScratchNow />
+                <div className="w-90 disp-flex-root common-divider float-left ml-4"></div>
+                <GameDetailRewards />
+                <GameDetailWhoElseplaying />
+                <GameDetailHowToPlay />
+            </div>
         </Fragment>
     )
 }
