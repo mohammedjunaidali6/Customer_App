@@ -164,6 +164,20 @@ button[disabled]{
   .n-c-right2 {
     right: 2px;
   }
+  .txt-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 20px;
+  }
+  .txt-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 20px;
+  }
   @keyframes bell {
     0% { transform: rotate(0); }
     10% { transform: rotate(30deg); }

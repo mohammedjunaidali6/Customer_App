@@ -44,18 +44,18 @@ export default function GameDetailScratchNow(props) {
             {tempArray && tempArray.length > 0 ? (
                 <div className="gamedetail-scratchnow-items">
                     <Fragment>
-                        <div className="scratchnow-big-header">It’s Chance to Get an iPhone 12 </div>
-                        <div className="scratchnow-small-header">Scrach more to win </div>
-                        <div className="scratchnow-item-container">
+                        <div className="w-100 float-left clearfix scratchnow-big-header">It’s Chance to Get an iPhone 12 </div>
+                        <div className="w-100 float-left clearfix scratchnow-small-header">Scrach more to win </div>
+                        <div className="w-100 float-left clearfix scratchnow-item-container">
                             <div className="scratchnow-box">
                                 <div className="scratch-box-logo">
                                     <img src={group1_src} />
                                 </div>
                                 <div className="scratchnow-box-header">
-                                    <div>Invite a friend</div>
+                                    <div className="txt-clamp-1">Invite a friend</div>
                                 </div>
                                 <div className="scratchnow-box-desc">
-                                    <div>Completed</div>
+                                    <div className="txt-clamp-1">Completed</div>
                                 </div>
                             </div>
                             <div className="scratchnow-box">
@@ -63,10 +63,10 @@ export default function GameDetailScratchNow(props) {
                                     <img src={group2_src} />
                                 </div>
                                 <div className="scratchnow-box-header">
-                                    <div>Purchase for 100</div>
+                                    <div className="txt-clamp-1">Purchase for 100</div>
                                 </div>
                                 <div className="scratchnow-box-desc">
-                                    <div>Completed</div>
+                                    <div className="txt-clamp-1">Completed</div>
                                 </div>
                             </div>
                             <div className="scratchnow-box scratchnow-box-pending">
@@ -74,14 +74,14 @@ export default function GameDetailScratchNow(props) {
                                     <img src={group3_src} />
                                 </div>
                                 <div className="scratchnow-box-header">
-                                    <div>Buy one Item</div>
+                                    <div className="txt-clamp-1">Buy one Item</div>
                                 </div>
                                 <div className="scratchnow-box-desc">
-                                    <div>Not Completed</div>
+                                    <div className="txt-clamp-1">Not Completed</div>
                                 </div>
                             </div>
                         </div>
-                        <div className="disp-flex-root">
+                        <div className="w-100 float-left clearfix ">
                             <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
                             <div className="w-100">
                                 <div className="w-90 mt-1 float-left">
