@@ -16,7 +16,7 @@ export default function Ranking(props) {
     
     return (
         <Fragment>
-            <Back parentProps={props} />
+            <Back parentProps={props} fromRanking={true} />
             <BackBanner fromRanking={true} />
             <div id="ranking-container" className="" style={{height: containerHeightCalcFn(228), overflowY: 'auto'}} >
                 <h5 className="text-bold pl-2" style={{margin: "14px 20px 0 20px"}}>Ranking in all games</h5>

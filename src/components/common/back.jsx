@@ -44,24 +44,24 @@ export default function Back(props) {
         <div id="back-container" className="" style={{height: `${props.height}px`}}>
             <div className="back-container-content" >
                 {!props.fromRewardZone && !props.fromNotification ? (
-                    <i className="arrow left ml-4" onClick={() => bactToRewardFn()} ></i>
+                    <i className="arrow left" onClick={() => bactToRewardFn()} ></i>
                 ) : null }
-                <span className={`back-header ${props.fromRewardZone || props.fromNotification ? `ml-4` : ``}`} 
+                <span className={`back-header ${props.fromRewardZone || props.fromNotification ? `` : ``}`} 
                     onClick={() => bactToRewardFn()}>
                         {props.fromRewardZone || props.fromNotification || props.fromLeaderBoard ? `` : `Back to `}{props.backTitle ? props.backTitle : `Reward Zone`}</span>
                 {props.fromRewardZone ? (
-                    <AiOutlineClose className="close-box mr-2" onClick={() => closeAppFn()} />
+                    <AiOutlineClose className="close-box" onClick={() => closeAppFn()} />
                 ) : null}
                 {props.fromNotification ? (
-                    <AiOutlineClose className="close-box mr-2" onClick={() => closeNotificationFn()} />
+                    <AiOutlineClose className={`close-box ${props.fromNotification ? `` : `mr-2`}`} onClick={() => closeNotificationFn()} />
                 ) : null}
                 {props.fromGameDetail ? (
                     <img src={share_src} alt="Share" className="share-img" />
                 ) : null}
                 {!props.fromNotification && !props.fromGameDetail && !props.fromLeaderBoard ? (
                     <Fragment>
-                        <BsFillBellFill className="notification-box mr-2" onClick={() => notificationFn()} ></BsFillBellFill>
-                        <span className={`notification-count ${props.fromRewardZone ? `n-c-right25` : `n-c-right2`}`} >6</span>
+                        <BsFillBellFill className={`notification-box ${props.fromTransactionHistory || props.fromUserRewards || props.fromRanking || props.fromStatus ? `` : `mr-2`}`} onClick={() => notificationFn()} ></BsFillBellFill>
+                        <span className={`notification-count ${props.fromTransactionHistory || props.fromUserRewards || props.fromRanking || props.fromStatus ? `n-c-right20` : ``}`} >6</span>
                     </Fragment>
                 ) : null}
                 {/* <div className="notification-box">

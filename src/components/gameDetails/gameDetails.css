@@ -1,5 +1,5 @@
 .gamedetail-rewards-items, .gamedetail-whoelseplaying-items, .gamedetail-howtoplay-items, .gamedetail-scratchnow-items {
-    margin: 14px 20px 20px 20px;
+    margin: 14px 27px 20px 27px;
 }
 
 /* for game ifo component */
@@ -50,7 +50,7 @@
     font-size: 16px;
     letter-spacing: -0.04px;
     line-height: 19.6px;
-    margin-bottom: 9px;
+    margin-bottom: 19px;
     text-align: center;
 }
 .scratchnow-box {
@@ -109,7 +109,7 @@
 .scratchnow-box-header {
     height: 20px;
     color: #3F4045;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0;
     line-height: 19.6px;
@@ -147,7 +147,7 @@
     font-weight: 500;
     letter-spacing: -0.05px;
     line-height: 19.6px;
-    margin-bottom: 12px;
+    margin-bottom: 31px;
 }
 .rewards-item-left {
     position: relative;

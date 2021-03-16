@@ -58,7 +58,7 @@ export default function GameDetail(props) {
             <GameDetailGameInfo parentProps={props} />
             <div style={{height: containerHeightCalcFn(254), overflowY: 'auto'}}>
                 <GameDetailScratchNow />
-                <div className="w-90 disp-flex-root common-divider float-left ml-4"></div>
+                <div className="w-90 disp-flex-root common-divider float-left ml-4 mb-3"></div>
                 <GameDetailRewards />
                 <GameDetailWhoElseplaying />
                 <GameDetailHowToPlay />

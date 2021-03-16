@@ -94,7 +94,7 @@ const tempArray = [
 
 function TabCotainer(props) {
     return (
-        <Typography component="div" style={{paddingBottom:  10, margin: "0 20px"}} >
+        <Typography component="div" style={{paddingBottom:  10, margin: "0 27px"}} >
             {props.children}
         </Typography>
     );
@@ -123,9 +123,9 @@ export default function TransactionHistory(props) {
     
     return (
         <Fragment>
-            <Back parentProps={props} fromTransactionHistory={true} />
+            <Back parentProps={props} fromTransactionHistory={true} height="138" />
             <BackBanner fromTransaction={true} />
-            <div id="transaction-history-container" style={{height: containerHeightCalcFn(), overflowY: 'auto'}}>
+            <div id="transaction-history-container" style={{height: containerHeightCalcFn(), overflowY: 'auto', marginTop: '-40px'}}>
                 <div className="t-h-heading">
                     <span className="t-h-header">Transaction History</span>
                 </div>

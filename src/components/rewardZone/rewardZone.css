@@ -1,7 +1,7 @@
 #reward-zone-status-container {
     display: flex;
     flex-direction: row;
-    margin: 14px 20px 20px 20px;
+    margin: 19px 27px;
     padding: 8px 2px;
     border-radius: 10px;
     background-color: #FFFFFF;
@@ -64,7 +64,7 @@
     background-image: url("../../assets/img/rewardZone/invite_bg.png");
     background-repeat: no-repeat;
     height: 65px;
-    margin: 14px 20px 20px 20px;
+    margin: 19px 27px;
     padding: 8px 2px;
     border-radius: 10px;
     background-color: #FFFFFF;
@@ -80,7 +80,7 @@
     font-weight: 500;
     letter-spacing: -0.04px;
     line-height: 19.6px;
-    margin: 14px 20px 0px 20px;
+    margin: 27px 19px 19px 27px;
 }
 
 .reward-zone-invite-logo {
@@ -112,7 +112,7 @@
 #reward-zone-detail-box-container {
     width: 100%;
     display: inline-block;
-    padding: 14px 20px 20px 20px;
+    padding: 20px 0 27px 0;
 }
 
 #reward-zone-detail-box-container .detail-box-content {
