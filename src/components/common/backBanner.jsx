@@ -5,7 +5,7 @@ import group_src from '../../assets/img/transactionHistory/Group.svg'
 export default function BackBanner(props) {
 
     return (
-        <div id="back-banner-container" className={`${props.fromTransaction ? `w-90 back-banner-container-bg` : `w-90`}`}>
+        <div id="back-banner-container" className={`${props.fromTransaction ? `back-banner-container-bg` : ``}`}>
             {props.fromRanking ? (
                 <img src={back_banner_src} title="Back Banner" className="back-banner-your-ranking" />
             ) : null}

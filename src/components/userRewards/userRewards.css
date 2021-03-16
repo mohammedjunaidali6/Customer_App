@@ -1,5 +1,5 @@
 #userrewards-user-info-container, #userrewards-user-dailyreward-container, .your-winnings {
-    margin: 14px 20px;
+    margin: 0 27px 15px 27px;
 }
 
 #userrewards-container {
@@ -127,7 +127,7 @@
 
 /* for your winnings component */
 #userrewards-user-winnings-container {
-    padding: 0 20px;
+    padding: 0 27px;
 }
 .your-winnings {
     height: 20px;
@@ -167,7 +167,7 @@
 .gold-box { background: #c6742e !important;}
 .pink-box { background: #df598a !important;}
 .winniner-whole-box {
-    margin: 14px 20px 20px 20px;
+    margin: 14px 27px 20px 27px;
     position: relative;
 }
 .winniner-top-box {

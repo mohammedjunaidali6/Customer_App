@@ -45,9 +45,9 @@ export default function GameDetailScratchNow(props) {
             {tempArray && tempArray.length > 0 ? (
                 <div className="gamedetail-scratchnow-items">
                     <Fragment>
-                        <div className="scratchnow-big-header">{props.parentProps.campaignName} </div>
+                {props.parentProps.campaignName ? <div className="scratchnow-big-header">{props.parentProps.campaignName}</div> : <div>Data not found</div>}
                         <div className="scratchnow-small-header">Scrach more to win </div>
-                        <div className="scratchnow-item-container">
+                        <div className="scratchnow-item-container"> 
                         {props.parentProps.journey1 ?  <div className="scratchnow-box">
                                 <div className="scratch-box-logo">
                                     <img src={group1_src} />

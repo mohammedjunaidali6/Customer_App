@@ -76,13 +76,13 @@ export default function RewardZone(props) {
     
     return (
         <Fragment>
-            <Back height="190" 
+            <Back height="226" 
                 fromRewardZone={true} 
                 parentProps={props} 
                 rewardOpenFn={rewardOpenFn} 
                 rankingOpenFn={rankingOpenFn} 
                 pointsOpenFn={pointsOpenFn} />
-            <div id="reward-zone-container" className="" style={{height: containerHeightCalcFn(190), overflowY: 'auto'}}>
+            <div id="reward-zone-container" className="" style={{height: containerHeightCalcFn(190), overflowY: 'auto', paddingBottom: '27px'}}>
                 <div id="reward-zone-status-container">
                     <div className="reward-zone-status-logo">
                         <img src={master_src} />

@@ -8,7 +8,7 @@
     box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
     position: absolute;
     top: 52px;
-    margin: 10px 20px 14px 20px;
+    margin: 10px 27px 14px 27px;
     z-index: 2;
 }
 .urs-leaderboard-logo, .leaderboard-winners-list-logo {
@@ -39,7 +39,7 @@
 .urs-leaderboard-lbl-pos {
     height: 20px;
     color: #3F4045;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     letter-spacing: -0.04px;
     line-height: 19.6px;
@@ -71,7 +71,7 @@
 
 /* leaderboard others playing component */
 #leaderboard-othersplaying-container {
-    margin: 49px 20px 14px 20px;
+    margin: 49px 27px 14px 27px;
 }
 .others-playing-header {
     height: 20px;
@@ -125,7 +125,7 @@
 
 /* for leader board winners component */
 #leaderboard-winners-container {
-    margin: 64px 20px 14px 20px;
+    margin: 64px 27px 14px 27px;
 }
 .leaderboard-winners-list-box {
     height: 74px;
@@ -164,7 +164,7 @@
 .leaderboard-winners-list-lbl-coins {
     height: 20px;
     color: #3F4045;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.04px;
     line-height: 19.6px;
@@ -200,7 +200,7 @@
 .winner-box-name {
     height: 20px;
     color: #3F4045;
-    font-size: 15px;
+    font-size: 12px;
     letter-spacing: -0.04px;
     line-height: 19.6px;
 }

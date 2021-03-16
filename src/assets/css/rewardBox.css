@@ -1,7 +1,14 @@
 .reward-whole-box {
     width: 50%;
     float: left;
-    padding: 2%;
+    /* padding: 0 2%; */
+    margin-bottom: 16px;
+}
+.reward-whole-box:nth-of-type(odd) {
+    padding: 0 2% 0 0;
+}
+.reward-whole-box:nth-of-type(even) {
+    padding: 0 0 0 2%;
 }
 .reward-mask-box {
     width: 100%;
@@ -13,7 +20,7 @@
     /* background-color: #004C80; */
     position: relative;
     overflow: hidden;
-    margin: 3% 0 0 0;
+    margin: 0;
     /* background-image: url("../img/Mask.svg");
     background-repeat: no-repeat; */
 }
@@ -32,7 +39,7 @@
     padding: 10px 13px;
     color: #3F4045;
     font-family: Roboto;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
     letter-spacing: -0.03px;
     line-height: 15px;

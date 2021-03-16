@@ -3,6 +3,7 @@ import "./notificationPage.css"
 import Back from "../common/back";
 import { containerHeightCalcFn } from "../common/global";
 import defaultuser_src from "../../assets/img/gameDetails/default_user.png";
+import { Fragment } from 'react';
 // import NotificationDisplayBox from "./notificationDisplayBox.jsx";
 
 const tempArray =[
@@ -40,21 +41,22 @@ const tempArray =[
 export default function Notification(props){
     return(
         <div>
-            <Back fromNotification={true} parentProps={props} height="54" backTitle="Notifications" />
-             <div className='w-100 members-list' style={{height: containerHeightCalcFn(54), overflowY: 'auto'}}>
+            <Back fromNotification={true} parentProps={props} height="72" backTitle="Notifications" />
+             <div className='members-list' style={{height: containerHeightCalcFn(54), overflowY: 'auto'}}>
                 {tempArray.map((user)=>(
-                    <div className='w-100 float-left member '>
-                        <img src={defaultuser_src} className='profile-pic'alt=""/>
-                    <div className='profile-details'>
-                        <div className='profile-name'>{user.name}</div>
-                           <div className='profile-intro w-100'>{user.intro}</div>
-                           <div className='date-time-container'>
-                               <div className='date'>{user.date}</div>
-                               <div className='time'>{user.time}</div>
-                           </div>
+                    <div className='w-100 float-left clearfix notf-box'>
+                        <div className='w-20 float-left clearfix'>
+                            <img src={defaultuser_src} className='profile-pic'alt=""/>
+                        </div>
+                        <div className='w-80 float-left clearfix profile-details'>
+                            <div className='profile-name'>{user.name}</div>
+                            <div className='profile-intro w-100'>{user.intro}</div>
+                            <div className='date-time-container'>
+                                <div className='date'>{user.date}</div>
+                                <div className='time'>{user.time}</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
                 ))
 
                 }

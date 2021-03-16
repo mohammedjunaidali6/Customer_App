@@ -42,9 +42,9 @@ export default function UserRewards(props) {
     console.log('UserRewards props', props);
     return (
         <Fragment>
-            <Back parentProps={props} fromUserRewards={true} />
+            <Back parentProps={props} fromUserRewards={true} height="148" />
             <UserRewardsUserInfo parentProps={props} />
-            <div id="userrewards-container" style={{height: containerHeightCalcFn(268), overflowY: 'auto'}}>
+            <div id="userrewards-container" style={{height: containerHeightCalcFn(268), overflowY: 'auto', paddingBottom: '27px'}}>
                 <UserDailyReward parentProps={props} />
                 <UserWinnings parentProps={props} />
             </div>
