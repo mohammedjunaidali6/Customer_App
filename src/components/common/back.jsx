@@ -11,6 +11,7 @@ import share_src from '../../assets/img/gameDetails/share.svg';
 // import { GlobalModal } from "./global";
 
 export default function Back(props) {
+    console.log(props);
     const [open, setOpen] = React.useState(false);
     
     function bactToRewardFn() {

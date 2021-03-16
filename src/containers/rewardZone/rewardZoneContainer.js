@@ -5,7 +5,7 @@ import * as actions from '../../actions/rewardZone/rewardZoneAction';
 import * as actionsHandler from '../../actions/rewardZone/rewardZoneActionHandler';
 
 const mapStateToProps = state => ({
-  
+  selectedReward: state.RewardZoneReducer.selectedReward
 });
 
 const mapDispatchToProps = dispatch => ({ 

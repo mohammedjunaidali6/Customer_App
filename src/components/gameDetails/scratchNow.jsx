@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { useState,Fragment } from 'react';
 
 import ProgressBar from "../common/progressBar";
-
+import iFrame from 'react-iframe';
 import group1_src from '../../assets/img/gameDetails/Group1.svg';
 import group2_src from '../../assets/img/gameDetails/Group2.svg';
 import group3_src from '../../assets/img/gameDetails/Group3.svg';
+import Iframe from 'react-iframe';
 
 const tempArray = [
     {
@@ -38,38 +39,38 @@ const tempArray = [
 ];
 
 export default function GameDetailScratchNow(props) {
-    
+    const [iFrameClick, setIFrameClick] = useState(false);
     return (
         <Fragment>
             {tempArray && tempArray.length > 0 ? (
                 <div className="gamedetail-scratchnow-items">
                     <Fragment>
-                        <div className="scratchnow-big-header">It’s Chance to Get an iPhone 12 </div>
+                        <div className="scratchnow-big-header">{props.parentProps.campaignName} </div>
                         <div className="scratchnow-small-header">Scrach more to win </div>
                         <div className="scratchnow-item-container">
-                            <div className="scratchnow-box">
+                        {props.parentProps.journey1 ?  <div className="scratchnow-box">
                                 <div className="scratch-box-logo">
                                     <img src={group1_src} />
                                 </div>
                                 <div className="scratchnow-box-header">
-                                    <div>Invite a friend</div>
+                                    <div>{props.parentProps.journey1}</div>
                                 </div>
                                 <div className="scratchnow-box-desc">
                                     <div>Completed</div>
                                 </div>
-                            </div>
-                            <div className="scratchnow-box">
+                            </div> : null}
+                            {props.parentProps.journey2 ? <div className="scratchnow-box">
                                 <div className="scratch-box-logo">
                                     <img src={group2_src} />
                                 </div>
                                 <div className="scratchnow-box-header">
-                                    <div>Purchase for 100</div>
+                                    <div>{props.parentProps.journey2}</div>
                                 </div>
                                 <div className="scratchnow-box-desc">
                                     <div>Completed</div>
                                 </div>
-                            </div>
-                            <div className="scratchnow-box scratchnow-box-pending">
+                            </div> : null}
+                            {props.parentProps.journey3 ? <div className="scratchnow-box scratchnow-box-pending">
                                 <div className="scratch-box-logo">
                                     <img src={group3_src} />
                                 </div>
@@ -79,7 +80,7 @@ export default function GameDetailScratchNow(props) {
                                 <div className="scratchnow-box-desc">
                                     <div>Not Completed</div>
                                 </div>
-                            </div>
+                            </div> : null}
                         </div>
                         <div className="disp-flex-root">
                             <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
@@ -91,10 +92,13 @@ export default function GameDetailScratchNow(props) {
                             </div>
                         </div>
                         <div id="btn-scratch-now-container" className="mt-3">
-                            <button type="button" id="btn-scratch-now">
+                            <button type="button" id="btn-scratch-now" onClick={()=>{setIFrameClick(true)}}>
                                 <span className="button-text">SCRATCH NOW</span>
                             </button>
                         </div>
+                        {iFrameClick ?<iframe src='https://www.w3schools.com/' height='100%' width='100%' >
+                           
+                        </iframe>:null}
                     </Fragment>
                 </div>
             ): null}

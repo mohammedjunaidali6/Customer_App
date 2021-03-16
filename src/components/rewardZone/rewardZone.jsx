@@ -7,47 +7,49 @@ import invitation_src from '../../assets/img/rewardZone/invitation.svg';
 import invitation_bg_src from '../../assets/img/rewardZone/invite_bg.png';
 import basketball_src from '../../assets/img/rewardZone/game1.png';
 import bingo_src from '../../assets/img/rewardZone/game2.png';
+import  { tempArray }  from '../../gameData'
 import './rewardZone.css';
 import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
 import ProgressBar from "../common/progressBar";
-
-const tempArray = [
-    {
-        id: 1, 
-        winners: 14, 
-        amountWon: 1247, 
-        logo: basketball_src, 
-        offerText: '3 Lucky Winners to Get 50% of an iPhone',
-        progress: 47
-    },
-    {
-        id: 2, 
-        winners: 147, 
-        amountWon: 35789, 
-        logo: bingo_src, 
-        offerText: 'Enjoy Free Shipping for Next 3 Months',
-        progress: 21
-    },
-    {
-        id: 3, 
-        winners: 87, 
-        amountWon: 5897, 
-        logo: null, 
-        offerText: 'Exclusive 18 % on All Shoes for Purchases',
-        progress: 67
-    },
-    {
-        id: 4, 
-        winners: 173, 
-        amountWon: 87542, 
-        logo: null, 
-        offerText: 'Jackpot reward of INR 1000 on Next 10 Purchases',
-        progress: 87
-    }
-];
+import {getRewards} from "../../actions/rewardZone/rewardZoneActionHandler"
+// const tempArray = [
+//     {
+//         id: 1, 
+//         winners: 14, 
+//         amountWon: 1247, 
+//         logo: basketball_src, 
+//         offerText: '3 Lucky Winners to Get 50% of an iPhone',
+//         progress: 47
+//     },
+//     {
+//         id: 2, 
+//         winners: 147, 
+//         amountWon: 35789, 
+//         logo: bingo_src, 
+//         offerText: 'Enjoy Free Shipping for Next 3 Months',
+//         progress: 21
+//     },
+//     {
+//         id: 3, 
+//         winners: 87, 
+//         amountWon: 5897, 
+//         logo: null, 
+//         offerText: 'Exclusive 18 % on All Shoes for Purchases',
+//         progress: 67
+//     },
+//     {
+//         id: 4, 
+//         winners: 173, 
+//         amountWon: 87542, 
+//         logo: null, 
+//         offerText: 'Jackpot reward of INR 1000 on Next 10 Purchases',
+//         progress: 87
+//     }
+// ];
 
 export default function RewardZone(props) {
+
     
     function rewardOpenFn() {
         props.history.push('/userrewards');
@@ -59,8 +61,9 @@ export default function RewardZone(props) {
         props.history.push('/transactionhistory');
     }
     function gameDetailFn(data) {
-        console.log('data', data);
-        props.history.push('/gamedetail');
+       
+        props.rewardZoneActionHandler.pushSelectedReward(data)
+        props.history.push( {pathname:"/gamedetail"} );
     }
     function leaderBoardFn() {
         props.history.push('/leaderboard');
@@ -69,6 +72,8 @@ export default function RewardZone(props) {
         props.history.push('/status');
     }
 
+    props.rewardZoneActionHandler.getRewards(tempArray);
+    
     return (
         <Fragment>
             <Back height="190" 
