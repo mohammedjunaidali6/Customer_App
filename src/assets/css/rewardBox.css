@@ -43,7 +43,14 @@
     font-weight: bold;
     letter-spacing: -0.03px;
     line-height: 15px;
-    margin-bottom: 9px;
+    margin-bottom: 3px;
+}
+.reward-item-box-content .text-rank-of {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 45px;
 }
 .curve-div {
     position: absolute;

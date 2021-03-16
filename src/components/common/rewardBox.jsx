@@ -58,7 +58,7 @@ export default function RewardBox(props) {
                             <div style={{
                                 height: "7px",
                                 color: "#808A8F",
-                                fontSize: "8px",
+                                fontSize: "7px",
                                 letterSpacing: "-0.02px",
                                 lineHeight: "7px"
                             }}>Amount Won</div>

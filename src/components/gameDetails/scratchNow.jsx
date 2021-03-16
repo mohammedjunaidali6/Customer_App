@@ -45,21 +45,21 @@ export default function GameDetailScratchNow(props) {
             {tempArray && tempArray.length > 0 ? (
                 <div className="gamedetail-scratchnow-items">
                     <Fragment>
-                {props.parentProps.campaignName ? <div className="scratchnow-big-header">{props.parentProps.campaignName}</div> : <div>Data not found</div>}
+                {props.parentProps && props.parentProps.campaignName ? <div className="scratchnow-big-header">{props.parentProps.campaignName}</div> : null}
                         <div className="scratchnow-small-header">Scrach more to win </div>
                         <div className="scratchnow-item-container"> 
-                        {props.parentProps.journey1 ?  <div className="scratchnow-box">
+                        {props.parentProps && props.parentProps.journey1 ?  <div className="scratchnow-box">
                                 <div className="scratch-box-logo">
                                     <img src={group1_src} />
                                 </div>
                                 <div className="scratchnow-box-header">
-                                    <div>{props.parentProps.journey1}</div>
+                                    <div className="txt-clamp-1">{props.parentProps.journey1}</div>
                                 </div>
                                 <div className="scratchnow-box-desc">
-                                    <div>Completed</div>
+                                    <div className="txt-clamp-1">Completed</div>
                                 </div>
                             </div> : null}
-                            {props.parentProps.journey2 ? <div className="scratchnow-box">
+                            {props.parentProps && props.parentProps.journey2 ? <div className="scratchnow-box">
                                 <div className="scratch-box-logo">
                                     <img src={group2_src} />
                                 </div>
@@ -67,22 +67,22 @@ export default function GameDetailScratchNow(props) {
                                     <div>{props.parentProps.journey2}</div>
                                 </div>
                                 <div className="scratchnow-box-desc">
-                                    <div>Completed</div>
+                                    <div className="txt-clamp-1">Completed</div>
                                 </div>
                             </div> : null}
-                            {props.parentProps.journey3 ? <div className="scratchnow-box scratchnow-box-pending">
+                            {props.parentProps && props.parentProps.journey3 ? <div className="scratchnow-box scratchnow-box-pending">
                                 <div className="scratch-box-logo">
                                     <img src={group3_src} />
                                 </div>
                                 <div className="scratchnow-box-header">
-                                    <div>Buy one Item</div>
+                                    <div className="txt-clamp-1">Buy one Item</div>
                                 </div>
                                 <div className="scratchnow-box-desc">
-                                    <div>Not Completed</div>
+                                    <div className="txt-clamp-1">Not Completed</div>
                                 </div>
                             </div> : null}
                         </div>
-                        <div className="disp-flex-root">
+                        <div className="w-100 float-left clearfix ">
                             <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
                             <div className="w-100">
                                 <div className="w-90 mt-1 float-left">
@@ -96,7 +96,7 @@ export default function GameDetailScratchNow(props) {
                                 <span className="button-text">SCRATCH NOW</span>
                             </button>
                         </div>
-                        {iFrameClick ?<iframe src='https://www.w3schools.com/' height='100%' width='100%' >
+                        {iFrameClick ?<iframe src={props.parentProps.gameUrl} height='100%' width='100%' >
                            
                         </iframe>:null}
                     </Fragment>
