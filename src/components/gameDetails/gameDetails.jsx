@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import Back from "../common/back";
 
 import master_src from '../../assets/img/rewardZone/master.svg';
@@ -14,6 +14,7 @@ import GameDetailScratchNow from "./scratchNow";
 import GameDetailRewards from "./rewards";
 import GameDetailWhoElseplaying from "./whoElsePlaying";
 import GameDetailHowToPlay from "./howToPlay";
+import store from "../../store/store";
 
 const tempArray = [
     {
@@ -51,14 +52,14 @@ const tempArray = [
 ];
 
 export default function GameDetail(props) {
-    
+    const [selectedReward, setSelectedReward] = useState(store.getState()['RewardZoneReducer']['selectedReward']);
     return (
         <Fragment>
             <Back parentProps={props} height="190" fromGameDetail={true} />
             <GameDetailGameInfo parentProps={props} />
             <div style={{height: containerHeightCalcFn(254), overflowY: 'auto'}}>
-                <GameDetailScratchNow />
-                <div className="w-90 disp-flex-root common-divider float-left ml-4 mb-3"></div>
+                <GameDetailScratchNow parentProps={selectedReward} />
+                <div className="w-90 disp-flex-root common-divider float-left ml-4"></div>
                 <GameDetailRewards />
                 <GameDetailWhoElseplaying />
                 <GameDetailHowToPlay />

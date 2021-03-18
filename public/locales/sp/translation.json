@@ -1,0 +1,11 @@
+{
+    "status":{
+        "status":"Estado-B",
+        "taskMessage":"Realice 2 tareas más para alcanzar el estado B",
+        "novice":"PRINCIPIANTE",
+        "master":"MAESTRO",
+        "champion":"CAMPEÓN",
+        "benifits":"beneficios de step-up"
+
+    }
+}

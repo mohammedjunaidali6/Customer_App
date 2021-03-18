@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { useState,Fragment } from 'react';
 
 import ProgressBar from "../common/progressBar";
-
-import group1_src from '../../assets/img/gameDetails/Group1.svg';
-import group2_src from '../../assets/img/gameDetails/Group2.svg';
-import group3_src from '../../assets/img/gameDetails/Group3.svg';
+import iFrame from 'react-iframe';
+import group1 from '../../assets/img/gameDetails/Group1.svg';
+import group2 from '../../assets/img/gameDetails/Group2.svg';
+import group3 from '../../assets/img/gameDetails/Group3.svg';
+import Iframe from 'react-iframe';
 
 const tempArray = [
     {
@@ -38,48 +39,34 @@ const tempArray = [
 ];
 
 export default function GameDetailScratchNow(props) {
-    
+    const [iFrameClick, setIFrameClick] = useState(false);
     return (
         <Fragment>
             {tempArray && tempArray.length > 0 ? (
                 <div className="gamedetail-scratchnow-items">
                     <Fragment>
-                        <div className="w-100 float-left clearfix scratchnow-big-header">It’s Chance to Get an iPhone 12 </div>
-                        <div className="w-100 float-left clearfix scratchnow-small-header">Scrach more to win </div>
-                        <div className="w-100 float-left clearfix scratchnow-item-container">
-                            <div className="scratchnow-box">
-                                <div className="scratch-box-logo">
-                                    <img src={group1_src} />
-                                </div>
-                                <div className="scratchnow-box-header">
-                                    <div className="txt-clamp-1">Invite a friend</div>
-                                </div>
-                                <div className="scratchnow-box-desc">
-                                    <div className="txt-clamp-1">Completed</div>
-                                </div>
-                            </div>
-                            <div className="scratchnow-box">
-                                <div className="scratch-box-logo">
-                                    <img src={group2_src} />
-                                </div>
-                                <div className="scratchnow-box-header">
-                                    <div className="txt-clamp-1">Purchase for 100</div>
-                                </div>
-                                <div className="scratchnow-box-desc">
-                                    <div className="txt-clamp-1">Completed</div>
-                                </div>
-                            </div>
-                            <div className="scratchnow-box scratchnow-box-pending">
-                                <div className="scratch-box-logo">
-                                    <img src={group3_src} />
-                                </div>
-                                <div className="scratchnow-box-header">
-                                    <div className="txt-clamp-1">Buy one Item</div>
-                                </div>
-                                <div className="scratchnow-box-desc">
-                                    <div className="txt-clamp-1">Not Completed</div>
-                                </div>
-                            </div>
+                {props.parentProps && props.parentProps.campaignName ? <div className="scratchnow-big-header">{props.parentProps.campaignName}</div> : null}
+                        <div className="scratchnow-small-header">Scrach more to win </div>
+                        <div className="scratchnow-item-container"> 
+                        {props.parentProps && props.parentProps.journeys &&  props.parentProps.journeys.length>0 ? (
+                            <Fragment>
+                                {props.parentProps.journeys.map((jObj,idx) =>{
+
+                                    <div className="scratchnow-box">
+                                    <div className="scratch-box-logo">
+                                        <img src={`group${idx}s`} />
+                                    </div>
+                                    <div className="scratchnow-box-header">
+                                        <div className="txt-clamp-1">{jObj.name}</div>
+                                    </div>
+                                    <div className="scratchnow-box-desc">
+                                        <div className="txt-clamp-1">{jObj.status}</div>
+                                    </div>
+                                </div> 
+                                })}
+                            </Fragment>
+                        ):null}
+                        
                         </div>
                         <div className="w-100 float-left clearfix ">
                             <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
@@ -91,10 +78,13 @@ export default function GameDetailScratchNow(props) {
                             </div>
                         </div>
                         <div id="btn-scratch-now-container" className="mt-3">
-                            <button type="button" id="btn-scratch-now">
+                            <button type="button" id="btn-scratch-now" onClick={()=>{setIFrameClick(true)}}>
                                 <span className="button-text">SCRATCH NOW</span>
                             </button>
                         </div>
+                        {iFrameClick ?<iframe src={props.parentProps.gameUrl} height='100%' width='100%' >
+                           
+                        </iframe>:null}
                     </Fragment>
                 </div>
             ): null}

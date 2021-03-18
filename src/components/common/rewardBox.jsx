@@ -19,7 +19,7 @@ export default function RewardBox(props) {
                 <div className="curve-div reward-item-box-top reward-item-box-left"></div>
                 <div className="curve-div reward-item-box-top reward-item-box-right"></div>
                 <div className="w-100 reward-item-box-content mt-2 pb-0">
-                    <div className="text-rank-of">{props.dataObj.offerText}</div>
+                    <span className="text-rank-of">{props.dataObj.campaignName}</span>
                 </div>
                 <div className="w-100">
                     <ProgressBar percentage={props.dataObj.progress} />
