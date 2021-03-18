@@ -2,9 +2,9 @@ import React, { useState,Fragment } from 'react';
 
 import ProgressBar from "../common/progressBar";
 import iFrame from 'react-iframe';
-import group1_src from '../../assets/img/gameDetails/Group1.svg';
-import group2_src from '../../assets/img/gameDetails/Group2.svg';
-import group3_src from '../../assets/img/gameDetails/Group3.svg';
+import group1 from '../../assets/img/gameDetails/Group1.svg';
+import group2 from '../../assets/img/gameDetails/Group2.svg';
+import group3 from '../../assets/img/gameDetails/Group3.svg';
 import Iframe from 'react-iframe';
 
 const tempArray = [
@@ -48,39 +48,25 @@ export default function GameDetailScratchNow(props) {
                 {props.parentProps && props.parentProps.campaignName ? <div className="scratchnow-big-header">{props.parentProps.campaignName}</div> : null}
                         <div className="scratchnow-small-header">Scrach more to win </div>
                         <div className="scratchnow-item-container"> 
-                        {props.parentProps && props.parentProps.journey1 ?  <div className="scratchnow-box">
-                                <div className="scratch-box-logo">
-                                    <img src={group1_src} />
-                                </div>
-                                <div className="scratchnow-box-header">
-                                    <div className="txt-clamp-1">{props.parentProps.journey1}</div>
-                                </div>
-                                <div className="scratchnow-box-desc">
-                                    <div className="txt-clamp-1">Completed</div>
-                                </div>
-                            </div> : null}
-                            {props.parentProps && props.parentProps.journey2 ? <div className="scratchnow-box">
-                                <div className="scratch-box-logo">
-                                    <img src={group2_src} />
-                                </div>
-                                <div className="scratchnow-box-header">
-                                    <div>{props.parentProps.journey2}</div>
-                                </div>
-                                <div className="scratchnow-box-desc">
-                                    <div className="txt-clamp-1">Completed</div>
-                                </div>
-                            </div> : null}
-                            {props.parentProps && props.parentProps.journey3 ? <div className="scratchnow-box scratchnow-box-pending">
-                                <div className="scratch-box-logo">
-                                    <img src={group3_src} />
-                                </div>
-                                <div className="scratchnow-box-header">
-                                    <div className="txt-clamp-1">Buy one Item</div>
-                                </div>
-                                <div className="scratchnow-box-desc">
-                                    <div className="txt-clamp-1">Not Completed</div>
-                                </div>
-                            </div> : null}
+                        {props.parentProps && props.parentProps.journeys &&  props.parentProps.journeys.length>0 ? (
+                            <Fragment>
+                                {props.parentProps.journeys.map((jObj,idx) =>{
+
+                                    <div className="scratchnow-box">
+                                    <div className="scratch-box-logo">
+                                        <img src={`group${idx}s`} />
+                                    </div>
+                                    <div className="scratchnow-box-header">
+                                        <div className="txt-clamp-1">{jObj.name}</div>
+                                    </div>
+                                    <div className="scratchnow-box-desc">
+                                        <div className="txt-clamp-1">{jObj.status}</div>
+                                    </div>
+                                </div> 
+                                })}
+                            </Fragment>
+                        ):null}
+                        
                         </div>
                         <div className="w-100 float-left clearfix ">
                             <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
