@@ -44,7 +44,7 @@ export const tempArray = [
         amountWon: 87542, 
         logo:  bubble_src, 
         campaignName: "Win 100 Points + 20% on your next Purchase.",
-        journeys:[{id:1,name:'Add 1 Product into Wishlist',status:"Completed"},{id:2,name:'Share something on Social Media',status:"Completed"},{id:3,name:'Make a Purchase of INR 100',status:"Not completed"}],
+        journeys:[{id:1,name:'Add 1 Product into Wishlist',status:"Completed"},{id:2,name:'Share something on Social Media',status:"Completed"},{id:3,name:'Make a Purchase of INR 100',status:"Not completed"},{id:4,name:'Make a Purchase of INR 200',status:"Not completed"}],
         progress: 87,
         gameUrl: "https://cdn-factory.marketjs.com/en/flick-soccer/index.html"
     }

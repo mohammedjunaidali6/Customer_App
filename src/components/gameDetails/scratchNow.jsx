@@ -39,22 +39,23 @@ const tempArray = [
 ];
 
 export default function GameDetailScratchNow(props) {
-    const [iFrameClick, setIFrameClick] = useState(false);
-    return (
-        <Fragment>
-            {tempArray && tempArray.length > 0 ? (
-                <div className="gamedetail-scratchnow-items">
-                    <Fragment>
-                {props.parentProps && props.parentProps.campaignName ? <div className="scratchnow-big-header">{props.parentProps.campaignName}</div> : null}
-                        <div className="scratchnow-small-header">Scrach more to win </div>
-                        <div className="scratchnow-item-container"> 
-                        {props.parentProps && props.parentProps.journeys &&  props.parentProps.journeys.length>0 ? (
-                            <Fragment>
-                                {props.parentProps.journeys.map((jObj,idx) =>{
 
-                                    <div className="scratchnow-box">
+    const [iFrameClick, setIFrameClick] = useState(false);
+
+    return (
+        <div className="gamedetail-scratchnow-items">
+            <Fragment>
+                {props.selectedGameDetail && props.selectedGameDetail.campaignName ? 
+                    <div className="scratchnow-big-header">{props.selectedGameDetail.campaignName}</div> : 
+                null}
+                <div className="scratchnow-small-header">Scrach more to win </div>
+                <div className="scratchnow-item-container"> 
+                    {props.selectedGameDetail && props.selectedGameDetail.journeys &&  props.selectedGameDetail.journeys.length > 0 ? (
+                        <div className={props.selectedGameDetail.journeys.length < 3 ? 'scratchnow-items-center' : ''}>
+                            {props.selectedGameDetail.journeys.map((jObj,idx) => (
+                                <div className="scratchnow-box float-left clearfix" key={`scratchnow-box-${idx}`}>
                                     <div className="scratch-box-logo">
-                                        <img src={`group${idx}s`} />
+                                        <img src={(idx + 1) === 1 ? group1 : ((idx + 1) === 2 ? group2 : group3)} />
                                     </div>
                                     <div className="scratchnow-box-header">
                                         <div className="txt-clamp-1">{jObj.name}</div>
@@ -63,31 +64,26 @@ export default function GameDetailScratchNow(props) {
                                         <div className="txt-clamp-1">{jObj.status}</div>
                                     </div>
                                 </div> 
-                                })}
-                            </Fragment>
-                        ):null}
-                        
+                            ))}
                         </div>
-                        <div className="w-100 float-left clearfix ">
-                            <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
-                            <div className="w-100">
-                                <div className="w-90 mt-1 float-left">
-                                    <ProgressBar percentage="90" />
-                                </div>
-                                <div className="w-10 float-left lbl-percentage">90%</div>
-                            </div>
-                        </div>
-                        <div id="btn-scratch-now-container" className="mt-3">
-                            <button type="button" id="btn-scratch-now" onClick={()=>{setIFrameClick(true)}}>
-                                <span className="button-text">SCRATCH NOW</span>
-                            </button>
-                        </div>
-                        {iFrameClick ?<iframe src={props.parentProps.gameUrl} height='100%' width='100%' >
-                           
-                        </iframe>:null}
-                    </Fragment>
+                    ):null}
                 </div>
-            ): null}
-        </Fragment>
+                <div className="w-100 float-left clearfix ">
+                    <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
+                    <div className="w-100">
+                        <div className="w-90 mt-1 float-left">
+                            <ProgressBar percentage="90" />
+                        </div>
+                        <div className="w-10 float-left lbl-percentage">90%</div>
+                    </div>
+                </div>
+                <div id="btn-scratch-now-container" className="mt-3">
+                    <button type="button" id="btn-scratch-now" onClick={()=>{setIFrameClick(true)}}>
+                        <span className="button-text">SCRATCH NOW</span>
+                    </button>
+                </div>
+                {iFrameClick ? (<iframe src={props.selectedGameDetail.gameUrl} height='100%' width='100%' ></iframe>) : null}
+            </Fragment>
+        </div>
     )
 }

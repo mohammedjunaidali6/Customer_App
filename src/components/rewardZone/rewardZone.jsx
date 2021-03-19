@@ -61,8 +61,7 @@ export default function RewardZone(props) {
         props.history.push('/transactionhistory');
     }
     function gameDetailFn(data) {
-       
-        props.rewardZoneActionHandler.pushSelectedReward(data)
+        props.rewardZoneActionHandler.pushSelectedReward(data);
         props.history.push( {pathname:"/gamedetail"} );
     }
     function leaderBoardFn() {

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Back from "../common/back";
 
 import master_src from '../../assets/img/rewardZone/master.svg';
@@ -7,14 +7,15 @@ import invitation_src from '../../assets/img/rewardZone/invitation.svg';
 import invitation_bg_src from '../../assets/img/rewardZone/invite_bg.png';
 import basketball_src from '../../assets/img/rewardZone/game1.png';
 import bingo_src from '../../assets/img/rewardZone/game2.png';
-import './gameDetails.css';
 import { containerHeightCalcFn } from "../common/global";
+import store from "../../store/store";
 import GameDetailGameInfo from './gameInfo';
 import GameDetailScratchNow from "./scratchNow";
 import GameDetailRewards from "./rewards";
 import GameDetailWhoElseplaying from "./whoElsePlaying";
 import GameDetailHowToPlay from "./howToPlay";
-import store from "../../store/store";
+import GCarousel from '../common/carousel';
+import './gameDetails.css';
 
 const tempArray = [
     {
@@ -52,13 +53,27 @@ const tempArray = [
 ];
 
 export default function GameDetail(props) {
+    // console.log('store', store.getState()['RewardZoneReducer']);
     const [selectedReward, setSelectedReward] = useState(store.getState()['RewardZoneReducer']['selectedReward']);
+    const [allRewards, setAllRewards] = useState(store.getState()['RewardZoneReducer']['rewards']);
+
+    const carouselItemClick = (data) => {
+        props.rewardZoneActionHandler.pushSelectedReward(allRewards[data]);
+        setSelectedReward(store.getState()['RewardZoneReducer']['selectedReward']);
+    }
+
     return (
         <Fragment>
-            <Back parentProps={props} height="190" fromGameDetail={true} />
+            <Back parentProps={props} height="264" fromGameDetail={true} />
+            <GCarousel data={allRewards} 
+                    fromGameDetail={true}
+                    centerMode={true}
+                    centerSlidePercentage={80}
+                    carouselItemClick={carouselItemClick} >
+            </GCarousel>
             <GameDetailGameInfo parentProps={props} />
             <div style={{height: containerHeightCalcFn(254), overflowY: 'auto'}}>
-                <GameDetailScratchNow parentProps={selectedReward} />
+                <GameDetailScratchNow selectedGameDetail={selectedReward} parentProps={props} />
                 <div className="w-90 disp-flex-root common-divider float-left ml-4"></div>
                 <GameDetailRewards />
                 <GameDetailWhoElseplaying />

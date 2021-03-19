@@ -45,9 +45,9 @@ export default function GameDetailRewards(props) {
                     <Fragment>
                         <div className="rewards-header">Rewards</div>
                         {tempArray.map((obj) => (
-                            <div className="rewards-item" key={obj.id}>
+                            <div className="rewards-item" key={`reward-item${obj.id}`}>
                                 <img className="reward-place" src={obj.id === 1 ? reward1_src : (obj.id === 2 ? reward2_src : (obj.id === 3 ? reward3_src : reward4_src))} />
-                                <div key={obj.id} className="w-30 rewards-item-left" >
+                                <div className="w-30 rewards-item-left" >
                                     <div className="rewards-discount">
                                         <div className="rewards-discount-header">{obj.prize}</div>
                                         <div className="rewards-discount-desc">{obj.discount}</div>
@@ -55,7 +55,7 @@ export default function GameDetailRewards(props) {
                                         <div className="curve-div reward-item-box-bottom reward-item-box-right"></div>
                                     </div>
                                 </div>
-                                <div key={obj.id} className="w-70 rewards-item-right" >
+                                <div className="w-70 rewards-item-right" >
                                     <div className="rewards-discount-detail">
                                         <div className="rewards-discount-detail-name">{obj.lblPrize}</div>
                                         <div className="rewards-discount-detail-desc">{obj.lblDiscount}</div>

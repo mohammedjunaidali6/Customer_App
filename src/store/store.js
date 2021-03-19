@@ -44,11 +44,11 @@ const reducer = combineReducers({
 });
 
 // To persist your Store use sessionStorage after hard reoad
-// const persistedStore = loadFromSessionStorage();
-// const store = createStore(reducer, persistedStore, compose(applyMiddleware(thunk)));
-// store.subscribe(() => saveToSessionStorage(store.getState()));
+const persistedStore = loadFromSessionStorage();
+const store = createStore(reducer, persistedStore, compose(applyMiddleware(thunk)));
+store.subscribe(() => saveToSessionStorage(store.getState()));
 
 // Store without persist after hard reoad
-const store = createStore(reducer, compose(applyMiddleware(thunk)));
+// const store = createStore(reducer, compose(applyMiddleware(thunk)));
 
 export default store;
