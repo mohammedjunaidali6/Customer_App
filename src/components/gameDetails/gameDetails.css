@@ -1,0 +1,320 @@
+.gamedetail-rewards-items, .gamedetail-whoelseplaying-items, .gamedetail-howtoplay-items, .gamedetail-scratchnow-items {
+    margin: 14px 27px 20px 27px;
+}
+
+/* for game ifo component */
+
+.gamedetail-gameinfo-left { cursor: pointer; }
+.gamedetail-gameinfo-items {
+    height: 54px;
+    padding-top: 6px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    margin-bottom: 20px;
+}
+.gamedetail-gameinfo-count {
+    height: 30px;
+    color: #3F4045;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 27.82px;
+}
+.gamedetail-gameinfo-count-desc {
+    height: 12px;
+    color: #808A8F;
+    font-size: 13px;
+    letter-spacing: -0.03px;
+    line-height: 11.45px;
+}
+
+/* for scratch now component */
+
+.scratchnow-items-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.scratchnow-big-header {
+    color: #3F4045;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.06px;
+    line-height: 19.6px;
+    margin-bottom: 9px;
+    text-align: center;
+}
+.scratchnow-small-header {
+    color: #808A8F;
+    font-size: 16px;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+    text-align: center;
+}
+.scratchnow-box {
+    height: 139px;
+    width: 30%;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    margin-left: 8px;
+    margin-top: 19px;
+}
+.scratchnow-complete-the-journey {
+    height: 20px;
+    color: #808A8F;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 19.6px;
+    text-align: center;
+    margin: 13px 0 6px 0;
+}
+#btn-scratch-now-container {
+    text-align: center;
+    width: 100%;
+    margin-top: 29px;
+}
+#btn-scratch-now-container #btn-scratch-now {
+    height: 46.74px;
+    width: 96%;
+    border-radius: 23.37px;
+    background-color: var(--buttonBg);;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 1px -1px rgb(0 0 0 / 12%), 0 1px 2px 0 rgb(0 0 0 / 20%);
+    border: none;
+}
+#btn-scratch-now-container #btn-scratch-now .button-text {
+    height: 12px;
+    opacity: 0.43;
+    color: #FFFFFF;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 11.68px;
+    text-align: center;
+}
+.lbl-percentage {
+    height: 20px;
+    color: #808A8F;
+    font-size: 14px;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+    text-align: center;
+}
+.scratch-box-logo {
+    margin: 14px;
+    text-align: center;
+}
+.scratchnow-box-header {
+    height: 20px;
+    color: #3F4045;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 19.6px;
+    text-align: center;
+}
+.scratchnow-box-desc {
+    height: 20px;
+    color: #808A8F;
+    font-family: Roboto;
+    font-size: 12px;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+    text-align: center;
+}
+.scratchnow-box-pending {
+    opacity: 0.5;
+}
+
+/* for rewards component  */
+
+.rewards-item {
+    height: 78px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgb(95 97 101 / 40%);
+    margin-bottom: 20px;
+    position: relative;
+}
+.rewards-header {
+    height: 20px;
+    color: #3F4045;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.05px;
+    line-height: 19.6px;
+    margin-bottom: 31px;
+}
+.rewards-item-left {
+    position: relative;
+    background-color: #efc008;
+    padding-top: 20px;
+}
+.gamedetail-rewards-items .rewards-item:nth-child(1) .rewards-item-left {
+    background-color: #9ca8bc;
+}
+.rewards-item-left:nth-child(2) {
+    background-color: #ce8b47;
+}
+.rewards-item-left:nth-child(3) {
+    background-color: #a7a3eb;
+}
+.rewards-item-right {
+    position: relative;
+    padding-top: 14px;
+    padding-left: 20px;
+}
+.rewards-discount-header {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: -0.07px;
+    line-height: 19.6px;
+    text-align: center;
+}
+.rewards-discount-desc {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: -0.02px;
+    line-height: 19.6px;
+    text-align: center;
+}
+.rewards-discount-detail-name {
+    height: 16px;
+    color: #808A8F;
+    font-size: 12px;
+    letter-spacing: -0.03px;
+    line-height: 16px;
+}
+.rewards-discount-detail-desc {
+    height: 19px;
+    color: #3F4045;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19px;
+}
+.rewards-discount-detail-TC {
+    height: 20px;
+    color: #808A8F;
+    font-size: 12px;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+.reward-place {
+    position: absolute;
+    right: 30px;
+}
+
+/* for who else playing component */
+
+.whoelseplaying-item {
+    height: 63px;
+    display: flex;
+    flex-direction: row;
+    padding: 8px 2px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgb(95 97 101 / 40%);
+    margin-bottom: 12px;
+}
+.who-else-is-playing {
+    color: #3F4045;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+    margin-bottom: 18px;
+}
+.whoelseplaying-logo {
+    text-align: center;
+}
+.whoelseplaying-logo img {
+    width: 42px;
+    border-radius: 50%;
+    border: solid 1px lightgrey;
+}
+.whoelseplaying-user-name {
+    height: 20px;
+    color: #5F6165;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+.whoelseplaying-user-desc {
+    height: 20px;
+    color: #808A8F;
+    font-size: 10px;
+    letter-spacing: -0.02px;
+    line-height: 19.6px;
+}
+.whoelseplaying-user-datetime {
+    height: 20px;
+    opacity: 0.5;
+    color: #5F6165;
+    font-size: 10px;
+    letter-spacing: -0.02px;
+    line-height: 19.6px;
+}
+
+/* for how to play component */
+
+.howtoplay-item {
+    height: 88px;
+    display: flex;
+    flex-direction: row;
+    padding: 8px 2px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgb(95 97 101 / 40%);
+    margin-bottom: 12px;
+}
+.how-to-play {
+    color: #3F4045;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+    margin-bottom: 18px;
+}
+.howtoplay-logo {
+    text-align: center;
+    margin-top: 13px;
+}
+.howtoplay-logo img {
+    width: 40px;
+}
+.howtoplay-rule-detail {
+    margin-left: 10px;
+    margin-top: 8px;
+}
+.howtoplay-rule-header {
+    height: 19.6px;
+    color: #5F6165;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+.howtoplay-rule-desc {
+    height: 24px;
+    opacity: 0.6;
+    color: #5F6165;
+    font-size: 10px;
+    letter-spacing: -0.02px;
+    line-height: 12px;
+}
+
+.g-d-carousel {
+    position: absolute;
+    top: 62px;
+    padding: 0;
+}

@@ -1,0 +1,81 @@
+.t-h-heading {
+    margin: 0 27px;
+}
+.t-h-header {
+    height: 20px;
+    color: #3F4045;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.tab-header-active {
+    height: 20px;
+    color: #3F4045;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.tab-header-inactive {
+    height: 20px;
+    opacity: 0.5;
+    color: #3F4045;
+    font-size: 14px;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.MuiTabs-flexContainer {
+    margin: 0 15px;
+}
+.t-h-box {
+    height: 63px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    margin-bottom: 10px;
+    padding: 5px 2px;
+}
+.t-h-b-header {
+    height: 20px;
+    color: #5F6165;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+.t-h-b-date {
+    height: 20px;
+    opacity: 0.5;
+    color: #5F6165;
+    font-size: 10px;
+    letter-spacing: -0.02px;
+    line-height: 19.6px;
+}
+.t-h-b-logobox {
+    text-align: center;
+    margin-top: 13px;
+}
+.t-h-b-contentbox {
+    padding-left: 10px;
+    margin-top: 8px;
+}
+.t-h-b-topbox {
+    
+}
+.lbl-banner-points {
+    height: 20px;
+    color: #3F4045;
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.07px;
+    line-height: 19.6px;
+}
+.lbl-banner-pointsdesc {
+    height: 20px;
+    color: #3F4045;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}

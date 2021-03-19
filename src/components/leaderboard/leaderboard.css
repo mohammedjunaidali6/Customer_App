@@ -1,0 +1,280 @@
+#leaderboard-container {
+    overflow-y: auto;
+}
+.urs-leaderboard {
+    height: 101px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    position: absolute;
+    top: 52px;
+    margin: 10px 27px 14px 27px;
+    z-index: 2;
+}
+.urs-leaderboard-logo, .leaderboard-winners-list-logo {
+    height: 47px;
+    border: solid 1px #efefef;
+    border-radius: 10px;
+}
+.urs-leaderboard-content {
+    height: 65px;
+    padding: 11px 12px;
+}
+.urs-leaderboard-desc-outer {
+    height: 36px;
+    background: var(--buttonBg);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-align: center;
+}
+.urs-leaderboard-desc {
+    height: 14.6px;
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 12px;
+    letter-spacing: -0.03px;
+    line-height: 14.6px;
+    text-align: center;
+}
+.urs-leaderboard-lbl-pos {
+    height: 20px;
+    color: #3F4045;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.urs-leaderboard-lbl-coins {
+    height: 20px;
+    color: #3F4045;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.leaderboard-back-header {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.leaderboard-back-header-s {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 19.6px;
+}
+
+/* leaderboard others playing component */
+#leaderboard-othersplaying-container {
+    margin: 49px 27px 14px 27px;
+}
+.others-playing-header {
+    height: 20px;
+    color: #808A8F;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.leaderboard-othersplaying-sec {
+    height: 63px;
+    /* width: 85%; */
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    margin-right: 14px;
+    padding: 8px;
+}
+.leaderboard-othersplaying-header {
+    height: 20px;
+    color: #5F6165;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+.leaderboard-othersplaying-desc {
+    height: 20px;
+    color: #808A8F;
+    font-size: 12px;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+.leaderboard-othersplaying-btn {
+    border-radius: 13px;
+    width: 59.97px;
+    background-color: var(--buttonBg);
+    border: solid 1px var(--buttonBorder);
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    cursor: pointer;
+    outline: none;
+}
+.leaderboard-othersplaying-btn-text {
+    height: 20px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.03px;
+    line-height: 19.6px;
+}
+
+/* for leader board winners component */
+#leaderboard-winners-container {
+    margin: 64px 27px 14px 27px;
+}
+.leaderboard-winners-list-box {
+    height: 74px;
+    margin-bottom: 11px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
+    padding: 14px 12px;
+}
+.ranking-oval {
+    height: 19.95px;
+    width: 19.95px;
+    background-color: #6B9CF3;
+    box-shadow: 0 1px 4px 0 rgba(128,138,143,0.18);
+    position: absolute;
+    top: 0;
+    border-radius: 50%;
+    line-height: 18px;
+}
+.ranking-oval-text {
+    height: 20px;
+    /* width: 6px; */
+    color: #FFFFFF;
+    font-size: 10px;
+    letter-spacing: -0.02px;
+    line-height: 19.6px;
+}
+.leaderboard-winners-list-lbl {
+    height: 20px;
+    color: #3F4045;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.leaderboard-winners-list-lbl-coins {
+    height: 20px;
+    color: #3F4045;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.leaderboard-winners-box {
+    height: 200px;
+    position: relative;
+}
+.leaderboard-winners-box-title {
+    /* height: 58px; */
+    border-radius: 10px;
+    background-color: #F1F1F1;
+    box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.15);
+    /* position: absolute;
+    bottom: 0; */
+    padding: 14px 2px;
+    margin: 14px;
+}
+.leaderboard-winners-box-title-middle {
+    /* height: 84px; */
+    /* height: 58px; */
+    border-radius: 10px;
+    background-color: #F1F1F1;
+    box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.15);
+    /* position: absolute;
+    bottom: 0; */
+    padding: 28px 2px;
+    margin-top: 14px;
+}
+.leaderboard-winners-top {
+    /* position: relative; */
+}
+.winner-box-name {
+    height: 20px;
+    color: #3F4045;
+    font-size: 12px;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.winner-box-amount {
+    height: 20px;
+    color: #6A6976;
+    font-size: 14px;
+    letter-spacing: -0.04px;
+    line-height: 19.6px;
+}
+.w-b-img-container-1 {
+    width: 74%;
+    margin: 0 auto;
+    background-color: rgb(196 197 203);
+    height: 120px;
+    position: relative;
+    background: linear-gradient(36.11deg, #fef5db 0%, #fdd55a 100%);
+    border-radius: 10px;
+}
+.w-b-img-container-2 {
+    width: 68%;
+    margin: 0 auto;
+    background-color: rgb(196 197 203);
+    height: 120px;
+    position: relative;
+    background: linear-gradient(36.11deg, #eaeaed 0%, #bfc0c7 100%);
+    border-radius: 10px;
+}
+.w-b-img-container-3 {
+    width: 60%;
+    margin: 0 auto;
+    background-color: rgb(196 197 203);
+    height: 120px;
+    position: relative;
+    background: linear-gradient(36.11deg, #eaeaed 0%, #bfc0c7 100%);
+    border-radius: 10px;
+}
+.w-b-img-container-1 img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.w-b-img-container-2 img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.w-b-img-container-3 img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.leaderboard-winners-box-logo {
+    position: absolute;
+    z-index: 1;
+    top: -38px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.leaderboard-winners-box-logo img {
+    height: 54px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgb(30 36 39 / 30%);
+    border-radius: 10px;
+    padding: 2px;
+}

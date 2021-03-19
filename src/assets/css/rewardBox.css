@@ -1,0 +1,109 @@
+.reward-whole-box {
+    width: 50%;
+    float: left;
+    /* padding: 0 2%; */
+    margin-bottom: 16px;
+}
+.reward-whole-box:nth-of-type(odd) {
+    padding: 0 2% 0 0;
+}
+.reward-whole-box:nth-of-type(even) {
+    padding: 0 0 0 2%;
+}
+.reward-mask-box {
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    /* background-color: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(95,97,101,0.4); */
+    display: inline-flex;
+    flex-direction: column;
+    /* background-color: #004C80; */
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    /* background-image: url("../img/Mask.svg");
+    background-repeat: no-repeat; */
+}
+.reward-item-box {
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    background-color: #FFFFFF;
+    /* box-shadow: 0 2px 4px 0 rgba(95,97,101,0.4); */
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    margin-top: -11px;
+}
+.reward-item-box-content {
+    padding: 10px 13px;
+    color: #3F4045;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -0.03px;
+    line-height: 15px;
+    margin-bottom: 3px;
+}
+.reward-item-box-content .text-rank-of {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 45px;
+}
+.curve-div {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: #FFF;
+    background-color: #edeff2;
+}
+.reward-item-box-top { top: -10px; }
+.reward-item-box-bottom { bottom: -10px; }
+.reward-item-box-left { left: -10px; }
+.reward-item-box-right { right: -10px; }
+
+.reward-item-box-progress {
+    height: 7px;
+    width: 90%;
+    opacity: 0.6;
+    transform: scaleY(-1);
+    border-radius: 10px;
+    background-color: #DBDDDE;
+    margin: 0 auto;
+}
+
+.reward-item-box-progress-msg {
+    height: 20px;
+    color: #808A8F;
+    font-family: Roboto;
+    font-size: 9px;
+    letter-spacing: -0.02px;
+    line-height: 19.6px;
+    text-align: center;
+}
+
+.btn-reward-item-playnow {
+    width: 90%;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: var(--buttonBg);
+    border: solid 1px var(--buttonBorder);
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 1px -1px rgb(0 0 0 / 12%), 0 1px 2px 0 rgb(0 0 0 / 20%);
+    margin-bottom: 10px;
+}
+
+.btn-reward-item-playnow .button-text {
+    height: 12px;
+    color: #FFFFFF;
+    font-family: "Open Sans";
+    font-size: 10.22px;
+    font-weight: 600;
+    letter-spacing: 0.91px;
+    line-height: 11.68px;
+    text-align: center;
+}

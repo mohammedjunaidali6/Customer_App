@@ -1,0 +1,38 @@
+
+.globalerror-container {
+  top: 46%;
+  color: #ce3e3e;
+  z-index: 997;
+  position: absolute;
+  left: 50%;
+}
+
+.globalerror-container .globalerror-content {
+  position: relative;
+  left: -50%;
+  /* box-shadow: 0px 4px 12px 4px #8b75ad;
+  box-shadow: 0px 4px 12px 4px #000000; */
+  background-color: #62597d !important;
+  /* background-color: #2f2727 !important; */
+  border-radius: 6px;
+  color: #acdcb8;
+  color: #fff;
+}
+
+.globalcontent-container {
+  top: 46%;
+  z-index: 997;
+  position: absolute;
+  left: 50%;
+}
+
+.globalcontent-container .globalcontent-container-content {
+  position: relative;
+    left: -50%;
+    box-shadow: 0px 4px 12px 4px #f7f7f7;
+}
+
+.page-not-found-img {
+  position: relative;
+  left: -25%;
+}

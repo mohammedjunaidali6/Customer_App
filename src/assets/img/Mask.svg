@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="197px" height="104px" viewBox="0 0 197 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>D33BCA6D-E01E-4865-8643-D91BE2B8FC4F</title>
+    <defs>
+        <path d="M179.000211,0 C184.523059,-1.01453063e-15 189.000211,4.4771525 189.000211,10 L189.000848,85.0535833 C183.237295,85.5974387 178.660162,90.2177226 178.183348,96.0005348 L11.0276002,96.0005348 C10.5450071,90.1476283 5.86209067,85.4856032 2.17048601e-14,85.0356088 L0.000211456096,10 C0.000211456096,4.4771525 4.47736396,1.01453063e-15 10.0002115,0 L179.000211,0 Z" id="path-1"></path>
+        <filter x="-3.4%" y="-5.7%" width="106.9%" height="113.5%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.117647059   0 0 0 0 0.141176471   0 0 0 0 0.152941176  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard06" transform="translate(-229.000000, -270.000000)">
+            <g id="Bitmap" transform="translate(232.999789, 273.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Mask">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-1"></use>
+                    <use fill="#EEB344" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
