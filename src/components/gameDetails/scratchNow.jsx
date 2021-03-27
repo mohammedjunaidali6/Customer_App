@@ -2,6 +2,7 @@ import React, { useState,Fragment } from 'react';
 
 import ProgressBar from "../common/progressBar";
 import iFrame from 'react-iframe';
+import { AiOutlineClose } from "react-icons/ai";
 import group1 from '../../assets/img/gameDetails/Group1.svg';
 import group2 from '../../assets/img/gameDetails/Group2.svg';
 import group3 from '../../assets/img/gameDetails/Group3.svg';
@@ -78,11 +79,16 @@ export default function GameDetailScratchNow(props) {
                     </div>
                 </div>
                 <div id="btn-scratch-now-container" className="mt-3">
-                    <button type="button" id="btn-scratch-now" onClick={()=>{setIFrameClick(true)}}>
-                        <span className="button-text">SCRATCH NOW</span>
+                    <button type="button" id="btn-scratch-now" onClick={() => setIFrameClick(true)}>
+                        <span className="button-text">PLAY NOW</span>
                     </button>
                 </div>
-                {iFrameClick ? (<iframe src={props.selectedGameDetail.gameUrl} height='100%' width='100%' ></iframe>) : null}
+                {iFrameClick ? (
+                    <div id="g-d-iFrame-sec">
+                        <AiOutlineClose id="g-d-iFrame-close" className="close-box m-1" title="Close Game" onClick={() => setIFrameClick(false)} />
+                        <iframe id="g-d-iFrame" src={props.selectedGameDetail.gameUrl} height='100%' width='100%' ></iframe>
+                    </div>
+                ) : null}
             </Fragment>
         </div>
     )

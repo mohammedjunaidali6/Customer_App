@@ -1,6 +1,7 @@
 import React from 'react';
 
 import mask_src from '../../assets/img/Mask.svg';
+import ranking_src from '../../assets/img/ranking_small.svg';
 
 export default function RankingBox(props) {
     
@@ -15,7 +16,7 @@ export default function RankingBox(props) {
                 <div className="curve-div ranking-item-box-top ranking-item-box-left"></div>
                 <div className="curve-div ranking-item-box-top ranking-item-box-right"></div>
                 <div className="w-100 ranking-item-box-content mt-2 pb-0">
-                    <img src="" />
+                    <img src={ranking_src} style={{height: '28px', width: '23px', marginBottom: '9px'}} />
                     <span className="text-rank-actual">{props.dataObj.inVal}/</span>
                     <span className="text-rank-of">{props.dataObj.ofVal}</span>
                 </div>

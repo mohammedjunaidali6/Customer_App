@@ -1,6 +1,6 @@
 {
     "status":{
-        "status":"Status-B",
+        "status":"Status B",
         "taskMessage":"Perform 2 more task to reach status B",
         "novice":"NOVICE",
         "master":"MASTER",
