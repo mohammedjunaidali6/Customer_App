@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { containerHeightCalcFn } from '../common/global';
 import './landing.css';
 import logo_src from "../../assets/img/landing/logo.png";
 import welcome_src from "../../assets/img/landing/welcome.png";
 import welcome_gift_src from "../../assets/img/landing/welcome_gift.svg";
+import logo_white_src from "../../assets/img/logo_white.png";
 
 export default function Landing(props) {
-  
+    useEffect(() => {
+        document.body.style.overflow = "unset";
+    }, []);
     function loginClickFn() {
+        document.body.style.overflow = "hidden";
         props.history.push('rewardzone');
     }
 
@@ -35,9 +39,9 @@ export default function Landing(props) {
                 <div className="powered-by">
                     powered by
                 </div>
-                <div className="powered-by-logo">
-                    powered by
-                </div>
+                {/* <div className="powered-by-logo">
+                    <img src={logo_white_src} alt="Logo" />
+                </div> */}
             </div>
         </div>
     )
