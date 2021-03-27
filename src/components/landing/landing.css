@@ -1,6 +1,9 @@
 #landing-container { 
     text-align: center;
     background-color: #fff;
+    background-image: url(../../assets/img/login/blue\ curve.png);
+    background-repeat: no-repeat;
+    background-size: 100% 25%;
 }
 #landing-container .buttons-contained-enabled-copy {
     height: 47px;

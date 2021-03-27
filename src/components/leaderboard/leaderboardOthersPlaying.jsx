@@ -62,7 +62,7 @@ export default function OthersPlaying(props) {
             <div className="others-playing-header pl-1">See What Others are Playing</div>
             {tempArray && tempArray.length > 0 ? (
                 <Carousel
-                    swipeable={false}
+                    swipeable={true}
                     draggable={false}
                     showDots={true}
                     // customDot={<CustomDot />}

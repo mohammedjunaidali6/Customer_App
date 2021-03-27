@@ -1,7 +1,6 @@
 import React from 'react';
 import back_banner_src from '../../assets/img/Coupon_bg.svg'
 import group_src from '../../assets/img/transactionHistory/Group.svg'
-
 export default function BackBanner(props) {
 
     return (

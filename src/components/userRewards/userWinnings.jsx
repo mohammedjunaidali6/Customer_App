@@ -89,13 +89,13 @@ export default function UserWinnings(props) {
                 <div className={`w-25 float-left m-0-auto pt-1 pb-1 b-r-10 ${selectedType === 'expiringsoon' ? `bg-white-box` : ``}`} >
                     <div className="your-winnings-box" onClick={() => setSelectedTypeFn('expiringsoon')} style={{background: "linear-gradient(36.11deg, #5f94de 0%, #78acee 100%)"}}>
                         <img src={expiring_src} />
-                        <div className="your-winnings-box-title">Expiring soon</div>
+                        <div className="your-winnings-box-title" style={{marginTop:'6px'}}>Expiring soon</div>
                     </div>
                 </div>
                 <div className={`w-25 float-left m-0-auto pt-1 pb-1 b-r-10 ${selectedType === 'missed' ? `bg-white-box` : ``}`} >
                     <div className="your-winnings-box" onClick={() => setSelectedTypeFn('missed')} style={{background: "linear-gradient(36.11deg, #df598a 0%, #ee8ba8 100%)"}}>
                         <img src={missed_src} />
-                        <div className="your-winnings-box-title">Missed</div>
+                        <div className="your-winnings-box-title" style={{marginTop:'10px'}}>Missed</div>
                     </div>
                 </div>
             </div>
