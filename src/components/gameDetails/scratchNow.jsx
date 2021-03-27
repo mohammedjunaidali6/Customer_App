@@ -71,7 +71,7 @@ export default function GameDetailScratchNow(props) {
                 <div className="w-100 float-left clearfix ">
                     <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
                     <div className="w-100">
-                        <div className="w-90 mt-1 float-left">
+                        <div className="w-90 mt-1 float-left progress-bar-outer">
                             <ProgressBar percentage="90" />
                         </div>
                         <div className="w-10 float-left lbl-percentage">90%</div>

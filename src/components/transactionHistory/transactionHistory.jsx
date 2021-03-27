@@ -125,7 +125,7 @@ export default function TransactionHistory(props) {
         <Fragment>
             <Back parentProps={props} fromTransactionHistory={true} height="138" />
             <BackBanner fromTransaction={true} />
-            <div id="transaction-history-container" style={{height: containerHeightCalcFn(), overflowY: 'auto', marginTop: '-40px'}}>
+            <div id="transaction-history-container" style={{height: containerHeightCalcFn(234), overflowY: 'auto', marginTop: '-40px'}}>
                 <div className="t-h-heading">
                     <span className="t-h-header">Transaction History</span>
                 </div>

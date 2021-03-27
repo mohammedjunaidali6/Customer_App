@@ -364,14 +364,19 @@ button[disabled]{
     /* margin-left: 8px; */
     cursor: pointer;
 }
-
+.progress-bar-outer {
+  border-radius: 10px;
+  background-color: #D7DCDE;
+  box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 17%);
+  padding: 5px 0px;
+}
 .progress-bar {
     height: 7px;
-    width: 95%;
+    width: 97%;
     opacity: 0.6;
     transform: scaleY(-1);
     border-radius: 10px;
-    background-color: #DBDDDE;
+    background-color: #ffffff;
     margin: 0 auto;
 }
 .progress-bar > span {

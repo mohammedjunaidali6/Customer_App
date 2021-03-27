@@ -72,9 +72,9 @@ export default function GameDetail(props) {
                     carouselItemClick={carouselItemClick} >
             </GCarousel>
             <GameDetailGameInfo parentProps={props} />
-            <div style={{height: containerHeightCalcFn(254), overflowY: 'auto'}}>
+            <div style={{height: containerHeightCalcFn(348), overflowY: 'auto'}}>
                 <GameDetailScratchNow selectedGameDetail={selectedReward} parentProps={props} />
-                <div className="w-90 disp-flex-root common-divider float-left ml-4"></div>
+                <div className="w-90 disp-flex-root common-divider float-left ml-4" style={{marginBottom: "12px"}}></div>
                 <GameDetailRewards />
                 <GameDetailWhoElseplaying />
                 <GameDetailHowToPlay />
