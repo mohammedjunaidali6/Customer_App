@@ -44,8 +44,8 @@ export default function GameDetailRewards(props) {
                 <div className="gamedetail-rewards-items">
                     <Fragment>
                         <div className="rewards-header">Rewards</div>
-                        {tempArray.map((obj) => (
-                            <div className="rewards-item" key={`reward-item${obj.id}`}>
+                        {tempArray.map((obj, i) => (
+                            <div className={`rewards-item rewards-item-${i + 1}`} key={`reward-item${obj.id}`}>
                                 <img className="reward-place" src={obj.id === 1 ? reward1_src : (obj.id === 2 ? reward2_src : (obj.id === 3 ? reward3_src : reward4_src))} />
                                 <div className="w-30 rewards-item-left" >
                                     <div className="rewards-discount">

@@ -164,6 +164,10 @@
 .rewards-item-left:nth-child(3) {
     background-color: #a7a3eb;
 }
+.rewards-item-1 .rewards-item-left { background-color: #EFC008 !important;}
+.rewards-item-2 .rewards-item-left { background-color: #9CA8BC !important;}
+.rewards-item-3 .rewards-item-left { background-color: #CE8B47 !important;}
+.rewards-item-4 .rewards-item-left { background-color: #A7A3EB !important;}
 .rewards-item-right {
     position: relative;
     padding-top: 14px;
