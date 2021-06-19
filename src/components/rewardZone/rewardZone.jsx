@@ -1,18 +1,20 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Back from "../common/back";
-
 import master_src from '../../assets/img/rewardZone/master.svg';
 import benefits_src from '../../assets/img/rewardZone/Benefits_home.svg';
 import invitation_src from '../../assets/img/rewardZone/invitation.svg';
 import invitation_bg_src from '../../assets/img/rewardZone/invite_bg.png';
 import basketball_src from '../../assets/img/rewardZone/game1.png';
 import bingo_src from '../../assets/img/rewardZone/game2.png';
-import  { tempArray }  from '../../gameData'
+import { tempArray } from '../../gameData'
 import './rewardZone.css';
 import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
 import ProgressBar from "../common/progressBar";
-import {getRewards} from "../../actions/rewardZone/rewardZoneActionHandler"
+import { setEngagements } from "../../actions/rewardZone/rewardZoneActionHandler"
+import { getData, postData } from '../../api/apiHelper';
+import { ACTIVE_ENGAGEMENTS } from '../../api/apiConstants';
+
 // const tempArray = [
 //     {
 //         id: 1, 
@@ -49,8 +51,8 @@ import {getRewards} from "../../actions/rewardZone/rewardZoneActionHandler"
 // ];
 
 export default function RewardZone(props) {
+    console.log('***', props)
 
-    
     function rewardOpenFn() {
         props.history.push('/userrewards');
     }
@@ -61,8 +63,8 @@ export default function RewardZone(props) {
         props.history.push('/transactionhistory');
     }
     function gameDetailFn(data) {
-        props.rewardZoneActionHandler.pushSelectedReward(data);
-        props.history.push( {pathname:"/gamedetail"} );
+        props.rewardZoneActionHandler.pushSelectedEngagement(data);
+        props.history.push({ pathname: "/gamedetail" });
     }
     function leaderBoardFn() {
         props.history.push('/leaderboard');
@@ -71,17 +73,24 @@ export default function RewardZone(props) {
         props.history.push('/status');
     }
 
-    props.rewardZoneActionHandler.getRewards(tempArray);
-    
+    // props.rewardZoneActionHandler.getRewards(tempArray);
+
+    useEffect(() => {
+        getData(`${ACTIVE_ENGAGEMENTS}?customer_id=1`).then(engagementswithGames => {
+            console.log('**', engagementswithGames);
+            props.rewardZoneActionHandler.setEngagements(engagementswithGames);
+        })
+    }, []);
+
     return (
         <Fragment>
-            <Back height="226" 
-                fromRewardZone={true} 
-                parentProps={props} 
-                rewardOpenFn={rewardOpenFn} 
-                rankingOpenFn={rankingOpenFn} 
+            <Back height="226"
+                fromRewardZone={true}
+                parentProps={props}
+                rewardOpenFn={rewardOpenFn}
+                rankingOpenFn={rankingOpenFn}
                 pointsOpenFn={pointsOpenFn} />
-            <div id="reward-zone-container" className="" style={{height: containerHeightCalcFn(190), overflowY: 'auto', paddingBottom: '27px'}}>
+            <div id="reward-zone-container" className="" style={{ height: containerHeightCalcFn(190), overflowY: 'auto', paddingBottom: '27px' }}>
                 <div id="reward-zone-status-container">
                     <div className="reward-zone-status-logo">
                         <img src={master_src} />
@@ -115,15 +124,15 @@ export default function RewardZone(props) {
                     </div>
                 </div>
                 <div className="reward-zone-handpicked-header text-bold">Handpick Challenges for you to get Lucky!!</div>
-                {tempArray && tempArray.length > 0 ? (
+                {props.engagements && props.engagements.length > 0 ? (
                     <div className="reward-zone-handpicked-items">
                         <Fragment>
-                            {tempArray.map((obj) => (
-                                <RewardBox dataObj={obj} key={obj.id} gameDetailFn={gameDetailFn} leaderBoardFn={leaderBoardFn} />
+                            {props.engagements.map((obj) => (
+                                <RewardBox dataObj={obj} key={obj.EngagementID} gameDetailFn={gameDetailFn} leaderBoardFn={leaderBoardFn} />
                             ))}
                         </Fragment>
                     </div>
-                ): null}
+                ) : null}
             </div>
         </Fragment>
     )

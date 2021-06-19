@@ -1,18 +1,18 @@
-import { GET_REWARDS, SELECTED_REWARD } from '../../constants/actionTypes';
+import { SET_ENGAGEMENTS, SELECTED_ENGAGEMENT } from '../../constants/actionTypes';
 
-export function getRewards(data) {
+export function setEngagements(data) {
   return (dispatch) => {
     dispatch({
-      type: GET_REWARDS,
+      type: SET_ENGAGEMENTS,
       payload: data,
     });
   };
 }
 
-export function pushSelectedReward(data) {
+export function pushSelectedEngagement(data) {
   return (dispatch) => {
     dispatch({
-      type:SELECTED_REWARD,
+      type: SELECTED_ENGAGEMENT,
       payload: data,
     });
   };

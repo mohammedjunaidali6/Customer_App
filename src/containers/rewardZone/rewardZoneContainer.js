@@ -5,12 +5,13 @@ import * as actions from '../../actions/rewardZone/rewardZoneAction';
 import * as actionsHandler from '../../actions/rewardZone/rewardZoneActionHandler';
 
 const mapStateToProps = state => ({
-  selectedReward: state.RewardZoneReducer.selectedReward
+  engagements: state.RewardZoneReducer.engagements,
+  selectedEngagement: state.RewardZoneReducer.selectedEngagement
 });
 
-const mapDispatchToProps = dispatch => ({ 
-  rewardZoneAction : bindActionCreators(actions, dispatch),
-  rewardZoneActionHandler : bindActionCreators(actionsHandler, dispatch)
+const mapDispatchToProps = dispatch => ({
+  rewardZoneAction: bindActionCreators(actions, dispatch),
+  rewardZoneActionHandler: bindActionCreators(actionsHandler, dispatch)
 });
 
 const RewardZoneContatiner = connect(mapStateToProps, mapDispatchToProps)(RewardZone);

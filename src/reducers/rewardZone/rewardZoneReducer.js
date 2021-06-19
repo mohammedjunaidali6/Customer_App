@@ -1,19 +1,19 @@
-import { GET_REWARDS,SELECTED_REWARD  } from '../../constants/actionTypes';
+import { SET_ENGAGEMENTS, SELECTED_ENGAGEMENT } from '../../constants/actionTypes';
 
 const initialState = {
-  rewards: null,
-  selectedReward: null
+  engagements: null,
+  selectedEngagement: null
 };
 const RewardZoneReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_REWARDS: {
+    case SET_ENGAGEMENTS: {
       const newState = { ...state };
-      newState.rewards = action.payload ? action.payload: null;
+      newState.engagements = action.payload ? action.payload : null;
       return newState;
     }
-    case SELECTED_REWARD: {
+    case SELECTED_ENGAGEMENT: {
       const newState = { ...state };
-      newState.selectedReward = action.payload ? action.payload: null;
+      newState.selectedEngagement = action.payload ? action.payload : null;
       return newState;
     }
     default: {
