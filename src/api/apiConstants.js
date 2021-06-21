@@ -42,3 +42,5 @@ export const ENGAGEMENT_BY_STATUS_ID = '/engt/engagementsbystatus?engagement_sta
 
 export const ACTIVE_ENGAGEMENTS = '/engt/activeengagements';
 export const ENGAGEMENT_DETAILS_FOR_PLAYER = '/engt/engagementdetailsforplayer';
+
+export const PLAYER_SUMMARY = '/rept/playersummary';

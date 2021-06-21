@@ -10,82 +10,84 @@ import gem_src from "../../assets/img/transactionHistory/gem_small.svg";
 import './transactionHistory.css';
 import { containerHeightCalcFn } from "../common/global";
 import BackBanner from "../common/backBanner";
+import { useEffect } from 'react';
+import { getData } from '../../api/apiHelper';
 
 const tempArray = [
     {
-        id: 1, 
+        id: 1,
         offerText: 'Earned 200 points on shoping',
         date: '02/01/2021',
         flag: 'last10'
     },
     {
-        id: 2, 
+        id: 2,
         offerText: 'Earned 200 points on Mega coupon',
         date: '02/01/2021',
         flag: 'last10'
     },
     {
-        id: 3, 
+        id: 3,
         offerText: 'Earned 200 points on shoping',
         date: '02/01/2021',
         flag: 'lastyear'
     },
     {
-        id: 4, 
+        id: 4,
         offerText: 'Earned 200 points on Mega coupon',
         date: '02/01/2021',
         flag: 'last10'
     },
     {
-        id: 5, 
+        id: 5,
         offerText: 'Earned 200 points on shoping',
         date: '02/01/2021',
         flag: 'lastmonth'
     },
     {
-        id: 6, 
+        id: 6,
         offerText: 'Earned 200 points on Mega coupon',
         date: '02/01/2021',
         flag: 'last10'
     },
     {
-        id: 7, 
+        id: 7,
         offerText: 'Earned 200 points on shoping',
         date: '02/01/2021',
         flag: 'lastmonth'
     },
     {
-        id: 8, 
+        id: 8,
         offerText: 'Earned 200 points on Mega coupon',
         date: '02/01/2021',
         flag: 'last10'
     },
     {
-        id: 9, 
+        id: 9,
         offerText: 'Earned 200 points on shoping',
         date: '02/01/2021',
         flag: 'last10'
     },
     {
-        id: 10, 
+        id: 10,
         offerText: 'Earned 200 points on Mega coupon',
         date: '02/01/2021',
         flag: 'last10'
     },
     {
-        id: 11, 
+        id: 11,
         offerText: 'Earned 200 points on shoping',
         date: '02/01/2021',
         flag: 'last10'
     },
     {
-        id: 12, 
+        id: 12,
         offerText: 'Earned 200 points on Mega coupon',
         date: '02/01/2021',
         flag: 'last10'
     },
     {
-        id: 13, 
+        id: 13,
         offerText: 'Earned 200 points on shoping',
         date: '02/01/2021',
         flag: 'last10'
@@ -94,7 +96,7 @@ const tempArray = [
 
 function TabCotainer(props) {
     return (
-        <Typography component="div" style={{paddingBottom:  10, margin: "0 27px"}} >
+        <Typography component="div" style={{ paddingBottom: 10, margin: "0 27px" }} >
             {props.children}
         </Typography>
     );
@@ -120,12 +122,18 @@ export default function TransactionHistory(props) {
             borderBottom: 'none'
         }
     }))(Tab);
-    
+
+    useEffect((params) => {
+        console.log('***', params);
+        getData('http://localhost:818/api/game/getPlayerPointsBalance?customer_id=1').then(pointsBalance => {
+            console.log('***', pointsBalance);
+        });
+    });
     return (
         <Fragment>
             <Back parentProps={props} fromTransactionHistory={true} height="138" />
             <BackBanner fromTransaction={true} />
-            <div id="transaction-history-container" style={{height: containerHeightCalcFn(234), overflowY: 'auto', marginTop: '-40px'}}>
+            <div id="transaction-history-container" style={{ height: containerHeightCalcFn(234), overflowY: 'auto', marginTop: '-40px' }}>
                 <div className="t-h-heading">
                     <span className="t-h-header">Transaction History</span>
                 </div>
@@ -143,7 +151,7 @@ export default function TransactionHistory(props) {
                                         <div className="w-15 float-left clearfix t-h-b-logobox">
                                             <img src={obj.id % 2 ? price_tag_src : gem_small_src} />
                                         </div>
-                                        <div className="common-divider float-left clearfix" style={{height: "54px"}}></div>
+                                        <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
                                         <div className="w-83 float-left clearfix t-h-b-contentbox">
                                             <div className="t-h-b-header"><span>{obj.offerText}</span></div>
                                             <div className="t-h-b-date"><span>{obj.date}</span></div>
@@ -161,7 +169,7 @@ export default function TransactionHistory(props) {
                                         <div className="w-15 float-left clearfix t-h-b-logobox">
                                             <img src={obj.id % 2 ? price_tag_src : gem_small_src} />
                                         </div>
-                                        <div className="common-divider float-left clearfix" style={{height: "54px"}}></div>
+                                        <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
                                         <div className="w-83 float-left clearfix t-h-b-contentbox">
                                             <div className="t-h-b-header"><span>{obj.offerText}</span></div>
                                             <div className="t-h-b-date"><span>{obj.date}</span></div>
@@ -179,7 +187,7 @@ export default function TransactionHistory(props) {
                                         <div className="w-15 float-left clearfix t-h-b-logobox">
                                             <img src={obj.id % 2 ? price_tag_src : gem_small_src} />
                                         </div>
-                                        <div className="common-divider float-left clearfix" style={{height: "54px"}}></div>
+                                        <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
                                         <div className="w-83 float-left clearfix t-h-b-contentbox">
                                             <div className="t-h-b-header"><span>{obj.offerText}</span></div>
                                             <div className="t-h-b-date"><span>{obj.date}</span></div>
