@@ -1,9 +1,13 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { Engagement_Host_URI } from '.././api/apiConstants';
+import { Engagement_Host_URI, headers } from '.././api/apiConstants';
 
 export const axiosInstance = axios.create({
-    baseURL: Engagement_Host_URI
+    baseURL: Engagement_Host_URI,
+    headers: {
+        "client_id": headers.client_id,
+        "secret": headers.secret
+    }
 });
 
 export const isHandlerEnabled = (config = {}) => {

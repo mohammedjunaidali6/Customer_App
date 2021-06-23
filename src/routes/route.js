@@ -16,6 +16,8 @@ import LeaderBoardContatiner from "../containers/leaderboard/leaderboardContaine
 import TransactionHistoryContainer from "../containers/transactionHistory/transactionHistoryContainer";
 import NotificationContainer from "../containers/notification/notificationContainer";
 import StatusContainer from "../containers/status/statusContainer";
+import CustomerSavingsContatiner from '../containers/CustomerSavings/CustomerSavingsContainer';
+
 
 export default function AppRoute() {
   InterceptorsFn();
@@ -26,16 +28,17 @@ export default function AppRoute() {
         <BrowserRouter>
           <Switch>
             {/* <Route exact path="/" component={HomeContatiner}/> */}
-            <Route exact path="/" component={Landing}/>
-            <Route exact path="/login" component={LoginContatiner}/>
-            <Route exact path="/ranking" component={Ranking}/>
-            <Route exact path="/rewardzone" component={RewardZoneContatiner}/>
-            <Route exact path="/gamedetail" component={GameDetailsContainer}/>
-            <Route exact path="/userrewards" component={UserRewardsContatiner}/>
-            <Route exact path="/leaderboard" component={LeaderBoardContatiner}/>
-            <Route exact path="/transactionhistory" component={TransactionHistoryContainer}/>
-            <Route exact path="/notification" component={NotificationContainer}/>
-            <Route exact path="/status" component={StatusContainer}/>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/login" component={LoginContatiner} />
+            <Route exact path="/ranking" component={Ranking} />
+            <Route exact path="/rewardzone" component={RewardZoneContatiner} />
+            <Route exact path="/gamedetail" component={GameDetailsContainer} />
+            <Route exact path="/userrewards" component={UserRewardsContatiner} />
+            <Route exact path="/leaderboard" component={LeaderBoardContatiner} />
+            <Route exact path="/transactionhistory" component={TransactionHistoryContainer} />
+            <Route exact path="/customersavings" component={CustomerSavingsContatiner} />
+            <Route exact path="/notification" component={NotificationContainer} />
+            <Route exact path="/status" component={StatusContainer} />
             <Route path="*" component={NotFound} />
           </Switch>
         </BrowserRouter>

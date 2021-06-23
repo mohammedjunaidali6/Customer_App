@@ -1,6 +1,8 @@
 export const Gateway_Host_URI = "http://localhost:806/api";
 export const Identity_Host_URI = "http://localhost:807/api";
 export const Engagement_Host_URI = "http://localhost:815/api";
+export const Gameplay_Host_URI = "http://localhost:816/api";
+export const Reporting_Host_URI = "http://localhost:818/api";
 
 export const gameAssetsPath = "http://localhost/blaash/ga/i/";
 

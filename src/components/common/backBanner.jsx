@@ -1,19 +1,31 @@
 import React from 'react';
 import back_banner_src from '../../assets/img/Coupon_bg.svg'
-import group_src from '../../assets/img/transactionHistory/Group.svg'
+import group_src from '../../assets/img/transactionHistory/Group.svg';
+import store from '../../../src/store/store';
+
+
 export default function BackBanner(props) {
 
+
+    var summary = store.getState().RewardZoneReducer?.playerSummary;
+
     return (
-        <div id="back-banner-container" className={`${props.fromTransaction ? `back-banner-container-bg` : ``}`}>
+        <div id="back-banner-container" className={`${(props.fromTransaction || props.fromCustomerSavings) ? `back-banner-container-bg` : ``}`}>
             {props.fromRanking ? (
                 <img src={back_banner_src} title="Back Banner" className="back-banner-your-ranking" />
             ) : null}
-            {props.fromTransaction ? (
-                <div className="w-100 t-h-b-topbox text-center">
+            {props.fromTransaction || props.fromCustomerSavings ? (
+                <div className="w-100 text-center">
                     <img src={group_src} className="mt-2" />
-                    <div className="w-100 t-h-b-topbox-content text-center">
-                        <div className="lbl-banner-points"><span>2120</span></div>
-                        <div className="lbl-banner-pointsdesc"><span>Total Points Earned</span></div>
+                    <div className="w-100 text-center">
+                        <div className="lbl-banner-points">
+                            <span>
+                                {props.fromTransaction ? summary?.FormattedTotalPoints
+                                    : props.fromCustomerSavings ? "$" + summary?.FormattedTotalSavings
+                                        : 0}
+                            </span>
+                        </div>
+                        <div className="lbl-banner-pointsdesc"><span>{props.fromCustomerSavings ? "Total Amount Saved" : "Total Points Earned"}</span></div>
                     </div>
                 </div>
             ) : null}

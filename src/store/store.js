@@ -8,13 +8,17 @@ import GameDetailsReducer from "../reducers/gameDetails/gameDetailsReducer";
 import UserRewardsReducer from "../reducers/userRewards/userRewardsReducer";
 import LeaderBoardReducer from "../reducers/leaderboard/leaderboardReducer";
 import TransactionHistoryReducer from "../reducers/transactionHistory/transactionHistoryReducer";
+import CustomerSavingsReducer from '../reducers/CustomerSavings/customerSavingsReducer';
 import NotificationReducer from "../reducers/notification/notificationReducer";
 import StatusReducer from "../reducers/status/statusReducer";
+
+
+
 function saveToSessionStorage(state) {
   try {
     const serializedState = JSON.stringify(state);
     sessionStorage.setItem('ssoState', serializedState);
-  } catch(e) {
+  } catch (e) {
     console.log(e);
   }
 }
@@ -22,9 +26,9 @@ function saveToSessionStorage(state) {
 function loadFromSessionStorage(state) {
   try {
     const serializedState = sessionStorage.getItem('ssoState');
-    if(serializedState === null) return undefined;
+    if (serializedState === null) return undefined;
     return JSON.parse(serializedState);
-  } catch(e) {
+  } catch (e) {
     console.log(e);
     return undefined;
   }
@@ -39,6 +43,7 @@ const reducer = combineReducers({
   UserRewardsReducer: UserRewardsReducer,
   LeaderBoardReducer: LeaderBoardReducer,
   TransactionHistoryReducer: TransactionHistoryReducer,
+  CustomerSavingsReducer: CustomerSavingsReducer,
   NotificationReducer: NotificationReducer,
   StatusReducer: StatusReducer
 });

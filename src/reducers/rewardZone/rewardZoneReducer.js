@@ -1,4 +1,4 @@
-import { SET_ENGAGEMENTS, SELECTED_ENGAGEMENT } from '../../constants/actionTypes';
+import { SET_ENGAGEMENTS, SELECTED_ENGAGEMENT, SET_PLAYER_SUMMARY } from '../../constants/actionTypes';
 
 const initialState = {
   engagements: null,
@@ -14,6 +14,11 @@ const RewardZoneReducer = (state = initialState, action) => {
     case SELECTED_ENGAGEMENT: {
       const newState = { ...state };
       newState.selectedEngagement = action.payload ? action.payload : null;
+      return newState;
+    }
+    case SET_PLAYER_SUMMARY: {
+      const newState = { ...state };
+      newState.playerSummary = action.payload ? action.payload : null;
       return newState;
     }
     default: {

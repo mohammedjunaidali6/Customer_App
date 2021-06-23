@@ -62,6 +62,9 @@ export default function RewardZone(props) {
     function pointsOpenFn() {
         props.history.push('/transactionhistory');
     }
+    function customerSavingsOpen() {
+        props.history.push('/customersavings');
+    }
     function gameDetailFn(data) {
         props.rewardZoneActionHandler.pushSelectedEngagement(data);
         props.history.push({ pathname: "/gamedetail" });
@@ -73,11 +76,9 @@ export default function RewardZone(props) {
         props.history.push('/status');
     }
 
-    // props.rewardZoneActionHandler.getRewards(tempArray);
 
     useEffect(() => {
         getData(`${ACTIVE_ENGAGEMENTS}?customer_id=1`).then(engagementswithGames => {
-            console.log('**', engagementswithGames);
             props.rewardZoneActionHandler.setEngagements(engagementswithGames);
         })
     }, []);
@@ -89,7 +90,9 @@ export default function RewardZone(props) {
                 parentProps={props}
                 rewardOpenFn={rewardOpenFn}
                 rankingOpenFn={rankingOpenFn}
-                pointsOpenFn={pointsOpenFn} />
+                pointsOpenFn={pointsOpenFn}
+                customerSavingsOpenFn={customerSavingsOpen}
+            />
             <div id="reward-zone-container" className="" style={{ height: containerHeightCalcFn(190), overflowY: 'auto', paddingBottom: '27px' }}>
                 <div id="reward-zone-status-container">
                     <div className="reward-zone-status-logo">

@@ -6,7 +6,8 @@ import * as actionsHandler from '../../actions/rewardZone/rewardZoneActionHandle
 
 const mapStateToProps = state => ({
   engagements: state.RewardZoneReducer.engagements,
-  selectedEngagement: state.RewardZoneReducer.selectedEngagement
+  selectedEngagement: state.RewardZoneReducer.selectedEngagement,
+  playerSummary: state.RewardZoneReducer.playerSummary
 });
 
 const mapDispatchToProps = dispatch => ({

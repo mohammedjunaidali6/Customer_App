@@ -9,7 +9,7 @@ import rank_src from '../../assets/img/rewardZone/Rank__home.svg';
 import rupee_src from '../../assets/img/rewardZone/rupee_home.svg';
 import share_src from '../../assets/img/gameDetails/share.svg';
 import { getData } from '../../api/apiHelper';
-import { PLAYER_SUMMARY } from '../../api/apiConstants';
+import { Reporting_Host_URI, PLAYER_SUMMARY } from '../../api/apiConstants';
 import { useState } from 'react';
 // import { GlobalModal } from "./global";
 
@@ -45,9 +45,9 @@ export default function Back(props) {
     }
 
     useEffect(() => {
-        getData("http://localhost:818/api/rept/playersummary?player_id=1").then(summary => {
-            console.log('**', summary);
+        getData(`${Reporting_Host_URI}/rept/playersummary?player_id=${1}`).then(summary => {
             setSummary(summary);
+            props.parentProps.rewardZoneActionHandler?.setPlayerSummary(summary);
         })
     }, []);
 
@@ -91,28 +91,28 @@ export default function Back(props) {
                             <div id="point-box" className="detail-box-content mb-3" onClick={() => props.pointsOpenFn()}>
                                 <img className="float-left" src={point_box_src} />
                                 <div className="float-left pl-2">
-                                    <div className="rzdb-header" >{summary?.total_points || 0}</div>
+                                    <div className="rzdb-header" >{summary?.FormattedTotalPoints || 0}</div>
                                     <div className="rzdb-desc" >Points</div>
                                 </div>
                             </div>
-                            <div id="amount-saved-box" className="detail-box-content mb-3 float-right">
+                            <div id="amount-saved-box" className="detail-box-content mb-3 float-right" onClick={() => props.customerSavingsOpenFn()}>
                                 <img className="float-left" src={rupee_src} />
                                 <div className="float-left pl-2">
-                                    <div className="rzdb-header" >{`$${summary?.total_saving || 0}`}</div>
+                                    <div className="rzdb-header" >{`$${summary?.FormattedTotalSavings || 0}`}</div>
                                     <div className="rzdb-desc" >Amount Saved</div>
                                 </div>
                             </div>
                             <div id="rewards-box" className="detail-box-content" onClick={() => props.rewardOpenFn()}>
                                 <img className="float-left" src={trophy_src} />
                                 <div className="float-left pl-2">
-                                    <div className="rzdb-header">{summary?.total_active_rewards || 0}</div>
+                                    <div className="rzdb-header">{summary?.TotalActiveRewards || 0}</div>
                                     <div className="rzdb-desc" >Rewards</div>
                                 </div>
                             </div>
                             <div id="rank-box" className="detail-box-content float-right" onClick={() => props.rankingOpenFn()}>
                                 <img className="float-left" src={rank_src} />
                                 <div className="float-left pl-2">
-                                    <div className="rzdb-header" >{summary?.top_rank || 0}</div>
+                                    <div className="rzdb-header" >{summary?.TopRank || 0}</div>
                                     <div className="rzdb-desc" >Rank</div>
                                 </div>
                             </div>

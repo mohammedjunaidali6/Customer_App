@@ -1,4 +1,4 @@
-import { SET_ENGAGEMENTS, SELECTED_ENGAGEMENT } from '../../constants/actionTypes';
+import { SET_ENGAGEMENTS, SELECTED_ENGAGEMENT, SET_PLAYER_SUMMARY } from '../../constants/actionTypes';
 
 export function setEngagements(data) {
   return (dispatch) => {
@@ -16,4 +16,13 @@ export function pushSelectedEngagement(data) {
       payload: data,
     });
   };
+}
+
+export function setPlayerSummary(data) {
+  return (dispatch) => {
+    dispatch({
+      type: SET_PLAYER_SUMMARY,
+      payload: data,
+    })
+  }
 }

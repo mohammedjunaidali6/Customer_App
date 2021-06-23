@@ -6,15 +6,14 @@ import { withStyles } from "@material-ui/core/styles";
 import Back from "../common/back";
 import gem_small_src from '../../assets/img/transactionHistory/gem_small.svg';
 import price_tag_src from '../../assets/img/transactionHistory/price-tag.svg';
-import gem_src from "../../assets/img/transactionHistory/gem_small.svg";
-import './transactionHistory.css';
+import './CustomerSavings.css';
 import { containerHeightCalcFn } from "../common/global";
 import BackBanner from "../common/backBanner";
 import { useEffect } from 'react';
 import { getData } from '../../api/apiHelper';
-import { Gameplay_Host_URI } from '../../api/apiConstants';
+import { Engagement_Host_URI, Gameplay_Host_URI } from '../../api/apiConstants';
 import { LastXDays } from '../../constants/globalConstants';
-
+import store from '../../../src/store/store';
 
 const tempArray = [
     {
@@ -105,11 +104,11 @@ function TabCotainer(props) {
     );
 }
 
-export default function TransactionHistory(props) {
+export default function CustomerSavings(props) {
     const [activeIndex, setactiveIndex] = useState(0);
-    const [last7DaysPoints, setLast7DaysPoints] = useState();
-    const [lastMonthPoints, setLastMonthPoints] = useState();
-    const [last6MonthsPoints, setLast6MonthsPoints] = useState();
+    const [last7DaysSavings, setLast7DaysSavings] = useState();
+    const [lastMonthSavings, setLastMonthSavings] = useState();
+    const [last6MonthsSavings, setLast6MonthsSavings] = useState();
 
 
     const HorizontalTabs = withStyles(theme => ({
@@ -130,14 +129,14 @@ export default function TransactionHistory(props) {
     const filterPointsBalance = (activeIndex) => {
         setactiveIndex(activeIndex)
         let LastxDays = activeIndex == 1 ? LastXDays.LastMonth : activeIndex == 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
-        getData(`${Gameplay_Host_URI}/game/getPlayerPointsBalance?customer_id=1&fetchLastX=${LastxDays}`)
-            .then(pointsBalance => {
+        getData(`${Engagement_Host_URI}/engt/customersavings?player_id=${1}&fetchLastX=${LastxDays}`)
+            .then(customerSavings => {
                 if (activeIndex == 0) {
-                    setLast7DaysPoints(pointsBalance);
+                    setLast7DaysSavings(customerSavings);
                 } else if (activeIndex == 1) {
-                    setLastMonthPoints(pointsBalance);
+                    setLastMonthSavings(customerSavings);
                 } else if (activeIndex == 2) {
-                    setLast6MonthsPoints(pointsBalance);
+                    setLast6MonthsSavings(customerSavings);
                 }
             });
     }
@@ -147,9 +146,10 @@ export default function TransactionHistory(props) {
 
 
     useEffect(() => {
-        getData(`${Gameplay_Host_URI}/game/getPlayerPointsBalance?customer_id=${1}&fetchLastX=${LastXDays.Last7Days}`)
-            .then(pointsBalance => {
-                setLast7DaysPoints(pointsBalance);
+        getData(`${Engagement_Host_URI}/engt/customersavings?player_id=${1}&fetchLastX=Last7Days`)
+            .then(customerSavings => {
+                setLast7DaysSavings(customerSavings)
+                props.customerSavingsActionHandler.dispathCustomerSavings(customerSavings);
             });
     }, []);
 
@@ -157,7 +157,7 @@ export default function TransactionHistory(props) {
     return (
         <Fragment>
             <Back parentProps={props} fromTransactionHistory={true} height="138" />
-            <BackBanner fromTransaction={true} />
+            <BackBanner fromCustomerSavings={true} />
             <div id="transaction-history-container" style={{ height: containerHeightCalcFn(234), overflowY: 'auto', marginTop: '-40px' }}>
                 <div className="t-h-heading">
                     <span className="t-h-header">Transaction History</span>
@@ -175,17 +175,17 @@ export default function TransactionHistory(props) {
                         </MyTab>
                     </HorizontalTabs>
                     {activeIndex === 0 && <TabCotainer>
-                        {last7DaysPoints && last7DaysPoints.length > 0 ? (
+                        {last7DaysSavings && last7DaysSavings.length > 0 ? (
                             <Fragment>
-                                {last7DaysPoints.map(obj => (
+                                {last7DaysSavings.map(obj => (
                                     <div className="t-h-box">
                                         <div className="w-15 float-left clearfix t-h-b-logobox">
-                                            <img src={gem_small_src} />
+                                            <img src={price_tag_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
                                         <div className="w-83 float-left clearfix t-h-b-contentbox">
-                                            <div className="t-h-b-header"><span>{obj.activity_name}</span></div>
-                                            <div className="t-h-b-date"><span>{convertDateToLocalDate(obj.added_on)}</span></div>
+                                            <div className="t-h-b-header"><span>{obj.CouponRedeemed}</span></div>
+                                            <div className="t-h-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
                                         </div>
                                     </div>
                                 ))}
@@ -193,17 +193,17 @@ export default function TransactionHistory(props) {
                         ) : null}
                     </TabCotainer>}
                     {activeIndex === 1 && <TabCotainer>
-                        {lastMonthPoints && lastMonthPoints.length > 0 ? (
+                        {lastMonthSavings && lastMonthSavings.length > 0 ? (
                             <Fragment>
-                                {lastMonthPoints.map(obj => (
+                                {lastMonthSavings.map(obj => (
                                     <div className="t-h-box">
                                         <div className="w-15 float-left clearfix t-h-b-logobox">
-                                            <img src={gem_small_src} />
+                                            <img src={price_tag_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
                                         <div className="w-83 float-left clearfix t-h-b-contentbox">
-                                            <div className="t-h-b-header"><span>{obj.activity_name}</span></div>
-                                            <div className="t-h-b-date"><span>{convertDateToLocalDate(obj.added_on)}</span></div>
+                                            <div className="t-h-b-header"><span>{obj.CouponRedeemed}</span></div>
+                                            <div className="t-h-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
                                         </div>
                                     </div>
                                 ))}
@@ -211,17 +211,17 @@ export default function TransactionHistory(props) {
                         ) : null}
                     </TabCotainer>}
                     {activeIndex === 2 && <TabCotainer>
-                        {last6MonthsPoints && last6MonthsPoints.length > 0 ? (
+                        {last6MonthsSavings && last6MonthsSavings.length > 0 ? (
                             <Fragment>
-                                {last6MonthsPoints.map(obj => (
+                                {last6MonthsSavings.map(obj => (
                                     <div className="t-h-box">
                                         <div className="w-15 float-left clearfix t-h-b-logobox">
-                                            <img src={gem_small_src} />
+                                            <img src={price_tag_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
                                         <div className="w-83 float-left clearfix t-h-b-contentbox">
-                                            <div className="t-h-b-header"><span>{obj.activity_name}</span></div>
-                                            <div className="t-h-b-date"><span>{convertDateToLocalDate(obj.added_on)}</span></div>
+                                            <div className="t-h-b-header"><span>{obj.CouponRedeemed}</span></div>
+                                            <div className="t-h-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
                                         </div>
                                     </div>
                                 ))}
