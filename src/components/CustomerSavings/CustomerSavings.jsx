@@ -220,7 +220,7 @@ export default function CustomerSavings(props) {
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
                                         <div className="w-83 float-left clearfix c-s-b-contentbox">
-                                            <div className="c-s-b-header"><span>{obj.DisplayName}</span></div>
+                                            <div className="c-s-b-header"><span>{`Won ${obj.AmountSaved}/- in ${obj.DisplayName}`}</span></div>
                                             <div className="c-s-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
                                         </div>
                                     </div>
