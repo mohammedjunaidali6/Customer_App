@@ -129,7 +129,7 @@ export default function CustomerSavings(props) {
     const filterPointsBalance = (activeIndex) => {
         setactiveIndex(activeIndex)
         let LastxDays = activeIndex == 1 ? LastXDays.LastMonth : activeIndex == 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
-        getData(`${Engagement_Host_URI}/engt/customersavings?player_id=${1}&fetchLastX=${LastxDays}`)
+        getData(`${Engagement_Host_URI}/engt/customersavings?fetchLastX=${LastxDays}`)
             .then(customerSavings => {
                 if (activeIndex == 0) {
                     setLast7DaysSavings(customerSavings);
@@ -146,7 +146,7 @@ export default function CustomerSavings(props) {
 
 
     useEffect(() => {
-        getData(`${Engagement_Host_URI}/engt/customersavings?player_id=${1}&fetchLastX=Last7Days`)
+        getData(`${Engagement_Host_URI}/engt/customersavings?fetchLastX=Last7Days`)
             .then(customerSavings => {
                 setLast7DaysSavings(customerSavings)
                 props.customerSavingsActionHandler.dispathCustomerSavings(customerSavings);
@@ -159,8 +159,8 @@ export default function CustomerSavings(props) {
             <Back parentProps={props} fromTransactionHistory={true} height="138" />
             <BackBanner fromCustomerSavings={true} />
             <div id="transaction-history-container" style={{ height: containerHeightCalcFn(234), overflowY: 'auto', marginTop: '-40px' }}>
-                <div className="t-h-heading">
-                    <span className="t-h-header">Transaction History</span>
+                <div className="c-s-heading">
+                    <span className="c-s-header">Amount Saving History</span>
                 </div>
                 <div>
                     <HorizontalTabs value={activeIndex} onChange={(_, activeIndex) => filterPointsBalance(activeIndex)} >
@@ -178,14 +178,14 @@ export default function CustomerSavings(props) {
                         {last7DaysSavings && last7DaysSavings.length > 0 ? (
                             <Fragment>
                                 {last7DaysSavings.map(obj => (
-                                    <div className="t-h-box">
-                                        <div className="w-15 float-left clearfix t-h-b-logobox">
+                                    <div className="c-s-box">
+                                        <div className="w-15 float-left clearfix c-s-b-logobox">
                                             <img src={price_tag_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
-                                        <div className="w-83 float-left clearfix t-h-b-contentbox">
-                                            <div className="t-h-b-header"><span>{obj.CouponRedeemed}</span></div>
-                                            <div className="t-h-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
+                                        <div className="w-83 float-left clearfix c-s-b-contentbox">
+                                            <div className="c-s-b-header"><span>{obj.DisplayName}</span></div>
+                                            <div className="c-s-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
                                         </div>
                                     </div>
                                 ))}
@@ -196,14 +196,14 @@ export default function CustomerSavings(props) {
                         {lastMonthSavings && lastMonthSavings.length > 0 ? (
                             <Fragment>
                                 {lastMonthSavings.map(obj => (
-                                    <div className="t-h-box">
-                                        <div className="w-15 float-left clearfix t-h-b-logobox">
+                                    <div className="c-s-box">
+                                        <div className="w-15 float-left clearfix c-s-b-logobox">
                                             <img src={price_tag_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
-                                        <div className="w-83 float-left clearfix t-h-b-contentbox">
-                                            <div className="t-h-b-header"><span>{obj.CouponRedeemed}</span></div>
-                                            <div className="t-h-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
+                                        <div className="w-83 float-left clearfix c-s-b-contentbox">
+                                            <div className="c-s-b-header"><span>{obj.DisplayName}</span></div>
+                                            <div className="c-s-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
                                         </div>
                                     </div>
                                 ))}
@@ -214,14 +214,14 @@ export default function CustomerSavings(props) {
                         {last6MonthsSavings && last6MonthsSavings.length > 0 ? (
                             <Fragment>
                                 {last6MonthsSavings.map(obj => (
-                                    <div className="t-h-box">
-                                        <div className="w-15 float-left clearfix t-h-b-logobox">
+                                    <div className="c-s-box">
+                                        <div className="w-15 float-left clearfix c-s-b-logobox">
                                             <img src={price_tag_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
-                                        <div className="w-83 float-left clearfix t-h-b-contentbox">
-                                            <div className="t-h-b-header"><span>{obj.CouponRedeemed}</span></div>
-                                            <div className="t-h-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
+                                        <div className="w-83 float-left clearfix c-s-b-contentbox">
+                                            <div className="c-s-b-header"><span>{obj.DisplayName}</span></div>
+                                            <div className="c-s-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
                                         </div>
                                     </div>
                                 ))}

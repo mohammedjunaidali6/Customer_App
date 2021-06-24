@@ -17,7 +17,7 @@ import TransactionHistoryContainer from "../containers/transactionHistory/transa
 import NotificationContainer from "../containers/notification/notificationContainer";
 import StatusContainer from "../containers/status/statusContainer";
 import CustomerSavingsContatiner from '../containers/CustomerSavings/CustomerSavingsContainer';
-
+import Loader from '../components/common/Spinner/spinner';
 
 export default function AppRoute() {
   InterceptorsFn();

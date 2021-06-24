@@ -1,6 +1,8 @@
 import React from 'react';
 import back_banner_src from '../../assets/img/Coupon_bg.svg'
 import group_src from '../../assets/img/transactionHistory/Group.svg';
+import rupee_src from '../../assets/img/rewardZone/rupee_home.svg';
+
 import store from '../../../src/store/store';
 
 
@@ -16,7 +18,8 @@ export default function BackBanner(props) {
             ) : null}
             {props.fromTransaction || props.fromCustomerSavings ? (
                 <div className="w-100 text-center">
-                    <img src={group_src} className="mt-2" />
+                    {props.fromCustomerSavings && <img src={rupee_src} className="mt-2 currency-logo" />}
+                    {props.fromTransaction && <img src={group_src} className="mt-2" />}
                     <div className="w-100 text-center">
                         <div className="lbl-banner-points">
                             <span>
@@ -25,7 +28,9 @@ export default function BackBanner(props) {
                                         : 0}
                             </span>
                         </div>
-                        <div className="lbl-banner-pointsdesc"><span>{props.fromCustomerSavings ? "Total Amount Saved" : "Total Points Earned"}</span></div>
+                        <div className="lbl-banner-pointsdesc">
+                            <span>{props.fromCustomerSavings ? "Total Amount Saved" : "Total Points Earned"}</span>
+                        </div>
                     </div>
                 </div>
             ) : null}

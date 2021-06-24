@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import Back from "../common/back";
-
 import trophy_src from '../../assets/img/userRewards/trophy.svg';
 import unclaimed_src from '../../assets/img/userRewards/Unclaimed.svg';
 import expiringsoon_src from '../../assets/img/userRewards/Expiringsoon.svg';
@@ -47,7 +46,7 @@ export default function UserRewards(props) {
 
 
     useEffect(() => {
-        getData(`${Engagement_Host_URI}/engt/playerRewardsHistory?player_id=${1}`)
+        getData(`${Engagement_Host_URI}/engt/playerRewardsHistory`)
             .then(allRewards => {
                 setPlayerRewardsData(allRewards);
                 props.userRewardsActionHandler.dispatchUserRewards(allRewards);

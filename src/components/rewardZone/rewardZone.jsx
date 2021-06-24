@@ -78,7 +78,7 @@ export default function RewardZone(props) {
 
 
     useEffect(() => {
-        getData(`${ACTIVE_ENGAGEMENTS}?customer_id=1`).then(engagementswithGames => {
+        getData(`${ACTIVE_ENGAGEMENTS}`).then(engagementswithGames => {
             props.rewardZoneActionHandler.setEngagements(engagementswithGames);
         })
     }, []);

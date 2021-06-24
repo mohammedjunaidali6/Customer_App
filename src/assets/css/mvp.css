@@ -548,3 +548,12 @@ button[disabled]{
     line-height: 11.68px;
     text-align: center;
 }
+
+
+.currency-logo {
+  padding: 15px 0;
+}
+.currency-logo img {
+  height: 61px;
+  border-radius: 50%;
+}

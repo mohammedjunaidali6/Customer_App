@@ -1,7 +1,7 @@
-.t-h-heading {
+.c-s-heading {
     margin: 0 27px;
 }
-.t-h-header {
+.c-s-header {
     height: 20px;
     color: #3F4045;
     font-size: 18px;
@@ -28,7 +28,7 @@
 .MuiTabs-flexContainer {
     margin: 0 15px;
 }
-.t-h-box {
+.c-s-box {
     height: 63px;
     border-radius: 10px;
     background-color: #FFFFFF;
@@ -36,7 +36,7 @@
     margin-bottom: 10px;
     padding: 5px 2px;
 }
-.t-h-b-header {
+.c-s-b-header {
     height: 20px;
     color: #5F6165;
     font-size: 13px;
@@ -44,7 +44,7 @@
     letter-spacing: -0.03px;
     line-height: 19.6px;
 }
-.t-h-b-date {
+.c-s-b-date {
     height: 20px;
     opacity: 0.5;
     color: #5F6165;
@@ -52,15 +52,15 @@
     letter-spacing: -0.02px;
     line-height: 19.6px;
 }
-.t-h-b-logobox {
+.c-s-b-logobox {
     text-align: center;
     margin-top: 13px;
 }
-.t-h-b-contentbox {
+.c-s-b-contentbox {
     padding-left: 10px;
     margin-top: 8px;
 }
-.t-h-b-topbox {
+.c-s-b-topbox {
     
 }
 .lbl-banner-points {

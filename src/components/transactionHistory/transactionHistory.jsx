@@ -130,7 +130,7 @@ export default function TransactionHistory(props) {
     const filterPointsBalance = (activeIndex) => {
         setactiveIndex(activeIndex)
         let LastxDays = activeIndex == 1 ? LastXDays.LastMonth : activeIndex == 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
-        getData(`${Gameplay_Host_URI}/game/getPlayerPointsBalance?customer_id=1&fetchLastX=${LastxDays}`)
+        getData(`${Gameplay_Host_URI}/game/getPlayerPointsBalance?fetchLastX=${LastxDays}`)
             .then(pointsBalance => {
                 if (activeIndex == 0) {
                     setLast7DaysPoints(pointsBalance);
@@ -147,7 +147,7 @@ export default function TransactionHistory(props) {
 
 
     useEffect(() => {
-        getData(`${Gameplay_Host_URI}/game/getPlayerPointsBalance?customer_id=${1}&fetchLastX=${LastXDays.Last7Days}`)
+        getData(`${Gameplay_Host_URI}/game/getPlayerPointsBalance?fetchLastX=${LastXDays.Last7Days}`)
             .then(pointsBalance => {
                 setLast7DaysPoints(pointsBalance);
             });
