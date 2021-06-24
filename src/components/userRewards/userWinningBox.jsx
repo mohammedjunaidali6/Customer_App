@@ -5,7 +5,6 @@ import copy_src from "../../assets/img/userRewards/copy.svg";
 
 export default function UserWinningBox(props) {
 
-    console.log('**', props)
     const getExpireMessage = (ExpiredDate) => {
         var days = new Date(ExpiredDate).getDate() - new Date().getDate();
         var str = '';
