@@ -1,5 +1,4 @@
 import React, { useState, Fragment } from 'react';
-
 import ProgressBar from "../common/progressBar";
 import iFrame from 'react-iframe';
 import { AiOutlineClose } from "react-icons/ai";
@@ -7,9 +6,9 @@ import group1 from '../../assets/img/gameDetails/Group1.svg';
 import group2 from '../../assets/img/gameDetails/Group2.svg';
 import group3 from '../../assets/img/gameDetails/Group3.svg';
 import Iframe from 'react-iframe';
-import { gameAssetsPath } from '../../api/apiConstants';
+import { gameAssetsPath, Gameplay_Host_URI, GAME_EXIT, GAME_LAUNCH } from '../../api/apiConstants';
 import { useEffect } from 'react';
-import { postData } from '../../api/apiHelper';
+import { getData, postData } from '../../api/apiHelper';
 import Tooltip from '@material-ui/core/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -60,8 +59,34 @@ export default function GameDetailScratchNow(props) {
 
     const classes = useStyles();
     const [iFrameClick, setIFrameClick] = useState(false);
+    const [gameSession, setGameSession] = useState();
     console.log('***', props)
 
+
+    const onPlayNow = () => {
+        var data = {
+            GameID: props.selectedGameDetail?.Game?.GameID,
+            EngagementID: props.selectedGameDetail.EngagementID,
+        }
+        postData(`${Gameplay_Host_URI}${GAME_LAUNCH}`, data)
+            .then(response => {
+                setGameSession(response?.GameSessionID);
+                setIFrameClick(true);
+            });
+    }
+
+    const onPlayExit = () => {
+        var data = {
+            GameSessionID: gameSession,
+            CurrentLevel: 2,
+            CurrentScore: 123
+        }
+        postData(`${Gameplay_Host_URI}${GAME_EXIT}`, data)
+            .then(response => {
+                setIFrameClick(false);
+                console.log('***', response)
+            });
+    }
 
     return (
         <div className="gamedetail-scratchnow-items">
@@ -99,14 +124,15 @@ export default function GameDetailScratchNow(props) {
                     </div>
                 </div>
                 <div id="btn-scratch-now-container" className="mt-3">
-                    <button type="button" id="btn-scratch-now" onClick={() => setIFrameClick(true)}>
+                    <button type="button" id="btn-scratch-now" onClick={onPlayNow}>
                         <span className="button-text">PLAY NOW</span>
                     </button>
                 </div>
                 {iFrameClick ? (
                     <div id="g-d-iFrame-sec">
-                        <AiOutlineClose id="g-d-iFrame-close" className="close-box m-1" title="Close Game" onClick={() => setIFrameClick(false)} />
-                        <iframe id="g-d-iFrame" src={props.selectedGameDetail.Game?.GameUrl} height='100%' width='100%' ></iframe>
+                        <AiOutlineClose id="g-d-iFrame-close" className="close-box m-1" title="Close Game" onClick={onPlayExit} />
+                        <iframe id="g-d-iFrame" src={props.selectedGameDetail?.Game?.GameUrl} height='100%' width='100%' ></iframe>
+                        {console.log('***', props.selectedGameDetail?.Game?.GameUrl)/* https://picsum.photos/400/600 */}
                     </div>
                 ) : null}
             </Fragment>

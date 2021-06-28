@@ -41,8 +41,10 @@ export const ENGAGEMENTS_DETAILS_BY_ID = '/engt/engagementdetailsbyid?engagement
 export const ENGAGEMENT_UPDATE_STATUS = '/engt/updateengagementstatus';
 export const ENGAGEMENT_BY_STATUS_ID = '/engt/engagementsbystatus?engagement_status_id=';
 
-
 export const ACTIVE_ENGAGEMENTS = '/engt/activeengagements';
 export const ENGAGEMENT_DETAILS_FOR_PLAYER = '/engt/engagementdetailsforplayer';
 
 export const PLAYER_SUMMARY = '/rept/playersummary';
+
+export const GAME_LAUNCH = '/game/gameLaunch';
+export const GAME_EXIT = '/game/gameExit';
