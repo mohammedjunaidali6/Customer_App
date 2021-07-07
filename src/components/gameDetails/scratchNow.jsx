@@ -24,37 +24,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const tempArray = [
-    {
-        id: 1,
-        lblPrize: '1st Prize',
-        lblDiscount: '50% Flat off iPhone',
-        prize: '50%',
-        discount: 'FLAT DISCOUNT'
-    },
-    {
-        id: 2,
-        lblPrize: '2nd Prize',
-        lblDiscount: '1000 Points',
-        prize: '1000',
-        discount: 'POINTS'
-    },
-    {
-        id: 3,
-        lblPrize: '3rd Prize',
-        lblDiscount: 'Rs. 300 off',
-        prize: '$300',
-        discount: 'FLAT DISCOUNT'
-    },
-    {
-        id: 4,
-        lblPrize: '4th Prize',
-        lblDiscount: 'Rs. 100 off',
-        prize: '$100',
-        discount: 'FLAT DISCOUNT'
-    }
-];
-
 export default function GameDetailScratchNow(props) {
 
     const classes = useStyles();
@@ -130,9 +99,8 @@ export default function GameDetailScratchNow(props) {
                 </div>
                 {iFrameClick ? (
                     <div id="g-d-iFrame-sec">
-                        <AiOutlineClose id="g-d-iFrame-close" className="close-box m-1" title="Close Game" onClick={onPlayExit} />
+                        {/* <AiOutlineClose id="g-d-iFrame-close" className="close-box m-1" title="Close Game" onClick={onPlayExit} /> */}
                         <iframe id="g-d-iFrame" src={props.selectedGameDetail?.Game?.GameUrl} height='100%' width='100%' ></iframe>
-                        {console.log('***', props.selectedGameDetail?.Game?.GameUrl)/* https://picsum.photos/400/600 */}
                     </div>
                 ) : null}
             </Fragment>

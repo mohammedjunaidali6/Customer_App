@@ -1,8 +1,11 @@
 export const Gateway_Host_URI = "http://localhost:806/api";
 export const Identity_Host_URI = "http://localhost:807/api";
 export const Engagement_Host_URI = "http://localhost:815/api";
-export const Gameplay_Host_URI = "http://localhost:816/api";
-export const Reporting_Host_URI = "http://localhost:818/api";
+//export const Gameplay_Host_URI = "http://localhost:816/api";
+export const Gameplay_Host_URI = "https://m28mjnsyp8.execute-api.ap-south-1.amazonaws.com/Prod/api";
+//export const Reporting_Host_URI = "http://localhost:818/api";
+export const Reporting_Host_URI = "https://wehmutx1th.execute-api.ap-south-1.amazonaws.com/Prod/api";
+export const Prod_Base_URI = 'https://fxojmluid9.execute-api.ap-south-1.amazonaws.com/Prod/api';
 
 export const gameAssetsPath = "http://localhost/blaash/ga/i/";
 
