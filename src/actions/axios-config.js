@@ -1,9 +1,8 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { Prod_Base_URI, headers } from '.././api/apiConstants';
+import { headers } from '.././api/apiConstants';
 
 export const axiosInstance = axios.create({
-    baseURL: Prod_Base_URI,
     headers: {
         "client_id": headers.client_id,
         "secret": headers.secret

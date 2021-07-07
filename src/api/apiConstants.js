@@ -1,13 +1,8 @@
-export const Gateway_Host_URI = "http://localhost:806/api";
-export const Identity_Host_URI = "http://localhost:807/api";
-export const Engagement_Host_URI = "http://localhost:815/api";
-//export const Gameplay_Host_URI = "http://localhost:816/api";
+export const Engagement_Host_URI = "https://fxojmluid9.execute-api.ap-south-1.amazonaws.com/Prod/api";
 export const Gameplay_Host_URI = "https://m28mjnsyp8.execute-api.ap-south-1.amazonaws.com/Prod/api";
-//export const Reporting_Host_URI = "http://localhost:818/api";
 export const Reporting_Host_URI = "https://wehmutx1th.execute-api.ap-south-1.amazonaws.com/Prod/api";
-export const Prod_Base_URI = 'https://fxojmluid9.execute-api.ap-south-1.amazonaws.com/Prod/api';
 
-export const gameAssetsPath = "http://localhost/blaash/ga/i/";
+export const gameAssetsPath = "http://185.151.51.83:8081/ga/";
 
 export const headers = {
     client_id: 'identity_mgt_tenant_2',//'client_1_engagement', //
@@ -43,11 +38,13 @@ export const ENGAGEMENTS_BY_ID = '/engt/engagementbyid?engagement_id=';
 export const ENGAGEMENTS_DETAILS_BY_ID = '/engt/engagementdetailsbyid?engagement_id=';
 export const ENGAGEMENT_UPDATE_STATUS = '/engt/updateengagementstatus';
 export const ENGAGEMENT_BY_STATUS_ID = '/engt/engagementsbystatus?engagement_status_id=';
-
+export const PLAYER_REWARD_HISTORY = '/engt/playerRewardsHistory';
 export const ACTIVE_ENGAGEMENTS = '/engt/activeengagements';
 export const ENGAGEMENT_DETAILS_FOR_PLAYER = '/engt/engagementdetailsforplayer';
+export const CUSTOMER_SAVINGS = '/engt/customersavings?fetchLastX=';
 
 export const PLAYER_SUMMARY = '/rept/playersummary';
 
 export const GAME_LAUNCH = '/game/gameLaunch';
 export const GAME_EXIT = '/game/gameExit';
+export const PLAYER_POINTS_BALANCE = '/game/getPlayerPointsBalance?fetchLastX=';

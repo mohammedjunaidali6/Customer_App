@@ -10,7 +10,7 @@ import UserRewardsUserInfo from "./userInfo";
 import UserDailyReward from "./userDailyReward";
 import UserWinnings from "./userWinnings";
 import { useEffect } from 'react';
-import { Engagement_Host_URI } from '../../api/apiConstants';
+import { Engagement_Host_URI, PLAYER_REWARD_HISTORY } from '../../api/apiConstants';
 import { getData } from '../../api/apiHelper';
 import { useState } from 'react';
 
@@ -46,7 +46,7 @@ export default function UserRewards(props) {
 
 
     useEffect(() => {
-        getData(`${Engagement_Host_URI}/engt/playerRewardsHistory`)
+        getData(`${Engagement_Host_URI}${PLAYER_REWARD_HISTORY}`)
             .then(allRewards => {
                 setPlayerRewardsData(allRewards);
                 props.userRewardsActionHandler.dispatchUserRewards(allRewards);

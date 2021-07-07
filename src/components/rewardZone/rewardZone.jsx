@@ -13,7 +13,7 @@ import RewardBox from "../common/rewardBox";
 import ProgressBar from "../common/progressBar";
 import { setEngagements } from "../../actions/rewardZone/rewardZoneActionHandler"
 import { getData, postData } from '../../api/apiHelper';
-import { ACTIVE_ENGAGEMENTS } from '../../api/apiConstants';
+import { ACTIVE_ENGAGEMENTS, Engagement_Host_URI } from '../../api/apiConstants';
 
 // const tempArray = [
 //     {
@@ -78,9 +78,10 @@ export default function RewardZone(props) {
 
 
     useEffect(() => {
-        getData(`${ACTIVE_ENGAGEMENTS}`).then(engagementswithGames => {
-            props.rewardZoneActionHandler.setEngagements(engagementswithGames);
-        })
+        getData(`${Engagement_Host_URI}${ACTIVE_ENGAGEMENTS}`)
+            .then(engagementswithGames => {
+                props.rewardZoneActionHandler.setEngagements(engagementswithGames);
+            })
     }, []);
 
     return (

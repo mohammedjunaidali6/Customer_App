@@ -11,7 +11,7 @@ import { containerHeightCalcFn } from "../common/global";
 import BackBanner from "../common/backBanner";
 import { useEffect } from 'react';
 import { getData } from '../../api/apiHelper';
-import { Engagement_Host_URI, Gameplay_Host_URI } from '../../api/apiConstants';
+import { CUSTOMER_SAVINGS, Engagement_Host_URI, Gameplay_Host_URI } from '../../api/apiConstants';
 import { LastXDays } from '../../constants/globalConstants';
 import store from '../../../src/store/store';
 
@@ -129,7 +129,7 @@ export default function CustomerSavings(props) {
     const filterPointsBalance = (activeIndex) => {
         setactiveIndex(activeIndex)
         let LastxDays = activeIndex == 1 ? LastXDays.LastMonth : activeIndex == 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
-        getData(`${Engagement_Host_URI}/engt/customersavings?fetchLastX=${LastxDays}`)
+        getData(`${Engagement_Host_URI}${CUSTOMER_SAVINGS}${LastxDays}`)
             .then(customerSavings => {
                 if (activeIndex == 0) {
                     setLast7DaysSavings(customerSavings);
@@ -146,7 +146,7 @@ export default function CustomerSavings(props) {
 
 
     useEffect(() => {
-        getData(`${Engagement_Host_URI}/engt/customersavings?fetchLastX=Last7Days`)
+        getData(`${Engagement_Host_URI}${CUSTOMER_SAVINGS}Last7Days`)
             .then(customerSavings => {
                 setLast7DaysSavings(customerSavings)
                 props.customerSavingsActionHandler.dispathCustomerSavings(customerSavings);

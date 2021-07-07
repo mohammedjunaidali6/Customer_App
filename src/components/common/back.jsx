@@ -45,7 +45,7 @@ export default function Back(props) {
     }
 
     useEffect(() => {
-        getData(`${Reporting_Host_URI}/rept/playersummary`).then(summary => {
+        getData(`${Reporting_Host_URI}${PLAYER_SUMMARY}`).then(summary => {
             setSummary(summary);
             props.parentProps.rewardZoneActionHandler?.setPlayerSummary(summary);
         })
