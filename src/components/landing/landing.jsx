@@ -33,10 +33,10 @@ export default function Landing(props) {
             </div> */}
             <div>
                 <img src={welcome1_src} style={{ width: '75%' }} />
-                <img src={welcome2_src} style={{ width: '90%' }} />
+                {/* <img src={welcome2_src} style={{ width: '90%' }} /> */}
             </div>
             <button type="button" className="surface" onClick={() => loginClickFn()}>
-                <span className="button-text">LOGIN</span>
+                <span className="button-text">EXPLORE</span>
             </button>
             <div className="exit">
                 Exit
