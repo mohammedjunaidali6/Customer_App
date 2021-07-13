@@ -2,12 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { headers } from '.././api/apiConstants';
 
-export const axiosInstance = axios.create({
-    headers: {
-        "client_id": headers.client_id,
-        "secret": headers.secret
-    }
-});
+export const axiosInstance = axios.create({});
 
 export const isHandlerEnabled = (config = {}) => {
     return config.hasOwnProperty('handlerEnabled') && !config.handlerEnabled ? false : true

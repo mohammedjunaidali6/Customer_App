@@ -149,6 +149,7 @@ export default function TransactionHistory(props) {
     useEffect(() => {
         getData(`${Gameplay_Host_URI}${PLAYER_POINTS_BALANCE}${LastXDays.Last7Days}`)
             .then(pointsBalance => {
+                console.log('*', pointsBalance)
                 setLast7DaysPoints(pointsBalance);
             });
     }, []);
@@ -183,8 +184,10 @@ export default function TransactionHistory(props) {
                                             <img src={gem_small_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
-                                        <div className="w-83 float-left clearfix t-h-b-contentbox">
-                                            <div className="t-h-b-header"><span>{obj.activity_name}</span></div>
+                                        <div className="w-82 float-left clearfix t-h-b-contentbox">
+                                            <div className="t-h-b-header">
+                                                <span>{`Won ${obj.value} Points by ${obj.activity_name}`}</span>
+                                            </div>
                                             <div className="t-h-b-date"><span>{convertDateToLocalDate(obj.added_on)}</span></div>
                                         </div>
                                     </div>
@@ -201,8 +204,10 @@ export default function TransactionHistory(props) {
                                             <img src={gem_small_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
-                                        <div className="w-83 float-left clearfix t-h-b-contentbox">
-                                            <div className="t-h-b-header"><span>{obj.activity_name}</span></div>
+                                        <div className="w-82 float-left clearfix t-h-b-contentbox">
+                                            <div className="t-h-b-header">
+                                                <span>{`Won ${obj.value} Points by ${obj.activity_name}`}</span>
+                                            </div>
                                             <div className="t-h-b-date"><span>{convertDateToLocalDate(obj.added_on)}</span></div>
                                         </div>
                                     </div>
@@ -219,8 +224,10 @@ export default function TransactionHistory(props) {
                                             <img src={gem_small_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
-                                        <div className="w-83 float-left clearfix t-h-b-contentbox">
-                                            <div className="t-h-b-header"><span>{obj.activity_name}</span></div>
+                                        <div className="w-82 float-left clearfix t-h-b-contentbox">
+                                            <div className="t-h-b-header">
+                                                <span>{`Won ${obj.value} Points by ${obj.activity_name}`}</span>
+                                            </div>
                                             <div className="t-h-b-date"><span>{convertDateToLocalDate(obj.added_on)}</span></div>
                                         </div>
                                     </div>

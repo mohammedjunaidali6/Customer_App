@@ -7,6 +7,8 @@ export const getData = async (resource) => {
         return handleResponse(response);
 
     } catch (error) {
+        console.error('*', error)
+
         return handleError(error);
     }
 };

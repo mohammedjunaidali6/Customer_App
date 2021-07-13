@@ -2,12 +2,10 @@ import React from 'react';
 import back_banner_src from '../../assets/img/Coupon_bg.svg'
 import group_src from '../../assets/img/transactionHistory/Group.svg';
 import rupee_src from '../../assets/img/rewardZone/rupee_home.svg';
-
 import store from '../../../src/store/store';
 
 
 export default function BackBanner(props) {
-
 
     var summary = store.getState().RewardZoneReducer?.playerSummary;
 
