@@ -131,6 +131,7 @@ export default function CustomerSavings(props) {
         let LastxDays = activeIndex == 1 ? LastXDays.LastMonth : activeIndex == 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
         getData(`${Engagement_Host_URI}${CUSTOMER_SAVINGS}${LastxDays}`)
             .then(customerSavings => {
+                console.log('***', customerSavings)
                 if (activeIndex == 0) {
                     setLast7DaysSavings(customerSavings);
                 } else if (activeIndex == 1) {
@@ -183,8 +184,10 @@ export default function CustomerSavings(props) {
                                             <img src={price_tag_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
-                                        <div className="w-83 float-left clearfix c-s-b-contentbox">
-                                            <div className="c-s-b-header"><span>{obj.DisplayName}</span></div>
+                                        <div className="float-left clearfix c-s-b-contentbox">
+                                            <div className="c-s-b-header">
+                                                <span>{`Won ${obj.AmountSaved}/- in ${obj.DisplayName}`}</span>
+                                            </div>
                                             <div className="c-s-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
                                         </div>
                                     </div>
@@ -201,8 +204,10 @@ export default function CustomerSavings(props) {
                                             <img src={price_tag_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
-                                        <div className="w-83 float-left clearfix c-s-b-contentbox">
-                                            <div className="c-s-b-header"><span>{obj.DisplayName}</span></div>
+                                        <div className="float-left clearfix c-s-b-contentbox">
+                                            <div className="c-s-b-header">
+                                                <span>{`Won ${obj.AmountSaved}/- in ${obj.DisplayName}`}</span>
+                                            </div>
                                             <div className="c-s-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
                                         </div>
                                     </div>
@@ -219,8 +224,10 @@ export default function CustomerSavings(props) {
                                             <img src={price_tag_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
-                                        <div className="w-83 float-left clearfix c-s-b-contentbox">
-                                            <div className="c-s-b-header"><span>{`Won ${obj.AmountSaved}/- in ${obj.DisplayName}`}</span></div>
+                                        <div className="float-left clearfix c-s-b-contentbox">
+                                            <div className="c-s-b-header">
+                                                <span>{`Won ${obj.AmountSaved}/- in ${obj.DisplayName}`}</span>
+                                            </div>
                                             <div className="c-s-b-date"><span>{convertDateToLocalDate(obj.RedeemedDate)}</span></div>
                                         </div>
                                     </div>

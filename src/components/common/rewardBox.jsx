@@ -14,7 +14,7 @@ export default function RewardBox(props) {
     return (
         <div className="reward-whole-box">
             <div className="reward-mask-box">
-                <img src={`${gameAssetsPath}${props.dataObj.Game?.BannerImageUrl}` || mask_src} alt="Mask" />
+                <img src={`${props.dataObj.Game?.BannerImageUrl}` || mask_src} alt="Mask" style={{ height: '88px' }} />
                 <div className="curve-div reward-item-box-bottom reward-item-box-left"></div>
                 <div className="curve-div reward-item-box-bottom reward-item-box-right"></div>
             </div>
@@ -32,7 +32,7 @@ export default function RewardBox(props) {
                 </div>
                 <div className="w-100 text-center">
                     <button type="button" className="btn-reward-item-playnow" onClick={() => props.gameDetailFn(props.dataObj)}>
-                        <span className="button-text">PLAY NOW</span>
+                        <span className="button-text">SCRATCH NOW</span>
                     </button>
                 </div>
                 <div className="w-100 dashed-line-div"></div>

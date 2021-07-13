@@ -47,6 +47,7 @@
 
 .profile-details{
   display: inline-block;
+  padding-left: 10px;
 }
 .profile-name{
   color: #3F4045;

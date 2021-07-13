@@ -3,8 +3,10 @@ import { containerHeightCalcFn } from '../common/global';
 import './landing.css';
 import logo_src from "../../assets/img/landing/logo.png";
 import welcome_src from "../../assets/img/landing/welcome.png";
-import welcome_gift_src from "../../assets/img/landing/welcome_gift.svg";
-import logo_white_src from "../../assets/img/logo_white.png";
+import welcome_gift_src from "../../assets/img/landing/giftBox.gif";
+import blaash_logo_src from "../../assets/img/landing/blaash-logo.png";
+import welcome1_src from "../../assets/img/landing/Welcome1.gif";
+import welcome2_src from "../../assets/img/landing/Welcome2.gif";
 
 export default function Landing(props) {
     useEffect(() => {
@@ -12,22 +14,26 @@ export default function Landing(props) {
     }, []);
     function loginClickFn() {
         document.body.style.overflow = "hidden";
-        props.history.push('rewardzone');
+        props.history.push('auth');
     }
 
     return (
         <div id="landing-container" className="">
             <div className="welcome-top-sec">
-                <img src={welcome_gift_src} style={{paddingTop: "64px"}} />
+                <img src={welcome_gift_src} style={{ height: '75%', paddingTop: "64px" }} />
             </div>
-            <div className="text-center">
-                <img src={logo_src} />
+            <div>
+                {/* <img src={blaash_logo_src} style={{ height: '84px', width: '180px' }} /> */}
             </div>
-            <div className="welcome-to-coupon-wo">
+            {/* <div className="welcome-to-coupon-wo">
                 Welcome to Coupon World
-            </div>
-            <div className="explore-great-coupon">
+            </div> */}
+            {/* <div className="explore-great-coupon">
                 Explore Great Coupons, Deals and Offers Let’s try How Lucky are You Today
+            </div> */}
+            <div>
+                <img src={welcome1_src} style={{ width: '75%' }} />
+                <img src={welcome2_src} style={{ width: '90%' }} />
             </div>
             <button type="button" className="surface" onClick={() => loginClickFn()}>
                 <span className="button-text">LOGIN</span>
@@ -35,13 +41,13 @@ export default function Landing(props) {
             <div className="exit">
                 Exit
             </div>
-            <div style={{height: "32px", width: "181px", margin: "0 auto", marginTop: "40px"}}>
+            <div style={{ width: "181px", margin: "0 auto", marginTop: "40px" }}>
                 <div className="powered-by">
-                    powered by
+                    Powered by
                 </div>
-                {/* <div className="powered-by-logo">
-                    <img src={logo_white_src} alt="Logo" />
-                </div> */}
+                <div>
+                    <img src={blaash_logo_src} style={{ height: '50px', width: '125px' }} alt="Logo" />
+                </div>
             </div>
         </div>
     )

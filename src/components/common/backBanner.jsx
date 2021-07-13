@@ -13,9 +13,11 @@ export default function BackBanner(props) {
 
     return (
         <div id="back-banner-container" className={`${(props.fromTransaction || props.fromCustomerSavings) ? `back-banner-container-bg` : ``}`}>
-            {props.fromRanking ? (
-                <img src={back_banner_src} title="Back Banner" className="back-banner-your-ranking" />
-            ) : null}
+            {props.fromRanking &&
+                <>
+                    <img src={back_banner_src} title="Back Banner" className="back-banner-your-ranking" />
+                </>
+            }
             {props.fromTransaction || props.fromCustomerSavings ? (
                 <div className="w-100 text-center">
                     {props.fromCustomerSavings && <img src={rupee_src} className="mt-2 currency-logo" />}
@@ -28,7 +30,7 @@ export default function BackBanner(props) {
                                         : 0}
                             </span>
                         </div>
-                        <div className="lbl-banner-pointsdesc">
+                        <div className="pt-2 lbl-banner-pointsdesc">
                             <span>{props.fromCustomerSavings ? "Total Amount Saved" : "Total Points Earned"}</span>
                         </div>
                     </div>

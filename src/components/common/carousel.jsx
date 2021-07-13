@@ -38,7 +38,7 @@ export default function GCarousel(props) {
                     onClickThumb={onClickThumb}>
                     {props.data.map((loopObj, idx) => (
                         <div key={`Carousel-Image-${idx}`}>
-                            <img src={`${gameAssetsPath}${loopObj.Game?.BannerImageUrl}`} alt={`Carousel-Image-${idx}`} />
+                            <img src={`${loopObj.Game?.BannerImageUrl}`} alt={`Carousel-Image-${idx}`} />
                             {/* <p className="legend">Legend 1</p> */}
                         </div>
                     ))}

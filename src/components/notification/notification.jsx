@@ -6,7 +6,7 @@ import defaultuser_src from "../../assets/img/gameDetails/default_user.png";
 import { Fragment } from 'react';
 // import NotificationDisplayBox from "./notificationDisplayBox.jsx";
 
-const tempArray =[
+const tempArray = [
     {
         id: 1,
         name: "Rayan Mathew",
@@ -38,17 +38,17 @@ const tempArray =[
 ]
 
 
-export default function Notification(props){
-    return(
+export default function Notification(props) {
+    return (
         <div>
             <Back fromNotification={true} parentProps={props} height="72" backTitle="Notifications" />
-             <div className='members-list' style={{height: containerHeightCalcFn(54), overflowY: 'auto'}}>
-                {tempArray.map((user)=>(
+            <div className='members-list' style={{ height: containerHeightCalcFn(54), overflowY: 'auto' }}>
+                {tempArray.map((user) => (
                     <div className='w-100 float-left clearfix notf-box'>
                         <div className='w-20 float-left clearfix'>
-                            <img src={defaultuser_src} className='profile-pic'alt=""/>
+                            <img src={defaultuser_src} className='profile-pic' alt="" />
                         </div>
-                        <div className='w-80 float-left clearfix profile-details'>
+                        <div className='w-80 pl-50 float-left clearfix profile-details'>
                             <div className='profile-name'>{user.name}</div>
                             <div className='profile-intro w-100'>{user.intro}</div>
                             <div className='date-time-container'>
@@ -60,14 +60,14 @@ export default function Notification(props){
                 ))
 
                 }
-                 
-             </div>
-                
-    
 
-         
-            
-         </div> 
+            </div>
+
+
+
+
+
+        </div>
     )
 }
 

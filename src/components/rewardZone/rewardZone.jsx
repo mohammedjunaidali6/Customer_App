@@ -3,17 +3,12 @@ import Back from "../common/back";
 import master_src from '../../assets/img/rewardZone/master.svg';
 import benefits_src from '../../assets/img/rewardZone/Benefits_home.svg';
 import invitation_src from '../../assets/img/rewardZone/invitation.svg';
-import invitation_bg_src from '../../assets/img/rewardZone/invite_bg.png';
-import basketball_src from '../../assets/img/rewardZone/game1.png';
-import bingo_src from '../../assets/img/rewardZone/game2.png';
-import { tempArray } from '../../gameData'
 import './rewardZone.css';
+import ProgressBar from '../common/progressBar';
 import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
-import ProgressBar from "../common/progressBar";
-import { setEngagements } from "../../actions/rewardZone/rewardZoneActionHandler"
 import { getData, postData } from '../../api/apiHelper';
-import { ACTIVE_ENGAGEMENTS, Engagement_Host_URI } from '../../api/apiConstants';
+import { ACTIVE_ENGAGEMENTS, Engagement_Host_URI, PLAYER_SUMMARY, Reporting_Host_URI } from '../../api/apiConstants';
 
 // const tempArray = [
 //     {
@@ -78,6 +73,9 @@ export default function RewardZone(props) {
 
 
     useEffect(() => {
+        getData(`${Reporting_Host_URI}${PLAYER_SUMMARY}`).then(summary => {
+            props.rewardZoneActionHandler?.setPlayerSummary(summary);
+        })
         getData(`${Engagement_Host_URI}${ACTIVE_ENGAGEMENTS}`)
             .then(engagementswithGames => {
                 props.rewardZoneActionHandler.setEngagements(engagementswithGames);

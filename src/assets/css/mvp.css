@@ -344,11 +344,11 @@ button[disabled]{
 }
 .ranking-item-box .ranking-item-box-content .text-rank-actual {
     font-weight: bold;
-    font-size: 32px;
+    font-size: 20px;
 }
 .ranking-item-box .ranking-item-box-content .text-rank-of {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
 }
 #back-container .back-container-content {
   padding: 27px;

@@ -18,6 +18,7 @@ import NotificationContainer from "../containers/notification/notificationContai
 import StatusContainer from "../containers/status/statusContainer";
 import CustomerSavingsContatiner from '../containers/CustomerSavings/CustomerSavingsContainer';
 import Loader from '../components/common/Spinner/spinner';
+import Auth from '../components/auth/auth';
 
 export default function AppRoute() {
   InterceptorsFn();
@@ -29,6 +30,7 @@ export default function AppRoute() {
           <Switch>
             {/* <Route exact path="/" component={HomeContatiner}/> */}
             <Route exact path="/" component={Landing} />
+            <Route exact path="/auth" component={Auth} />
             <Route exact path="/login" component={LoginContatiner} />
             <Route exact path="/ranking" component={Ranking} />
             <Route exact path="/rewardzone" component={RewardZoneContatiner} />

@@ -2,10 +2,9 @@ import React, { useEffect, Fragment } from 'react';
 import { BsFillBellFill } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import { Modal } from 'react-responsive-modal';
-
 import point_box_src from '../../assets/img/rewardZone/gem_home.svg';
 import trophy_src from '../../assets/img/rewardZone/trophy_home.svg';
-import rank_src from '../../assets/img/rewardZone/Rank__home.svg';
+import rank_src from '../../assets/img/rewardZone/Rank_home.svg';
 import rupee_src from '../../assets/img/rewardZone/rupee_home.svg';
 import share_src from '../../assets/img/gameDetails/share.svg';
 import { getData } from '../../api/apiHelper';
@@ -16,7 +15,7 @@ import { useState } from 'react';
 export default function Back(props) {
 
     const [open, setOpen] = React.useState(false);
-    const [summary, setSummary] = useState();
+    const [summary, setSummary] = useState(props.parentProps?.playerSummary);
 
 
     function bactToRewardFn() {
@@ -44,12 +43,6 @@ export default function Back(props) {
         props.parentProps.history.push('/notification');
     }
 
-    useEffect(() => {
-        getData(`${Reporting_Host_URI}${PLAYER_SUMMARY}`).then(summary => {
-            setSummary(summary);
-            props.parentProps.rewardZoneActionHandler?.setPlayerSummary(summary);
-        })
-    }, []);
 
     return (
         // default back container height will be 128px
@@ -73,8 +66,17 @@ export default function Back(props) {
                     ) : null}
                     {!props.fromNotification && !props.fromGameDetail && !props.fromLeaderBoard ? (
                         <Fragment>
-                            <BsFillBellFill className={`notification-box ${props.fromTransactionHistory || props.fromUserRewards || props.fromRanking || props.fromStatus ? `` : `mr-2`}`} onClick={() => notificationFn()} ></BsFillBellFill>
-                            <span className={`notification-count ${props.fromTransactionHistory || props.fromUserRewards || props.fromRanking || props.fromStatus ? `n-c-right20` : ``}`} >6</span>
+                            <BsFillBellFill
+                                className={`notification-box ${props.fromTransactionHistory || props.fromUserRewards || props.fromRanking || props.fromStatus ? `` : `mr-2`}`}
+                                onClick={() => notificationFn()}
+                            >
+                            </BsFillBellFill>
+                            <span
+                                className={`notification-count ${props.fromTransactionHistory || props.fromUserRewards || props.fromRanking || props.fromStatus ? `n-c-right20` : ``}`}
+                                onClick={() => notificationFn()}
+                            >
+                                6
+                            </span>
                         </Fragment>
                     ) : null}
                     {/* <div className="notification-box">
