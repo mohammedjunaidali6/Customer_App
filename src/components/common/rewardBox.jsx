@@ -32,7 +32,7 @@ export default function RewardBox(props) {
                 </div>
                 <div className="w-100 text-center">
                     <button type="button" className="btn-reward-item-playnow" onClick={() => props.gameDetailFn(props.dataObj)}>
-                        <span className="button-text">SCRATCH NOW</span>
+                        <span className="button-text">PLAY NOW</span>
                     </button>
                 </div>
                 <div className="w-100 dashed-line-div"></div>

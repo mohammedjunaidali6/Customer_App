@@ -13,10 +13,9 @@ import { useState } from 'react';
 // import { GlobalModal } from "./global";
 
 export default function Back(props) {
-
+    console.log('****', props)
     const [open, setOpen] = React.useState(false);
-    const [summary, setSummary] = useState(props.parentProps?.playerSummary);
-
+    const summary = props.parentProps?.playerSummary;
 
     function bactToRewardFn() {
         if (props.backTitle && props.backTitle === 'Notifications') { return false; }
