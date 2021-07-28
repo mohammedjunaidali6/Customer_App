@@ -1,7 +1,26 @@
 import { axiosInstance } from '../actions/axios-config';
 
-export const getData = async (resource) => {
+function addHeaders(serviceType) {
+    let apiKey = '';
+    switch (serviceType) {
+        case 'GAME':
+            apiKey = 'jfvVfOe3bm5oEvY9yn0Ar9FUPLAvpMzu7HPb8XRw';
+            break;
+        case 'ENGT':
+        case 'REPT':
+        case 'EVNT':
+        case 'IDTY':
+        case 'TNET':
+            apiKey = 'MXqO3cDcr492OTPGZZAot7akPvLmfKbA4bKt5Ryr';
+            break;
+    }
+    axiosInstance.defaults.headers.common['x-api-key'] = apiKey;
+    axiosInstance.defaults.headers.common['x-tenant-key'] = 'TENANT#KEY';
+}
+
+export const getData = async (resource, serviceType) => {
     try {
+        addHeaders(serviceType);
         const response = await axiosInstance.get(resource);
 
         return handleResponse(response);
@@ -13,8 +32,9 @@ export const getData = async (resource) => {
     }
 };
 
-export const postData = async (resource, postData) => {
+export const postData = async (resource, postData, serviceType) => {
     try {
+        addHeaders(serviceType);
         const response = await axiosInstance.post(resource, postData);
 
         return handleResponse(response);
@@ -23,6 +43,7 @@ export const postData = async (resource, postData) => {
         return handleError(error);
     }
 };
+
 
 
 function handleResponse(response) {
@@ -37,8 +58,4 @@ function handleResponse(response) {
 function handleError(error) {
     console.error(`*** `, error.message)
     return null;
-    if (error.data) {
-        return error.data;
-    }
-    return error;
 }

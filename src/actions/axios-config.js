@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import { headers } from '.././api/apiConstants';
 
 export const axiosInstance = axios.create({});
 

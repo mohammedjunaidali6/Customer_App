@@ -12,7 +12,7 @@ import { containerHeightCalcFn } from "../common/global";
 import BackBanner from "../common/backBanner";
 import { useEffect } from 'react';
 import { getData } from '../../api/apiHelper';
-import { Gameplay_Host_URI, PLAYER_POINTS_BALANCE } from '../../api/apiConstants';
+import { Gameplay_Host_URI, GAME_PROD_HOST_URI, PLAYER_POINTS_BALANCE, SERVICE_TYPE } from '../../api/apiConstants';
 import { LastXDays } from '../../constants/globalConstants';
 
 
@@ -130,7 +130,7 @@ export default function TransactionHistory(props) {
     const filterPointsBalance = (activeIndex) => {
         setactiveIndex(activeIndex)
         let LastxDays = activeIndex == 1 ? LastXDays.LastMonth : activeIndex == 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
-        getData(`${Gameplay_Host_URI}${PLAYER_POINTS_BALANCE}${LastxDays}`)
+        getData(`${GAME_PROD_HOST_URI}${PLAYER_POINTS_BALANCE}${LastxDays}`, SERVICE_TYPE.GAME)
             .then(pointsBalance => {
                 if (activeIndex == 0) {
                     setLast7DaysPoints(pointsBalance);
@@ -147,7 +147,7 @@ export default function TransactionHistory(props) {
 
 
     useEffect(() => {
-        getData(`${Gameplay_Host_URI}${PLAYER_POINTS_BALANCE}${LastXDays.Last7Days}`)
+        getData(`${GAME_PROD_HOST_URI}${PLAYER_POINTS_BALANCE}${LastXDays.Last7Days}`, SERVICE_TYPE.GAME)
             .then(pointsBalance => {
                 console.log('*', pointsBalance)
                 setLast7DaysPoints(pointsBalance);

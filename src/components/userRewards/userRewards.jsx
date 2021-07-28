@@ -10,43 +10,17 @@ import UserRewardsUserInfo from "./userInfo";
 import UserDailyReward from "./userDailyReward";
 import UserWinnings from "./userWinnings";
 import { useEffect } from 'react';
-import { Engagement_Host_URI, PLAYER_REWARD_HISTORY } from '../../api/apiConstants';
+import { ENGT_PROD_HOST_URI, PLAYER_REWARD_HISTORY, SERVICE_TYPE } from '../../api/apiConstants';
 import { getData } from '../../api/apiHelper';
 import { useState } from 'react';
 
-const tempArray = [
-    {
-        id: 1,
-        logo: trophy_src,
-        text: 'All Rewards',
-        active: true
-    },
-    {
-        id: 2,
-        logo: unclaimed_src,
-        text: 'Unclaimed',
-        active: false
-    },
-    {
-        id: 3,
-        logo: expiringsoon_src,
-        text: 'Expiring soon',
-        active: false
-    },
-    {
-        id: 4,
-        logo: missed_src,
-        text: 'Missed',
-        active: false
-    }
-];
 
 export default function UserRewards(props) {
     const [PlayerRewardsData, setPlayerRewardsData] = useState();
 
 
     useEffect(() => {
-        getData(`${Engagement_Host_URI}${PLAYER_REWARD_HISTORY}`)
+        getData(`${ENGT_PROD_HOST_URI}${PLAYER_REWARD_HISTORY}`, SERVICE_TYPE.ENGT)
             .then(allRewards => {
                 setPlayerRewardsData(allRewards);
                 props.userRewardsActionHandler.dispatchUserRewards(allRewards);

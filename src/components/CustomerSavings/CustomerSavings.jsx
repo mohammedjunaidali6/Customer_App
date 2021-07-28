@@ -4,97 +4,15 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import Back from "../common/back";
-import gem_small_src from '../../assets/img/transactionHistory/gem_small.svg';
 import price_tag_src from '../../assets/img/transactionHistory/price-tag.svg';
 import './CustomerSavings.css';
 import { containerHeightCalcFn } from "../common/global";
 import BackBanner from "../common/backBanner";
 import { useEffect } from 'react';
 import { getData } from '../../api/apiHelper';
-import { CUSTOMER_SAVINGS, Engagement_Host_URI, Gameplay_Host_URI } from '../../api/apiConstants';
+import { CUSTOMER_SAVINGS, ENGT_PROD_HOST_URI, SERVICE_TYPE } from '../../api/apiConstants';
 import { LastXDays } from '../../constants/globalConstants';
-import store from '../../../src/store/store';
 
-const tempArray = [
-    {
-        id: 1,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 2,
-        offerText: 'Earned 200 points on Mega coupon',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 3,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'lastyear'
-    },
-    {
-        id: 4,
-        offerText: 'Earned 200 points on Mega coupon',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 5,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'lastmonth'
-    },
-    {
-        id: 6,
-        offerText: 'Earned 200 points on Mega coupon',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 7,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'lastmonth'
-    },
-    {
-        id: 8,
-        offerText: 'Earned 200 points on Mega coupon',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 9,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 10,
-        offerText: 'Earned 200 points on Mega coupon',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 11,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 12,
-        offerText: 'Earned 200 points on Mega coupon',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 13,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'last10'
-    }
-];
 
 function TabCotainer(props) {
     return (
@@ -129,9 +47,8 @@ export default function CustomerSavings(props) {
     const filterPointsBalance = (activeIndex) => {
         setactiveIndex(activeIndex)
         let LastxDays = activeIndex == 1 ? LastXDays.LastMonth : activeIndex == 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
-        getData(`${Engagement_Host_URI}${CUSTOMER_SAVINGS}${LastxDays}`)
+        getData(`${ENGT_PROD_HOST_URI}${CUSTOMER_SAVINGS}${LastxDays}`, SERVICE_TYPE.ENGT)
             .then(customerSavings => {
-                console.log('***', customerSavings)
                 if (activeIndex == 0) {
                     setLast7DaysSavings(customerSavings);
                 } else if (activeIndex == 1) {
@@ -147,7 +64,7 @@ export default function CustomerSavings(props) {
 
 
     useEffect(() => {
-        getData(`${Engagement_Host_URI}${CUSTOMER_SAVINGS}Last7Days`)
+        getData(`${ENGT_PROD_HOST_URI}${CUSTOMER_SAVINGS}Last7Days`, SERVICE_TYPE.ENGT)
             .then(customerSavings => {
                 setLast7DaysSavings(customerSavings)
                 props.customerSavingsActionHandler.dispathCustomerSavings(customerSavings);

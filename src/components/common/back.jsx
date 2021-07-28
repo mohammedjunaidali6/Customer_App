@@ -7,13 +7,9 @@ import trophy_src from '../../assets/img/rewardZone/trophy_home.svg';
 import rank_src from '../../assets/img/rewardZone/Rank_home.svg';
 import rupee_src from '../../assets/img/rewardZone/rupee_home.svg';
 import share_src from '../../assets/img/gameDetails/share.svg';
-import { getData } from '../../api/apiHelper';
-import { Reporting_Host_URI, PLAYER_SUMMARY } from '../../api/apiConstants';
-import { useState } from 'react';
-// import { GlobalModal } from "./global";
+
 
 export default function Back(props) {
-    console.log('****', props)
     const [open, setOpen] = React.useState(false);
     const summary = props.parentProps?.playerSummary;
 

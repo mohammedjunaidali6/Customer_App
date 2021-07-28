@@ -7,46 +7,19 @@ import './rewardZone.css';
 import ProgressBar from '../common/progressBar';
 import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
-import { getData, postData } from '../../api/apiHelper';
-import { ACTIVE_ENGAGEMENTS, Engagement_Host_URI, PLAYER_SUMMARY, Reporting_Host_URI } from '../../api/apiConstants';
+import { getData } from '../../api/apiHelper';
+import {
+    ACTIVE_ENGAGEMENTS,
+    CREATE_GAME_PLAY,
+    ENGT_PROD_HOST_URI,
+    GAME_PROD_HOST_URI,
+    PLAYER_SUMMARY,
+    REPT_PROD_HOST_URI,
+    SERVICE_TYPE
+} from '../../api/apiConstants';
 
-// const tempArray = [
-//     {
-//         id: 1, 
-//         winners: 14, 
-//         amountWon: 1247, 
-//         logo: basketball_src, 
-//         offerText: '3 Lucky Winners to Get 50% of an iPhone',
-//         progress: 47
-//     },
-//     {
-//         id: 2, 
-//         winners: 147, 
-//         amountWon: 35789, 
-//         logo: bingo_src, 
-//         offerText: 'Enjoy Free Shipping for Next 3 Months',
-//         progress: 21
-//     },
-//     {
-//         id: 3, 
-//         winners: 87, 
-//         amountWon: 5897, 
-//         logo: null, 
-//         offerText: 'Exclusive 18 % on All Shoes for Purchases',
-//         progress: 67
-//     },
-//     {
-//         id: 4, 
-//         winners: 173, 
-//         amountWon: 87542, 
-//         logo: null, 
-//         offerText: 'Jackpot reward of INR 1000 on Next 10 Purchases',
-//         progress: 87
-//     }
-// ];
 
 export default function RewardZone(props) {
-    console.log('***', props)
 
     function rewardOpenFn() {
         props.history.push('/userrewards');
@@ -73,10 +46,11 @@ export default function RewardZone(props) {
 
 
     useEffect(() => {
-        getData(`${Reporting_Host_URI}${PLAYER_SUMMARY}`).then(summary => {
-            props.rewardZoneActionHandler?.setPlayerSummary(summary);
-        })
-        getData(`${Engagement_Host_URI}${ACTIVE_ENGAGEMENTS}`)
+        getData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`, SERVICE_TYPE.REPT)
+            .then(summary => {
+                props.rewardZoneActionHandler?.setPlayerSummary(summary);
+            })
+        getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
             .then(engagementswithGames => {
                 props.rewardZoneActionHandler.setEngagements(engagementswithGames);
             })

@@ -16,7 +16,7 @@ import GameDetailHowToPlay from "./howToPlay";
 import GCarousel from '../common/carousel';
 import './gameDetails.css';
 import { postData } from '../../api/apiHelper';
-import { ENGAGEMENT_DETAILS_FOR_PLAYER, Engagement_Host_URI } from '../../api/apiConstants';
+import { ENGAGEMENT_DETAILS_FOR_PLAYER, Engagement_Host_URI, ENGT_PROD_HOST_URI, SERVICE_TYPE } from '../../api/apiConstants';
 
 
 const tempArray = [
@@ -69,9 +69,9 @@ export default function GameDetail(props) {
             EngagementID: selectedEngagement.EngagementID,
             JourneyID: selectedEngagement.JourneyID
         }
-        postData(`${Engagement_Host_URI}${ENGAGEMENT_DETAILS_FOR_PLAYER}`, requestData)
+        postData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_DETAILS_FOR_PLAYER}`, requestData, SERVICE_TYPE.ENGT)
             .then(engagementDetails => {
-                console.log('****', engagementDetails);
+                console.log('***', engagementDetails)
                 setEngagementDetails(engagementDetails);
             })
     }, [selectedEngagement])

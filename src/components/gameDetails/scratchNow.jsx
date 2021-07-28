@@ -1,16 +1,12 @@
 import React, { useState, Fragment } from 'react';
 import ProgressBar from "../common/progressBar";
-import iFrame from 'react-iframe';
-import { AiOutlineClose } from "react-icons/ai";
 import group1 from '../../assets/img/gameDetails/Group1.svg';
 import group2 from '../../assets/img/gameDetails/Group2.svg';
 import group3 from '../../assets/img/gameDetails/Group3.svg';
-import Iframe from 'react-iframe';
-import { gameAssetsPath, Gameplay_Host_URI, GAME_EXIT, GAME_LAUNCH } from '../../api/apiConstants';
-import { useEffect } from 'react';
-import { getData, postData } from '../../api/apiHelper';
-import Tooltip from '@material-ui/core/Tooltip';
+import { GAME_PROD_HOST_URI, GAME_LAUNCH, SERVICE_TYPE } from '../../api/apiConstants';
+import { postData } from '../../api/apiHelper';
 import { makeStyles } from '@material-ui/core/styles';
+import { useEffect } from 'react';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -25,11 +21,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GameDetailScratchNow(props) {
-
     const classes = useStyles();
     const [iFrameClick, setIFrameClick] = useState(false);
     const [gameSession, setGameSession] = useState();
-    console.log('***', props)
 
 
     const onPlayNow = () => {
@@ -37,25 +31,19 @@ export default function GameDetailScratchNow(props) {
             GameID: props.selectedGameDetail?.Game?.GameID,
             EngagementID: props.selectedGameDetail.EngagementID,
         }
-        postData(`${Gameplay_Host_URI}${GAME_LAUNCH}`, data)
+        postData(`${GAME_PROD_HOST_URI}${GAME_LAUNCH}`, data, SERVICE_TYPE.GAME)
             .then(response => {
                 setGameSession(response?.GameSessionID);
                 setIFrameClick(true);
             });
     }
+    useEffect(() => {
+        var IDs = props.JourneyTasks.map(j => j.EventID);
+        console.log('***', IDs)
+        // Call GetJourneyStatus(List<JourneyIds> , customerEnagegementTime)
+        // Return Completed/Pending
 
-    const onPlayExit = () => {
-        var data = {
-            GameSessionID: gameSession,
-            CurrentLevel: 2,
-            CurrentScore: 123
-        }
-        postData(`${Gameplay_Host_URI}${GAME_EXIT}`, data)
-            .then(response => {
-                setIFrameClick(false);
-                console.log('***', response)
-            });
-    }
+    }, [])
 
     return (
         <div className="gamedetail-scratchnow-items">

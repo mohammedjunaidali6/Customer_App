@@ -1,13 +1,18 @@
-export const Engagement_Host_URI = "https://fxojmluid9.execute-api.ap-south-1.amazonaws.com/Prod/api";
-export const Gameplay_Host_URI = "https://m28mjnsyp8.execute-api.ap-south-1.amazonaws.com/Prod/api";
-export const Reporting_Host_URI = "https://wehmutx1th.execute-api.ap-south-1.amazonaws.com/Prod/api";
+export const ENGT_PROD_HOST_URI = "https://fxojmluid9.execute-api.ap-south-1.amazonaws.com/Prod/api";
+export const GAME_PROD_HOST_URI = "https://m28mjnsyp8.execute-api.ap-south-1.amazonaws.com/Prod/api";
+export const REPT_PROD_HOST_URI = "https://wehmutx1th.execute-api.ap-south-1.amazonaws.com/Prod/api";
+export const IDTY_PROD_HOST_URI = "https://frg6g6wml9.execute-api.ap-south-1.amazonaws.com/Prod/api";
+
+export const SERVICE_TYPE = {
+  GAME: 'GAME',
+  ENGT: 'ENGT',
+  REPT: 'REPT',
+  EVNT: 'EVNT',
+  IDTY: 'IDTY',
+  TNET: 'TNET',
+}
 
 export const gameAssetsPath = "http://185.151.51.83:8081/ga/";
-
-export const headers = {
-    client_id: 'identity_mgt_tenant_2',//'client_1_engagement', //
-    secret: 'XsrRvPkMHmXkkFeW'
-}
 
 export const USER_BY_FILTERS = "/idty/userbyfilter";
 export const INVITE_USER = "/idty/admin/inviteuser";
@@ -46,5 +51,6 @@ export const CUSTOMER_SAVINGS = '/engt/customersavings?fetchLastX=';
 export const PLAYER_SUMMARY = '/rept/playersummary';
 
 export const GAME_LAUNCH = '/game/gameLaunch';
+export const CREATE_GAME_PLAY = '/game/createGamePlay?engagement_id=';
 export const GAME_EXIT = '/game/gameExit';
 export const PLAYER_POINTS_BALANCE = '/game/getPlayerPointsBalance?fetchLastX=';
