@@ -2,6 +2,7 @@ export const ENGT_PROD_HOST_URI = "https://fxojmluid9.execute-api.ap-south-1.ama
 export const GAME_PROD_HOST_URI = "https://m28mjnsyp8.execute-api.ap-south-1.amazonaws.com/Prod/api";
 export const REPT_PROD_HOST_URI = "https://wehmutx1th.execute-api.ap-south-1.amazonaws.com/Prod/api";
 export const IDTY_PROD_HOST_URI = "https://frg6g6wml9.execute-api.ap-south-1.amazonaws.com/Prod/api";
+export const EVNT_PROD_HOST_URI = "http://localhost:817/api";
 
 export const SERVICE_TYPE = {
   GAME: 'GAME',
@@ -11,24 +12,11 @@ export const SERVICE_TYPE = {
   IDTY: 'IDTY',
   TNET: 'TNET',
 }
+export const getCustomerID = 10;
 
 export const gameAssetsPath = "http://185.151.51.83:8081/ga/";
 
-export const USER_BY_FILTERS = "/idty/userbyfilter";
-export const INVITE_USER = "/idty/admin/inviteuser";
-export const UPDATE_USER = "/idty/updateuser";
-export const DELETE_USER = "/idty/deleteuser";
-export const GROUP_ADDEDIT = "/idty/groupaddedit";
-export const DELETE_GROUP = "/idty/deletegroup";
-export const GROUP_ALL = "/idty/group/all";
-export const PERMISSION_ALL = "/idty/permission/all";
-export const ADD_USER_TO_GROUP = "/idty/addusertogroup";
-export const REMOVE_USER_TO_GROUP = "/idty/removeusertogroup";
-export const USER_BY_USERNAME = "/idty/userbyusername";
-export const GET_GROUPS = "/idty/getgroups";
-export const ADD_NEWGROUP = "/idty/addnewgroup";
-export const GROUP_BY_GROUPNAME = "/idty/groupbygroupname";
-
+//ENGAGEMENT URIs
 export const ENGAGEMENTS_BY_FILTERS = "/engt/engagementbyfilters";
 export const CUSTOMERS_BY_FILTERS = "/engt/customersbyfilters";
 export const REWARD_BY_FILTERS = "/engt/rewardbyfilters";
@@ -48,9 +36,32 @@ export const ACTIVE_ENGAGEMENTS = '/engt/activeengagements';
 export const ENGAGEMENT_DETAILS_FOR_PLAYER = '/engt/engagementdetailsforplayer';
 export const CUSTOMER_SAVINGS = '/engt/customersavings?fetchLastX=';
 
-export const PLAYER_SUMMARY = '/rept/playersummary';
+//EVENT URIs
+export const JOURNEY_TASK_STATUS = '/evnt/journeyTaskStatus';
 
+
+//GAME URIs
 export const GAME_LAUNCH = '/game/gameLaunch';
 export const CREATE_GAME_PLAY = '/game/createGamePlay?engagement_id=';
 export const GAME_EXIT = '/game/gameExit';
 export const PLAYER_POINTS_BALANCE = '/game/getPlayerPointsBalance?fetchLastX=';
+
+//IDENTITY URIs
+export const USER_BY_FILTERS = "/idty/userbyfilter";
+export const INVITE_USER = "/idty/admin/inviteuser";
+export const UPDATE_USER = "/idty/updateuser";
+export const DELETE_USER = "/idty/deleteuser";
+export const GROUP_ADDEDIT = "/idty/groupaddedit";
+export const DELETE_GROUP = "/idty/deletegroup";
+export const GROUP_ALL = "/idty/group/all";
+export const PERMISSION_ALL = "/idty/permission/all";
+export const ADD_USER_TO_GROUP = "/idty/addusertogroup";
+export const REMOVE_USER_TO_GROUP = "/idty/removeusertogroup";
+export const USER_BY_USERNAME = "/idty/userbyusername";
+export const GET_GROUPS = "/idty/getgroups";
+export const ADD_NEWGROUP = "/idty/addnewgroup";
+export const GROUP_BY_GROUPNAME = "/idty/groupbygroupname";
+
+
+//REPORT URIs
+export const PLAYER_SUMMARY = '/rept/playersummary';

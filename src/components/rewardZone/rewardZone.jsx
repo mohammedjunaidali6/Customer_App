@@ -9,13 +9,11 @@ import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
 import { getData } from '../../api/apiHelper';
 import {
-    ACTIVE_ENGAGEMENTS,
-    CREATE_GAME_PLAY,
     ENGT_PROD_HOST_URI,
-    GAME_PROD_HOST_URI,
-    PLAYER_SUMMARY,
     REPT_PROD_HOST_URI,
-    SERVICE_TYPE
+    SERVICE_TYPE,
+    ACTIVE_ENGAGEMENTS,
+    PLAYER_SUMMARY,
 } from '../../api/apiConstants';
 
 
@@ -69,7 +67,7 @@ export default function RewardZone(props) {
             <div id="reward-zone-container" className="" style={{ height: containerHeightCalcFn(190), overflowY: 'auto', paddingBottom: '27px' }}>
                 <div id="reward-zone-status-container">
                     <div className="reward-zone-status-logo">
-                        <img src={master_src} />
+                        <img src={master_src} alt='' />
                     </div>
                     <div className="reward-zone-status-divider"></div>
                     <div className="reward-zone-status-content" onClick={() => statusFn()}>
@@ -81,14 +79,14 @@ export default function RewardZone(props) {
                             <span className="reward-zone-status-msg">Perform 2 more task to reach Status B</span>
                         </div>
                         <div>
-                            <img className="reward-zone-status-benefit-icon" src={benefits_src} />
+                            <img className="reward-zone-status-benefit-icon" src={benefits_src} alt='' />
                             <div className="reward-zone-status-benefit-msg">Benifit of status update</div>
                         </div>
                     </div>
                 </div>
                 <div className="reward-zone-invite-container">
                     <div className="reward-zone-invite-logo">
-                        <img src={invitation_src} />
+                        <img src={invitation_src} alt='' />
                     </div>
                     <div className="reward-zone-invite-content">
                         <div>
@@ -99,6 +97,7 @@ export default function RewardZone(props) {
                         </div>
                     </div>
                 </div>
+                {/* HERE, Corousol of BANNER IMAGES with ENGT click functionality */}
                 <div className="reward-zone-handpicked-header text-bold">Handpick Challenges for you to get Lucky!!</div>
                 {props.engagements && props.engagements.length > 0 ? (
                     <div className="reward-zone-handpicked-items">

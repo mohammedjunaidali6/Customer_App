@@ -2,7 +2,6 @@ import React from 'react';
 import { Carousel } from "react-responsive-carousel";
 import { CAROUSEL_INTERVAL } from "../../constants/globalConstants";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { gameAssetsPath } from '../../api/apiConstants';
 
 
 export default function GCarousel(props) {

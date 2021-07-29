@@ -1,12 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
 import { ThemeProvider } from '../contexts/themeContext';
 import InterceptorsFn from "./interceptor";
 import { bodyOverflowHiddenFn } from "../components/common/global";
 import NotFound from '../components/common/notFound.jsx';
 import Landing from '../components/landing/landing.jsx';
-import HomeContatiner from '../containers/home/homeContainer';
 import LoginContatiner from '../containers/login/loginContainer';
 import Ranking from '../components/ranking/ranking';
 import RewardZoneContatiner from "../containers/rewardZone/rewardZoneContainer";

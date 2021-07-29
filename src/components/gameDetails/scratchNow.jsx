@@ -1,13 +1,19 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import ProgressBar from "../common/progressBar";
 import group1 from '../../assets/img/gameDetails/Group1.svg';
 import group2 from '../../assets/img/gameDetails/Group2.svg';
 import group3 from '../../assets/img/gameDetails/Group3.svg';
-import { GAME_PROD_HOST_URI, GAME_LAUNCH, SERVICE_TYPE } from '../../api/apiConstants';
 import { postData } from '../../api/apiHelper';
 import { makeStyles } from '@material-ui/core/styles';
-import { useEffect } from 'react';
-
+import Loader from '../common/Spinner/spinner';
+import {
+    GAME_PROD_HOST_URI,
+    GAME_LAUNCH,
+    SERVICE_TYPE,
+    EVNT_PROD_HOST_URI,
+    JOURNEY_TASK_STATUS,
+    getCustomerID
+} from '../../api/apiConstants';
 
 const useStyles = makeStyles((theme) => ({
     fab: {
@@ -21,10 +27,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GameDetailScratchNow(props) {
+    console.log('**', props)
     const classes = useStyles();
     const [iFrameClick, setIFrameClick] = useState(false);
     const [gameSession, setGameSession] = useState();
-
+    const [taskStatuses, setTaskStatuses] = useState([]);
+    const [loadingTasks, setLoadingTasks] = useState(false);
 
     const onPlayNow = () => {
         var data = {
@@ -37,12 +45,29 @@ export default function GameDetailScratchNow(props) {
                 setIFrameClick(true);
             });
     }
-    useEffect(() => {
-        var IDs = props.JourneyTasks.map(j => j.EventID);
-        console.log('***', IDs)
-        // Call GetJourneyStatus(List<JourneyIds> , customerEnagegementTime)
-        // Return Completed/Pending
 
+    useEffect(() => {
+        if (Array.isArray(props.engagementDetails.JourneyTasks)) {
+            setLoadingTasks(true);
+            var data = {
+                CustomerID: getCustomerID,
+                CustomerEngagedDateTime: props.engagementDetails.GamePlay.customer_engaged_datetime,
+                EventsData: props.engagementDetails.JourneyTasks.map(j => {
+                    return {
+                        EventID: j.EventID,
+                        EventValue: j.Value
+                    }
+                })
+            };
+            postData(`${EVNT_PROD_HOST_URI}${JOURNEY_TASK_STATUS}`, data, SERVICE_TYPE.EVNT)
+                .then(data => {
+                    console.log('**', data);
+                    setTaskStatuses(data.JourneyTaskStatuses);
+                    setLoadingTasks(false);
+                })
+        } else {
+            console.log('** There are NO Journey Tasks');
+        }
     }, [])
 
     return (
@@ -53,23 +78,30 @@ export default function GameDetailScratchNow(props) {
                     null}
                 <div className="scratchnow-small-header">Scrach more to win </div>
                 <div className="scratchnow-item-container">
-                    {props.JourneyTasks && props.JourneyTasks.length > 0 ? (
-                        <div className={props.JourneyTasks.length < 3 ? 'scratchnow-items-center' : ''}>
-                            {props.JourneyTasks.map((jObj, idx) => (
+                    <Loader show={loadingTasks} />
+                    {Array.isArray(taskStatuses) && taskStatuses.length > 0 &&
+                        <div className={taskStatuses.length < 3 ? 'scratchnow-items-center' : ''}>
+                            {taskStatuses.map((taskStatus, idx) => (
                                 <div className="scratchnow-box float-left clearfix" key={`scratchnow-box-${idx}`}>
                                     <div className="scratch-box-logo">
                                         <img src={(idx + 1) === 1 ? group1 : ((idx + 1) === 2 ? group2 : group3)} />
                                     </div>
                                     <div className="scratchnow-box-header">
-                                        <div style={{ wordBreak: 'break-word' }} >{jObj.EventDisplayName}</div>
+                                        <div style={{ wordBreak: 'break-word' }} >{taskStatus.EventName}</div>
                                     </div>
                                     <div className="scratchnow-box-desc">
-                                        <div className="txt-clamp-1">{jObj.status || 'Not completed'}</div>
+                                        <div className="txt-clamp-1">
+                                            {taskStatus.HasCompleted ?
+                                                'Completed'
+                                                :
+                                                taskStatus.Pending + ' Items are pending'
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             ))}
                         </div>
-                    ) : null}
+                    }
                 </div>
                 <div className="w-100 float-left clearfix ">
                     <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
@@ -87,8 +119,13 @@ export default function GameDetailScratchNow(props) {
                 </div>
                 {iFrameClick ? (
                     <div id="g-d-iFrame-sec">
-                        {/* <AiOutlineClose id="g-d-iFrame-close" className="close-box m-1" title="Close Game" onClick={onPlayExit} /> */}
-                        <iframe id="g-d-iFrame" src={props.selectedGameDetail?.Game?.GameUrl} height='100%' width='100%' ></iframe>
+                        {/* <AiOutlineClose id="g-d-iFrame-close" className="close-box m-1" title="Close Game" /> */}
+                        <iframe
+                            id="g-d-iFrame"
+                            src={props.selectedGameDetail?.Game?.GameUrl}
+                            height='100%'
+                            width='100%'
+                        ></iframe>
                     </div>
                 ) : null}
             </Fragment>
