@@ -33,7 +33,7 @@ export default function GameDetailScratchNow(props) {
     // console.log('**', props)
     const classes = useStyles();
     const [iFrameClick, setIFrameClick] = useState(false);
-    const [gameSession, setGameSession] = useState();
+    const [token, setToken] = useState();
     const [taskStatuses, setTaskStatuses] = useState([]);
     const [loadingTasks, setLoadingTasks] = useState(false);
 
@@ -44,7 +44,7 @@ export default function GameDetailScratchNow(props) {
         }
         postData(`${GAME_PROD_HOST_URI}${GAME_LAUNCH}`, data, SERVICE_TYPE.GAME)
             .then(response => {
-                setGameSession(response?.GameSessionID);
+                setToken(response?.Token);
                 setIFrameClick(true);
             });
     }
@@ -109,8 +109,8 @@ export default function GameDetailScratchNow(props) {
                                         {/* <div style={{ wordBreak: 'break-word' }} ></div> */}
                                     </div>
                                     <div className="scratchnow-box-desc">
-                                        <div className="txt-clamp-1">
-                                            {taskStatus.HasCompleted ? 'Completed' : taskStatus.Pending + ' pending'}
+                                        <div className="txt-clamp-1" style={{ color: taskStatus.HasCompleted ? '#72eb63' : '#eb6363' }}>
+                                            {taskStatus.HasCompleted ? 'Completed' : taskStatus.Pending + ' tasks Pending'}
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@ export default function GameDetailScratchNow(props) {
                     <div id="g-d-iFrame-sec">
                         <iframe
                             id="g-d-iFrame"
-                            src={props.selectedGameDetail?.Game?.GameUrl}
+                            src={`${props.selectedGameDetail?.Game?.GameUrl}?token=${token}`}
                             height='100%'
                             width='100%'
                         ></iframe>
