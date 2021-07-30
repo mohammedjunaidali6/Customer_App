@@ -6,16 +6,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function GCarousel(props) {
 
-    const onChange = (e) => {
-
-    }
     const onClickItem = (e) => {
         props.carouselItemClick(e);
     }
-    const onClickThumb = (e) => {
-
-    }
-
 
     return (
         <div className="g-carousel-container">
@@ -32,9 +25,8 @@ export default function GCarousel(props) {
                     infiniteLoop={props.infiniteLoop ? props.infiniteLoop : true}
                     stopOnHover={props.stopOnHover ? props.stopOnHover : true}
                     interval={props.interval ? props.interval : CAROUSEL_INTERVAL}
-                    onChange={onChange}
                     onClickItem={onClickItem}
-                    onClickThumb={onClickThumb}>
+                >
                     {props.data.map((loopObj, idx) => (
                         <div key={`Carousel-Image-${idx}`}>
                             <img src={`${loopObj.Game?.BannerImageUrl}`} alt={`Carousel-Image-${idx}`} />

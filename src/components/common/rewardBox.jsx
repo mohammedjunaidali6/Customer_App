@@ -54,7 +54,9 @@ export default function RewardBox(props) {
                             <img style={{ width: "19px", float: "left", marginRight: "6px" }} src={rupee_src} />
                         </div>
                         <div>
-                            <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>${props.dataObj.amountWons}</div>
+                            <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
+                                ${props.dataObj.amountWons}
+                            </div>
                             <div style={{
                                 height: "7px",
                                 color: "#808A8F",

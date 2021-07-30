@@ -7,6 +7,7 @@ import './rewardZone.css';
 import ProgressBar from '../common/progressBar';
 import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
+import GCarousel from '../common/carousel';
 import { getData } from '../../api/apiHelper';
 import {
     ENGT_PROD_HOST_URI,
@@ -18,7 +19,7 @@ import {
 
 
 export default function RewardZone(props) {
-
+    // console.log('**', props);
     function rewardOpenFn() {
         props.history.push('/userrewards');
     }
@@ -40,6 +41,10 @@ export default function RewardZone(props) {
     }
     function statusFn() {
         props.history.push('/status');
+    }
+    const carouselItemClick = (data) => {
+        props.rewardZoneActionHandler.pushSelectedEngagement(props.engagements[data]);
+        props.history.push({ pathname: "/gamedetail" });
     }
 
 
@@ -97,7 +102,12 @@ export default function RewardZone(props) {
                         </div>
                     </div>
                 </div>
-                {/* HERE, Corousol of BANNER IMAGES with ENGT click functionality */}
+                <GCarousel data={props.engagements}
+                    fromGameDetail={false}
+                    centerMode={true}
+                    centerSlidePercentage={80}
+                    carouselItemClick={carouselItemClick} >
+                </GCarousel>
                 <div className="reward-zone-handpicked-header text-bold">Handpick Challenges for you to get Lucky!!</div>
                 {props.engagements && props.engagements.length > 0 ? (
                     <div className="reward-zone-handpicked-items">

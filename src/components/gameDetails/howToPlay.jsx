@@ -4,24 +4,37 @@ import rule_src from '../../assets/img/gameDetails/rule.svg';
 
 const tempArray = [
     {
-        id: 1, 
-        header: 'Rule 1', 
-        content: 'This is the one channel that will always include everyone. It’s a great spot for announcements and team-wide conversations'
+        id: 1,
+        header: 'Rule 1',
+        content: 'You can participate in the Game any number of times, and get a chance to win Mystery Awards during the Game Play.'
     },
     {
-        id: 2, 
-        header: 'Rule 2', 
-        content: 'This is the one channel that will always include everyone. It’s a great spot for announcements and team-wide conversations'
+        id: 2,
+        header: 'Rule 2',
+        content: 'Complete the Journey Assigned to the Game to be Eligible to Participate'
     },
     {
-        id: 3, 
-        header: 'Rule 3', 
-        content: 'This is the one channel that will always include everyone. It’s a great spot for announcements and team-wide conversations'
+        id: 3,
+        header: 'Rule 3',
+        content: 'Compete with your Friends, Play More to secure high scores to win the Exciting Prizes.'
+    },
+    {
+        id: 4,
+        header: 'Rule 4',
+        content: `How to Redeem:
+            - Visit My Reward Section, and Click on Shop Now button to navigate to your favorite category of Products.
+            - Select the Product You wish to purchase and apply the Voucher Code on Check Out.`
+    },
+    {
+        id: 5,
+        header: 'Rule 5',
+        content: 'Voucher is applicable to any categories of the Product given its applied before the Expiry Date.'
     }
+
 ];
 
 export default function GameDetailHowToPlay(props) {
-    
+
     return (
         <Fragment>
             {tempArray && tempArray.length > 0 ? (
@@ -42,7 +55,7 @@ export default function GameDetailHowToPlay(props) {
                         ))}
                     </Fragment>
                 </div>
-            ): null}
+            ) : null}
         </Fragment>
     )
 }

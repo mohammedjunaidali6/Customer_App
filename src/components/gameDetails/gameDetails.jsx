@@ -18,15 +18,16 @@ import {
 
 
 export default function GameDetail(props) {
-    console.log('**', props);
+    // console.log('***', props)
     const rewardZoneReducerData = store.getState().RewardZoneReducer;
     const [allEngagements, setAllEngagements] = useState(rewardZoneReducerData.engagements);
     const [selectedEngagement, setSelectedEngagement] = useState(rewardZoneReducerData.selectedEngagement);
-    const [engagementDetails, setEngagementDetails] = useState();
+    const [engagementDetails, setEngagementDetails] = useState({});
 
     const carouselItemClick = (data) => {
-        props.rewardZoneActionHandler.pushSelectedReward(allEngagements[data]);
-        setSelectedEngagement(rewardZoneReducerData.selectedEngagement);
+        props.rewardZoneActionHandler.pushSelectedEngagement(allEngagements[data]);
+        setSelectedEngagement(allEngagements[data]);
+        console.log('***', allEngagements[data])
     }
 
     useEffect(() => {
@@ -34,6 +35,7 @@ export default function GameDetail(props) {
             EngagementID: selectedEngagement.EngagementID,
             JourneyID: selectedEngagement.JourneyID
         }
+        console.log('***', requestData)
         postData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_DETAILS_FOR_PLAYER}`, requestData, SERVICE_TYPE.ENGT)
             .then(engagementDetails => {
                 console.log('***', engagementDetails)
@@ -43,7 +45,7 @@ export default function GameDetail(props) {
 
     return (
         <Fragment>
-            <Back parentProps={props} height="264" fromGameDetail={true} />
+            <Back parentProps={props} height="235" fromGameDetail={true} />
             <GCarousel data={allEngagements}
                 fromGameDetail={true}
                 centerMode={true}
