@@ -30,12 +30,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GameDetailScratchNow(props) {
-    // console.log('**', props)
     const classes = useStyles();
     const [iFrameClick, setIFrameClick] = useState(false);
-    const [token, setToken] = useState();
     const [taskStatuses, setTaskStatuses] = useState([]);
     const [loadingTasks, setLoadingTasks] = useState(false);
+    const token = props.engagementDetails?.GamePlay?.Token;
 
     const onPlayNow = () => {
         var data = {
@@ -43,8 +42,7 @@ export default function GameDetailScratchNow(props) {
             EngagementID: props.selectedGameDetail.EngagementID,
         }
         postData(`${GAME_PROD_HOST_URI}${GAME_LAUNCH}`, data, SERVICE_TYPE.GAME)
-            .then(response => {
-                setToken(response?.Token);
+            .then(() => {
                 setIFrameClick(true);
             });
     }
@@ -54,7 +52,7 @@ export default function GameDetailScratchNow(props) {
             setLoadingTasks(true);
             var data = {
                 CustomerID: getCustomerID,
-                CustomerEngagedDateTime: props.engagementDetails.GamePlay.customer_engaged_datetime,
+                CustomerEngagedDateTime: props.engagementDetails.GamePlay.CustomerEngagedDateTime,
                 EventsData: props.engagementDetails.JourneyTasks.map(j => {
                     return {
                         EventID: j.EventID,
@@ -82,6 +80,7 @@ export default function GameDetailScratchNow(props) {
     const disablePlayBtn = Array.isArray(taskStatuses) &&
         taskStatuses.length > 0 &&
         taskStatuses.map(task => !task.HasCompleted).length > 0;
+    console.log('***', token)
 
     return (
         <div className="gamedetail-scratchnow-items">

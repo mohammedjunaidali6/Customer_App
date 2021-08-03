@@ -15,7 +15,7 @@ function addHeaders(serviceType) {
             break;
     }
     axiosInstance.defaults.headers.common['x-api-key'] = apiKey;
-    axiosInstance.defaults.headers.common['x-tenant-key'] = 'TENANT#KEY';
+    axiosInstance.defaults.headers.common['x-tenant-key'] = 'TENANT1234';
 }
 
 export const getData = async (resource, serviceType) => {
