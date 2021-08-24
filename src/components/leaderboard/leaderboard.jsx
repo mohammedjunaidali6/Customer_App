@@ -1,13 +1,12 @@
-import React, { Fragment } from 'react';
-
+import React, { Fragment, useEffect } from 'react';
 import defaultuser_src from "../../assets/img/gameDetails/default_user.png";
 import coin_src from "../../assets/img/leaderboard/coin.svg";
 import Back from "../common/back";
 import { containerHeightCalcFn } from "../common/global";
 import OthersPlaying from "./leaderboardOthersPlaying";
 import LeaderBoardWinners from "./leaderboardWinners";
-
 import './leaderboard.css';
+
 
 const backTitle = <span>
     <span className="leaderboard-back-header mr-2">Leaderboard</span>
@@ -15,6 +14,15 @@ const backTitle = <span>
 </span>;
 
 export default function LeaderBoard(props) {
+
+
+
+
+    useEffect(()=>{
+        //Get Winners table records 
+        
+    },[])
+    
     return (
         <div id="leaderboard-outer-container">
             <Back parentProps={props} fromLeaderBoard={true} backTitle={backTitle} />

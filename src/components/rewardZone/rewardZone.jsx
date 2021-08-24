@@ -47,7 +47,6 @@ export default function RewardZone(props) {
         props.history.push({ pathname: "/gamedetail" });
     }
 
-
     useEffect(() => {
         getData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`, SERVICE_TYPE.REPT)
             .then(summary => {
