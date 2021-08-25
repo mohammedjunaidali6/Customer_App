@@ -19,7 +19,8 @@ import {
 
 
 export default function RewardZone(props) {
-    // console.log('**', props);
+    console.log('**', props);
+
     function rewardOpenFn() {
         props.history.push('/userrewards');
     }
@@ -32,11 +33,16 @@ export default function RewardZone(props) {
     function customerSavingsOpen() {
         props.history.push('/customersavings');
     }
-    function gameDetailFn(data) {
-        props.rewardZoneActionHandler.pushSelectedEngagement(data);
+    function gameDetailFn(selectedEngagementData) {
+        props.rewardZoneActionHandler.pushSelectedEngagement(selectedEngagementData);
         props.history.push({ pathname: "/gamedetail" });
     }
-    function leaderBoardFn() {
+    function leaderBoardFn(selectedEngagementData) {
+        props.rewardZoneActionHandler.pushSelectedEngagement(selectedEngagementData);
+        props.history.push('/leaderboard');
+    }
+    function customerSavings(selectedEngagementData){
+        props.rewardZoneActionHandler.pushSelectedEngagement(selectedEngagementData);
         props.history.push('/leaderboard');
     }
     function statusFn() {
@@ -112,7 +118,7 @@ export default function RewardZone(props) {
                     <div className="reward-zone-handpicked-items">
                         <Fragment>
                             {props.engagements.map((obj) => (
-                                <RewardBox dataObj={obj} key={obj.EngagementID} gameDetailFn={gameDetailFn} leaderBoardFn={leaderBoardFn} />
+                                <RewardBox dataObj={obj} key={obj.EngagementID} gameDetailFn={gameDetailFn} customerSavings={customerSavings} leaderBoardFn={leaderBoardFn} />
                             ))}
                         </Fragment>
                     </div>

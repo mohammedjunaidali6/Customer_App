@@ -6,21 +6,28 @@ import { containerHeightCalcFn } from "../common/global";
 import OthersPlaying from "./leaderboardOthersPlaying";
 import LeaderBoardWinners from "./leaderboardWinners";
 import './leaderboard.css';
+import store from '../../store/store';
+import { getData } from '../../api/apiHelper';
+import { ENGT_PROD_HOST_URI, SERVICE_TYPE, TOP_CUSTOMER_SAVINGS } from '../../api/apiConstants';
 
 
-const backTitle = <span>
+const backTitle = 
+<span>
     <span className="leaderboard-back-header mr-2">Leaderboard</span>
     <span className="leaderboard-back-header-s">(Top 20 players)</span>
 </span>;
 
 export default function LeaderBoard(props) {
 
-
-
+    var selectedEngagement=store.getState().RewardZoneReducer.selectedEngagement;
+    // console.log('***',selectedEngagement);
 
     useEffect(()=>{
-        //Get Winners table records 
-        
+        // console.log('***',selectedEngagement.EngagementID);
+        // getData(`${ENGT_PROD_HOST_URI}${TOP_CUSTOMER_SAVINGS}${selectedEngagement.EngagementID}`, SERVICE_TYPE.ENGT)
+        //     .then(res=>{
+        //         console.log('***',res)
+        //     });
     },[])
     
     return (

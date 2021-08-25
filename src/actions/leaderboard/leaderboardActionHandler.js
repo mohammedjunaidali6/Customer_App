@@ -1,4 +1,13 @@
-import { GET_LEADERBOARD, GET_LEADERBOARD_OTHERS_PLAYING } from '../../constants/actionTypes';
+import { SET_TOP_CUSTOMER_SAVINGS,GET_LEADERBOARD, GET_LEADERBOARD_OTHERS_PLAYING } from '../../constants/actionTypes';
+
+export function dispatchTopCustomerSavings(data) {
+  return (dispatch) => {
+    dispatch({
+      type: SET_TOP_CUSTOMER_SAVINGS,
+      payload: data,
+    });
+  };
+}
 
 export function dispatchLeaderBoard(data) {
   return (dispatch) => {

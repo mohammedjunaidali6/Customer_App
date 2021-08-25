@@ -7,6 +7,7 @@ import ProgressBar from "../common/progressBar";
 
 
 export default function RewardBox(props) {
+    // console.log('***',props);
 
     return (
         <div className="reward-whole-box">
@@ -34,11 +35,11 @@ export default function RewardBox(props) {
                 </div>
                 <div className="w-100 dashed-line-div"></div>
                 <div className="w-100 reward-item-box-content pt-3 pb-3">
-                    <div className="w-50 float-left clearfix text-winners">
+                    {/* <div className="w-50 float-left clearfix text-winners">
                         <div className="">
                             <img style={{ width: "19px", float: "left", marginRight: "6px" }} src={trophy_src} />
                         </div>
-                        <div style={{ cursor: "pointer" }} onClick={() => props.leaderBoardFn()}>
+                        <div style={{ cursor: "pointer" }} onClick={() => props.leaderBoardFn(props.dataObj)}>
                             <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>{props.dataObj.winners || 12}</div>
                             <div style={{
                                 height: "7px",
@@ -48,23 +49,16 @@ export default function RewardBox(props) {
                                 lineHeight: "7px"
                             }}>Winners</div>
                         </div>
-                    </div>
-                    <div className="w-50 float-left clearfix text-expire">
-                        <div>
-                            <img style={{ width: "19px", float: "left", marginRight: "6px" }} src={rupee_src} />
+                    </div> */}
+                    <div className="w-100 float-left clearfix text-expire"  onClick={() => props.customerSavings(props.dataObj)}>
+                        <img style={{ width: "25px", float: "left", marginRight: "6px" }} src={rupee_src} />
+                        <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
+                            ${props.dataObj.amountWons||'1,234.00'}
                         </div>
-                        <div>
-                            <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
-                                ${props.dataObj.amountWons}
-                            </div>
-                            <div style={{
-                                height: "7px",
-                                color: "#808A8F",
-                                fontSize: "7px",
-                                letterSpacing: "-0.02px",
-                                lineHeight: "7px"
-                            }}>Amount Won</div>
-                        </div>
+                        <div style={{
+                            color: "#808A8F",
+                            fontSize: "8px",
+                        }}>Amount Won</div>
                     </div>
                 </div>
 

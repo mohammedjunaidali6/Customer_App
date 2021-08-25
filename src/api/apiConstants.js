@@ -1,3 +1,5 @@
+// export const ENGT_PROD_HOST_URI = "http://localhost:815/api";
+
 export const ENGT_PROD_HOST_URI = "https://fxojmluid9.execute-api.ap-south-1.amazonaws.com/Prod/api";
 export const GAME_PROD_HOST_URI = "https://m28mjnsyp8.execute-api.ap-south-1.amazonaws.com/Prod/api";
 export const REPT_PROD_HOST_URI = "https://wehmutx1th.execute-api.ap-south-1.amazonaws.com/Prod/api";
@@ -35,6 +37,7 @@ export const PLAYER_REWARD_HISTORY = '/engt/playerRewardsHistory';
 export const ACTIVE_ENGAGEMENTS = '/engt/activeengagements';
 export const ENGAGEMENT_DETAILS_FOR_PLAYER = '/engt/engagementdetailsforplayer';
 export const CUSTOMER_SAVINGS = '/engt/customersavings?fetchLastX=';
+export const TOP_CUSTOMER_SAVINGS = '/engt/topCustomerSavings?engagement_id=';
 
 //EVENT URIs
 export const JOURNEY_TASK_STATUS = '/evnt/journeyTaskStatus';
