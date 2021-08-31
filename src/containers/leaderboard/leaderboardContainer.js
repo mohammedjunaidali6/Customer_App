@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import LeaderBoard from '../../components/leaderboard/leaderboard';
 import * as actionsHandler from '../../actions/leaderboard/leaderboardActionHandler';
 import TopCustomerSavings from '../../components/leaderboard/topcustomersavings';
 

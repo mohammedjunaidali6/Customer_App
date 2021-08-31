@@ -1,14 +1,15 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { ENGT_PROD_HOST_URI,ACTIVE_ENGAGEMENTS, SERVICE_TYPE } from '../../api/apiConstants';
+import { getData } from '../../api/apiHelper';
 
 
-export default function Auth(props) {
+export default function Loading(props) {
+  // console.log('***',props);
   const [perc, setPerc] = useState(1);
 
-
-  setTimeout(() => {
-    props.history.push('/rewardzone');
-
-  }, 3000);
+  useEffect(()=>{
+    
+  },[])
 
 
   return (

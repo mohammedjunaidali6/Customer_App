@@ -4,9 +4,7 @@ import { ThemeProvider } from '../contexts/themeContext';
 import InterceptorsFn from "./interceptor";
 import { bodyOverflowHiddenFn } from "../components/common/global";
 import NotFound from '../components/common/notFound.jsx';
-import Landing from '../components/landing/landing.jsx';
 import LoginContatiner from '../containers/login/loginContainer';
-import Ranking from '../components/ranking/ranking';
 import RewardZoneContatiner from "../containers/rewardZone/rewardZoneContainer";
 import GameDetailsContainer from "../containers/gameDetails/gameDetailsContainer";
 import UserRewardsContatiner from "../containers/userRewards/userRewardsContainer";
@@ -15,20 +13,25 @@ import TransactionHistoryContainer from "../containers/transactionHistory/transa
 import NotificationContainer from "../containers/notification/notificationContainer";
 import StatusContainer from "../containers/status/statusContainer";
 import CustomerSavingsContatiner from '../containers/CustomerSavings/CustomerSavingsContainer';
+import LandingContainer from '../containers/landingContainer';
+import LoadingContainer from '../containers/loadingContainer';
+import Ranking from '../components/ranking/ranking';
 import Loader from '../components/common/Spinner/spinner';
-import Auth from '../components/auth/auth';
 
-export default function AppRoute() {
+export default function AppRoute(props) {
+  // console.log('***',props);
+  
   InterceptorsFn();
   bodyOverflowHiddenFn();
   return (
     <ThemeProvider>
       <div id="app-route-container">
         <BrowserRouter>
+          <Loader show={props.showLoader} />
           <Switch>
             {/* <Route exact path="/" component={HomeContatiner}/> */}
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/auth" component={Auth} />
+            <Route exact path="/" component={LandingContainer} />
+            <Route exact path="/auth" component={LoadingContainer} />
             <Route exact path="/login" component={LoginContatiner} />
             <Route exact path="/ranking" component={Ranking} />
             <Route exact path="/rewardzone" component={RewardZoneContatiner} />

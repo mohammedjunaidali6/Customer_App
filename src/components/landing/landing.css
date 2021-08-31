@@ -26,7 +26,7 @@
     border-radius: 23.37px;
     background-color: var(--buttonBg);
     border: solid 1px var(--buttonBorder);
-    margin-top: 88px;
+    margin-top: 68px;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 1px -1px rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.2);
     cursor: pointer;
     outline: none;
@@ -97,4 +97,12 @@
     background-image: url(../../assets/img/landing/welcome.png);
     background-repeat: no-repeat;
     height: 340px;
+}
+
+.music-spinner{
+    height: auto;
+    width: 32%;
+    align-content: center;
+    padding-top: 32px;
+    padding-bottom: 116px;
 }

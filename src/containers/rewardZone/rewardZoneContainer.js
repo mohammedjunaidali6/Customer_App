@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import RewardZone from '../../components/rewardZone/rewardZone';
 import * as actions from '../../actions/rewardZone/rewardZoneAction';
 import * as actionsHandler from '../../actions/rewardZone/rewardZoneActionHandler';
+import * as routeActionsHandler from '../../actions/routeActionHandler';
 
 const mapStateToProps = state => ({
   engagements: state.RewardZoneReducer.engagements,
@@ -12,7 +13,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   rewardZoneAction: bindActionCreators(actions, dispatch),
-  rewardZoneActionHandler: bindActionCreators(actionsHandler, dispatch)
+  rewardZoneActionHandler: bindActionCreators(actionsHandler, dispatch),
+  routeActionHandler:bindActionCreators(routeActionsHandler,dispatch)
 });
 
 const RewardZoneContatiner = connect(mapStateToProps, mapDispatchToProps)(RewardZone);

@@ -88,28 +88,28 @@ export default function Back(props) {
                             <div id="point-box" className="detail-box-content mb-3" onClick={() => props.pointsOpenFn()}>
                                 <img className="float-left" src={point_box_src} />
                                 <div className="float-left pl-2">
-                                    <div className="rzdb-header" >{summary?.FormattedTotalPoints || 0}</div>
+                                    <div className="rzdb-header" >{summary?.FormattedTotalPoints || ''}</div>
                                     <div className="rzdb-desc" >Points</div>
                                 </div>
                             </div>
                             <div id="amount-saved-box" className="detail-box-content mb-3 float-right" onClick={() => props.customerSavingsOpenFn()}>
                                 <img className="float-left" src={rupee_src} />
                                 <div className="float-left pl-2">
-                                    <div className="rzdb-header" >{`$${summary?.FormattedTotalSavings || 0}`}</div>
+                                    <div className="rzdb-header" >{`$${summary?.FormattedTotalSavings || ''}`}</div>
                                     <div className="rzdb-desc" >Amount Saved</div>
                                 </div>
                             </div>
                             <div id="rewards-box" className="detail-box-content" onClick={() => props.rewardOpenFn()}>
                                 <img className="float-left" src={trophy_src} />
                                 <div className="float-left pl-2">
-                                    <div className="rzdb-header">{summary?.TotalActiveRewards || 0}</div>
+                                    <div className="rzdb-header">{summary?.TotalActiveRewards || ''}</div>
                                     <div className="rzdb-desc" >Rewards</div>
                                 </div>
                             </div>
                             <div id="rank-box" className="detail-box-content float-right" onClick={() => props.rankingOpenFn()}>
                                 <img className="float-left" src={rank_src} />
                                 <div className="float-left pl-2">
-                                    <div className="rzdb-header" >{summary?.TopRank || 0}</div>
+                                    <div className="rzdb-header" >{summary?.TopRank || ''}</div>
                                     <div className="rzdb-desc" >Rank</div>
                                 </div>
                             </div>

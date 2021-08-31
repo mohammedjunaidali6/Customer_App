@@ -1,4 +1,5 @@
 import { axiosInstance } from '../actions/axios-config';
+import store from '../store/store';
 
 function addHeaders(serviceType) {
     let apiKey = '';
@@ -15,7 +16,17 @@ function addHeaders(serviceType) {
             break;
     }
     axiosInstance.defaults.headers.common['x-api-key'] = apiKey;
-    axiosInstance.defaults.headers.common['x-tenant-key'] = 'TENANT1234';
+    // axiosInstance.defaults.headers.common['x-tenant-key'] = 'TENANT1234';
+
+    let landingReducer=store.getState().LandingReducer;
+    console.log('***',landingReducer);
+    if(landingReducer.customerDetails){
+        var customerId=landingReducer.customerDetails.user_id;
+        let customerName=landingReducer.customerDetails.first_name+' '+ landingReducer.customerDetails.last_name;
+    
+        axiosInstance.defaults.headers.common['x-c-id']=customerId;
+        axiosInstance.defaults.headers.common['x-c-name']=customerName;
+    }
 }
 
 export const getData = async (resource, serviceType) => {
@@ -24,7 +35,6 @@ export const getData = async (resource, serviceType) => {
         const response = await axiosInstance.get(resource);
 
         return handleResponse(response);
-
     } catch (error) {
         console.error('*', error)
 

@@ -11,6 +11,8 @@ import TransactionHistoryReducer from "../reducers/transactionHistory/transactio
 import CustomerSavingsReducer from '../reducers/CustomerSavings/customerSavingsReducer';
 import NotificationReducer from "../reducers/notification/notificationReducer";
 import StatusReducer from "../reducers/status/statusReducer";
+import RouteReducer from '../reducers/routeReducer';
+import LandingReducer from '../reducers/landingReducer';
 
 
 
@@ -37,7 +39,9 @@ function loadFromSessionStorage(state) {
 const reducer = combineReducers({
   First: firstReducer,
   HomeReducer: HomeReducer,
+  RouteReducer:RouteReducer,
   LoginReducer: LoginReducer,
+  LandingReducer:LandingReducer,
   RewardZoneReducer: RewardZoneReducer,
   GameDetailsReducer: GameDetailsReducer,
   UserRewardsReducer: UserRewardsReducer,

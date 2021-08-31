@@ -1,10 +1,11 @@
 // export const ENGT_PROD_HOST_URI = "http://localhost:815/api";
+export const EVNT_PROD_HOST_URI = "http://localhost:817/api";
 
 export const ENGT_PROD_HOST_URI = "https://fxojmluid9.execute-api.ap-south-1.amazonaws.com/Prod/api";
 export const GAME_PROD_HOST_URI = "https://m28mjnsyp8.execute-api.ap-south-1.amazonaws.com/Prod/api";
 export const REPT_PROD_HOST_URI = "https://wehmutx1th.execute-api.ap-south-1.amazonaws.com/Prod/api";
 export const IDTY_PROD_HOST_URI = "https://frg6g6wml9.execute-api.ap-south-1.amazonaws.com/Prod/api";
-export const EVNT_PROD_HOST_URI = "https://q261x21b15.execute-api.ap-south-1.amazonaws.com/Prod/api";
+// export const EVNT_PROD_HOST_URI = "https://q261x21b15.execute-api.ap-south-1.amazonaws.com/Prod/api";
 
 export const SERVICE_TYPE = {
   GAME: 'GAME',

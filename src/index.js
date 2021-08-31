@@ -9,13 +9,14 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import AppRoute from './routes/route';
 import './i18next'
+import RouteContatiner from './containers/routeContainer';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Suspense fallback={(<div>loading</div>)}>
     <Provider store={store}>
-      <AppRoute />
+      <RouteContatiner />
     </Provider>
     </Suspense>
   </React.StrictMode>,

@@ -16,10 +16,11 @@ import {
     ACTIVE_ENGAGEMENTS,
     PLAYER_SUMMARY,
 } from '../../api/apiConstants';
+import store from '../../store/store';
 
 
 export default function RewardZone(props) {
-    console.log('**', props);
+    // console.log('**', props);
 
     function rewardOpenFn() {
         props.history.push('/userrewards');
@@ -53,15 +54,24 @@ export default function RewardZone(props) {
         props.history.push({ pathname: "/gamedetail" });
     }
 
+    const handleLoader=(bool)=>{
+        // props.routeActionHandler.dispatchLoaderData(bool);
+    }
+
     useEffect(() => {
+        handleLoader(true);
         getData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`, SERVICE_TYPE.REPT)
             .then(summary => {
                 props.rewardZoneActionHandler?.setPlayerSummary(summary);
-            })
-        getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
-            .then(engagementswithGames => {
-                props.rewardZoneActionHandler.setEngagements(engagementswithGames);
-            })
+                handleLoader(false);
+        })
+        if(!Array.isArray(props.engagements)){
+            alert('Active ENgagements API');
+            getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
+                .then(engagementswithGames => {
+                    props.rewardZoneActionHandler.setEngagements(engagementswithGames);
+                })
+        }
     }, []);
 
     return (
