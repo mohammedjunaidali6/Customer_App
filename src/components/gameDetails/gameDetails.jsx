@@ -15,6 +15,7 @@ import {
     SERVICE_TYPE,
     ENGAGEMENT_DETAILS_FOR_PLAYER,
 } from '../../api/apiConstants';
+import { getCustomerDetails } from '../common/getStoreData';
 
 
 export default function GameDetail(props) {
@@ -23,6 +24,9 @@ export default function GameDetail(props) {
     const [allEngagements, setAllEngagements] = useState(rewardZoneReducerData.engagements);
     const [selectedEngagement, setSelectedEngagement] = useState(rewardZoneReducerData.selectedEngagement);
     const [engagementDetails, setEngagementDetails] = useState({});
+
+    var customer=getCustomerDetails();
+
 
     const carouselItemClick = (data) => {
         props.rewardZoneActionHandler.pushSelectedEngagement(allEngagements[data]);
@@ -33,7 +37,8 @@ export default function GameDetail(props) {
     useEffect(() => {
         var requestData = {
             EngagementID: selectedEngagement.EngagementID,
-            JourneyID: selectedEngagement.JourneyID
+            JourneyID: selectedEngagement.JourneyID,
+            CustomerID:customer.CustomerID
         }
         console.log('***', requestData)
         postData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_DETAILS_FOR_PLAYER}`, requestData, SERVICE_TYPE.ENGT)
