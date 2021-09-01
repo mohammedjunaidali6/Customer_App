@@ -5,9 +5,10 @@ import Back from "../common/back";
 import { containerHeightCalcFn } from "../common/global";
 import './leaderboard.css';
 import store from '../../store/store';
-import { getData } from '../../api/apiHelper';
+import { postData } from '../../api/apiHelper';
 import { ENGT_PROD_HOST_URI, SERVICE_TYPE, TOP_CUSTOMER_SAVINGS } from '../../api/apiConstants';
 import OthersSavings from './otherCustomerSavings';
+import { getCustomerDetails } from '../common/getStoreData';
 
 
 const backTitle = 
@@ -17,11 +18,16 @@ const backTitle =
 </span>;
 
 export default function TopCustomerSavings(props) {
-    console.log('***',props);
+    // console.log('***',props);
+    var customer=getCustomerDetails();
     var selectedEngagement=store.getState().RewardZoneReducer.selectedEngagement;
 
     useEffect(()=>{
-        getData(`${ENGT_PROD_HOST_URI}${TOP_CUSTOMER_SAVINGS}${selectedEngagement.EngagementID}`, SERVICE_TYPE.ENGT)
+        let data={
+            EngagementID:selectedEngagement.EngagementID,
+            CustomerID:customer.CustomerID,
+        }
+        postData(`${ENGT_PROD_HOST_URI}${TOP_CUSTOMER_SAVINGS}`,data, SERVICE_TYPE.ENGT)
             .then(data=>{
                 if(data){
                     console.log('***',data)

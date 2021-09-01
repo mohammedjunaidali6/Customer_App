@@ -37,7 +37,7 @@ export const ENGAGEMENT_BY_STATUS_ID = '/engt/engagementsbystatus?engagement_sta
 export const PLAYER_REWARD_HISTORY = '/engt/playerRewardsHistory';
 export const ACTIVE_ENGAGEMENTS = '/engt/activeengagements';
 export const ENGAGEMENT_DETAILS_FOR_PLAYER = '/engt/engagementdetailsforplayer';
-export const CUSTOMER_SAVINGS = '/engt/customersavings?fetchLastX=';
+export const CUSTOMER_SAVINGS = '/engt/customersavings';
 export const TOP_CUSTOMER_SAVINGS = '/engt/topCustomerSavings?engagement_id=';
 
 //EVENT URIs
@@ -48,7 +48,7 @@ export const JOURNEY_TASK_STATUS = '/evnt/journeyTaskStatus';
 export const GAME_LAUNCH = '/game/gameLaunch';
 export const CREATE_GAME_PLAY = '/game/createGamePlay?engagement_id=';
 export const GAME_EXIT = '/game/gameExit';
-export const PLAYER_POINTS_BALANCE = '/game/getPlayerPointsBalance?fetchLastX=';
+export const PLAYER_POINTS_BALANCE = '/game/getPlayerPointsBalance';
 
 //IDENTITY URIs
 export const USER_BY_FILTERS = "/idty/userbyfilter";

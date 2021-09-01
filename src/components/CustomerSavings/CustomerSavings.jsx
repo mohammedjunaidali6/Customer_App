@@ -9,9 +9,10 @@ import './CustomerSavings.css';
 import { containerHeightCalcFn } from "../common/global";
 import BackBanner from "../common/backBanner";
 import { useEffect } from 'react';
-import { getData } from '../../api/apiHelper';
+import { postData } from '../../api/apiHelper';
 import { CUSTOMER_SAVINGS, ENGT_PROD_HOST_URI, SERVICE_TYPE } from '../../api/apiConstants';
 import { LastXDays } from '../../constants/globalConstants';
+import { getCustomerDetails } from '../common/getStoreData';
 
 
 function TabCotainer(props) {
@@ -28,6 +29,7 @@ export default function CustomerSavings(props) {
     const [lastMonthSavings, setLastMonthSavings] = useState();
     const [last6MonthsSavings, setLast6MonthsSavings] = useState();
 
+    var customer=getCustomerDetails();
 
     const HorizontalTabs = withStyles(theme => ({
         flexcontainer: {
@@ -47,7 +49,11 @@ export default function CustomerSavings(props) {
     const filterPointsBalance = (activeIndex) => {
         setactiveIndex(activeIndex)
         let LastxDays = activeIndex == 1 ? LastXDays.LastMonth : activeIndex == 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
-        getData(`${ENGT_PROD_HOST_URI}${CUSTOMER_SAVINGS}${LastxDays}`, SERVICE_TYPE.ENGT)
+        let data={
+            CustomerID:customer.CustomerID,
+            FetchLastX:LastxDays
+        }
+        postData(`${ENGT_PROD_HOST_URI}${CUSTOMER_SAVINGS}`,data, SERVICE_TYPE.ENGT)
             .then(customerSavings => {
                 if (activeIndex == 0) {
                     setLast7DaysSavings(customerSavings);
@@ -64,8 +70,12 @@ export default function CustomerSavings(props) {
 
 
     useEffect(() => {
-        getData(`${ENGT_PROD_HOST_URI}${CUSTOMER_SAVINGS}Last7Days`, SERVICE_TYPE.ENGT)
-            .then(customerSavings => {
+        let data={
+            CustomerID:customer.CustomerID,
+            FetchLastX:LastXDays.Last7Days
+        }
+        postData(`${ENGT_PROD_HOST_URI}${CUSTOMER_SAVINGS}`,data, SERVICE_TYPE.ENGT)
+        .then(customerSavings => {
                 setLast7DaysSavings(customerSavings)
                 props.customerSavingsActionHandler.dispathCustomerSavings(customerSavings);
             });

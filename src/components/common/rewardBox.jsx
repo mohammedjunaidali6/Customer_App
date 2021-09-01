@@ -1,7 +1,6 @@
 import React from 'react';
 import mask_src from '../../assets/img/Mask.svg';
 import rupee_src from '../../assets/img/rewardZone/amountwon_home_small.svg';
-import trophy_src from '../../assets/img/rewardZone/trophy_home.svg';
 import '../../assets/css/rewardBox.css';
 import ProgressBar from "../common/progressBar";
 

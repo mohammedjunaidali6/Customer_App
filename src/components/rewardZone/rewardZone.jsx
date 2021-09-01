@@ -8,7 +8,7 @@ import ProgressBar from '../common/progressBar';
 import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
 import GCarousel from '../common/carousel';
-import { getData } from '../../api/apiHelper';
+import { getData, postData } from '../../api/apiHelper';
 import {
     ENGT_PROD_HOST_URI,
     REPT_PROD_HOST_URI,
@@ -16,11 +16,13 @@ import {
     ACTIVE_ENGAGEMENTS,
     PLAYER_SUMMARY,
 } from '../../api/apiConstants';
-import store from '../../store/store';
+import { getCustomerDetails } from '../common/getStoreData';
 
 
 export default function RewardZone(props) {
     // console.log('**', props);
+    var customer=getCustomerDetails();
+
 
     function rewardOpenFn() {
         props.history.push('/userrewards');
@@ -60,13 +62,15 @@ export default function RewardZone(props) {
 
     useEffect(() => {
         handleLoader(true);
-        getData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`, SERVICE_TYPE.REPT)
+        let data={
+            CustomerID:customer.CustomerID
+        }
+        postData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`,data, SERVICE_TYPE.REPT)
             .then(summary => {
                 props.rewardZoneActionHandler?.setPlayerSummary(summary);
                 handleLoader(false);
         })
         if(!Array.isArray(props.engagements)){
-            alert('Active ENgagements API');
             getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
                 .then(engagementswithGames => {
                     props.rewardZoneActionHandler.setEngagements(engagementswithGames);

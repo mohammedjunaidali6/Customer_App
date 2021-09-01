@@ -17,6 +17,7 @@ import {
     JOURNEY_TASK_STATUS,
     getCustomerID
 } from '../../api/apiConstants';
+import { getCustomerDetails } from '../common/getStoreData';
 
 const useStyles = makeStyles((theme) => ({
     fab: {
@@ -36,10 +37,13 @@ export default function GameDetailScratchNow(props) {
     const [loadingTasks, setLoadingTasks] = useState(false);
     const token = props.engagementDetails?.GamePlay?.Token;
 
+    var customer=getCustomerDetails();
+
     const onPlayNow = () => {
         var data = {
             GameID: props.selectedGameDetail?.Game?.GameID,
             EngagementID: props.selectedGameDetail.EngagementID,
+            CustomerID:customer.CustomerID
         }
         postData(`${GAME_PROD_HOST_URI}${GAME_LAUNCH}`, data, SERVICE_TYPE.GAME)
             .then(() => {
@@ -51,7 +55,7 @@ export default function GameDetailScratchNow(props) {
         if (Array.isArray(props.engagementDetails?.JourneyTasks)) {
             setLoadingTasks(true);
             var data = {
-                CustomerID: getCustomerID,
+                CustomerID:customer.CustomerID,
                 CustomerEngagedDateTime: props.engagementDetails.GamePlay.CustomerEngagedDateTime,
                 EventsData: props.engagementDetails.JourneyTasks.map(j => {
                     return {

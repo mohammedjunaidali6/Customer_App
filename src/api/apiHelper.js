@@ -1,5 +1,5 @@
 import { axiosInstance } from '../actions/axios-config';
-import store from '../store/store';
+import { getCustomerDetails } from '../components/common/getStoreData';
 
 function addHeaders(serviceType) {
     let apiKey = '';
@@ -16,16 +16,14 @@ function addHeaders(serviceType) {
             break;
     }
     axiosInstance.defaults.headers.common['x-api-key'] = apiKey;
-    // axiosInstance.defaults.headers.common['x-tenant-key'] = 'TENANT1234';
 
-    let landingReducer=store.getState().LandingReducer;
-    console.log('***',landingReducer);
-    if(landingReducer.customerDetails){
-        var customerId=landingReducer.customerDetails.user_id;
-        let customerName=landingReducer.customerDetails.first_name+' '+ landingReducer.customerDetails.last_name;
-    
-        axiosInstance.defaults.headers.common['x-c-id']=customerId;
-        axiosInstance.defaults.headers.common['x-c-name']=customerName;
+    var customer=getCustomerDetails();
+    console.log('*** customer ***',customer);
+
+    if(customer){
+        axiosInstance.defaults.headers.common['x-tenant-key'] = customer.TenantKey;
+        axiosInstance.defaults.headers.common['x-c-id']=customer.CustomerID;
+        axiosInstance.defaults.headers.common['x-c-name']=customer.FirstName+' '+customer.LastName;
     }
 }
 

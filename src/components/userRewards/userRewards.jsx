@@ -1,9 +1,5 @@
 import React, { Fragment } from 'react';
 import Back from "../common/back";
-import trophy_src from '../../assets/img/userRewards/trophy.svg';
-import unclaimed_src from '../../assets/img/userRewards/Unclaimed.svg';
-import expiringsoon_src from '../../assets/img/userRewards/Expiringsoon.svg';
-import missed_src from '../../assets/img/userRewards/missed.svg';
 import './userRewards.css';
 import { containerHeightCalcFn } from "../common/global";
 import UserRewardsUserInfo from "./userInfo";
@@ -11,16 +7,22 @@ import UserDailyReward from "./userDailyReward";
 import UserWinnings from "./userWinnings";
 import { useEffect } from 'react';
 import { ENGT_PROD_HOST_URI, PLAYER_REWARD_HISTORY, SERVICE_TYPE } from '../../api/apiConstants';
-import { getData } from '../../api/apiHelper';
+import { postData } from '../../api/apiHelper';
 import { useState } from 'react';
+import { getCustomerDetails } from '../common/getStoreData';
 
 
 export default function UserRewards(props) {
     const [PlayerRewardsData, setPlayerRewardsData] = useState();
 
+    var customer=getCustomerDetails();
+
 
     useEffect(() => {
-        getData(`${ENGT_PROD_HOST_URI}${PLAYER_REWARD_HISTORY}`, SERVICE_TYPE.ENGT)
+        let data={
+            CustomerID:customer.CustomerID
+        }
+        postData(`${ENGT_PROD_HOST_URI}${PLAYER_REWARD_HISTORY}`,data, SERVICE_TYPE.ENGT)
             .then(allRewards => {
                 setPlayerRewardsData(allRewards);
                 props.userRewardsActionHandler.dispatchUserRewards(allRewards);

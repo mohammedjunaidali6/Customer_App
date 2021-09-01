@@ -11,91 +11,11 @@ import './transactionHistory.css';
 import { containerHeightCalcFn } from "../common/global";
 import BackBanner from "../common/backBanner";
 import { useEffect } from 'react';
-import { getData } from '../../api/apiHelper';
-import { Gameplay_Host_URI, GAME_PROD_HOST_URI, PLAYER_POINTS_BALANCE, SERVICE_TYPE } from '../../api/apiConstants';
+import { postData } from '../../api/apiHelper';
+import { GAME_PROD_HOST_URI, PLAYER_POINTS_BALANCE, SERVICE_TYPE } from '../../api/apiConstants';
 import { LastXDays } from '../../constants/globalConstants';
+import { getCustomerDetails } from '../common/getStoreData';
 
-
-const tempArray = [
-    {
-        id: 1,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 2,
-        offerText: 'Earned 200 points on Mega coupon',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 3,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'lastyear'
-    },
-    {
-        id: 4,
-        offerText: 'Earned 200 points on Mega coupon',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 5,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'lastmonth'
-    },
-    {
-        id: 6,
-        offerText: 'Earned 200 points on Mega coupon',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 7,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'lastmonth'
-    },
-    {
-        id: 8,
-        offerText: 'Earned 200 points on Mega coupon',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 9,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 10,
-        offerText: 'Earned 200 points on Mega coupon',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 11,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 12,
-        offerText: 'Earned 200 points on Mega coupon',
-        date: '02/01/2021',
-        flag: 'last10'
-    },
-    {
-        id: 13,
-        offerText: 'Earned 200 points on shoping',
-        date: '02/01/2021',
-        flag: 'last10'
-    }
-];
 
 function TabCotainer(props) {
     return (
@@ -111,6 +31,7 @@ export default function TransactionHistory(props) {
     const [lastMonthPoints, setLastMonthPoints] = useState();
     const [last6MonthsPoints, setLast6MonthsPoints] = useState();
 
+    var customer=getCustomerDetails();
 
     const HorizontalTabs = withStyles(theme => ({
         flexcontainer: {
@@ -130,7 +51,11 @@ export default function TransactionHistory(props) {
     const filterPointsBalance = (activeIndex) => {
         setactiveIndex(activeIndex)
         let LastxDays = activeIndex == 1 ? LastXDays.LastMonth : activeIndex == 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
-        getData(`${GAME_PROD_HOST_URI}${PLAYER_POINTS_BALANCE}${LastxDays}`, SERVICE_TYPE.GAME)
+        let data={
+            CustomerID:customer.CustomerID,
+            FetchLastX:LastxDays
+        }
+        postData(`${GAME_PROD_HOST_URI}${PLAYER_POINTS_BALANCE}`,data, SERVICE_TYPE.GAME)
             .then(pointsBalance => {
                 if (activeIndex == 0) {
                     setLast7DaysPoints(pointsBalance);
@@ -147,7 +72,11 @@ export default function TransactionHistory(props) {
 
 
     useEffect(() => {
-        getData(`${GAME_PROD_HOST_URI}${PLAYER_POINTS_BALANCE}${LastXDays.Last7Days}`, SERVICE_TYPE.GAME)
+        let data={
+            CustomerID:customer.CustomerID,
+            FetchLastX:LastXDays.Last7Days
+        }
+        postData(`${GAME_PROD_HOST_URI}${PLAYER_POINTS_BALANCE}`,data, SERVICE_TYPE.GAME)
             .then(pointsBalance => {
                 console.log('*', pointsBalance)
                 setLast7DaysPoints(pointsBalance);
