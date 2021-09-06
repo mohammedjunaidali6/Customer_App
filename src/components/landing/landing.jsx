@@ -4,8 +4,9 @@ import './landing.css';
 import welcome_gift_src from "../../assets/img/landing/giftBox.gif";
 import blaash_logo_src from "../../assets/img/landing/blaash-logo.png";
 import music_progress from "../../assets/img/landing/music_progress.gif";
-import { getData } from '../../api/apiHelper';
-import { ENGT_PROD_HOST_URI, EVNT_PROD_HOST_URI, SERVICE_TYPE,ACTIVE_ENGAGEMENTS } from '../../api/apiConstants';
+import { getData, postData } from '../../api/apiHelper';
+import { ENGT_PROD_HOST_URI, EVNT_PROD_HOST_URI, SERVICE_TYPE,ACTIVE_ENGAGEMENTS, DUMMY_TENANT_KEY } from '../../api/apiConstants';
+import { axiosInstance } from '../../actions/axios-config';
 
 export default function Landing(props) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -16,9 +17,12 @@ export default function Landing(props) {
     
     useEffect(() => {
         document.body.style.overflow = "unset";
-        getData(`${EVNT_PROD_HOST_URI}/evnt/validate?token=${token}`)
+        axiosInstance.defaults.headers.common['x-tenant-key'] = DUMMY_TENANT_KEY;
+        let obj={
+            Token:token
+        }
+        postData(`${EVNT_PROD_HOST_URI}/evnt/validate`,obj, SERVICE_TYPE.EVNT)
         .then(data=>{
-            console.log('***',data);
             if(data){
                 props.landingActionHandler.dispatchCustomerData(data);
                 setLoggedInUser(data);

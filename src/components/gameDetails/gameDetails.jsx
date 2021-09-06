@@ -31,16 +31,15 @@ export default function GameDetail(props) {
     const carouselItemClick = (data) => {
         props.rewardZoneActionHandler.pushSelectedEngagement(allEngagements[data]);
         setSelectedEngagement(allEngagements[data]);
-        console.log('***', allEngagements[data])
     }
 
     useEffect(() => {
         var requestData = {
             EngagementID: selectedEngagement.EngagementID,
             JourneyID: selectedEngagement.JourneyID,
-            CustomerID:customer.CustomerID
+            CustomerID:customer.CustomerID,
+            CustomerFullName:customer.FirstName+' '+customer.LastName
         }
-        console.log('***', requestData)
         postData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_DETAILS_FOR_PLAYER}`, requestData, SERVICE_TYPE.ENGT)
             .then(engagementDetails => {
                 console.log('***', engagementDetails)

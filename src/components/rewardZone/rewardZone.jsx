@@ -12,9 +12,11 @@ import { getData, postData } from '../../api/apiHelper';
 import {
     ENGT_PROD_HOST_URI,
     REPT_PROD_HOST_URI,
+    GAME_PROD_HOST_URI,
     SERVICE_TYPE,
     ACTIVE_ENGAGEMENTS,
     PLAYER_SUMMARY,
+    CREATE_GAME_PLAY,
 } from '../../api/apiConstants';
 import { getCustomerDetails } from '../common/getStoreData';
 
@@ -22,7 +24,6 @@ import { getCustomerDetails } from '../common/getStoreData';
 export default function RewardZone(props) {
     // console.log('**', props);
     var customer=getCustomerDetails();
-
 
     function rewardOpenFn() {
         props.history.push('/userrewards');
@@ -37,6 +38,15 @@ export default function RewardZone(props) {
         props.history.push('/customersavings');
     }
     function gameDetailFn(selectedEngagementData) {
+        // let postObj={
+        //     EngagementID:selectedEngagementData.EngagementID,
+        //     CustomerID:customer.CustomerID
+        // }
+        // postData(`${GAME_PROD_HOST_URI}${CREATE_GAME_PLAY}`,postObj,SERVICE_TYPE.GAME)
+        // .then(res=>{
+        //     console.log('**',res);
+        // })
+
         props.rewardZoneActionHandler.pushSelectedEngagement(selectedEngagementData);
         props.history.push({ pathname: "/gamedetail" });
     }

@@ -56,7 +56,7 @@ export default function GameDetailScratchNow(props) {
             setLoadingTasks(true);
             var data = {
                 CustomerID:customer.CustomerID,
-                CustomerEngagedDateTime: props.engagementDetails.GamePlay.CustomerEngagedDateTime,
+                CustomerEngagedDateTime: props.engagementDetails.GamePlay?.CustomerEngagedDateTime,
                 EventsData: props.engagementDetails.JourneyTasks.map(j => {
                     return {
                         EventID: j.EventID,
@@ -84,6 +84,7 @@ export default function GameDetailScratchNow(props) {
     const disablePlayBtn = Array.isArray(taskStatuses) &&
         taskStatuses.length > 0 &&
         taskStatuses.map(task => !task.HasCompleted).length > 0;
+    
     console.log('***', token)
 
     return (
@@ -131,7 +132,7 @@ export default function GameDetailScratchNow(props) {
                     </div>
                 </div>
                 <div id="btn-scratch-now-container" className="mt-3">
-                    <button type="button" id="btn-scratch-now" onClick={onPlayNow} disabled={disablePlayBtn}>
+                    <button type="button" id="btn-scratch-now" onClick={onPlayNow} disabled={!disablePlayBtn}>
                         <span className="button-text">PLAY NOW</span>
                     </button>
                 </div>

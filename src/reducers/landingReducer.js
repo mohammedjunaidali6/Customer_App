@@ -7,7 +7,7 @@ const LandingReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CUSTOMER_DETAILS: {
             const newState = { ...state };
-            newState.showLoader = action.payload || false;
+            newState.customerDetails = action.payload || false;
             return newState;
         }
         default: {

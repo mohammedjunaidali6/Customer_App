@@ -18,12 +18,11 @@ function addHeaders(serviceType) {
     axiosInstance.defaults.headers.common['x-api-key'] = apiKey;
 
     var customer=getCustomerDetails();
-    console.log('*** customer ***',customer);
 
     if(customer){
         axiosInstance.defaults.headers.common['x-tenant-key'] = customer.TenantKey;
-        axiosInstance.defaults.headers.common['x-c-id']=customer.CustomerID;
-        axiosInstance.defaults.headers.common['x-c-name']=customer.FirstName+' '+customer.LastName;
+        // axiosInstance.defaults.headers.common['x-c-id']=customer.CustomerID;
+        // axiosInstance.defaults.headers.common['x-c-name']=customer.FirstName+' '+customer.LastName;
     }
 }
 

@@ -1,11 +1,11 @@
-// export const ENGT_PROD_HOST_URI = "http://localhost:815/api";
-export const EVNT_PROD_HOST_URI = "http://localhost:817/api";
+export const ENGT_PROD_HOST_URI = "http://localhost:815/api";
+// export const EVNT_PROD_HOST_URI = "http://localhost:817/api";
 
-export const ENGT_PROD_HOST_URI = "https://fxojmluid9.execute-api.ap-south-1.amazonaws.com/Prod/api";
+// export const ENGT_PROD_HOST_URI = "https://fxojmluid9.execute-api.ap-south-1.amazonaws.com/Prod/api";
 export const GAME_PROD_HOST_URI = "https://m28mjnsyp8.execute-api.ap-south-1.amazonaws.com/Prod/api";
 export const REPT_PROD_HOST_URI = "https://wehmutx1th.execute-api.ap-south-1.amazonaws.com/Prod/api";
 export const IDTY_PROD_HOST_URI = "https://frg6g6wml9.execute-api.ap-south-1.amazonaws.com/Prod/api";
-// export const EVNT_PROD_HOST_URI = "https://q261x21b15.execute-api.ap-south-1.amazonaws.com/Prod/api";
+export const EVNT_PROD_HOST_URI = "https://q261x21b15.execute-api.ap-south-1.amazonaws.com/Prod/api";
 
 export const SERVICE_TYPE = {
   GAME: 'GAME',
@@ -15,6 +15,7 @@ export const SERVICE_TYPE = {
   IDTY: 'IDTY',
   TNET: 'TNET',
 }
+export const DUMMY_TENANT_KEY="BLAASH-SYS-2021";
 export const getCustomerID = 10;
 
 export const gameAssetsPath = "http://185.151.51.83:8081/ga/";
@@ -46,7 +47,7 @@ export const JOURNEY_TASK_STATUS = '/evnt/journeyTaskStatus';
 
 //GAME URIs
 export const GAME_LAUNCH = '/game/gameLaunch';
-export const CREATE_GAME_PLAY = '/game/createGamePlay?engagement_id=';
+export const CREATE_GAME_PLAY = '/game/createGamePlay';
 export const GAME_EXIT = '/game/gameExit';
 export const PLAYER_POINTS_BALANCE = '/game/getPlayerPointsBalance';
 
