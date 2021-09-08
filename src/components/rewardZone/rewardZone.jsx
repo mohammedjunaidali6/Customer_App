@@ -12,11 +12,9 @@ import { getData, postData } from '../../api/apiHelper';
 import {
     ENGT_PROD_HOST_URI,
     REPT_PROD_HOST_URI,
-    GAME_PROD_HOST_URI,
     SERVICE_TYPE,
     ACTIVE_ENGAGEMENTS,
     PLAYER_SUMMARY,
-    CREATE_GAME_PLAY,
 } from '../../api/apiConstants';
 import { getCustomerDetails } from '../common/getStoreData';
 
@@ -67,7 +65,7 @@ export default function RewardZone(props) {
     }
 
     const handleLoader=(bool)=>{
-        // props.routeActionHandler.dispatchLoaderData(bool);
+        props.routeActionHandler.dispatchLoaderData(bool);
     }
 
     useEffect(() => {
@@ -78,13 +76,15 @@ export default function RewardZone(props) {
         postData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`,data, SERVICE_TYPE.REPT)
             .then(summary => {
                 props.rewardZoneActionHandler?.setPlayerSummary(summary);
-                handleLoader(false);
         })
         if(!Array.isArray(props.engagements)){
             getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
                 .then(engagementswithGames => {
                     props.rewardZoneActionHandler.setEngagements(engagementswithGames);
+                    handleLoader(false);
                 })
+        }else{
+            handleLoader(false);
         }
     }, []);
 

@@ -1,16 +1,14 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState,useEffect } from 'react';
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import Back from "../common/back";
+import _ from 'lodash';
 import gem_small_src from '../../assets/img/transactionHistory/gem_small.svg';
-import price_tag_src from '../../assets/img/transactionHistory/price-tag.svg';
-import gem_src from "../../assets/img/transactionHistory/gem_small.svg";
 import './transactionHistory.css';
 import { containerHeightCalcFn } from "../common/global";
 import BackBanner from "../common/backBanner";
-import { useEffect } from 'react';
 import { postData } from '../../api/apiHelper';
 import { GAME_PROD_HOST_URI, PLAYER_POINTS_BALANCE, SERVICE_TYPE } from '../../api/apiConstants';
 import { LastXDays } from '../../constants/globalConstants';
@@ -27,6 +25,7 @@ function TabCotainer(props) {
 
 export default function TransactionHistory(props) {
     const [activeIndex, setactiveIndex] = useState(0);
+    const [lastXDaysHistory,setLastXDaysHistory] = useState();
     const [last7DaysPoints, setLast7DaysPoints] = useState();
     const [lastMonthPoints, setLastMonthPoints] = useState();
     const [last6MonthsPoints, setLast6MonthsPoints] = useState();
@@ -47,8 +46,18 @@ export default function TransactionHistory(props) {
             borderBottom: 'none'
         }
     }))(Tab);
+    
+    const convertDateToLocalDate = (date) => {
+        return new Date(date)?.toLocaleDateString()
+    }
+
+    const handleLoader=(bool)=>{
+        props.routeActionHandler.dispatchLoaderData(bool);
+    }
+
 
     const filterPointsBalance = (activeIndex) => {
+        handleLoader(true);
         setactiveIndex(activeIndex)
         let LastxDays = activeIndex == 1 ? LastXDays.LastMonth : activeIndex == 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
         let data={
@@ -57,29 +66,32 @@ export default function TransactionHistory(props) {
         }
         postData(`${GAME_PROD_HOST_URI}${PLAYER_POINTS_BALANCE}`,data, SERVICE_TYPE.GAME)
             .then(pointsBalance => {
-                if (activeIndex == 0) {
-                    setLast7DaysPoints(pointsBalance);
-                } else if (activeIndex == 1) {
-                    setLastMonthPoints(pointsBalance);
-                } else if (activeIndex == 2) {
-                    setLast6MonthsPoints(pointsBalance);
-                }
+                setLastXDaysHistory(pointsBalance);
+                let ordered=_.sortBy(pointsBalance,x=>x.added_on).reverse();
+                setLastXDaysHistory(ordered);
+                handleLoader(false);
+                // if (activeIndex == 0) {
+                //     setLast7DaysPoints(pointsBalance);
+                // } else if (activeIndex == 1) {
+                //     setLastMonthPoints(pointsBalance);
+                // } else if (activeIndex == 2) {
+                //     setLast6MonthsPoints(pointsBalance);
+                // }
             });
     }
-    const convertDateToLocalDate = (date) => {
-        return new Date(date)?.toLocaleDateString()
-    }
-
 
     useEffect(() => {
+        handleLoader(true);
         let data={
             CustomerID:customer.CustomerID,
             FetchLastX:LastXDays.Last7Days
         }
         postData(`${GAME_PROD_HOST_URI}${PLAYER_POINTS_BALANCE}`,data, SERVICE_TYPE.GAME)
             .then(pointsBalance => {
-                console.log('*', pointsBalance)
-                setLast7DaysPoints(pointsBalance);
+                let ordered=_.sortBy(pointsBalance,x=>x.added_on).reverse();
+                setLastXDaysHistory(ordered);
+                //setLast7DaysPoints(pointsBalance);
+                handleLoader(false);
             });
     }, []);
 
@@ -104,10 +116,10 @@ export default function TransactionHistory(props) {
                             <span>Last 6 Months</span></div>}>
                         </MyTab>
                     </HorizontalTabs>
-                    {activeIndex === 0 && <TabCotainer>
-                        {last7DaysPoints && last7DaysPoints.length > 0 ? (
+                    <TabCotainer>
+                        {lastXDaysHistory && lastXDaysHistory.length > 0 ? (
                             <Fragment>
-                                {last7DaysPoints.map(obj => (
+                                {lastXDaysHistory.map(obj => (
                                     <div className="t-h-box">
                                         <div className="w-15 float-left clearfix t-h-b-logobox">
                                             <img src={gem_small_src} />
@@ -123,8 +135,8 @@ export default function TransactionHistory(props) {
                                 ))}
                             </Fragment>
                         ) : null}
-                    </TabCotainer>}
-                    {activeIndex === 1 && <TabCotainer>
+                    </TabCotainer>
+                    {/* {activeIndex === 1 && <TabCotainer>
                         {lastMonthPoints && lastMonthPoints.length > 0 ? (
                             <Fragment>
                                 {lastMonthPoints.map(obj => (
@@ -143,8 +155,8 @@ export default function TransactionHistory(props) {
                                 ))}
                             </Fragment>
                         ) : null}
-                    </TabCotainer>}
-                    {activeIndex === 2 && <TabCotainer>
+                    </TabCotainer>} */}
+                    {/* {activeIndex === 2 && <TabCotainer>
                         {last6MonthsPoints && last6MonthsPoints.length > 0 ? (
                             <Fragment>
                                 {last6MonthsPoints.map(obj => (
@@ -163,7 +175,7 @@ export default function TransactionHistory(props) {
                                 ))}
                             </Fragment>
                         ) : null}
-                    </TabCotainer>}
+                    </TabCotainer>} */}
                 </div>
             </div>
         </Fragment>

@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { FaPencilAlt } from "react-icons/fa";
 
 import rupee_src from "../../assets/img/rewardZone/rupee_home.svg";
 

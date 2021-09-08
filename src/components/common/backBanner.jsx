@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import back_banner_src from '../../assets/img/Coupon_bg.svg'
 import group_src from '../../assets/img/transactionHistory/Group.svg';
 import rupee_src from '../../assets/img/rewardZone/rupee_home.svg';
@@ -12,9 +12,9 @@ export default function BackBanner(props) {
     return (
         <div id="back-banner-container" className={`${(props.fromTransaction || props.fromCustomerSavings) ? `back-banner-container-bg` : ``}`}>
             {props.fromRanking &&
-                <>
+                <Fragment>
                     <img src={back_banner_src} title="Back Banner" className="back-banner-your-ranking" />
-                </>
+                </Fragment>
             }
             {props.fromTransaction || props.fromCustomerSavings ? (
                 <div className="w-100 text-center">
@@ -23,9 +23,8 @@ export default function BackBanner(props) {
                     <div className="w-100 text-center">
                         <div className="lbl-banner-points">
                             <span>
-                                {props.fromTransaction ? summary?.FormattedTotalPoints
-                                    : props.fromCustomerSavings ? "$" + summary?.FormattedTotalSavings
-                                        : 0}
+                                {props.fromTransaction && summary?.FormattedTotalPoints}
+                                {props.fromCustomerSavings && summary?.FormattedTotalSavings}
                             </span>
                         </div>
                         <div className="pt-2 lbl-banner-pointsdesc">

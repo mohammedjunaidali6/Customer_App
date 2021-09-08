@@ -55,10 +55,10 @@
 .urd-user-rewards-detail-desc {
     height: 20px;
     color: #3F4045;
-    font-size: 10px;
-    font-weight: 300;
+    font-size: 12px;
+    font-weight: 500;
     letter-spacing: -0.02px;
-    line-height: 19.6px;
+    line-height: 20px;
 }
 
 /* for user daily reward component */

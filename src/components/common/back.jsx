@@ -69,8 +69,7 @@ export default function Back(props) {
                             <span
                                 className={`notification-count ${props.fromTransactionHistory || props.fromUserRewards || props.fromRanking || props.fromStatus ? `n-c-right20` : ``}`}
                                 onClick={() => notificationFn()}
-                            >
-                                6
+                            >6
                             </span>
                         </Fragment>
                     ) : null}
@@ -95,7 +94,7 @@ export default function Back(props) {
                             <div id="amount-saved-box" className="detail-box-content mb-3 float-right" onClick={() => props.customerSavingsOpenFn()}>
                                 <img className="float-left" src={rupee_src} />
                                 <div className="float-left pl-2">
-                                    <div className="rzdb-header" >{`$${summary?.FormattedTotalSavings || ''}`}</div>
+                                    <div className="rzdb-header" >{`${summary?.FormattedTotalSavings || ''}`}</div>
                                     <div className="rzdb-desc" >Amount Saved</div>
                                 </div>
                             </div>

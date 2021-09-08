@@ -6,9 +6,12 @@
   height: 100%;
   background-color: rgb(255, 254, 254);
   opacity: 0.6;
+  display: block;
+  padding-top: 50%;
+  z-index: 999;
 }
 .react-spinner-material{
-  margin-left: 46%;
-  margin-top: 24%;
+  margin-left: 44%;
+  margin-top: 25%;
   border-width: 10px;
 }

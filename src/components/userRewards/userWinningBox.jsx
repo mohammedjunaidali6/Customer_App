@@ -9,7 +9,7 @@ export default function UserWinningBox(props) {
         var days = new Date(ExpiredDate).getDate() - new Date().getDate();
         var str = '';
         if (days > 0) {
-            str = `Expired in ${days} days`;
+            str = `Expire in ${days} days`;
         } else if (days == 0) {
             str = `Expiring today`;
         } else {

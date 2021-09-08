@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Back from "../common/back";
+import _ from 'lodash';
 import './userRewards.css';
 import { containerHeightCalcFn } from "../common/global";
 import UserRewardsUserInfo from "./userInfo";
@@ -17,15 +18,21 @@ export default function UserRewards(props) {
 
     var customer=getCustomerDetails();
 
+    const handleLoader=(bool)=>{
+        props.routeActionHandler.dispatchLoaderData(bool);
+    }
 
     useEffect(() => {
+        handleLoader(true);
         let data={
             CustomerID:customer.CustomerID
         }
         postData(`${ENGT_PROD_HOST_URI}${PLAYER_REWARD_HISTORY}`,data, SERVICE_TYPE.ENGT)
             .then(allRewards => {
-                setPlayerRewardsData(allRewards);
-                props.userRewardsActionHandler.dispatchUserRewards(allRewards);
+                let ordered=_.sortBy(allRewards,r=>r.ExpiredDate).reverse();
+                setPlayerRewardsData(ordered);
+                props.userRewardsActionHandler.dispatchUserRewards(ordered);
+                handleLoader(false);
             })
     }, [])
 

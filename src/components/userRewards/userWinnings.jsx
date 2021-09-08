@@ -1,62 +1,10 @@
 import React, { Fragment, useState } from 'react';
-
 import trophy_src from "../../assets/img/userRewards/trophy.svg";
 import expiring_src from "../../assets/img/userRewards/Expiringsoon.svg";
 import missed_src from "../../assets/img/userRewards/missed.svg";
 import unclaimed_src from "../../assets/img/userRewards/Unclaimed.svg";
 import UserWinningBox from "./userWinningBox";
-import { useEffect } from 'react';
 
-const tempArray = [
-    {
-        id: 1,
-        type: 'unclaimed',
-        offer: '₹100 Off',
-        offerDesc: 'Rs.100 Off on any shoe purchase',
-        offerCode: 'HAPPYNEWYEAR100',
-        expiringMsg: 'Expiring in 3 days'
-    },
-    {
-        id: 2,
-        type: 'expiringsoon',
-        offer: '₹100 Off',
-        offerDesc: 'Rs.100 Off on any shoe purchase',
-        offerCode: 'HAPPYNEWYEAR100',
-        expiringMsg: 'Expiring in 3 days'
-    },
-    {
-        id: 3,
-        type: 'expiringsoon',
-        offer: '₹100 Off',
-        offerDesc: 'Rs.100 Off on any shoe purchase',
-        offerCode: 'HAPPYNEWYEAR100',
-        expiringMsg: 'Expiring in 3 days'
-    },
-    {
-        id: 4,
-        type: 'missed',
-        offer: '₹100 Off',
-        offerDesc: 'Rs.100 Off on any shoe purchase',
-        offerCode: 'HAPPYNEWYEAR100',
-        expiringMsg: 'Expiring in 3 days'
-    },
-    {
-        id: 5,
-        type: 'missed',
-        offer: '₹100 Off',
-        offerDesc: 'Rs.100 Off on any shoe purchase',
-        offerCode: 'HAPPYNEWYEAR100',
-        expiringMsg: 'Expiring in 3 days'
-    },
-    {
-        id: 6,
-        type: 'missed',
-        offer: '₹100 Off',
-        offerDesc: 'Rs.100 Off on any shoe purchase',
-        offerCode: 'HAPPYNEWYEAR100',
-        expiringMsg: 'Expiring in 3 days'
-    }
-];
 
 export default function UserWinnings(props) {
     const [selectedType, setSelectedType] = useState();

@@ -483,8 +483,9 @@ button[disabled]{
 .rzdb-desc {
     height: 20px;
     color: #3F4045;
+    font-family: 'Roboto';
     font-size: 11px;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: -0.03px;
     line-height: 19.6px;
 }

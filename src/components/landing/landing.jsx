@@ -24,9 +24,10 @@ export default function Landing(props) {
         postData(`${EVNT_PROD_HOST_URI}/evnt/validate`,obj, SERVICE_TYPE.EVNT)
         .then(data=>{
             if(data){
+                console.log('** Customer Logged In: ',data);
                 props.landingActionHandler.dispatchCustomerData(data);
                 setLoggedInUser(data);
-
+                
                 //Fetch Engagements
                 getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
                     .then(engagementswithGames => {
@@ -60,17 +61,20 @@ export default function Landing(props) {
                 Explore Great Coupons, Deals and Offers Let’s try How Lucky are You Today
             </div> */}
             <div>
-                {!loggedInUser?
+                {loggedInUser&&
                     <img src={music_progress} className='music-spinner' />
-                    :
-                    <>
-                        <div style={{paddingTop:'20px',fontStyle:'Roboto',fontSize:'16px',fontWeight:'bold',color:'#808080'}}>
-                            Please Login to See Handpicked Entertainment for you
-                        </div>
-                        <button type="button" className="surface" onClick={loginClickFn}>
-                            <span className="button-text">LOGIN</span>
-                        </button>
-                    </>
+                }
+                <div style={{paddingTop:'20px',fontStyle:'Roboto',fontSize:'16px',fontWeight:'bold',color:'#808080'}}>
+                    {loggedInUser?
+                        'Please Hold on! Handpicking entertainment for you..'
+                        :
+                        'Please Login to See Handpicked Entertainment for you'
+                    }
+                </div>
+                {!loggedInUser&&
+                    <button type="button" className="surface" onClick={loginClickFn}>
+                        <span className="button-text">LOGIN</span>
+                    </button>
                 }
             </div>
 
