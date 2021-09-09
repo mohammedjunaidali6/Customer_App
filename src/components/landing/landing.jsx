@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { containerHeightCalcFn } from '../common/global';
 import './landing.css';
 import welcome_gift_src from "../../assets/img/landing/giftBox.gif";
 import blaash_logo_src from "../../assets/img/landing/blaash-logo.png";
@@ -12,7 +11,7 @@ export default function Landing(props) {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
 
-    const [loggedInUser,setLoggedInUser]=useState();
+    const [loggedInUser,setLoggedInUser]=useState(true);
     
     
     useEffect(() => {
@@ -51,36 +50,25 @@ export default function Landing(props) {
             <div className="welcome-top-sec">
                 <img src={welcome_gift_src} style={{ height: '75%', paddingTop: "64px" }} />
             </div>
-            {/* <div>
-                <img src={blaash_logo_src} style={{ height: '84px', width: '180px' }} />
-            </div>
-            <div className="welcome-to-coupon-wo">
-                Welcome to Coupon World
-            </div>
-            <div className="explore-great-coupon">
-                Explore Great Coupons, Deals and Offers Let’s try How Lucky are You Today
-            </div> */}
-            <div>
-                {loggedInUser&&
+            {loggedInUser?
+                <>
                     <img src={music_progress} className='music-spinner' />
-                }
-                <div style={{paddingTop:'20px',fontStyle:'Roboto',fontSize:'16px',fontWeight:'bold',color:'#808080'}}>
-                    {loggedInUser?
-                        'Please Hold on! Handpicking entertainment for you..'
-                        :
-                        'Please Login to See Handpicked Entertainment for you'
-                    }
-                </div>
-                {!loggedInUser&&
+                    <div className="landing-text">
+                        <p>Please Hold on! </p>
+                        <p>Handpicking entertainment for you..</p>
+                    </div>
+                </>
+                :
+                <>
+                    <div className="landing-text">
+                        Please Login to See Handpicked Entertainment for you
+                    </div>
                     <button type="button" className="surface" onClick={loginClickFn}>
                         <span className="button-text">LOGIN</span>
                     </button>
-                }
-            </div>
+                </>
+            }
 
-            {/* <div className="exit">
-                Exit
-            </div> */}
             <div style={{ width: "181px", margin: "0 auto", marginTop: "40px" }}>
                 <div className="powered-by">Powered by</div>
                 <div>

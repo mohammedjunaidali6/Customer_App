@@ -335,6 +335,12 @@ button[disabled]{
     line-height: 11.68px;
     text-align: center;
 }
+.disable-btn{
+  background-color: rgb(150, 150, 150);
+}
+.enable-btn{
+  background-color: rgb(96, 96, 238);
+}
 .ranking-item-box .text-offer {
     color: #5F6165;
     font-family: Roboto;

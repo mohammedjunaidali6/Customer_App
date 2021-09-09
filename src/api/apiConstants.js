@@ -44,7 +44,7 @@ export const TOP_CUSTOMER_SAVINGS = '/engt/topCustomerSavings?engagement_id=';
 
 //EVENT URIs
 export const JOURNEY_TASK_STATUS = '/evnt/journeyTaskStatus';
-
+export const PURCHASED_AMOUNT='/evnt/purchasedAmount';
 
 //GAME URIs
 export const GAME_LAUNCH = '/game/gameLaunch';
