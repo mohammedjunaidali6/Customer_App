@@ -5,6 +5,7 @@ import benefits_src from '../../assets/img/rewardZone/Benefits_home.svg';
 import invitation_src from '../../assets/img/rewardZone/invitation.svg';
 import './rewardZone.css';
 import ProgressBar from '../common/progressBar';
+import {WhatsappIcon,WhatsappShareButton,EmailShareButton,FacebookShareButton} from 'react-share'
 import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
 import GCarousel from '../common/carousel';
@@ -22,6 +23,9 @@ import { getCustomerDetails } from '../common/getStoreData';
 export default function RewardZone(props) {
     // console.log('**', props);
     var customer=getCustomerDetails();
+    
+    var referralLink=`${customer?.SignUpUrl}?refcode=${customer?.ReferralCode}`;
+    var referralMessage="Shopping is more exciting now, Play Games and Win Exciting Rewards, Come Join the fun at -"+referralLink;
 
     function rewardOpenFn() {
         props.history.push('/userrewards');
@@ -36,15 +40,6 @@ export default function RewardZone(props) {
         props.history.push('/customersavings');
     }
     function gameDetailFn(selectedEngagementData) {
-        // let postObj={
-        //     EngagementID:selectedEngagementData.EngagementID,
-        //     CustomerID:customer.CustomerID
-        // }
-        // postData(`${GAME_PROD_HOST_URI}${CREATE_GAME_PLAY}`,postObj,SERVICE_TYPE.GAME)
-        // .then(res=>{
-        //     console.log('**',res);
-        // })
-
         props.rewardZoneActionHandler.pushSelectedEngagement(selectedEngagementData);
         props.history.push({ pathname: "/gamedetail" });
     }
@@ -120,7 +115,10 @@ export default function RewardZone(props) {
                 </div>
                 <div className="reward-zone-invite-container">
                     <div className="reward-zone-invite-logo">
-                        <img src={invitation_src} alt='' />
+                        <WhatsappShareButton url={referralMessage}>
+                            <WhatsappIcon size={48} round={true} />
+                        </WhatsappShareButton>
+                        {/* <img src={invitation_src} alt='' /> */}
                     </div>
                     <div className="reward-zone-invite-content">
                         <div>

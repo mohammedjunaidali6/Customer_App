@@ -9,7 +9,7 @@ import { getCustomerDetails } from './getStoreData';
 
 
 export default function RewardBox(props) {
-    console.log('***',props.dataObj);
+    // console.log('***',props);
     const customerData=getCustomerDetails();
     const engagement=props.dataObj;
     const game=engagement.Game;
