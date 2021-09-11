@@ -14,7 +14,17 @@ export default function RewardBox(props) {
     const engagement=props.dataObj;
     const game=engagement.Game;
     const [perc,setPerc]=useState(0);
-    const [amountToBePurchased,setAmountToBePerchased]=useState(engagement?.PurchaseValue);
+    const [amountToBePurchased,setAmountToBePerchased]=useState(engagement?.PurchaseValue||0);
+
+
+    const onPlayNow =()=>{
+        if(amountToBePurchased<=0){
+            props.gameDetailFn(engagement)
+        }
+    }
+    const onShopMore=()=>{
+        alert('SHOP MORE is yet to be implemented');
+    }
 
     useEffect(()=>{
         let obj={
@@ -45,20 +55,27 @@ export default function RewardBox(props) {
                 <div className="w-100">
                     <ProgressBar percentage={perc} />
                 </div>
-
-                {amountToBePurchased>0&&
-                    <div className="reward-item-box-progress-msg">
+                <div className="reward-item-box-progress-msg">
+                    {amountToBePurchased>0&&
                         <span>Shop for ${amountToBePurchased} to Play</span>
-                    </div>
-                }
+                    }
+                </div>
                 <div className="w-100 text-center">
+                {amountToBePurchased<=0?
+                    <button
+                        type="button" 
+                        className='btn-reward-item-playnow enable-btn'
+                        onClick={onPlayNow}
+                    ><span className="button-text">PLAY NOW</span>
+                    </button>
+                    :
                     <button 
                         type="button" 
-                        className={`btn-reward-item-playnow ${amountToBePurchased>0?'disable-btn':'enable-btn'}`}
-                        onClick={() => props.gameDetailFn(engagement)}
-                        disabled={amountToBePurchased>0}
-                    ><span className="button-text">{amountToBePurchased>0?'SHOP MORE':'PLAY NOW'}</span>
+                        className='btn-reward-item-playnow enable-btn'
+                        onClick={onShopMore}
+                    ><span className="button-text">SHOP MORE</span>
                     </button>
+                }
                 </div>
                 <div className="w-100 dashed-line-div"></div>
                 <div className="w-100 reward-item-box-content pt-3 pb-3">
