@@ -336,7 +336,9 @@ button[disabled]{
     text-align: center;
 }
 .disable-btn{
-  background-color: rgb(150, 150, 150);
+  /* background-color: rgb(223, 223, 223); */
+  opacity: 0.4;
+  pointer-events: none;
 }
 .enable-btn{
   background-color: rgb(96, 96, 238);
@@ -378,12 +380,15 @@ button[disabled]{
 }
 .progress-bar {
     height: 7px;
-    width: 97%;
+    width: 86%;
     opacity: 0.6;
     transform: scaleY(-1);
     border-radius: 10px;
     background-color: #ffffff;
     margin: 0 auto;
+    border-color: #9d9d9d;
+    border-width: 1px;
+    border-style: solid;
 }
 .progress-bar > span {
     display: block;

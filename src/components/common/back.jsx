@@ -44,22 +44,24 @@ export default function Back(props) {
         <>
             <div id="back-container" className="" style={{ height: `${props.height}px` }}>
                 <div className="back-container-content" >
-                    {!props.fromRewardZone && !props.fromNotification ? (
-                        <i className="arrow left" onClick={() => bactToRewardFn()} ></i>
-                    ) : null}
-                    <span className={`back-header ${props.fromRewardZone || props.fromNotification ? `` : ``}`}
-                        onClick={() => bactToRewardFn()}>
-                        {props.fromRewardZone || props.fromNotification || props.fromLeaderBoard ? `` : `Back to `}{props.backTitle ? props.backTitle : `Reward Zone`}</span>
-                    {props.fromRewardZone ? (
+                    {!props.fromRewardZone && !props.fromNotification ?
+                        <Fragment>
+                            <i className="arrow left" onClick={() => bactToRewardFn()} ></i>
+                            <span className={`back-header`} onClick={() => bactToRewardFn()}>Back</span>
+                        </Fragment>
+                        :                    
+                        <span className={`back-header`}>Entertainment Zone</span>
+                    }
+                    {props.fromRewardZone &&
                         <AiOutlineClose className="close-box" onClick={() => closeAppFn()} />
-                    ) : null}
-                    {props.fromNotification ? (
-                        <AiOutlineClose className={`close-box ${props.fromNotification ? `` : `mr-2`}`} onClick={() => closeNotificationFn()} />
-                    ) : null}
-                    {props.fromGameDetail ? (
+                    }
+                    {props.fromNotification &&
+                        <AiOutlineClose className='close-box' onClick={() => closeNotificationFn()} />
+                    }
+                    {props.fromGameDetail &&
                         <img src={share_src} alt="Share" className="share-img" />
-                    ) : null}
-                    {!props.fromNotification && !props.fromGameDetail && !props.fromLeaderBoard ? (
+                    }
+                    {/* {!props.fromNotification && !props.fromGameDetail && !props.fromLeaderBoard ? (
                         <Fragment>
                             <BsFillBellFill
                                 className={`notification-box ${props.fromTransactionHistory || props.fromUserRewards || props.fromRanking || props.fromStatus ? `` : `mr-2`}`}
@@ -72,7 +74,7 @@ export default function Back(props) {
                             >6
                             </span>
                         </Fragment>
-                    ) : null}
+                    ) : null} */}
                     {/* <div className="notification-box">
                     <span className="notification-count">6</span>
                     <div className="notification-bell">
@@ -82,7 +84,7 @@ export default function Back(props) {
                         <span className="bell-rad"></span>
                     </div>
                 </div> */}
-                    {props.fromRewardZone ? (
+                    {props.fromRewardZone &&
                         <div id="reward-zone-detail-box-container">
                             <div id="point-box" className="detail-box-content mb-3" onClick={() => props.pointsOpenFn()}>
                                 <img className="float-left" src={point_box_src} />
@@ -113,7 +115,7 @@ export default function Back(props) {
                                 </div>
                             </div>
                         </div>
-                    ) : null}
+                    }
                 </div>
             </div>
             <Modal

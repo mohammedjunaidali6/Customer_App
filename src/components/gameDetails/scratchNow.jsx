@@ -18,6 +18,7 @@ import {
     getCustomerID
 } from '../../api/apiConstants';
 import { getCustomerDetails } from '../common/getStoreData';
+import { AiOutlineClose } from 'react-icons/ai';
 
 const useStyles = makeStyles((theme) => ({
     fab: {
@@ -138,6 +139,7 @@ export default function GameDetailScratchNow(props) {
                 </div>
                 {iFrameClick &&
                     <div id="g-d-iFrame-sec">
+                        <AiOutlineClose id="g-d-iFrame-close" title="Close Game" size={24} onClick={()=>alert(iFrameClick)}/>
                         <iframe
                             id="g-d-iFrame"
                             src={`${props.selectedGameDetail?.Game?.GameUrl}?token=${token}`}

@@ -71,15 +71,14 @@ export default function RewardZone(props) {
         postData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`,data, SERVICE_TYPE.REPT)
             .then(summary => {
                 props.rewardZoneActionHandler?.setPlayerSummary(summary);
-        })
+                handleLoader(false);
+            })
         if(!Array.isArray(props.engagements)){
             getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
                 .then(engagementswithGames => {
                     props.rewardZoneActionHandler.setEngagements(engagementswithGames);
                     handleLoader(false);
                 })
-        }else{
-            handleLoader(false);
         }
     }, []);
 

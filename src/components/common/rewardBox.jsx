@@ -53,7 +53,7 @@ export default function RewardBox(props) {
                     <span className="text-rank-of">{engagement.DisplayName}</span>
                 </div>
                 <div className="w-100">
-                    <ProgressBar percentage={perc} />
+                    <ProgressBar percentage={perc} style={{width:'90%'}}/>
                 </div>
                 <div className="reward-item-box-progress-msg">
                     {amountToBePurchased>0&&
@@ -71,9 +71,9 @@ export default function RewardBox(props) {
                     :
                     <button 
                         type="button" 
-                        className='btn-reward-item-playnow enable-btn'
+                        className='btn-reward-item-playnow disable-btn'
                         onClick={onShopMore}
-                    ><span className="button-text">SHOP MORE</span>
+                    ><span className="button-text" style={{color:'#0a9c00'}}>SHOP MORE</span>
                     </button>
                 }
                 </div>

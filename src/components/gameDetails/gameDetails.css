@@ -347,7 +347,8 @@
 }
 #g-d-iFrame-close {
     position: absolute;
-    top: 5%;
-    left: 1%;
+    top: 2%;
+    left: 90%;
     color: #000;
+    z-index: 10;
 }
