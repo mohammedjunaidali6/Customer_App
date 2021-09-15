@@ -26,7 +26,8 @@ export default function GameDetail(props) {
     const [engagementDetails, setEngagementDetails] = useState({});
 
     var customer=getCustomerDetails();
-
+    var rewardZoneReducer=store.getState().RewardZoneReducer;
+    var redeemedAmount=rewardZoneReducer.engagementPurchasedAmounts.find(e=>e.EngagementID==selectedEngagement.EngagementID)?.FormattedAmountRedeemed;
 
     const carouselItemClick = (data) => {
         props.rewardZoneActionHandler.pushSelectedEngagement(allEngagements[data]);
@@ -42,7 +43,6 @@ export default function GameDetail(props) {
         }
         postData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_DETAILS_FOR_PLAYER}`, requestData, SERVICE_TYPE.ENGT)
             .then(engagementDetails => {
-                console.log('***', engagementDetails)
                 setEngagementDetails(engagementDetails);
             })
     }, [selectedEngagement])
@@ -50,13 +50,14 @@ export default function GameDetail(props) {
     return (
         <Fragment>
             <Back parentProps={props} height="235" fromGameDetail={true} />
-            <GCarousel data={allEngagements}
+            {/* <GCarousel data={allEngagements}
                 fromGameDetail={true}
                 centerMode={true}
                 centerSlidePercentage={80}
                 carouselItemClick={carouselItemClick} >
-            </GCarousel>
-            <GameDetailGameInfo parentProps={props} />
+            </GCarousel> */}
+            <img className='g-d-carousel' style={{height:'28%',width:'100%'}} src={selectedEngagement.Game?.BannerImageUrl} alt='Game Banner'/>
+            <GameDetailGameInfo parentProps={props} redeemedAmount={redeemedAmount}/>
             <div style={{ height: containerHeightCalcFn(348), overflowY: 'auto' }}>
                 <GameDetailScratchNow
                     selectedGameDetail={selectedEngagement}

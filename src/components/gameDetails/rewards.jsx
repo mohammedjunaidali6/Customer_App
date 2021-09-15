@@ -7,45 +7,10 @@ import reward2_src from '../../assets/img/gameDetails/reward2.svg';
 import reward3_src from '../../assets/img/gameDetails/reward3.svg';
 import reward4_src from '../../assets/img/gameDetails/reward4.svg';
 
-const tempArray = [
-    {
-        id: 1,
-        lblPrize: '1st Prize',
-        lblDiscount: '50% Flat off iPhone',
-        prize: '50%',
-        discount: 'FLAT DISCOUNT'
-    },
-    {
-        id: 2,
-        lblPrize: '2nd Prize',
-        lblDiscount: '1000 Points',
-        prize: '1000',
-        discount: 'POINTS'
-    },
-    {
-        id: 3,
-        lblPrize: '3rd Prize',
-        lblDiscount: 'Rs. 300 off',
-        prize: '$300',
-        discount: 'FLAT DISCOUNT'
-    },
-    {
-        id: 4,
-        lblPrize: '4th Prize',
-        lblDiscount: 'Rs. 100 off',
-        prize: '$100',
-        discount: 'FLAT DISCOUNT'
-    }
-];
 
 export default function GameDetailRewards(props) {
-    const [rewards, setRewards] = useState();
-
-
-    useEffect(() => {
-
-    })
-
+    console.log('****',props);
+    
     const getWinPositionString = (position) => {
         switch (position) {
             case 1:

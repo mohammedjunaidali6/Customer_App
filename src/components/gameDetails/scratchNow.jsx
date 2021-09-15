@@ -77,7 +77,6 @@ export default function GameDetailScratchNow(props) {
                     setLoadingTasks(false);
                 })
         } else {
-            console.log('** There are NO Journey Tasks');
             setTaskStatuses([]);
         }
     }, [props.engagementDetails?.JourneyTasks])
@@ -86,7 +85,6 @@ export default function GameDetailScratchNow(props) {
         taskStatuses.length > 0 &&
         taskStatuses.map(task => !task.HasCompleted).length > 0;
     
-    console.log('***', token)
 
     return (
         <div className="gamedetail-scratchnow-items">
@@ -126,8 +124,8 @@ export default function GameDetailScratchNow(props) {
                 <div className="w-100 float-left clearfix ">
                     <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
                     <div className="w-100">
-                        <div className="w-90 mt-1 float-left progress-bar-outer">
-                            <ProgressBar percentage="90" />
+                        <div className="w-80 m-2 float-left progress-bar-outer">
+                            <ProgressBar percentage="90"/>
                         </div>
                         <div className="w-10 float-left lbl-percentage">90%</div>
                     </div>

@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import trophy_src from '../../assets/img/gameDetails/trophy.svg';
 import rupee_src from '../../assets/img/gameDetails/rupee.svg';
+import store from '../../store/store';
 
 export default function GameDetailGameInfo(props) {
 
@@ -25,7 +26,7 @@ export default function GameDetailGameInfo(props) {
                     <img src={rupee_src} className="float-right mt-2 mr-2" />
                 </div>
                 <div className="w-50 float-left">
-                    <div className="gamedetail-gameinfo-count">$3,234</div>
+                    <div className="gamedetail-gameinfo-count">{props.redeemedAmount}</div>
                     <div className="gamedetail-gameinfo-count-desc">Amount won</div>
                 </div>
             </div>

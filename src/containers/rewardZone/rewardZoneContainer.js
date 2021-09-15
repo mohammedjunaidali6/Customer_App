@@ -8,7 +8,8 @@ import * as routeActionsHandler from '../../actions/routeActionHandler';
 const mapStateToProps = state => ({
   engagements: state.RewardZoneReducer.engagements,
   selectedEngagement: state.RewardZoneReducer.selectedEngagement,
-  playerSummary: state.RewardZoneReducer.playerSummary
+  playerSummary: state.RewardZoneReducer.playerSummary,
+  engagementPurchasedAmounts:state.RewardZoneReducer.engagementPurchasedAmounts
 });
 
 const mapDispatchToProps = dispatch => ({

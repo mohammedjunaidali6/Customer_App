@@ -41,6 +41,7 @@ export const ENGAGEMENT_DETAILS_FOR_PLAYER = '/engt/engagementdetailsforplayer';
 export const CUSTOMER_SAVINGS = '/engt/customersavings';
 export const FETCH_CUSTOMER_SAVINGS = '/engt/fetchCustomerSavings';
 export const TOP_CUSTOMER_SAVINGS = '/engt/topCustomerSavings?engagement_id=';
+export const ENGAGEMENT_WISE_AMOUNT_REDEEMED= '/engt/engagementWiseAmountRedeemed';
 
 //EVENT URIs
 export const JOURNEY_TASK_STATUS = '/evnt/journeyTaskStatus';

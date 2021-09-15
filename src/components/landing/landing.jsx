@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import './landing.css';
 import welcome_gift_src from "../../assets/img/landing/giftBox.gif";
 import blaash_logo_src from "../../assets/img/landing/blaash-logo.png";
 import music_progress from "../../assets/img/landing/music_progress.gif";
 import { getData, postData } from '../../api/apiHelper';
-import { ENGT_PROD_HOST_URI, EVNT_PROD_HOST_URI, SERVICE_TYPE,ACTIVE_ENGAGEMENTS, DUMMY_TENANT_KEY } from '../../api/apiConstants';
+import { ENGT_PROD_HOST_URI, EVNT_PROD_HOST_URI, SERVICE_TYPE,ACTIVE_ENGAGEMENTS, DUMMY_TENANT_KEY, REPT_PROD_HOST_URI, PLAYER_SUMMARY, ENGAGEMENT_WISE_AMOUNT_REDEEMED } from '../../api/apiConstants';
 import { axiosInstance } from '../../actions/axios-config';
 
 export default function Landing(props) {
@@ -27,12 +27,29 @@ export default function Landing(props) {
                 props.landingActionHandler.dispatchCustomerData(data);
                 setLoggedInUser(data);
                 
-                //Fetch Engagements
-                getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
-                    .then(engagementswithGames => {
-                            props.rewardZoneActionHandler.setEngagements(engagementswithGames);
-                        
-                            props.history.push('rewardzone');
+                let obj={
+                    CustomerID:data.CustomerID
+                }
+                postData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`,obj, SERVICE_TYPE.REPT)
+                    .then(summary => {
+                        props.rewardZoneActionHandler?.setPlayerSummary(summary);
+                        //Fetch Engagements
+                        getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
+                            .then(engagementswithGames => {
+                                    props.rewardZoneActionHandler.setEngagements(engagementswithGames);
+                                    //setEngagementsPurchasedAmounts
+                                    console.log('***',engagementswithGames);
+                                    let postObj={
+                                        EngagementIds:engagementswithGames.map(e=>e.EngagementID)
+                                    }
+                                    console.log('***',postObj);
+                                    postData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_WISE_AMOUNT_REDEEMED}`,postObj,SERVICE_TYPE.ENGT)
+                                    .then(res=>{
+                                        props.rewardZoneActionHandler.setEngagementsPurchasedAmounts(res);
+                                        console.log('***',res);
+                                        props.history.push('rewardzone');
+                                    })
+                            })
                     })
             } else {
                 setLoggedInUser(null);
@@ -51,24 +68,25 @@ export default function Landing(props) {
                 <img src={welcome_gift_src} style={{ height: '75%', paddingTop: "64px" }} />
             </div>
             {loggedInUser?
-                <>
+                <Fragment>
                     <img src={music_progress} className='music-spinner' />
                     <div className="landing-text">
                         <p>Please Hold on! </p>
                         <p>Handpicking entertainment for you..</p>
                     </div>
-                </>
+                </Fragment>
                 :
-                <>
-                    <div className="landing-text">
-                        Please Login to See Handpicked Entertainment for you
+                <Fragment>
+                    <div className="landing-text login-text">
+                        <p>Please Login</p> 
+                        <p>to see</p>
+                        <p>Handpicked Entertainment for you</p>
                     </div>
                     <button type="button" className="surface" onClick={loginClickFn}>
                         <span className="button-text">LOGIN</span>
                     </button>
-                </>
+                </Fragment>
             }
-
             <div style={{ width: "181px", margin: "0 auto", marginTop: "40px" }}>
                 <div className="powered-by">Powered by</div>
                 <div>

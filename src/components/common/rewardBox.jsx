@@ -34,7 +34,8 @@ export default function RewardBox(props) {
         postData(`${EVNT_PROD_HOST_URI}${PURCHASED_AMOUNT}`,obj,SERVICE_TYPE.EVNT)
         .then(res=>{
             setAmountToBePerchased(Math.round(engagement?.PurchaseValue-res));
-            let percentage=(res/engagement?.PurchaseValue)*100;
+            let percentage=engagement.PurchaseValue?(res/engagement?.PurchaseValue)*100:100;
+            percentage =percentage>100?100:percentage;
             setPerc(percentage);
         })
     },[])
@@ -52,7 +53,7 @@ export default function RewardBox(props) {
                 <div className="w-100 reward-item-box-content mt-2">
                     <span className="text-rank-of">{engagement.DisplayName}</span>
                 </div>
-                <div className="w-100">
+                <div className="w-86 ml-2 mr-2">
                     <ProgressBar percentage={perc} style={{width:'90%'}}/>
                 </div>
                 <div className="reward-item-box-progress-msg">
@@ -73,7 +74,7 @@ export default function RewardBox(props) {
                         type="button" 
                         className='btn-reward-item-playnow disable-btn'
                         onClick={onShopMore}
-                    ><span className="button-text" style={{color:'#0a9c00'}}>SHOP MORE</span>
+                    ><span className="button-text">SHOP MORE</span>
                     </button>
                 }
                 </div>
@@ -97,7 +98,7 @@ export default function RewardBox(props) {
                     <div className="w-100 float-left clearfix text-expire"  onClick={() => props.customerSavings(engagement)}>
                         <img style={{ width: "25px", float: "left", marginRight: "6px" }} src={rupee_src} />
                         <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
-                            ${'1,234.00'}
+                            {props.amountRedeemed}
                         </div>
                         <div style={{color: "#808A8F",fontSize: "8px"}}>Amount Won</div>
                     </div>

@@ -64,16 +64,19 @@ export default function RewardZone(props) {
     }
 
     useEffect(() => {
-        handleLoader(true);
         let data={
             CustomerID:customer.CustomerID
         }
-        postData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`,data, SERVICE_TYPE.REPT)
-            .then(summary => {
-                props.rewardZoneActionHandler?.setPlayerSummary(summary);
-                handleLoader(false);
-            })
+        if(!props.playerSummary){
+            handleLoader(true);
+            postData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`,data, SERVICE_TYPE.REPT)
+                .then(summary => {
+                    props.rewardZoneActionHandler?.setPlayerSummary(summary);
+                    handleLoader(false);
+               })
+        }
         if(!Array.isArray(props.engagements)){
+            handleLoader(true);
             getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
                 .then(engagementswithGames => {
                     props.rewardZoneActionHandler.setEngagements(engagementswithGames);
@@ -117,7 +120,6 @@ export default function RewardZone(props) {
                         <WhatsappShareButton url={referralMessage}>
                             <WhatsappIcon size={48} round={true} />
                         </WhatsappShareButton>
-                        {/* <img src={invitation_src} alt='' /> */}
                     </div>
                     <div className="reward-zone-invite-content">
                         <div>
@@ -139,7 +141,14 @@ export default function RewardZone(props) {
                     <div className="reward-zone-handpicked-items">
                         <Fragment>
                             {props.engagements.map((obj) => (
-                                <RewardBox dataObj={obj} key={obj.EngagementID} gameDetailFn={gameDetailFn} customerSavings={customerSavings} leaderBoardFn={leaderBoardFn} />
+                                <RewardBox 
+                                    dataObj={obj} 
+                                    amountRedeemed={props.engagementPurchasedAmounts.find(e=>e.EngagementID==obj.EngagementID)?.FormattedAmountRedeemed}
+                                    key={obj.EngagementID} 
+                                    gameDetailFn={gameDetailFn} 
+                                    customerSavings={customerSavings} 
+                                    leaderBoardFn={leaderBoardFn} 
+                                />
                             ))}
                         </Fragment>
                     </div>
