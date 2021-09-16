@@ -38,15 +38,12 @@ export default function Landing(props) {
                             .then(engagementswithGames => {
                                     props.rewardZoneActionHandler.setEngagements(engagementswithGames);
                                     //setEngagementsPurchasedAmounts
-                                    console.log('***',engagementswithGames);
                                     let postObj={
                                         EngagementIds:engagementswithGames.map(e=>e.EngagementID)
                                     }
-                                    console.log('***',postObj);
                                     postData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_WISE_AMOUNT_REDEEMED}`,postObj,SERVICE_TYPE.ENGT)
                                     .then(res=>{
                                         props.rewardZoneActionHandler.setEngagementsPurchasedAmounts(res);
-                                        console.log('***',res);
                                         props.history.push('rewardzone');
                                     })
                             })
@@ -77,7 +74,7 @@ export default function Landing(props) {
                 </Fragment>
                 :
                 <Fragment>
-                    <div className="landing-text login-text">
+                    <div className="landing-text">
                         <p>Please Login</p> 
                         <p>to see</p>
                         <p>Handpicked Entertainment for you</p>
