@@ -1,9 +1,16 @@
-import { SET_ENGAGEMENTS, SELECTED_ENGAGEMENT, SET_PLAYER_SUMMARY ,SET_ENGAGEMENTS_PURCHASED_AMOUNTS} from '../../constants/actionTypes';
+import { 
+  SET_ENGAGEMENTS, 
+  SELECTED_ENGAGEMENT, 
+  SET_PLAYER_SUMMARY ,
+  SET_ENGAGEMENTS_PURCHASED_AMOUNTS,
+  SET_ENGAGEMENTS_RULE_AMOUNTS
+} from '../../constants/actionTypes';
 
 const initialState = {
   engagements: null,
   selectedEngagement: null,
   engagementPurchasedAmounts:null,
+  engagementRuleAmounts:[],
 };
 const RewardZoneReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -24,7 +31,12 @@ const RewardZoneReducer = (state = initialState, action) => {
     }
     case SET_ENGAGEMENTS_PURCHASED_AMOUNTS: {
       const newState = { ...state };
-      newState.engagementPurchasedAmounts = action.payload ? action.payload : null;
+      newState.engagementPurchasedAmounts = action.payload;
+      return newState;
+    }
+    case SET_ENGAGEMENTS_RULE_AMOUNTS:{
+      const newState={...state};
+      newState.engagementRuleAmounts=action.payload;
       return newState;
     }
     default: {

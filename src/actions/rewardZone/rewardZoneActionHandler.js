@@ -1,4 +1,10 @@
-import { SET_ENGAGEMENTS, SELECTED_ENGAGEMENT, SET_PLAYER_SUMMARY,SET_ENGAGEMENTS_PURCHASED_AMOUNTS } from '../../constants/actionTypes';
+import { 
+  SET_ENGAGEMENTS, 
+  SELECTED_ENGAGEMENT, 
+  SET_PLAYER_SUMMARY,
+  SET_ENGAGEMENTS_PURCHASED_AMOUNTS,
+  SET_ENGAGEMENTS_RULE_AMOUNTS
+ } from '../../constants/actionTypes';
 
 export function setEngagements(data) {
   return (dispatch) => {
@@ -31,6 +37,14 @@ export function setEngagementsPurchasedAmounts(data) {
   return (dispatch) => {
     dispatch({
       type: SET_ENGAGEMENTS_PURCHASED_AMOUNTS,
+      payload: data,
+    })
+  }
+}
+export function setEngagementsRuleAmounts(data) {
+  return (dispatch) => {
+    dispatch({
+      type: SET_ENGAGEMENTS_RULE_AMOUNTS,
       payload: data,
     })
   }

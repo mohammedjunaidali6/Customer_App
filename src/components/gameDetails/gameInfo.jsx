@@ -11,7 +11,7 @@ export default function GameDetailGameInfo(props) {
 
     return (
         <div className="disp-flex-root gamedetail-gameinfo-items">
-            <div className="w-48 float-left gamedetail-gameinfo-left" onClick={() => leaderBoardFn()}>
+            {/* <div className="w-48 float-left gamedetail-gameinfo-left" onClick={() => leaderBoardFn()}>
                 <div className="w-50 float-left">
                     <img src={trophy_src} className="float-right mt-2 mr-2" />
                 </div>
@@ -19,9 +19,9 @@ export default function GameDetailGameInfo(props) {
                     <div className="gamedetail-gameinfo-count">241</div>
                     <div className="gamedetail-gameinfo-count-desc">Winners</div>
                 </div>
-            </div>
+            </div> */}
             <div className="common-divider float-left" style={{ height: "44px" }}></div>
-            <div className="w-48 float-left gamedetail-gameinfo-right">
+            <div className="w-80 float-left gamedetail-gameinfo-right">
                 <div className="w-50 float-left">
                     <img src={rupee_src} className="float-right mt-2 mr-2" />
                 </div>

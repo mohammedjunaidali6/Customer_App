@@ -78,7 +78,6 @@
     height: 46.74px;
     width: 96%;
     border-radius: 23.37px;
-    background-color: var(--buttonBg);;
     box-shadow: 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 1px -1px rgb(0 0 0 / 12%), 0 1px 2px 0 rgb(0 0 0 / 20%);
     border: none;
     margin-top: 13px;
@@ -93,6 +92,13 @@
     letter-spacing: 0;
     line-height: 11.68px;
     text-align: center;
+}
+.enable-btn{
+    background-color: var(--buttonBg);
+}
+.disable-btn{
+    background-color: #5a5a5a;
+    pointer-events: none;
 }
 .lbl-percentage {
     height: 20px;
@@ -348,7 +354,9 @@
 #g-d-iFrame-close {
     position: absolute;
     top: 2%;
-    left: 90%;
+    left: 5%;
     color: #000;
+    background-color: cornsilk;
+    border-radius: 10px;
     z-index: 10;
 }

@@ -60,7 +60,7 @@ export default function Landing(props) {
     }
     
     return (
-        <div id="landing-container" className="">
+        <div id="landing-container">
             <div className="welcome-top-sec">
                 <img src={welcome_gift_src} style={{ height: '75%', paddingTop: "64px" }} />
             </div>
@@ -75,8 +75,7 @@ export default function Landing(props) {
                 :
                 <Fragment>
                     <div className="landing-text">
-                        <p>Please Login</p> 
-                        <p>to see</p>
+                        <p>Please Login to see</p>
                         <p>Handpicked Entertainment for you</p>
                     </div>
                     <button type="button" className="surface" onClick={loginClickFn}>
@@ -84,7 +83,7 @@ export default function Landing(props) {
                     </button>
                 </Fragment>
             }
-            <div style={{ width: "181px", margin: "0 auto", marginTop: "40px" }}>
+            <div className='powered'>
                 <div className="powered-by">Powered by</div>
                 <div>
                     <img src={blaash_logo_src} style={{ height: '50px', width: '125px' }} alt="Logo" />

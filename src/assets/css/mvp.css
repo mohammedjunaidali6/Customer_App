@@ -379,8 +379,6 @@ button[disabled]{
   padding: 5px 0px; */
 }
 .progress-bar {
-    height: 7px;
-    /* width: 86%; */
     opacity: 0.6;
     transform: scaleY(-1);
     border-radius: 10px;

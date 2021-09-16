@@ -19,6 +19,7 @@ import {
 } from '../../api/apiConstants';
 import { getCustomerDetails } from '../common/getStoreData';
 import { AiOutlineClose } from 'react-icons/ai';
+import store from '../../store/store';
 
 const useStyles = makeStyles((theme) => ({
     fab: {
@@ -37,8 +38,12 @@ export default function GameDetailScratchNow(props) {
     const [taskStatuses, setTaskStatuses] = useState([]);
     const [loadingTasks, setLoadingTasks] = useState(false);
     const token = props.engagementDetails?.GamePlay?.Token;
+    var rewardZoneReducer=store.getState().RewardZoneReducer;
 
     var customer=getCustomerDetails();
+    console.log('***',rewardZoneReducer);
+    
+    var ruleAmounts=rewardZoneReducer.engagementRuleAmounts;
 
     const onPlayNow = () => {
         var data = {
@@ -81,16 +86,19 @@ export default function GameDetailScratchNow(props) {
         }
     }, [props.engagementDetails?.JourneyTasks])
 
-    const disablePlayBtn = Array.isArray(taskStatuses) &&
+    const perc=ruleAmounts.find(r=>r.EngagementID==props.selectedGameDetail.EngagementID)?.Percentage||0;
+
+    var disablePlayBtn = Array.isArray(taskStatuses) &&
         taskStatuses.length > 0 &&
         taskStatuses.map(task => !task.HasCompleted).length > 0;
     
+        disablePlayBtn=disablePlayBtn|| perc<=100;
 
     return (
         <div className="gamedetail-scratchnow-items">
             <Fragment>
                 <div className="scratchnow-big-header">{props.selectedGameDetail?.DisplayName || ''}</div>
-                <div className="scratchnow-small-header">Scratch more to win</div>
+                {/* <div className="scratchnow-small-header">Scratch more to win</div> */}
                 <div className="scratchnow-item-container">
                     <Loader show={loadingTasks} radius={26} />
                     {Array.isArray(taskStatuses) && taskStatuses.length > 0 &&
@@ -125,19 +133,22 @@ export default function GameDetailScratchNow(props) {
                     <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
                     <div className="w-100">
                         <div className="w-80 m-2 float-left progress-bar-outer">
-                            <ProgressBar percentage="90"/>
+                            <ProgressBar height={'10px'} percentage={perc}/>
                         </div>
-                        <div className="w-10 float-left lbl-percentage">90%</div>
+                        <div className="w-10 float-left lbl-percentage">{perc}%</div>
                     </div>
                 </div>
                 <div id="btn-scratch-now-container" className="mt-3">
-                    <button type="button" id="btn-scratch-now" onClick={onPlayNow} disabled={!disablePlayBtn}>
-                        <span className="button-text">PLAY NOW</span>
+                    <button 
+                        id="btn-scratch-now" 
+                        className={`${disablePlayBtn?'disable-btn':'enable-btn'}`} 
+                        onClick={onPlayNow}
+                    ><span className="button-text">PLAY NOW</span>
                     </button>
                 </div>
                 {iFrameClick &&
                     <div id="g-d-iFrame-sec">
-                        <AiOutlineClose id="g-d-iFrame-close" title="Close Game" size={24} onClick={()=>alert(iFrameClick)}/>
+                        <AiOutlineClose id="g-d-iFrame-close" title="Close Game" size={24} onClick={()=>setIFrameClick(false)}/>
                         <iframe
                             id="g-d-iFrame"
                             src={`${props.selectedGameDetail?.Game?.GameUrl}?token=${token}`}

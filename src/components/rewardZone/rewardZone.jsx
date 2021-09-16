@@ -83,6 +83,7 @@ export default function RewardZone(props) {
                     handleLoader(false);
                 })
         }
+        props.rewardZoneActionHandler.setEngagementsRuleAmounts([]);
     }, []);
 
     return (
@@ -142,9 +143,9 @@ export default function RewardZone(props) {
                         <Fragment>
                             {props.engagements.map((obj) => (
                                 <RewardBox 
-                                    dataObj={obj} 
+                                    engagement={obj} 
                                     amountRedeemed={props.engagementPurchasedAmounts.find(e=>e.EngagementID==obj.EngagementID)?.FormattedAmountRedeemed}
-                                    key={obj.EngagementID} 
+                                    props={props}
                                     gameDetailFn={gameDetailFn} 
                                     customerSavings={customerSavings} 
                                     leaderBoardFn={leaderBoardFn} 

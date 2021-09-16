@@ -73,6 +73,11 @@
     text-align: center;
     margin: 32px auto 0 auto;
 }
+.powered{
+    width: 50%;
+    margin: 40px 30% 0px;
+    padding-bottom: 32%;
+}
 .powered-by {
     height: 19px;
     /* width: 72px; */
@@ -92,6 +97,7 @@
     /* background-color: #9B9B9B; */
     display: inline-block;
     float: left;
+    padding-bottom: 18%;
 }
 .welcome-top-sec {
     background-image: url(../../assets/img/landing/welcome.png);
@@ -101,10 +107,10 @@
 
 .music-spinner{
     height: auto;
-    width: 32%;
+    width: 36%;
     align-content: center;
     padding-top: 32px;
-    padding-bottom: 116px;
+    padding-bottom: 10%;
 }
 .landing-text{
     font-size: 16px;
@@ -114,5 +120,5 @@
     text-align: center;
 }
 .landing-text p{
-    margin-bottom: -2px;
+    margin-bottom: -1px;
 }

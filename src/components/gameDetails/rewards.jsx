@@ -9,7 +9,7 @@ import reward4_src from '../../assets/img/gameDetails/reward4.svg';
 
 
 export default function GameDetailRewards(props) {
-    console.log('****',props);
+    // console.log('****',props);
     
     const getWinPositionString = (position) => {
         switch (position) {

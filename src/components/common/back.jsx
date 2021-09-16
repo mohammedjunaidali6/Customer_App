@@ -140,7 +140,7 @@ export default function Back(props) {
                             <span className="button-text">No, Stay on this</span>
                         </button>
                         <button id="modal-yes" type="button" className="modal-yes" onClick={() => exitApp(false)}>
-                            <span className="button-text">YES, EXIT</span>
+                            <span className="button-text">Yes, Exit</span>
                         </button>
                     </div>
                 </div>
