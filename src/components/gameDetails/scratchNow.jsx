@@ -37,11 +37,10 @@ export default function GameDetailScratchNow(props) {
     const [iFrameClick, setIFrameClick] = useState(false);
     const [taskStatuses, setTaskStatuses] = useState([]);
     const [loadingTasks, setLoadingTasks] = useState(false);
+    
     const token = props.engagementDetails?.GamePlay?.Token;
     var rewardZoneReducer=store.getState().RewardZoneReducer;
-
     var customer=getCustomerDetails();
-    console.log('***',rewardZoneReducer);
     
     var ruleAmounts=rewardZoneReducer.engagementRuleAmounts;
 
@@ -76,7 +75,6 @@ export default function GameDetailScratchNow(props) {
                     if (data) {
                         setTaskStatuses(data.JourneyTaskStatuses);
                     } else {
-                        console.log('** Journey Tasks Stauses not found');
                         setTaskStatuses([]);
                     }
                     setLoadingTasks(false);

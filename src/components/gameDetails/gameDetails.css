@@ -169,6 +169,7 @@
     position: relative;
     background-color: #efc008;
     padding-top: 20px;
+    border-radius: 10px;
 }
 .gamedetail-rewards-items .rewards-item:nth-child(1) .rewards-item-left {
     background-color: #9ca8bc;
@@ -193,21 +194,22 @@
     color: #FFFFFF;
     font-size: 26px;
     font-weight: bold;
-    letter-spacing: -0.07px;
     line-height: 19.6px;
     text-align: center;
+    padding-right: 8%;
 }
 .rewards-discount-desc {
     height: 20px;
     color: #FFFFFF;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: -0.02px;
+    font-size: 12px;
+    /* font-weight: 500; */
+    letter-spacing: 0.5px;
     line-height: 19.6px;
     text-align: center;
+    padding-right: 8%;
 }
 .rewards-discount-detail-name {
-    height: 16px;
+    height: 8px;
     color: #808A8F;
     font-size: 12px;
     letter-spacing: -0.03px;
@@ -215,12 +217,11 @@
 }
 .rewards-discount-detail-desc {
     height: 19px;
-    width: 75%;
-    color: #3F4045;
-    font-size: 12px;
+    width: 85%;
+    color: #4d4c4b;
+    font-family:Roboto;
+    font-size: 14px;
     font-weight: 500;
-    letter-spacing: -0.04px;
-    line-height: 19px;
 }
 .rewards-discount-detail-TC {
     height: 20px;

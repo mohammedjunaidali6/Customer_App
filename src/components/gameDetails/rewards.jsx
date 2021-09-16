@@ -1,7 +1,4 @@
 import React, { Fragment } from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
-
 import reward1_src from '../../assets/img/gameDetails/reward1.svg';
 import reward2_src from '../../assets/img/gameDetails/reward2.svg';
 import reward3_src from '../../assets/img/gameDetails/reward3.svg';
@@ -25,6 +22,15 @@ export default function GameDetailRewards(props) {
                 return '_ Prize';
         }
     }
+    const getDiscountString=(type,value)=>{
+        value=value||'_';
+        switch(type){
+            case 'percentage':
+                return value+'%';
+            default:
+                return value+'';
+        }
+    }
 
     return (
         <Fragment>
@@ -34,10 +40,10 @@ export default function GameDetailRewards(props) {
                         <div className="rewards-header">Rewards</div>
                         {props.rewards.map((obj, i) => (
                             <div className={`rewards-item rewards-item-${i + 1}`} key={`reward-item${obj.RewardMasterID}`}>
-                                <img className="reward-place" src={obj.WinPosition === 1 ? reward1_src : (obj.WinPosition === 2 ? reward2_src : (obj.WinPosition === 3 ? reward3_src : reward4_src))} />
+                                {/* <img className="reward-place" src={obj.WinPosition === 1 ? reward1_src : (obj.WinPosition === 2 ? reward2_src : (obj.WinPosition === 3 ? reward3_src : reward4_src))} /> */}
                                 <div className="w-30 rewards-item-left" >
                                     <div className="rewards-discount">
-                                        <div className="rewards-discount-header">{obj.Value}</div>
+                                        <div className="rewards-discount-header">{getDiscountString(obj.DiscountType,obj.DiscountValue)}</div>
                                         <div className="rewards-discount-desc">{obj.RewardType}</div>
                                         <div className="curve-div reward-item-box-top reward-item-box-right"></div>
                                         <div className="curve-div reward-item-box-bottom reward-item-box-right"></div>
@@ -45,7 +51,8 @@ export default function GameDetailRewards(props) {
                                 </div>
                                 <div className="w-70 rewards-item-right" >
                                     <div className="rewards-discount-detail">
-                                        <div className="rewards-discount-detail-name">{getWinPositionString(obj.WinPosition)}</div>
+                                        {/* <div className="rewards-discount-detail-name">{getWinPositionString(obj.WinPosition)}</div> */}
+                                        <div className="rewards-discount-detail-name"></div>
                                         <div className="rewards-discount-detail-desc">{obj.DisplayName}</div>
                                         <div className="rewards-discount-detail-TC">T&C apply</div>
                                         <div className="curve-div reward-item-box-top reward-item-box-left"></div>

@@ -43,6 +43,7 @@ export default function GameDetail(props) {
         }
         postData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_DETAILS_FOR_PLAYER}`, requestData, SERVICE_TYPE.ENGT)
             .then(engagementDetails => {
+                console.log('**',engagementDetails);
                 setEngagementDetails(engagementDetails);
             })
     }, [selectedEngagement])

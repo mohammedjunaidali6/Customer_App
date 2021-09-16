@@ -279,10 +279,9 @@ button[disabled]{
 }
 .curve-div {
   position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
   border-radius: 100%;
-  background-color: #FFF;
   background-color: #edeff2;
 }
 .ranking-item-box-top { top: -10px; }
