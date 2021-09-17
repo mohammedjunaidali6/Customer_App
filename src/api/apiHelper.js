@@ -54,7 +54,7 @@ export const postData = async (resource, postData, serviceType) => {
 
 
 function handleResponse(response) {
-    if (response.status == 200 && response.data?.message == "SUCCESS") {
+    if (response.data.code ==1) {
         return response.data.data;
     } else {
         console.error(`*** `, response.data)
