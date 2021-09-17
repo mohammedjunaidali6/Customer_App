@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import cx from 'classnames';
-
 import copy_src from "../../assets/img/userRewards/copy.svg";
 
 export default function UserWinningBox(props) {
@@ -26,7 +25,7 @@ export default function UserWinningBox(props) {
                         <div className="winniner-whole-box mb-4" key={obj.WinnerID}>
                             <div className="winniner-top-box">
                                 <div className="w-75 float-left" style={{ padding: "13px 0 0 16px" }}>
-                                    <div className="wtb-offer">{obj.RewardType}</div>
+                                    <div className="wtb-offer">Coupons</div>
                                     <div className="wtb-offer-desc">{obj.RewardName}</div>
                                 </div>
                                 <div className="w-25 float-left" style={{ padding: "13px 0 0 0" }}>
