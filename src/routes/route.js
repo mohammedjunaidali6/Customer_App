@@ -17,6 +17,7 @@ import LandingContainer from '../containers/landingContainer';
 import LoadingContainer from '../containers/loadingContainer';
 import Ranking from '../components/ranking/ranking';
 import Loader from '../components/common/Spinner/spinner';
+import Exception from '../components/Exception';
 
 export default function AppRoute(props) {
   // console.log('***',props);
@@ -43,6 +44,7 @@ export default function AppRoute(props) {
             <Route exact path="/notification" component={NotificationContainer} />
             <Route exact path="/status" component={StatusContainer} />
             <Route path="*" component={NotFound} />
+            <Route path="error" component={Exception} />
           </Switch>
         </BrowserRouter>
       </div>

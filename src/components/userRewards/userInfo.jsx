@@ -26,7 +26,7 @@ export default function UserRewardsUserInfo(props) {
             </div>
             <div className="userrewards-user-rewards-detail">
                 <div className="w-33 float-left urd-left text-center">
-                    <div className="urd-user-rewards-detail-count">{playerData?.length || ''}</div>
+                    <div className="urd-user-rewards-detail-count">{playerData?.length||0}</div>
                     <div className="urd-user-rewards-detail-desc">Total Wins</div>
                 </div>
                 <div className="w-33 float-left urd-middle text-center">

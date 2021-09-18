@@ -103,7 +103,7 @@ export default function Back(props) {
                             <div id="rewards-box" className="detail-box-content" onClick={() => props.rewardOpenFn()}>
                                 <img className="float-left" src={trophy_src} />
                                 <div className="float-left pl-2">
-                                    <div className="rzdb-header">{summary?.TotalActiveRewards || ''}</div>
+                                    <div className="rzdb-header">{summary?.TotalActiveRewards}</div>
                                     <div className="rzdb-desc" >Rewards</div>
                                 </div>
                             </div>
