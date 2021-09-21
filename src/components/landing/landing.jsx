@@ -17,45 +17,47 @@ export default function Landing(props) {
     useEffect(() => {
         document.body.style.overflow = "unset";
         axiosInstance.defaults.headers.common['x-tenant-key'] = DUMMY_TENANT_KEY;
-        let obj={
-            Token:token
-        }
-        postData(`${EVNT_PROD_HOST_URI}/evnt/validate`,obj, SERVICE_TYPE.EVNT)
-        .then(data=>{
-            if(data){
-                console.log('** Customer Logged In: ',data);
-                props.landingActionHandler.dispatchCustomerData(data);
-                setLoggedInUser(data);
-                try{
-                    let obj={
-                        CustomerID:data.CustomerID
-                    }
-                    postData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`,obj, SERVICE_TYPE.REPT)
-                        .then(summary => {
-                            props.rewardZoneActionHandler?.setPlayerSummary(summary);
-                            //Fetch Engagements
-                            getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
-                                .then(engagementswithGames => {
-                                        props.rewardZoneActionHandler.setEngagements(engagementswithGames);
-                                        //setEngagementsPurchasedAmounts
-                                        let postObj={
-                                            EngagementIds:engagementswithGames.map(e=>e.EngagementID)
-                                        }
-                                        postData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_WISE_AMOUNT_REDEEMED}`,postObj,SERVICE_TYPE.ENGT)
-                                        .then(res=>{
-                                            props.rewardZoneActionHandler.setEngagementsPurchasedAmounts(res);
-                                            props.history.push('rewardzone');
-                                        })
-                                })
-                        })
-                }catch(error){
-                    console.error('Error in Landing is ',error);
-                    props.history.push('error');
-                }
-            } else {
-                setLoggedInUser(null);
+        if(token){
+            let obj={
+                Token:token
             }
-        })
+            postData(`${EVNT_PROD_HOST_URI}/evnt/validate`,obj, SERVICE_TYPE.EVNT)
+            .then(data=>{
+                if(data){
+                    console.log('** Customer Logged In: ',data);
+                    props.landingActionHandler.dispatchCustomerData(data);
+                    setLoggedInUser(data);
+                    try{
+                        let obj={
+                            CustomerID:data.CustomerID
+                        }
+                        postData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`,obj, SERVICE_TYPE.REPT)
+                            .then(summary => {
+                                props.rewardZoneActionHandler?.setPlayerSummary(summary);
+                                //Fetch Engagements
+                                getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
+                                    .then(engagementswithGames => {
+                                            props.rewardZoneActionHandler.setEngagements(engagementswithGames);
+                                            //setEngagementsPurchasedAmounts
+                                            let postObj={
+                                                EngagementIds:engagementswithGames.map(e=>e.EngagementID)
+                                            }
+                                            postData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_WISE_AMOUNT_REDEEMED}`,postObj,SERVICE_TYPE.ENGT)
+                                            .then(res=>{
+                                                props.rewardZoneActionHandler.setEngagementsPurchasedAmounts(res);
+                                                props.history.push('rewardzone');
+                                            })
+                                    })
+                            })
+                    }catch(error){
+                        console.error('Error in Landing is ',error);
+                        props.history.push('error');
+                    }
+                } else {
+                    setLoggedInUser(null);
+                }
+            })
+        }
     }, []);
 
     function loginClickFn() {
