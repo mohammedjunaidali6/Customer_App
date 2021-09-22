@@ -90,7 +90,7 @@ export default function GameDetailScratchNow(props) {
         taskStatuses.length > 0 &&
         taskStatuses.map(task => !task.HasCompleted).length > 0;
     
-        disablePlayBtn=disablePlayBtn|| perc<=100;
+        disablePlayBtn=disablePlayBtn|| perc<100;
 
     return (
         <div className="gamedetail-scratchnow-items">
@@ -130,9 +130,9 @@ export default function GameDetailScratchNow(props) {
                 <div className="w-100 float-left clearfix ">
                     <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
                     <div className="w-100 float-left lbl-percentage">{perc}%</div>
-                        <div className="w-90 ml-3 float-left progress-bar-outer">
-                            <ProgressBar height={'10px'} percentage={perc}/>
-                        </div>
+                    <div className="w-90 ml-3 float-left progress-bar-outer">
+                        <ProgressBar height={'10px'} percentage={perc}/>
+                    </div>
                 </div>
                 <div id="btn-scratch-now-container" className="mt-3">
                     <button 
@@ -144,7 +144,7 @@ export default function GameDetailScratchNow(props) {
                 </div>
                 {iFrameClick &&
                     <div id="g-d-iFrame-sec">
-                        <AiOutlineClose id="g-d-iFrame-close" title="Close Game" size={24} onClick={()=>setIFrameClick(false)}/>
+                        {/* <AiOutlineClose id="iFrame-close" title="Close Game" size={24} onClick={()=>setIFrameClick(false)}/> */}
                         <iframe
                             id="g-d-iFrame"
                             src={`${props.selectedGameDetail?.Game?.GameUrl}?token=${token}`}
