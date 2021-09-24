@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actionsHandler from '../../actions/leaderboard/leaderboardActionHandler';
 import LeaderBoard from '../../components/leaderboard/leaderboard';
+import * as actionsHandler from '../../actions/leaderboard/leaderboardActionHandler';
+import * as routeActionsHandler from '../../actions/routeActionHandler';
 
 const mapStateToProps = state => ({
     leaderboard: state.LeaderBoardReducer.leaderboard,
@@ -9,7 +10,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({ 
-    leaderboardActionHandler : bindActionCreators(actionsHandler, dispatch)
+    leaderboardActionHandler : bindActionCreators(actionsHandler, dispatch),
+    routeActionHandler : bindActionCreators(routeActionsHandler, dispatch),
 });
 
 const LeaderBoardContatiner = connect(mapStateToProps, mapDispatchToProps)(LeaderBoard);

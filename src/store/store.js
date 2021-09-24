@@ -9,6 +9,7 @@ import UserRewardsReducer from "../reducers/userRewards/userRewardsReducer";
 import LeaderBoardReducer from "../reducers/leaderboard/leaderboardReducer";
 import TransactionHistoryReducer from "../reducers/transactionHistory/transactionHistoryReducer";
 import CustomerSavingsReducer from '../reducers/CustomerSavings/customerSavingsReducer';
+import TopCustomerSavingsReducer from '../reducers/CustomerSavings/topCustomerSavingsReducer';
 import NotificationReducer from "../reducers/notification/notificationReducer";
 import StatusReducer from "../reducers/status/statusReducer";
 import RouteReducer from '../reducers/routeReducer';
@@ -48,6 +49,7 @@ const reducer = combineReducers({
   LeaderBoardReducer: LeaderBoardReducer,
   TransactionHistoryReducer: TransactionHistoryReducer,
   CustomerSavingsReducer: CustomerSavingsReducer,
+  TopCustomerSavingsReducer:TopCustomerSavingsReducer,
   NotificationReducer: NotificationReducer,
   StatusReducer: StatusReducer
 });

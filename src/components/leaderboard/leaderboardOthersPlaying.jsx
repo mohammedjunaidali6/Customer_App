@@ -64,6 +64,7 @@ export default function OthersPlaying(props) {
                 <Carousel
                     swipeable={true}
                     draggable={false}
+                    arrows={false}
                     showDots={true}
                     renderDotsOutside={true}
                     // customDot={<CustomDot />}
@@ -80,14 +81,16 @@ export default function OthersPlaying(props) {
                     {tempArray.map((obj) => (
                         <div key={obj.id} className="leaderboard-othersplaying-sec">
                             <div className="w-15 float-left clearfix text-center leaderboard-othersplaying-logo">
-                                <img src={defaultuser_src} className="leaderboard-winners-list-logo p-1" />
+                                <img src={defaultuser_src} className="leaderboard-winners-list-logo" />
                             </div>
-                            <div className="w-60 float-left clearfix leaderboard-othersplaying pl-2">
+                            <div className="w-60 float-left clearfix leaderboard-othersplaying pl-3">
                                 <div className="leaderboard-othersplaying-header">{obj.header} - {obj.id}</div>
                                 <div className="leaderboard-othersplaying-desc">{obj.desc}</div>
                             </div>
                             <div className="w-25 float-left clearfix text-center pt-2">
-                                <button type="button" className="leaderboard-othersplaying-btn"><span className="leaderboard-othersplaying-btn-text">Play</span></button>
+                                <button type="button" className="leaderboard-othersplaying-btn">
+                                    <span className="leaderboard-othersplaying-btn-text">Play</span>
+                                </button>
                             </div>
                         </div>
                     ))}

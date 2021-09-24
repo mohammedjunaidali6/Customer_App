@@ -19,17 +19,23 @@ const backTitle =
 </span>;
 
 export default function LeaderBoard(props) {
-    // console.log('***',props);
+    console.log('***',props);
 
     var selectedEngagement=store.getState().RewardZoneReducer.selectedEngagement;
     var customer=getCustomerDetails();
     // console.log('***',selectedEngagement);
 
+    const handleLoader=(bool)=>{
+        props.routeActionHandler.dispatchLoaderData(bool)
+    }
+
     useEffect(()=>{
+        handleLoader(true);
         getData(`${ENGT_PROD_HOST_URI}${LEADERBOARD_BY_ENGAGEMENT}${selectedEngagement.EngagementID}`, SERVICE_TYPE.ENGT)
             .then(res=>{
                 console.log('***',res);
-                props.leaderboardActionHandler.dispatchLeaderBoard(res);
+                props.leaderboardActionHandler.dispatchLeaderBoard(res||[]);
+                handleLoader(false);
             });
     },[])
     
@@ -46,11 +52,11 @@ export default function LeaderBoard(props) {
                             <img src={defaultuser_src} className="urs-leaderboard-logo p-1" />
                         </div>
                         <div className="w-60 float-left clearfix pt-3 urs-leaderboard-lbl-pos">
-                            <span>You are at {yourPosition} position</span>
+                            <span>You are at {yourPosition||'-'} position</span>
                         </div>
                         <div className="w-25 float-left clearfix pt-3">
                             <img src={coin_src} style={{marginBottom: "3px"}} />
-                            <span className="urs-leaderboard-lbl-coins pl-1">{you?.Score.toLocaleString()}</span>
+                            <span className="urs-leaderboard-lbl-coins pl-1">{you?.Score?.toLocaleString()}</span>
                         </div>
                     </div>
                     <div className="w-100 float-left clearfix urs-leaderboard-desc-outer pt-1">

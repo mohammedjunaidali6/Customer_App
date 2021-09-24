@@ -84,7 +84,7 @@
     font-weight: 500;
     letter-spacing: -0.04px;
     line-height: 19.6px;
-    margin-top: 16%;
+    margin: 16% 6px 6px 0;
 }
 .leaderboard-othersplaying-sec {
     height: 63px;
@@ -112,7 +112,7 @@
 }
 .leaderboard-othersplaying-btn {
     border-radius: 13px;
-    width: 59.97px;
+    width: 60px;
     background-color: var(--buttonBg);
     border: solid 1px var(--buttonBorder);
     box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);
@@ -120,17 +120,14 @@
     outline: none;
 }
 .leaderboard-othersplaying-btn-text {
-    height: 20px;
     color: #FFFFFF;
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: -0.03px;
-    line-height: 19.6px;
 }
 
 /* for leader board winners component */
 #leaderboard-winners-container {
-    margin: 64px 27px 14px 27px;
+    margin: 72px 27px 14px 27px;
 }
 .leaderboard-winners-list-box {
     height: 74px;
