@@ -49,7 +49,7 @@ export default function RewardZone(props) {
     }
     function customerSavings(selectedEngagementData){
         props.rewardZoneActionHandler.pushSelectedEngagement(selectedEngagementData);
-        props.history.push('/leaderboard');
+        props.history.push('/topcustomersavings');
     }
     function statusFn() {
         props.history.push('/status');

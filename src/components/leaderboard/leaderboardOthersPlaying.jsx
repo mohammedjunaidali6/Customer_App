@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
 import defaultuser_src from "../../assets/img/gameDetails/default_user.png";
 
 const responsive = {
@@ -56,6 +55,7 @@ const CustomDot = ({ onClick, ...rest }) => {
 }
 
 export default function OthersPlaying(props) {
+    // console.log('***',props.parentProps);
     
     return (
         <div id="leaderboard-othersplaying-container">
@@ -65,24 +65,22 @@ export default function OthersPlaying(props) {
                     swipeable={true}
                     draggable={false}
                     showDots={true}
+                    renderDotsOutside={true}
                     // customDot={<CustomDot />}
                     responsive={responsive}
                     partialVisbile='right'
                     slidesToSlide={1}
                     infinite={true}
                     autoPlay={false}
-                    autoPlaySpeed={1000}
                     keyBoardControl={true}
                     transitionDuration={1000}
                     containerClass='carousel-container'
                     removeArrowOnDeviceType={['tablet', 'mobile']}
-                    dotListClass='custom-dot-list-style'
-                    itemClass='carousel-item-padding-40-px mt-2'
-                    >
+                >
                     {tempArray.map((obj) => (
                         <div key={obj.id} className="leaderboard-othersplaying-sec">
                             <div className="w-15 float-left clearfix text-center leaderboard-othersplaying-logo">
-                                <img src={defaultuser_src} className="urs-leaderboard-logo p-1" />
+                                <img src={defaultuser_src} className="leaderboard-winners-list-logo p-1" />
                             </div>
                             <div className="w-60 float-left clearfix leaderboard-othersplaying pl-2">
                                 <div className="leaderboard-othersplaying-header">{obj.header} - {obj.id}</div>

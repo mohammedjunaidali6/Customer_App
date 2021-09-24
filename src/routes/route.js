@@ -18,6 +18,7 @@ import LoadingContainer from '../containers/loadingContainer';
 import Ranking from '../components/ranking/ranking';
 import Loader from '../components/common/Spinner/spinner';
 import Exception from '../components/Exception';
+import TopCustomerSavingsContatiner from '../containers/CustomerSavings/TopCustomerSavingsContainer';
 
 export default function AppRoute(props) {
   // console.log('***',props);
@@ -40,6 +41,7 @@ export default function AppRoute(props) {
             <Route exact path="/userrewards" component={UserRewardsContatiner} />
             <Route exact path="/leaderboard" component={LeaderBoardContatiner} />
             <Route exact path="/transactionhistory" component={TransactionHistoryContainer} />
+            <Route exact path="/topcustomersavings" component={TopCustomerSavingsContatiner} />
             <Route exact path="/customersavings" component={CustomerSavingsContatiner} />
             <Route exact path="/notification" component={NotificationContainer} />
             <Route exact path="/status" component={StatusContainer} />

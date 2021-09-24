@@ -31,7 +31,7 @@ export default function TopCustomerSavings(props) {
             .then(data=>{
                 if(data){
                     console.log('***',data)
-                    props.leaderboardActionHandler.dispatchTopCustomerSavings(data);
+                    props.topcustomerSavingsActionHandler.dispatchTopCustomerSavings(data);
                 }
             });
     },[])

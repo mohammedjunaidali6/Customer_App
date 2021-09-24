@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import './gameDetails.css';
 import Back from "../common/back";
 import { containerHeightCalcFn } from "../common/global";
 import store from "../../store/store";
@@ -8,14 +9,13 @@ import GameDetailRewards from "./rewards";
 import GameDetailWhoElseplaying from "./whoElsePlaying";
 import GameDetailHowToPlay from "./howToPlay";
 import GCarousel from '../common/carousel';
-import './gameDetails.css';
+import { getCustomerDetails } from '../common/getStoreData';
 import { postData } from '../../api/apiHelper';
 import {
     ENGT_PROD_HOST_URI,
     SERVICE_TYPE,
     ENGAGEMENT_DETAILS_FOR_PLAYER,
 } from '../../api/apiConstants';
-import { getCustomerDetails } from '../common/getStoreData';
 
 
 export default function GameDetail(props) {
@@ -37,13 +37,13 @@ export default function GameDetail(props) {
     useEffect(() => {
         var requestData = {
             EngagementID: selectedEngagement.EngagementID,
+            IsTournament:selectedEngagement.IsTournament,
             JourneyID: selectedEngagement.JourneyID,
             CustomerID:customer.CustomerID,
             CustomerFullName:customer.FirstName+' '+customer.LastName
         }
         postData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_DETAILS_FOR_PLAYER}`, requestData, SERVICE_TYPE.ENGT)
             .then(engagementDetails => {
-                console.log('**',engagementDetails);
                 setEngagementDetails(engagementDetails);
             })
     }, [selectedEngagement])

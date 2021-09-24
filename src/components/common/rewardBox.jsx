@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import mask_src from '../../assets/img/Mask.svg';
 import rupee_src from '../../assets/img/rewardZone/amountwon_home_small.svg';
+import trophy_src from '../../assets/img/rewardZone/trophy_home.svg';
 import '../../assets/css/rewardBox.css';
 import ProgressBar from "../common/progressBar";
 import { postData } from '../../api/apiHelper';
@@ -71,28 +72,28 @@ export default function RewardBox(props) {
                     </button>
                 </div>
                 <div className="w-100 dashed-line-div"></div>
-                <div className="w-100 reward-item-box-content pt-3 pb-3">
-                    <div className="w-40 float-left clearfix text-winners">
-                        {/* <div className="">
-                            <img style={{ width: "19px", float: "left", marginRight: "6px" }} src={trophy_src} />
+                <div className="w-100 reward-item-box-content pt-2 pb-3">
+                    <div className="w-50 float-left clearfix text-winners" onClick={() => props.leaderBoardFn(engagement)}>
+                        <div className="">
+                            <img style={{ width: "12px", float: "left", marginRight: "8px" }} src={trophy_src} />
                         </div>
-                        <div style={{ cursor: "pointer" }} onClick={() => props.leaderBoardFn(engagement)}>
-                            <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>{engagement.winners || 12}</div>
-                            <div style={{
-                                height: "7px",
-                                color: "#808A8F",
-                                fontSize: "8px",
-                                letterSpacing: "-0.02px",
-                                lineHeight: "7px"
-                            }}>Winners</div>
-                        </div> */}
+                        <div>
+                            <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
+                                {engagement.winners || 12}
+                            </div>
+                            <div style={{color: "#808A8F", fontSize: "10px"}}>Winners</div>
+                        </div>
                     </div>
-                    <div className="w-60 float-left clearfix text-expire"  onClick={() => props.customerSavings(engagement)}>
-                        <img style={{ width: "20px", float: "left", marginRight: "6px" }} src={rupee_src} />
-                        <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
-                            {props.amountRedeemed}
+                    <div className="w-50 float-left clearfix text-winners"  onClick={() => props.customerSavings(engagement)}>
+                        <div className="">
+                            <img style={{ width: "12px", float: "left", marginRight: "8px" }} src={rupee_src} />
                         </div>
-                        <div style={{color: "#808A8F",fontSize: "8px"}}>Amount Won</div>
+                        <div>
+                            <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
+                                {props.amountRedeemed}
+                            </div>
+                            <div style={{color: "#808A8F",fontSize: "10px"}}>Amount Won</div>
+                        </div>
                     </div>
                 </div>
 
