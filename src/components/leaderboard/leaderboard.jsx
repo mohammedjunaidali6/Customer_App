@@ -19,7 +19,7 @@ const backTitle =
 </span>;
 
 export default function LeaderBoard(props) {
-    console.log('***',props);
+    // console.log('***',props);
 
     var selectedEngagement=store.getState().RewardZoneReducer.selectedEngagement;
     var customer=getCustomerDetails();
@@ -28,19 +28,26 @@ export default function LeaderBoard(props) {
     const handleLoader=(bool)=>{
         props.routeActionHandler.dispatchLoaderData(bool)
     }
+    const onPlayNow=()=>{
+        props.history.push('gamedetail');
+    }
 
     useEffect(()=>{
         handleLoader(true);
         getData(`${ENGT_PROD_HOST_URI}${LEADERBOARD_BY_ENGAGEMENT}${selectedEngagement.EngagementID}`, SERVICE_TYPE.ENGT)
             .then(res=>{
-                console.log('***',res);
+                // console.log('***',res);
                 props.leaderboardActionHandler.dispatchLeaderBoard(res||[]);
                 handleLoader(false);
             });
     },[])
     
-    const you=props.leaderboard.length&&props.leaderboard.find(l=>l.PlayerID==customer.CustomerID);
+    const you=props.leaderboard?.length&&props.leaderboard.find(l=>l.PlayerID==customer.CustomerID);
     const yourPosition=you?(you.Rank==1?'1st':you.Rank==2?'2nd':you.Rank==3?'3rd':you.Rank+'th'):'';
+    
+    const status1= you?`Your rank is ${yourPosition||''}, you are playing great.` :`You need more Score`;
+    const status2=you?`You are Just ${'rank1-hisscore'} to Win the Game`:``;
+
 
     return (
         <div id="leaderboard-outer-container">
@@ -51,16 +58,27 @@ export default function LeaderBoard(props) {
                         <div className="w-15 float-left clearfix text-center">
                             <img src={defaultuser_src} className="urs-leaderboard-logo p-1" />
                         </div>
-                        <div className="w-60 float-left clearfix pt-3 urs-leaderboard-lbl-pos">
-                            <span>You are at {yourPosition||'-'} position</span>
-                        </div>
-                        <div className="w-25 float-left clearfix pt-3">
-                            <img src={coin_src} style={{marginBottom: "3px"}} />
-                            <span className="urs-leaderboard-lbl-coins pl-1">{you?.Score?.toLocaleString()}</span>
+                        <div className="w-85 float-left clearfix urs-leaderboard-lbl-pos">
+                            <div className='w-100 pl-1'>
+                                <span>{status1}</span>
+                                {!yourPosition&&
+                                    <button className="ml-2 leaderboard-othersplaying-btn" onClick={onPlayNow}>
+                                        <span className="leaderboard-othersplaying-btn-text">Play</span>
+                                    </button>
+                                }
+                            </div>
+                            {you?.Score&&
+                                <div className="w-100 float-left clearfix p-1">
+                                    <img src={coin_src} className='pb-1'/>
+                                    <span className="urs-leaderboard-lbl-coins pl-2">{you.Score.toLocaleString()}</span>
+                                </div>
+                            }
                         </div>
                     </div>
                     <div className="w-100 float-left clearfix urs-leaderboard-desc-outer pt-1">
-                        <span className="urs-leaderboard-desc">You are just 200 points away to win the first Prize, <span className="mvp-link">Go For It</span></span>
+                        <span className="urs-leaderboard-desc">{status2} - 
+                            <span className="mvp-link" onClick={onPlayNow}>Go For It</span>
+                        </span>
                     </div>
                 </div>
                 <OthersPlaying parentProps={props} />

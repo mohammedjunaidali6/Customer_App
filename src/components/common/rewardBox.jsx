@@ -33,8 +33,7 @@ export default function RewardBox(props) {
         postData(`${EVNT_PROD_HOST_URI}${PURCHASED_AMOUNT}`,obj,SERVICE_TYPE.EVNT)
         .then(res=>{
             setAmountToBePerchased(Math.round(engagement?.PurchaseValue-res));
-            let percentage=engagement.PurchaseValue?(res/engagement?.PurchaseValue)*100:100;
-            percentage =percentage>100?100:percentage;
+            let percentage=engagement.PurchaseValue>res?(res/engagement?.PurchaseValue)*100:100;
             setPerc(percentage);
             let arr=[...props.props.engagementRuleAmounts||[]];
             arr.push({EngagementID:engagement.EngagementID,Percentage:percentage})

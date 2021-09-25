@@ -32,8 +32,8 @@ export default function AppRoute(props) {
           <Loader show={props.showLoader} />
           <Switch>
             {/* <Route exact path="/" component={HomeContatiner}/> */}
+            {/* <Route exact path="/auth" component={LoadingContainer} /> */}
             <Route exact path="/" component={LandingContainer} />
-            <Route exact path="/auth" component={LoadingContainer} />
             <Route exact path="/login" component={LoginContatiner} />
             <Route exact path="/ranking" component={Ranking} />
             <Route exact path="/rewardzone" component={RewardZoneContatiner} />

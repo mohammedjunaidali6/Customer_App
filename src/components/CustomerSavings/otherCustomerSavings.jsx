@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
 import defaultuser_src from "../../assets/img/gameDetails/default_user.png";
 
 const responsive = {
@@ -47,7 +46,7 @@ const tempArray = [
 export default function OthersSavings(props) {
     
     return (
-        <div id="leaderboard-othersplaying-container">
+        <div id="top-savings-othersplaying-container">
             <div className="others-playing-header pl-1">See What Your Friends are Winning</div>
             {tempArray && tempArray.length > 0 ? (
                 <Carousel
@@ -68,18 +67,15 @@ export default function OthersSavings(props) {
                     itemClass='carousel-item-padding-40-px mt-2'
                     >
                     {tempArray.map((obj) => (
-                        <div key={obj.id} className="leaderboard-othersplaying-sec">
+                        <div key={obj.id} className="top-savings-othersplaying-sec">
                             <div className="w-10 float-left clearfix text-center leaderboard-othersplaying-logo pr-1">
-                                <img src={defaultuser_src} className="urs-leaderboard-logo p-1" />
+                                <img src={defaultuser_src} className="top-savings-logo p-1" />
                             </div>
                             <div className="w-90 float-left clearfix leaderboard-othersplaying pl-4">
-                                <div className="leaderboard-othersplaying-header">{obj.header}</div>
+                                <div className="top-savings-othersplaying-header">{obj.header}</div>
                             </div>
                         </div>
                     ))}
-                    {/* <div>Item 2</div>
-                    <div>Item 3</div>
-                    <div>Item 4</div> */}
                 </Carousel>
             ) : null}
         </div>

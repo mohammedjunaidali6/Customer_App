@@ -19,11 +19,13 @@ export default function LeaderBoardWinners(props) {
                         <div className="w-b-img-container-2">
                             <img src={secondorthird_src} />
                         </div>
-                        <div className="leaderboard-winners-box-title text-center">
-                            <div className="winner-box-name">{leaders.length>1?leaders[1].PlayerName:''}</div>
-                            <img src={coin_src} style={{marginBottom: "3px"}} />
-                            <span className="leaderboard-winners-list-lbl-coins pl-1">{leaders.length>1?leaders[1].Score.toLocaleString():''}</span>
-                        </div>
+                        {leaders.length>1&&
+                            <div className="leaderboard-winners-box-title text-center">
+                                <div className="winner-box-name">{leaders[1].PlayerName||''}</div>
+                                <img src={coin_src} style={{marginBottom: "3px"}} />
+                                <span className="leaderboard-winners-list-lbl-coins pl-1">{leaders[1].Score?.toLocaleString()||''}</span>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className="w-33 text-center float-left m-0-auto" >
@@ -34,11 +36,13 @@ export default function LeaderBoardWinners(props) {
                         <div className="w-b-img-container-1">
                             <img src={first_src} />
                         </div>
-                        <div className="leaderboard-winners-box-title-middle">
-                            <div className="winner-box-name">{leaders.length>0?leaders[0].PlayerName:''}</div>
-                            <img src={coin_src} style={{marginBottom: "3px"}} />
-                            <span className="leaderboard-winners-list-lbl-coins pl-1">{leaders.length>0?leaders[0].Score.toLocaleString():''}</span>
-                        </div>
+                        {leaders.length>0&&
+                            <div className="leaderboard-winners-box-title-middle">
+                                <div className="winner-box-name">{leaders[0].PlayerName||''}</div>
+                                <img src={coin_src} style={{marginBottom: "3px"}} />
+                                <span className="leaderboard-winners-list-lbl-coins pl-1">{leaders[0].Score?.toLocaleString()||''}</span>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className="w-33 text-center float-left m-0-auto" style={{paddingTop: "27px"}} >
@@ -49,11 +53,13 @@ export default function LeaderBoardWinners(props) {
                         <div className="w-b-img-container-2">
                             <img src={secondorthird_src} />
                         </div>
-                        <div className="leaderboard-winners-box-title">
-                            <div className="winner-box-name">{leaders.length>2?leaders[2].PlayerName:''}</div>
-                            <img src={coin_src} style={{marginBottom: "3px"}} />
-                            <span className="leaderboard-winners-list-lbl-coins pl-1">{leaders.length>2?leaders[2].Score.toLocaleString():''}</span>
-                        </div>
+                        {leaders.length>2&&
+                            <div className="leaderboard-winners-box-title">
+                                <div className="winner-box-name">{leaders[2].PlayerName||''}</div>
+                                <img src={coin_src} style={{marginBottom: "3px"}} />
+                                <span className="leaderboard-winners-list-lbl-coins pl-1">{leaders[2].Score?.toLocaleString()||''}</span>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -71,10 +77,12 @@ export default function LeaderBoardWinners(props) {
                             <div className="w-60 float-left clearfix pt-3 pl-2 leaderboard-winners-list-lbl">
                                 <span>{obj.PlayerName}</span>
                             </div>
-                            <div className="w-25 float-left clearfix pt-3">
-                                <img src={coin_src} style={{marginBottom: "3px"}} />
-                                <span className="leaderboard-winners-list-lbl-coins pl-1">{obj.Score.toLocaleString()}</span>
-                            </div>
+                            {obj.Score&&
+                                <div className="w-25 float-left clearfix pt-3">
+                                    <img src={coin_src} style={{marginBottom: "3px"}} />
+                                    <span className="leaderboard-winners-list-lbl-coins pl-1">{obj.Score.toLocaleString()}</span>
+                                </div>
+                            }    
                         </div>
                     ))
                 }
