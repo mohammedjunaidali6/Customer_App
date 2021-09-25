@@ -57,6 +57,8 @@ export default function Landing(props) {
                     setLoggedInUser(null);
                 }
             })
+        }else{
+            setLoggedInUser(false);
         }
     }, []);
 

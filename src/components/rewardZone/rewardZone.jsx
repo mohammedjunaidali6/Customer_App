@@ -27,18 +27,19 @@ export default function RewardZone(props) {
     var referralLink=`${customer?.SignUpUrl}?refcode=${customer?.ReferralCode}`;
     var referralMessage="Shopping is more exciting now, Play Games and Win Exciting Rewards, Come Join the fun at -"+referralLink;
 
-    function rewardOpenFn() {
-        props.history.push('/userrewards');
-    }
-    function rankingOpenFn() {
-        props.history.push('/ranking');
-    }
     function pointsOpenFn() {
         props.history.push('/transactionhistory');
     }
-    function customerSavingsOpen() {
+    function customerSavingsOpenFn() {
         props.history.push('/customersavings');
     }
+    function rewardOpenFn() {
+        props.history.push('/userrewards');
+    }
+    function tournamentsOpenFn(){
+        alert('NOT IMPLEMENTED');
+    }
+
     function gameDetailFn(selectedEngagementData) {
         props.rewardZoneActionHandler.pushSelectedEngagement(selectedEngagementData);
         props.history.push({ pathname: "/gamedetail" });
@@ -47,10 +48,11 @@ export default function RewardZone(props) {
         props.rewardZoneActionHandler.pushSelectedEngagement(selectedEngagementData);
         props.history.push('/leaderboard');
     }
-    function customerSavings(selectedEngagementData){
+    function topCustomerSavingsOpenFn(selectedEngagementData){
         props.rewardZoneActionHandler.pushSelectedEngagement(selectedEngagementData);
         props.history.push('/topcustomersavings');
     }
+    
     function statusFn() {
         props.history.push('/status');
     }
@@ -92,9 +94,9 @@ export default function RewardZone(props) {
                 fromRewardZone={true}
                 parentProps={props}
                 rewardOpenFn={rewardOpenFn}
-                rankingOpenFn={rankingOpenFn}
                 pointsOpenFn={pointsOpenFn}
-                customerSavingsOpenFn={customerSavingsOpen}
+                tournamentsOpenFn={tournamentsOpenFn}
+                customerSavingsOpenFn={customerSavingsOpenFn}
             />
             <div id="reward-zone-container" className="" style={{ height: containerHeightCalcFn(190), overflowY: 'auto', paddingBottom: '27px' }}>
                 <div id="reward-zone-status-container">
@@ -147,7 +149,7 @@ export default function RewardZone(props) {
                                     amountRedeemed={props.engagementPurchasedAmounts.find(e=>e.EngagementID==obj.EngagementID)?.FormattedAmountRedeemed}
                                     props={props}
                                     gameDetailFn={gameDetailFn} 
-                                    customerSavings={customerSavings} 
+                                    customerSavings={topCustomerSavingsOpenFn} 
                                     leaderBoardFn={leaderBoardFn} 
                                 />
                             ))}

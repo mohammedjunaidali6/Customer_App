@@ -107,7 +107,7 @@ export default function Back(props) {
                                     <div className="rzdb-desc" >Rewards</div>
                                 </div>
                             </div>
-                            <div id="rank-box" className="detail-box-content float-right" style={{opacity:'0.6'}}>
+                            <div id="rank-box" className="detail-box-content float-right" onClick={props.tournamentsOpenFn}>
                                 <img className="float-left" src={rank_src} />
                                 <div className="float-left pl-2">
                                     <div className="rzdb-header" ><p style={{fontSize:'10px'}}>Coming Soon...</p></div>
