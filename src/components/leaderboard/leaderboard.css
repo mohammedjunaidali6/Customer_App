@@ -8,7 +8,7 @@
     box-shadow: 0 1px 4px 0 rgb(30 36 39 / 30%);
     position: absolute;
     top: 52px;
-    margin: 11px 10px 5px 10px;
+    margin: 11px 5px 5px 5px;
     z-index: 2;
 }
 .urs-leaderboard-logo {
@@ -22,7 +22,7 @@
 }
 .urs-leaderboard-content {
     height: 65px;
-    padding: 11px 12px;
+    padding: 10px 1px 0 1px;
 }
 .urs-leaderboard-desc-outer {
     height: 36px;
@@ -112,7 +112,8 @@
 }
 .leaderboard-othersplaying-btn {
     border-radius: 13px;
-    width: 60px;
+    width: 50px;
+    letter-spacing: 1px;
     background-color: var(--buttonBg);
     border: solid 1px var(--buttonBorder);
     box-shadow: 0 1px 4px 0 rgba(30,36,39,0.3);

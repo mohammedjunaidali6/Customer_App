@@ -8,6 +8,8 @@ export default function LeaderBoardWinners(props) {
     // console.log('***',props.parentProps);
     var leaders=props.parentProps.leaderboard||[];
 
+    const status="Let's start the fun, Play Now to win exciting prize";
+
     return (
         <div id="leaderboard-winners-container">
             <div className="w-100 disp-flex leaderboard-winners-top mt-4 mb-2">
@@ -86,6 +88,7 @@ export default function LeaderBoardWinners(props) {
                         </div>
                     ))
                 }
+                {leaders.length==0&&<span style={{fontSize: '14px', color: '#5d79f6', fontFamily: 'Roboto'}}>{status}</span>}
             </div>
         </div>
     )
