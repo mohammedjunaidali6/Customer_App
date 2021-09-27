@@ -37,7 +37,7 @@ export default function RewardZone(props) {
         props.history.push('/userrewards');
     }
     function tournamentsOpenFn(){
-        alert('NOT IMPLEMENTED');
+        props.history.push('/tournaments');
     }
 
     function gameDetailFn(selectedEngagementData) {
@@ -140,22 +140,20 @@ export default function RewardZone(props) {
                     carouselItemClick={carouselItemClick} >
                 </GCarousel>
                 <div className="reward-zone-handpicked-header text-bold">Handpick Challenges for you to get Lucky!!</div>
-                {props.engagements && props.engagements.length > 0 ? (
+                {props.engagements && props.engagements.length > 0 &&
                     <div className="reward-zone-handpicked-items">
-                        <Fragment>
-                            {props.engagements.map((obj) => (
-                                <RewardBox 
-                                    engagement={obj} 
-                                    amountRedeemed={props.engagementPurchasedAmounts.find(e=>e.EngagementID==obj.EngagementID)?.FormattedAmountRedeemed}
-                                    props={props}
-                                    gameDetailFn={gameDetailFn} 
-                                    customerSavings={topCustomerSavingsOpenFn} 
-                                    leaderBoardFn={leaderBoardFn} 
-                                />
-                            ))}
-                        </Fragment>
+                        {props.engagements.map((obj) => (
+                            <RewardBox 
+                                engagement={obj} 
+                                amountRedeemed={props.engagementPurchasedAmounts.find(e=>e.EngagementID==obj.EngagementID)?.FormattedAmountRedeemed}
+                                props={props}
+                                gameDetailFn={gameDetailFn} 
+                                customerSavings={topCustomerSavingsOpenFn} 
+                                leaderBoardFn={leaderBoardFn} 
+                            />
+                        ))}
                     </div>
-                ) : null}
+                }
             </div>
         </Fragment>
     )

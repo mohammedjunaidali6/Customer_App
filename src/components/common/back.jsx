@@ -116,6 +116,11 @@ export default function Back(props) {
                             </div>
                         </div>
                     }
+                    {props.fromTournaments&&
+                        <div>
+                            
+                        </div>
+                    }
                 </div>
             </div>
             <Modal

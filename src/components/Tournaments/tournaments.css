@@ -1,0 +1,42 @@
+.tournaments-header{
+  font-size: 22px;
+  font-weight: 500;
+  margin:0 20%;
+}
+.tournament-section-header{
+  font-family:'Roboto';
+  font-weight:500;
+  margin:10px 20px;
+  font-size: 16px;
+}
+
+.reward-zone-handpicked-items {
+  margin: 0 5px 0 10px;
+  display: flow-root;
+}
+
+.urs-leaderboard-logo {
+  height: 47px;
+  border: solid 1px #efefef;
+  border-radius: 10px;
+}
+
+.banner-container {
+  margin: 0 27px;
+  z-index: 1;
+}
+.banner-container-bg {
+  height: 142px;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 4px 0 rgb(30 36 39 / 30%);
+  position: relative;
+  bottom: 74px;
+}
+
+.back-banner-your-tournaments{
+  margin-top: -64px;
+  border-radius: 20px;
+  margin: 0 32%;
+  height: 60%;
+}

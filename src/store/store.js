@@ -14,6 +14,7 @@ import NotificationReducer from "../reducers/notification/notificationReducer";
 import StatusReducer from "../reducers/status/statusReducer";
 import RouteReducer from '../reducers/routeReducer';
 import LandingReducer from '../reducers/landingReducer';
+import TournamentsReducer from '../components/Tournaments/tournamentReducer';
 
 
 
@@ -46,6 +47,7 @@ const reducer = combineReducers({
   RewardZoneReducer: RewardZoneReducer,
   GameDetailsReducer: GameDetailsReducer,
   UserRewardsReducer: UserRewardsReducer,
+  TournamentsReducer:TournamentsReducer,
   LeaderBoardReducer: LeaderBoardReducer,
   TransactionHistoryReducer: TransactionHistoryReducer,
   CustomerSavingsReducer: CustomerSavingsReducer,

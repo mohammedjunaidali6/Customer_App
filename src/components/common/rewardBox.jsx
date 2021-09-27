@@ -35,7 +35,7 @@ export default function RewardBox(props) {
             setAmountToBePerchased(Math.round(engagement?.PurchaseValue-res));
             let percentage=engagement.PurchaseValue>res?(res/engagement?.PurchaseValue)*100:100;
             setPerc(percentage);
-            let arr=[...props.props.engagementRuleAmounts||[]];
+            let arr=[...props.props?.engagementRuleAmounts||[]];
             arr.push({EngagementID:engagement.EngagementID,Percentage:percentage})
             props.props.rewardZoneActionHandler.setEngagementsRuleAmounts(arr);
         })
