@@ -7,7 +7,6 @@ import number1colored from '../../assets/img/gameDetails/number_1_colored.svg';
 import number2colored from '../../assets/img/gameDetails/number_2_colored.svg';
 import number3colored from '../../assets/img/gameDetails/number_3_colored.svg';
 import { postData } from '../../api/apiHelper';
-import { makeStyles } from '@material-ui/core/styles';
 import Loader from '../common/Spinner/spinner';
 import {
     GAME_PROD_HOST_URI,
@@ -15,30 +14,23 @@ import {
     SERVICE_TYPE,
     EVNT_PROD_HOST_URI,
     JOURNEY_TASK_STATUS,
-    getCustomerID
 } from '../../api/apiConstants';
 import { getCustomerDetails } from '../common/getStoreData';
 import { AiOutlineClose } from 'react-icons/ai';
 import store from '../../store/store';
+import { date } from 'yup';
 
-const useStyles = makeStyles((theme) => ({
-    fab: {
-        margin: theme.spacing(2),
-    },
-    absolute: {
-        position: 'absolute',
-        bottom: theme.spacing(2),
-        right: theme.spacing(3),
-    },
-}));
 
 export default function GameDetailScratchNow(props) {
-    const classes = useStyles();
+    console.log('****',props);
     const [iFrameClick, setIFrameClick] = useState(false);
     const [taskStatuses, setTaskStatuses] = useState([]);
     const [loadingTasks, setLoadingTasks] = useState(false);
+    const [startDT, setStartDT] = useState('');
+    const [endDT, setEndDT] = useState('');
     
     const token = props.engagementDetails?.GamePlay?.Token;
+    const engagement=props.selectedGameDetail;
     var rewardZoneReducer=store.getState().RewardZoneReducer;
     var customer=getCustomerDetails();
     
@@ -46,8 +38,8 @@ export default function GameDetailScratchNow(props) {
 
     const onPlayNow = () => {
         var data = {
-            GameID: props.selectedGameDetail?.Game?.GameID,
-            EngagementID: props.selectedGameDetail.EngagementID,
+            GameID: engagement?.Game?.GameID,
+            EngagementID: engagement.EngagementID,
             CustomerID:customer.CustomerID
         }
         postData(`${GAME_PROD_HOST_URI}${GAME_LAUNCH}`, data, SERVICE_TYPE.GAME)
@@ -55,8 +47,59 @@ export default function GameDetailScratchNow(props) {
                 setIFrameClick(true);
             });
     }
+    const getStartDateStr=()=>{
+        let now=new Date().getTime();
+        const startDate=engagement?.StartDate;
+        console.log('***',startDate)
+        let timeleft = new Date(startDate)-now;
+        var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+        if(days>2){
+            setStartDT(`Starting on ${startDate?.substring(0,10)}`);
+        }else{
+            setInterval(()=>{
+                now=new Date().getTime();
+                timeleft = new Date(startDate)-now;
+                let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let mins = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+                let secs = Math.floor((timeleft % (1000 * 60)) / 1000);
+                setStartDT(`Starting in ${hours}:${mins}:${secs} secs`);
+            },1000);
+        }
+    }
+    const getEndDateStr=()=>{
+        let now=new Date().getTime();
+        const endDate=engagement?.EndDate;
+        console.log('***',endDate)
+        let timeleft = new Date(endDate)-now;
+        var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+        if(days>2){
+            setEndDT(`Ending on ${engagement?.EndDate.substring(0,10)}`);
+        }else{
+            setInterval(()=>{
+                now=new Date().getTime();
+                timeleft = new Date(endDate) - now;
+                let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let mins = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+                let secs = Math.floor((timeleft % (1000 * 60)) / 1000);
+                setEndDT(`Ending in ${hours}:${mins}:${secs} secs`);
+            },1000);
+        }
+    }
+
+    const perc=ruleAmounts.find(r=>r.EngagementID==engagement.EngagementID)?.Percentage||0;
+
+    var disablePlayBtn = Array.isArray(taskStatuses) &&
+        taskStatuses.length > 0 &&
+        taskStatuses.map(task => !task.HasCompleted).length > 0;
+    
+        disablePlayBtn=disablePlayBtn|| perc<100;
+
 
     useEffect(() => {
+
+        getStartDateStr();
+        getEndDateStr();
+
         if (Array.isArray(props.engagementDetails?.JourneyTasks)) {
             setLoadingTasks(true);
             var data = {
@@ -84,19 +127,15 @@ export default function GameDetailScratchNow(props) {
         }
     }, [props.engagementDetails?.JourneyTasks])
 
-    const perc=ruleAmounts.find(r=>r.EngagementID==props.selectedGameDetail.EngagementID)?.Percentage||0;
-
-    var disablePlayBtn = Array.isArray(taskStatuses) &&
-        taskStatuses.length > 0 &&
-        taskStatuses.map(task => !task.HasCompleted).length > 0;
-    
-        disablePlayBtn=disablePlayBtn|| perc<100;
-
     return (
         <div className="gamedetail-scratchnow-items">
             <Fragment>
-                <div className="scratchnow-big-header">{props.selectedGameDetail?.DisplayName || ''}</div>
-                {/* <div className="scratchnow-small-header">Scratch more to win</div> */}
+                {engagement.IsTournament&&
+                    <div>
+                        <span style={{color:'#FFFFFF',fontSize:'12px',fontFamily:'Roboto',padding:'2px',backgroundColor:'red'}}>Tournament</span>
+                    </div>
+                }
+                <div className="scratchnow-big-header">{engagement?.DisplayName || ''}</div>
                 <div className="scratchnow-item-container">
                     <Loader show={loadingTasks} radius={26} />
                     {Array.isArray(taskStatuses) && taskStatuses.length > 0 &&
@@ -128,26 +167,35 @@ export default function GameDetailScratchNow(props) {
                     }
                 </div>
                 <div className="w-100 float-left clearfix ">
-                    <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
+                    {Array.isArray(taskStatuses) && taskStatuses.length > 0 &&
+                        <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
+                    }
                     <div className="w-100 float-left lbl-percentage">{perc}%</div>
                     <div className="w-90 ml-3 float-left progress-bar-outer">
                         <ProgressBar height={'10px'} percentage={perc}/>
                     </div>
                 </div>
                 <div id="btn-scratch-now-container" className="mt-3">
-                    <button 
-                        id="btn-scratch-now" 
-                        className={`${disablePlayBtn?'disable-btn':'enable-btn'}`} 
-                        onClick={onPlayNow}
-                    ><span className="button-text">PLAY NOW</span>
-                    </button>
+                    {engagement?.IsTournament?
+                        <button id="btn-scratch-now" className={`${engagement.EngagementStatusID==1?'enable-btn':'disable-btn'}`} onClick={onPlayNow} disabled={engagement.EngagementStatusID!=1}>
+                            {engagement.EngagementStatusID===1&&<span className="button-text">{endDT}</span>}
+                            {engagement.EngagementStatusID===4&&<span className="button-text" style={{color:'#000000'}}>{startDT}</span>}
+                        </button>
+                        :
+                        <button 
+                            id="btn-scratch-now" 
+                            className={`${disablePlayBtn?'disable-btn':'enable-btn'}`} 
+                            onClick={onPlayNow}
+                        ><span className="button-text">PLAY NOW</span>
+                        </button>
+                    }
                 </div>
                 {iFrameClick &&
                     <div id="g-d-iFrame-sec">
                         {/* <AiOutlineClose id="iFrame-close" title="Close Game" size={24} onClick={()=>setIFrameClick(false)}/> */}
                         <iframe
                             id="g-d-iFrame"
-                            src={`${props.selectedGameDetail?.Game?.GameUrl}?token=${token}`}
+                            src={`${engagement?.Game?.GameUrl}?token=${token}`}
                             height='100%'
                             width='100%'
                         ></iframe>

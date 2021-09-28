@@ -1,4 +1,5 @@
 // export const ENGT_PROD_HOST_URI = "http://localhost:815/api";
+// export const GAME_PROD_HOST_URI = "http://localhost:816/api";
 // export const EVNT_PROD_HOST_URI = "http://localhost:817/api";
 
 export const ENGT_PROD_HOST_URI = "https://fxojmluid9.execute-api.ap-south-1.amazonaws.com/Prod/api";

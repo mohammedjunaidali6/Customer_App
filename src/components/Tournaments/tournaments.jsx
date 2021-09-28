@@ -16,6 +16,7 @@ export default function Tournaments(props) {
     const [customerNotParticipatedEngagements,setCustomerNotParticipatedEngagements]=useState([]);
     const customer=getCustomerDetails();
     const rewardZoneReducer=store.getState()?.RewardZoneReducer;
+    console.log('***',rewardZoneReducer)
     let engagements=rewardZoneReducer?.engagements;
     const amountsRedeemed=rewardZoneReducer?.engagementPurchasedAmounts;
 
@@ -63,7 +64,7 @@ export default function Tournaments(props) {
         <Back height="150" parentProps={props}/>
         <div id="banner-container" className='banner-container-bg' style={{margin:'0 8%'}}>
             <img src={tournament_src} alt='tournaments' className="back-banner-your-tournaments mt-2" />
-            <div className='tournaments-header mt-3'>Your Tournaments</div>
+            <div className='tournaments-header mt-1'>Your Tournaments</div>
         </div>
         <div id="reward-zone-container"style={{ height: containerHeightCalcFn(234), overflowY: 'auto', marginTop: '-62px' }}>
             <div className='tournament-section-header'>Your Recent Tournaments</div>

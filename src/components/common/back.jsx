@@ -110,7 +110,7 @@ export default function Back(props) {
                             <div id="rank-box" className="detail-box-content float-right" onClick={props.tournamentsOpenFn}>
                                 <img className="float-left" src={rank_src} />
                                 <div className="float-left pl-2">
-                                    <div className="rzdb-header" ><p style={{fontSize:'10px'}}>Coming Soon...</p></div>
+                                    <div className="rzdb-header" >--</div>
                                     <div className="rzdb-desc" >My Tournaments</div>
                                 </div>
                             </div>
