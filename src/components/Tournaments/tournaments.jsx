@@ -6,7 +6,7 @@ import RewardBox from "../common/rewardBox";
 import tournament_src from '../../assets/img/ranking.svg';
 import store from '../../store/store';
 import { getData } from '../../api/apiHelper';
-import { GAME_PROD_HOST_URI } from '../../api/apiConstants';
+import { GAME_PROD_HOST_URI ,SERVICE_TYPE} from '../../api/apiConstants';
 import { getCustomerDetails } from '../common/getStoreData';
 
 
@@ -35,7 +35,7 @@ export default function Tournaments(props) {
     }
     
     useEffect(()=>{
-        getData(`${GAME_PROD_HOST_URI}/game/gamePlaysByCustomer?customer_id=${customer.CustomerID}`)
+        getData(`${GAME_PROD_HOST_URI}/game/gamePlaysByCustomer?customer_id=${customer.CustomerID}`,SERVICE_TYPE.GAME)
         .then(res=>{
             // console.log('***',res);
                 if(res){
