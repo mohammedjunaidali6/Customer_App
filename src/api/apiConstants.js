@@ -47,7 +47,7 @@ export const LEADERBOARD_BY_ENGAGEMENT= '/engt/LeaderBoardByEngagament';
 
 //EVENT URIs
 export const JOURNEY_TASK_STATUS = '/evnt/journeyTaskStatus';
-export const PURCHASED_AMOUNT='/evnt/purchasedAmount';
+export const PURCHASE_RULE_AMOUNT='/evnt/purchaseRuleAmount';
 
 //GAME URIs
 export const GAME_LAUNCH = '/game/gameLaunch';

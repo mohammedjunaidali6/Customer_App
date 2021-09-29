@@ -1,5 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import ProgressBar from "../common/progressBar";
+import { AiOutlineClose } from 'react-icons/ai';
+import store from '../../store/store';
+import { date } from 'yup';
 import number1bw from '../../assets/img/gameDetails/number_1_bw.svg';
 import number2bw from '../../assets/img/gameDetails/number_2_bw.svg';
 import number3bw from '../../assets/img/gameDetails/number_3_bw.svg';
@@ -8,17 +11,15 @@ import number2colored from '../../assets/img/gameDetails/number_2_colored.svg';
 import number3colored from '../../assets/img/gameDetails/number_3_colored.svg';
 import { postData } from '../../api/apiHelper';
 import Loader from '../common/Spinner/spinner';
-import {
-    GAME_PROD_HOST_URI,
-    GAME_LAUNCH,
-    SERVICE_TYPE,
-    EVNT_PROD_HOST_URI,
-    JOURNEY_TASK_STATUS,
-} from '../../api/apiConstants';
 import { getCustomerDetails } from '../common/getStoreData';
-import { AiOutlineClose } from 'react-icons/ai';
-import store from '../../store/store';
-import { date } from 'yup';
+import {
+    SERVICE_TYPE,
+    GAME_PROD_HOST_URI,
+    EVNT_PROD_HOST_URI,
+    GAME_LAUNCH,
+    JOURNEY_TASK_STATUS,
+    PURCHASE_RULE_AMOUNT,
+} from '../../api/apiConstants';
 
 
 export default function GameDetailScratchNow(props) {
@@ -28,13 +29,15 @@ export default function GameDetailScratchNow(props) {
     const [loadingTasks, setLoadingTasks] = useState(false);
     const [startDT, setStartDT] = useState('');
     const [endDT, setEndDT] = useState('');
+    const [perc,setPerc]=useState(0);
     
     const token = props.engagementDetails?.GamePlay?.Token;
     const engagement=props.selectedGameDetail;
-    var rewardZoneReducer=store.getState().RewardZoneReducer;
     var customer=getCustomerDetails();
-    
-    var ruleAmounts=rewardZoneReducer.engagementRuleAmounts;
+    // var rewardZoneReducer=store.getState().RewardZoneReducer;
+    // var ruleAmounts=rewardZoneReducer.engagementRuleAmounts;
+    // const perc=ruleAmounts.find(r=>r.EngagementID==engagement.EngagementID)?.Percentage||0;
+    // console.log('***',ruleAmounts);
 
     const onPlayNow = () => {
         var data = {
@@ -85,8 +88,23 @@ export default function GameDetailScratchNow(props) {
             },1000);
         }
     }
-
-    const perc=ruleAmounts.find(r=>r.EngagementID==engagement.EngagementID)?.Percentage||0;
+    const getPurchaseRuleValuePerc=()=>{
+        let obj={
+            CustomerID:customer?.CustomerID,
+            LastNumberOfDays:engagement?.LastNumberOfDays,
+            PurchaseRuleValue:engagement?.PurchaseValue
+        }
+        console.log('***',obj);
+        postData(`${EVNT_PROD_HOST_URI}${PURCHASE_RULE_AMOUNT}`,obj,SERVICE_TYPE.EVNT)
+        .then(res=>{
+            if(res){
+                console.log('***',res);
+                let percentage=engagement.PurchaseValue>res?(res.ToBePurchasedToRuleAmount/engagement?.PurchaseValue)*100:100;
+                setPerc(percentage);
+                console.log('***',percentage);
+            }
+        });
+    }
 
     var disablePlayBtn = Array.isArray(taskStatuses) &&
         taskStatuses.length > 0 &&
@@ -96,9 +114,9 @@ export default function GameDetailScratchNow(props) {
 
 
     useEffect(() => {
-
         getStartDateStr();
         getEndDateStr();
+        getPurchaseRuleValuePerc();
 
         if (Array.isArray(props.engagementDetails?.JourneyTasks)) {
             setLoadingTasks(true);

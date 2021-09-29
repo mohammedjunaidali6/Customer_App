@@ -5,7 +5,7 @@ import trophy_src from '../../assets/img/rewardZone/trophy_home.svg';
 import '../../assets/css/rewardBox.css';
 import ProgressBar from "../common/progressBar";
 import { postData } from '../../api/apiHelper';
-import { EVNT_PROD_HOST_URI, PURCHASED_AMOUNT, SERVICE_TYPE } from '../../api/apiConstants';
+import { EVNT_PROD_HOST_URI, PURCHASE_RULE_AMOUNT, SERVICE_TYPE } from '../../api/apiConstants';
 import { getCustomerDetails } from './getStoreData';
 
 
@@ -18,7 +18,7 @@ export default function RewardBox(props) {
     const [amountToBePurchased,setAmountToBePerchased]=useState(engagement?.PurchaseValue||0);
 
     const engPlayersAndAmount=props.engagementPlayersAndAmounts?.find(e=>e.EngagementID==engagement.EngagementID);
-    console.log('***',engPlayersAndAmount);
+
     const onPlayNow =()=>{
         props.gameDetailFn(engagement)
     }
@@ -27,16 +27,25 @@ export default function RewardBox(props) {
     useEffect(()=>{
         let obj={
             CustomerID:customerData?.CustomerID,
-            LastNumberOfDays:engagement?.LastNumberOfDays
+            LastNumberOfDays:engagement?.LastNumberOfDays,
+            PurchaseRuleValue:engagement?.PurchaseValue
         }
-        postData(`${EVNT_PROD_HOST_URI}${PURCHASED_AMOUNT}`,obj,SERVICE_TYPE.EVNT)
+        postData(`${EVNT_PROD_HOST_URI}${PURCHASE_RULE_AMOUNT}`,obj,SERVICE_TYPE.EVNT)
         .then(res=>{
-            setAmountToBePerchased(Math.round(engagement?.PurchaseValue-res));
-            let percentage=engagement.PurchaseValue>res?(res/engagement?.PurchaseValue)*100:100;
-            setPerc(percentage);
-            let arr=[...props.props?.engagementRuleAmounts||[]];
-            arr.push({EngagementID:engagement.EngagementID,Percentage:percentage})
-            props.props.rewardZoneActionHandler.setEngagementsRuleAmounts(arr);
+            if(res){
+                setAmountToBePerchased(Math.round(res.FormattedToBePurchasedToRuleAmount));
+                let percentage=engagement.PurchaseValue>res?(res.ToBePurchasedToRuleAmount/engagement?.PurchaseValue)*100:100;
+                setPerc(percentage);
+                // let arr=[...props.props?.engagementRuleAmounts||[]];
+                // console.log('***',arr);
+                // let indx=arr.findIndex(e=>e.EngagementID==engagement.EngagementID);
+                // if(indx<0){
+                //     arr.push({EngagementID:engagement.EngagementID,Percentage:percentage})
+                // }else{
+                //     arr[indx].Percentage=percentage;
+                // }
+                // props.props.rewardZoneActionHandler.setEngagementsRuleAmounts(arr);
+            }
         })
     },[])
 
