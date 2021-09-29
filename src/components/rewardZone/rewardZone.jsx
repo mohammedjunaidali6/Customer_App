@@ -1,14 +1,11 @@
 import React, { Fragment, useEffect } from 'react';
 import Back from "../common/back";
-import master_src from '../../assets/img/rewardZone/master.svg';
-import benefits_src from '../../assets/img/rewardZone/Benefits_home.svg';
-import invitation_src from '../../assets/img/rewardZone/invitation.svg';
 import './rewardZone.css';
-import ProgressBar from '../common/progressBar';
-import {WhatsappIcon,WhatsappShareButton,EmailShareButton,FacebookShareButton} from 'react-share'
+import {WhatsappIcon,WhatsappShareButton} from 'react-share'
 import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
 import GCarousel from '../common/carousel';
+import { getCustomerDetails } from '../common/getStoreData';
 import { getData, postData } from '../../api/apiHelper';
 import {
     ENGT_PROD_HOST_URI,
@@ -17,7 +14,6 @@ import {
     ACTIVE_ENGAGEMENTS,
     PLAYER_SUMMARY,
 } from '../../api/apiConstants';
-import { getCustomerDetails } from '../common/getStoreData';
 
 
 export default function RewardZone(props) {
@@ -77,6 +73,7 @@ export default function RewardZone(props) {
                     handleLoader(false);
                })
         }
+
         if(!Array.isArray(props.engagements)){
             handleLoader(true);
             getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
@@ -99,7 +96,7 @@ export default function RewardZone(props) {
                 customerSavingsOpenFn={customerSavingsOpenFn}
             />
             <div id="reward-zone-container" className="" style={{ height: containerHeightCalcFn(190), overflowY: 'auto', paddingBottom: '27px' }}>
-                <div id="reward-zone-status-container">
+                {/* <div id="reward-zone-status-container">
                     <div className="reward-zone-status-logo">
                         <img src={master_src} alt='' />
                     </div>
@@ -117,7 +114,7 @@ export default function RewardZone(props) {
                             <div className="reward-zone-status-benefit-msg">Benifit of status update</div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="reward-zone-invite-container">
                     <div className="reward-zone-invite-logo">
                         <WhatsappShareButton url={referralMessage}>
@@ -145,7 +142,7 @@ export default function RewardZone(props) {
                         {props.engagements.map((obj) => (
                             <RewardBox 
                                 engagement={obj} 
-                                amountRedeemed={props.engagementPurchasedAmounts.find(e=>e.EngagementID==obj.EngagementID)?.FormattedAmountRedeemed}
+                                engagementPlayersAndAmounts={props?.engagementPlayersAndAmounts}
                                 props={props}
                                 gameDetailFn={gameDetailFn} 
                                 customerSavings={topCustomerSavingsOpenFn} 

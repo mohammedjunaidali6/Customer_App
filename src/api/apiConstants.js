@@ -42,7 +42,7 @@ export const ENGAGEMENT_DETAILS_FOR_PLAYER = '/engt/engagementdetailsforplayer';
 export const CUSTOMER_SAVINGS = '/engt/customersavings';
 export const FETCH_CUSTOMER_SAVINGS = '/engt/fetchCustomerSavings';
 export const TOP_CUSTOMER_SAVINGS = '/engt/topCustomerSavings?engagement_id=';
-export const ENGAGEMENT_WISE_AMOUNT_REDEEMED= '/engt/engagementWiseAmountRedeemed';
+export const ENGAGEMENT_PLAYERS_AND_AMOUNT= '/engt/engagementPlayersAndAmount';
 export const LEADERBOARD_BY_ENGAGEMENT= '/engt/LeaderBoardByEngagament';
 
 //EVENT URIs
@@ -54,6 +54,7 @@ export const GAME_LAUNCH = '/game/gameLaunch';
 export const CREATE_GAME_PLAY = '/game/createGamePlay';
 export const GAME_EXIT = '/game/gameExit';
 export const PLAYER_POINTS_BALANCE = '/game/getPlayerPointsBalance';
+export const GAMEPLAYS_BY_CUSTOMER='/game/gamePlaysByCustomer?customer_id=';
 
 //IDENTITY URIs
 export const USER_BY_FILTERS = "/idty/userbyfilter";

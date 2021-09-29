@@ -107,11 +107,11 @@ export default function Back(props) {
                                     <div className="rzdb-desc" >Rewards</div>
                                 </div>
                             </div>
-                            <div id="rank-box" className="detail-box-content float-right" onClick={props.tournamentsOpenFn}>
+                            <div id="rank-box" className="detail-box-content float-right"  style={{paddingBottom:'10px'}} onClick={props.tournamentsOpenFn}>
                                 <img className="float-left" src={rank_src} />
                                 <div className="float-left pl-2">
-                                    <div className="rzdb-header" >--</div>
-                                    <div className="rzdb-desc" >My Tournaments</div>
+                                    <div className="rzdb-desc" style={{textAlign:'center'}}>My</div>
+                                    <div className="rzdb-desc" style={{textAlign:'center'}}>Tournaments</div>
                                 </div>
                             </div>
                         </div>

@@ -17,7 +17,8 @@ export default function RewardBox(props) {
     const [perc,setPerc]=useState(0);
     const [amountToBePurchased,setAmountToBePerchased]=useState(engagement?.PurchaseValue||0);
 
-
+    const engPlayersAndAmount=props.engagementPlayersAndAmounts?.find(e=>e.EngagementID==engagement.EngagementID);
+    console.log('***',engPlayersAndAmount);
     const onPlayNow =()=>{
         props.gameDetailFn(engagement)
     }
@@ -67,6 +68,9 @@ export default function RewardBox(props) {
                         onClick={onPlayNow}
                     ><span className="button-text">EXPLORE</span>
                     </button>
+                    {engagement?.IsTournament&&
+                        <div className='tourn-label'><span>Tournament</span></div>
+                    }
                 </div>
                 <div className="w-100 dashed-line-div"></div>
                 <div className="w-100 reward-item-box-content pt-2 pb-3">
@@ -76,7 +80,7 @@ export default function RewardBox(props) {
                         </div>
                         <div>
                             <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
-                                {engagement.winners || 12}
+                                {engPlayersAndAmount?.CustomersCount}
                             </div>
                             <div style={{color: "#808A8F", fontSize: "10px"}}>Winners</div>
                         </div>
@@ -87,7 +91,7 @@ export default function RewardBox(props) {
                         </div>
                         <div>
                             <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
-                                {props.amountRedeemed}
+                                {engPlayersAndAmount?.FormattedAmountRedeemed}
                             </div>
                             <div style={{color: "#808A8F",fontSize: "10px"}}>Amount Won</div>
                         </div>

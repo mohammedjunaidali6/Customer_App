@@ -27,7 +27,7 @@ export default function GameDetail(props) {
 
     var customer=getCustomerDetails();
     var rewardZoneReducer=store.getState().RewardZoneReducer;
-    var redeemedAmount=rewardZoneReducer.engagementPurchasedAmounts.find(e=>e.EngagementID==selectedEngagement.EngagementID)?.FormattedAmountRedeemed;
+    var engPlayersAndAmount=rewardZoneReducer.engagementPlayersAndAmounts.find(e=>e.EngagementID==selectedEngagement.EngagementID);
 
     const carouselItemClick = (data) => {
         props.rewardZoneActionHandler.pushSelectedEngagement(allEngagements[data]);
@@ -58,7 +58,10 @@ export default function GameDetail(props) {
                 carouselItemClick={carouselItemClick} >
             </GCarousel> */}
             <img className='g-d-carousel' style={{height:'28%',width:'100%'}} src={selectedEngagement.Game?.BannerImageUrl} alt='Game Banner'/>
-            <GameDetailGameInfo parentProps={props} redeemedAmount={redeemedAmount}/>
+            <GameDetailGameInfo 
+                parentProps={props} 
+                engPlayersAndAmount={engPlayersAndAmount}
+            />
             <div style={{ height: containerHeightCalcFn(348), overflowY: 'auto' }}>
                 <GameDetailScratchNow
                     selectedGameDetail={selectedEngagement}

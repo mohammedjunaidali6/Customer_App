@@ -6,7 +6,7 @@ import reward4_src from '../../assets/img/gameDetails/reward4.svg';
 
 
 export default function GameDetailRewards(props) {
-    // console.log('****',props);
+    console.log('****',props);
     
     const getWinPositionString = (position) => {
         switch (position) {
@@ -23,12 +23,25 @@ export default function GameDetailRewards(props) {
         }
     }
     const getDiscountString=(type,value)=>{
-        value=value||'_';
+        console.log('***',type,value)
+        value=value||'';
         switch(type){
-            case 'percentage':
+            case 'Percentage':
                 return value+'%';
+            case 'Fixed':
+                return value;
             default:
                 return value+'';
+        }
+    }
+    const getOfferStr=(rewardType,discountType,discountValue)=>{
+        switch(rewardType){
+            case 'Points':
+                return 'Points';
+            case 'Coupons':
+                    return 'Flat Discount';
+            default:
+                return '';
         }
     }
 
@@ -44,7 +57,7 @@ export default function GameDetailRewards(props) {
                                 <div className="w-30 rewards-item-left" >
                                     <div className="rewards-discount">
                                         <div className="rewards-discount-header">{getDiscountString(obj.DiscountType,obj.DiscountValue)}</div>
-                                        <div className="rewards-discount-desc">{obj.RewardType}</div>
+                                        <div className="rewards-discount-desc">{getOfferStr(obj.RewardType,obj.DiscountType,obj.DiscountValue)}</div>
                                         <div className="curve-div reward-item-box-top reward-item-box-right"></div>
                                         <div className="curve-div reward-item-box-bottom reward-item-box-right"></div>
                                     </div>

@@ -108,3 +108,11 @@
     line-height: 11.68px;
     text-align: center;
 }
+.tourn-label{
+    margin:-6px 10px;
+    background-color:rgb(241, 28, 28);
+    border-radius:5px;
+    font-size:12px;
+    font-weight:400;
+    color:#FFFFFF;
+}

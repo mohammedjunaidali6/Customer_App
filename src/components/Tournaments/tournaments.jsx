@@ -6,7 +6,7 @@ import RewardBox from "../common/rewardBox";
 import tournament_src from '../../assets/img/ranking.svg';
 import store from '../../store/store';
 import { getData } from '../../api/apiHelper';
-import { GAME_PROD_HOST_URI ,SERVICE_TYPE} from '../../api/apiConstants';
+import { GAMEPLAYS_BY_CUSTOMER, GAME_PROD_HOST_URI ,SERVICE_TYPE} from '../../api/apiConstants';
 import { getCustomerDetails } from '../common/getStoreData';
 
 
@@ -18,7 +18,6 @@ export default function Tournaments(props) {
     const rewardZoneReducer=store.getState()?.RewardZoneReducer;
     console.log('***',rewardZoneReducer)
     let engagements=rewardZoneReducer?.engagements;
-    const amountsRedeemed=rewardZoneReducer?.engagementPurchasedAmounts;
 
 
     function gameDetailFn(selectedEngagementData) {
@@ -35,9 +34,8 @@ export default function Tournaments(props) {
     }
     
     useEffect(()=>{
-        getData(`${GAME_PROD_HOST_URI}/game/gamePlaysByCustomer?customer_id=${customer.CustomerID}`,SERVICE_TYPE.GAME)
+        getData(`${GAME_PROD_HOST_URI}${GAMEPLAYS_BY_CUSTOMER}${customer.CustomerID}`,SERVICE_TYPE.GAME)
         .then(res=>{
-            // console.log('***',res);
                 if(res){
                     let arr1=[];let arr2=[];
                     engagements=engagements?.forEach(e=>{
@@ -55,7 +53,6 @@ export default function Tournaments(props) {
                 setCustomerNotParticipatedEngagements(arr2);
             }
         });
-
     },[])
 
 
@@ -73,7 +70,7 @@ export default function Tournaments(props) {
                         {customerParticipatedEngagements.map((obj) => (
                             <RewardBox 
                                 props={props}
-                                amountRedeemed={amountsRedeemed?.find(e=>e.EngagementID==obj.EngagementID)?.FormattedAmountRedeemed}
+                                engagementPlayersAndAmounts={props?.engagementPlayersAndAmounts}
                                 engagement={obj}
                                 gameDetailFn={gameDetailFn} 
                                 customerSavings={topCustomerSavingsOpenFn} 
@@ -92,8 +89,8 @@ export default function Tournaments(props) {
                     {customerNotParticipatedEngagements.map((obj) => (
                         <RewardBox
                             props={props}
-                            amountRedeemed={amountsRedeemed?.find(e=>e.EngagementID==obj.EngagementID)?.FormattedAmountRedeemed}
                             engagement={obj}
+                            engagementPlayersAndAmounts={rewardZoneReducer?.engagementPlayersAndAmounts}
                             gameDetailFn={gameDetailFn} 
                             customerSavings={topCustomerSavingsOpenFn} 
                             leaderBoardFn={leaderBoardFn} 
