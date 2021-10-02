@@ -10,11 +10,12 @@ import GameDetailWhoElseplaying from "./whoElsePlaying";
 import GameDetailHowToPlay from "./howToPlay";
 import GCarousel from '../common/carousel';
 import { getCustomerDetails } from '../common/getStoreData';
-import { postData } from '../../api/apiHelper';
+import { getData, postData } from '../../api/apiHelper';
 import {
     ENGT_PROD_HOST_URI,
     SERVICE_TYPE,
     ENGAGEMENT_DETAILS_FOR_PLAYER,
+    ENGAGEMENT_SUMMARY,
 } from '../../api/apiConstants';
 
 
@@ -24,10 +25,9 @@ export default function GameDetail(props) {
     const [allEngagements, setAllEngagements] = useState(rewardZoneReducerData.engagements);
     const [selectedEngagement, setSelectedEngagement] = useState(rewardZoneReducerData.selectedEngagement);
     const [engagementDetails, setEngagementDetails] = useState({});
+    const [engagementSummary,setEngagementSummary]=useState({});
 
     var customer=getCustomerDetails();
-    var rewardZoneReducer=store.getState().RewardZoneReducer;
-    var engPlayersAndAmount=rewardZoneReducer.engagementPlayersAndAmounts.find(e=>e.EngagementID==selectedEngagement.EngagementID);
 
     const carouselItemClick = (data) => {
         props.rewardZoneActionHandler.pushSelectedEngagement(allEngagements[data]);
@@ -48,6 +48,14 @@ export default function GameDetail(props) {
             })
     }, [selectedEngagement])
 
+    useEffect(()=>{
+        getData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_SUMMARY}${selectedEngagement?.EngagementID}`,SERVICE_TYPE.ENGT)
+        .then(res=>{
+                setEngagementSummary(res);
+            })
+    },[])
+
+
     return (
         <Fragment>
             <Back parentProps={props} height="235" fromGameDetail={true} />
@@ -58,9 +66,9 @@ export default function GameDetail(props) {
                 carouselItemClick={carouselItemClick} >
             </GCarousel> */}
             <img className='g-d-carousel' style={{height:'28%',width:'100%'}} src={selectedEngagement.Game?.BannerImageUrl} alt='Game Banner'/>
-            <GameDetailGameInfo 
-                parentProps={props} 
-                engPlayersAndAmount={engPlayersAndAmount}
+            <GameDetailGameInfo
+                parentProps={props}
+                engagementSummary={engagementSummary}
             />
             <div style={{ height: containerHeightCalcFn(348), overflowY: 'auto' }}>
                 <GameDetailScratchNow

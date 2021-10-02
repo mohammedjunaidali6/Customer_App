@@ -109,10 +109,13 @@
     text-align: center;
 }
 .tourn-label{
-    margin:-6px 10px;
-    background-color:rgb(241, 28, 28);
-    border-radius:5px;
-    font-size:12px;
-    font-weight:400;
-    color:#FFFFFF;
+    margin-top: -8px;
+    margin-left: 6%;
+    margin-right: 60%;
+    background-color: rgb(255, 87, 87);
+    border-radius: 5px;
+    font-size: 7px;
+    font-weight: 400;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
 }

@@ -42,7 +42,7 @@ export const ENGAGEMENT_DETAILS_FOR_PLAYER = '/engt/engagementdetailsforplayer';
 export const CUSTOMER_SAVINGS = '/engt/customersavings';
 export const FETCH_CUSTOMER_SAVINGS = '/engt/fetchCustomerSavings';
 export const TOP_CUSTOMER_SAVINGS = '/engt/topCustomerSavings?engagement_id=';
-export const ENGAGEMENT_PLAYERS_AND_AMOUNT= '/engt/engagementPlayersAndAmount';
+export const ENGAGEMENT_SUMMARY= '/engt/engagementSummary?engagement_id=';
 export const LEADERBOARD_BY_ENGAGEMENT= '/engt/LeaderBoardByEngagament';
 
 //EVENT URIs

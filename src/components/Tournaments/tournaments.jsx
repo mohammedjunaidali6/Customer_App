@@ -5,13 +5,17 @@ import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
 import tournament_src from '../../assets/img/ranking.svg';
 import store from '../../store/store';
-import { getData } from '../../api/apiHelper';
-import { GAMEPLAYS_BY_CUSTOMER, GAME_PROD_HOST_URI ,SERVICE_TYPE} from '../../api/apiConstants';
 import { getCustomerDetails } from '../common/getStoreData';
+import { getData } from '../../api/apiHelper';
+import { 
+    SERVICE_TYPE,
+    GAME_PROD_HOST_URI,
+    GAMEPLAYS_BY_CUSTOMER, 
+} from '../../api/apiConstants';
 
 
 export default function Tournaments(props) {
-    // console.log('***',props);
+    console.log('***',props);
     const [customerParticipatedEngagements,setCustomerParticipatedEngagements]=useState([]);
     const [customerNotParticipatedEngagements,setCustomerNotParticipatedEngagements]=useState([]);
     const customer=getCustomerDetails();
@@ -58,7 +62,7 @@ export default function Tournaments(props) {
 
   return(
     <Fragment>
-        <Back height="150" parentProps={props}/>
+        <Back height="150" parentProps={props} fromRewardZone={false}/>
         <div id="banner-container" className='banner-container-bg' style={{margin:'0 8%'}}>
             <img src={tournament_src} alt='tournaments' className="back-banner-your-tournaments mt-2" />
             <div className='tournaments-header mt-1'>Your Tournaments</div>
@@ -70,7 +74,6 @@ export default function Tournaments(props) {
                         {customerParticipatedEngagements.map((obj) => (
                             <RewardBox 
                                 props={props}
-                                engagementPlayersAndAmounts={props?.engagementPlayersAndAmounts}
                                 engagement={obj}
                                 gameDetailFn={gameDetailFn} 
                                 customerSavings={topCustomerSavingsOpenFn} 
@@ -90,7 +93,6 @@ export default function Tournaments(props) {
                         <RewardBox
                             props={props}
                             engagement={obj}
-                            engagementPlayersAndAmounts={rewardZoneReducer?.engagementPlayersAndAmounts}
                             gameDetailFn={gameDetailFn} 
                             customerSavings={topCustomerSavingsOpenFn} 
                             leaderBoardFn={leaderBoardFn} 

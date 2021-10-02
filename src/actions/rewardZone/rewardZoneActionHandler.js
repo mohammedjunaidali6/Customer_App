@@ -2,7 +2,7 @@ import {
   SET_ENGAGEMENTS, 
   SELECTED_ENGAGEMENT, 
   SET_PLAYER_SUMMARY,
-  SET_ENGAGEMENTS_PLAYERS_AND_AMOUNTS,
+  SET_ENGAGEMENT_SUMMARY,
   SET_ENGAGEMENTS_RULE_AMOUNTS
  } from '../../constants/actionTypes';
 
@@ -33,10 +33,10 @@ export function setPlayerSummary(data) {
   }
 }
 
-export function setEngagementsPlayersAndAmounts(data) {
+export function setEngagementSummary(data) {
   return (dispatch) => {
     dispatch({
-      type: SET_ENGAGEMENTS_PLAYERS_AND_AMOUNTS,
+      type: SET_ENGAGEMENT_SUMMARY,
       payload: data,
     })
   }

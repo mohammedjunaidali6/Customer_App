@@ -4,20 +4,25 @@ import rupee_src from '../../assets/img/rewardZone/amountwon_home_small.svg';
 import trophy_src from '../../assets/img/rewardZone/trophy_home.svg';
 import '../../assets/css/rewardBox.css';
 import ProgressBar from "../common/progressBar";
-import { postData } from '../../api/apiHelper';
-import { EVNT_PROD_HOST_URI, PURCHASE_RULE_AMOUNT, SERVICE_TYPE } from '../../api/apiConstants';
+import { getData, postData } from '../../api/apiHelper';
 import { getCustomerDetails } from './getStoreData';
+import {  
+    SERVICE_TYPE,
+    EVNT_PROD_HOST_URI, 
+    ENGT_PROD_HOST_URI,
+    ENGAGEMENT_SUMMARY, 
+    PURCHASE_RULE_AMOUNT, 
+} from '../../api/apiConstants';
 
 
 export default function RewardBox(props) {
     // console.log('***',props);
-    const customerData=getCustomerDetails();
     const engagement=props.engagement;
     const game=engagement.Game;
     const [perc,setPerc]=useState(0);
+    const [summary,setSummary]=useState();
     const [amountToBePurchased,setAmountToBePerchased]=useState(engagement?.PurchaseValue||0);
-
-    const engPlayersAndAmount=props.engagementPlayersAndAmounts?.find(e=>e.EngagementID==engagement.EngagementID);
+    const customerData=getCustomerDetails();
 
     const onPlayNow =()=>{
         props.gameDetailFn(engagement)
@@ -36,19 +41,15 @@ export default function RewardBox(props) {
                 setAmountToBePerchased(Math.round(res.FormattedToBePurchasedToRuleAmount));
                 let percentage=engagement.PurchaseValue>res?(res.ToBePurchasedToRuleAmount/engagement?.PurchaseValue)*100:100;
                 setPerc(percentage);
-                // let arr=[...props.props?.engagementRuleAmounts||[]];
-                // console.log('***',arr);
-                // let indx=arr.findIndex(e=>e.EngagementID==engagement.EngagementID);
-                // if(indx<0){
-                //     arr.push({EngagementID:engagement.EngagementID,Percentage:percentage})
-                // }else{
-                //     arr[indx].Percentage=percentage;
-                // }
-                // props.props.rewardZoneActionHandler.setEngagementsRuleAmounts(arr);
             }
         })
+        getData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_SUMMARY}${engagement?.EngagementID}`,SERVICE_TYPE.ENGT)
+        .then(res=>{
+                setSummary(res);
+            })
     },[])
 
+    
     return (
         <div className="reward-whole-box">
             <div className="reward-mask-box">
@@ -89,9 +90,9 @@ export default function RewardBox(props) {
                         </div>
                         <div>
                             <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
-                                {engPlayersAndAmount?.CustomersCount}
+                                {summary?.CustomersCount||0}
                             </div>
-                            <div style={{color: "#808A8F", fontSize: "10px"}}>Winners</div>
+                            <div style={{color: "#808A8F", fontSize: "10px"}}>Players</div>
                         </div>
                     </div>
                     <div className="w-50 float-left clearfix text-winners"  onClick={() => props.customerSavings(engagement)}>
@@ -100,7 +101,7 @@ export default function RewardBox(props) {
                         </div>
                         <div>
                             <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
-                                {engPlayersAndAmount?.FormattedAmountRedeemed}
+                                {summary?.FormattedAmountRedeemed||0}
                             </div>
                             <div style={{color: "#808A8F",fontSize: "10px"}}>Amount Won</div>
                         </div>

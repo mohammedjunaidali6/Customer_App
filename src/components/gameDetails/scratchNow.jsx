@@ -23,7 +23,7 @@ import {
 
 
 export default function GameDetailScratchNow(props) {
-    console.log('****',props);
+    // console.log('****',props);
     const [iFrameClick, setIFrameClick] = useState(false);
     const [taskStatuses, setTaskStatuses] = useState([]);
     const [loadingTasks, setLoadingTasks] = useState(false);
@@ -34,10 +34,7 @@ export default function GameDetailScratchNow(props) {
     const token = props.engagementDetails?.GamePlay?.Token;
     const engagement=props.selectedGameDetail;
     var customer=getCustomerDetails();
-    // var rewardZoneReducer=store.getState().RewardZoneReducer;
-    // var ruleAmounts=rewardZoneReducer.engagementRuleAmounts;
-    // const perc=ruleAmounts.find(r=>r.EngagementID==engagement.EngagementID)?.Percentage||0;
-    // console.log('***',ruleAmounts);
+
 
     const onPlayNow = () => {
         var data = {

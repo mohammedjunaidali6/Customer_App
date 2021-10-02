@@ -1,7 +1,8 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Back from "../common/back";
 import './rewardZone.css';
 import {WhatsappIcon,WhatsappShareButton} from 'react-share'
+import dots_progress from '../../assets/img/dots-progress.gif';
 import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
 import GCarousel from '../common/carousel';
@@ -9,15 +10,14 @@ import { getCustomerDetails } from '../common/getStoreData';
 import { getData, postData } from '../../api/apiHelper';
 import {
     ENGT_PROD_HOST_URI,
-    REPT_PROD_HOST_URI,
     SERVICE_TYPE,
     ACTIVE_ENGAGEMENTS,
-    PLAYER_SUMMARY,
 } from '../../api/apiConstants';
 
 
 export default function RewardZone(props) {
     // console.log('**', props);
+    const [engagementsLoading,setEngagementsLoading]=useState(false);
     var customer=getCustomerDetails();
     
     var referralLink=`${customer?.SignUpUrl}?refcode=${customer?.ReferralCode}`;
@@ -57,29 +57,13 @@ export default function RewardZone(props) {
         props.history.push({ pathname: "/gamedetail" });
     }
 
-    const handleLoader=(bool)=>{
-        props.routeActionHandler.dispatchLoaderData(bool);
-    }
-
     useEffect(() => {
-        let data={
-            CustomerID:customer.CustomerID
-        }
-        if(!props.playerSummary){
-            handleLoader(true);
-            postData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`,data, SERVICE_TYPE.REPT)
-                .then(summary => {
-                    props.rewardZoneActionHandler?.setPlayerSummary(summary);
-                    handleLoader(false);
-               })
-        }
-
         if(!Array.isArray(props.engagements)){
-            handleLoader(true);
+            setEngagementsLoading(true);
             getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
                 .then(engagementswithGames => {
                     props.rewardZoneActionHandler.setEngagements(engagementswithGames);
-                    handleLoader(false);
+                    setEngagementsLoading(false);
                 })
         }
         props.rewardZoneActionHandler.setEngagementsRuleAmounts([]);
@@ -88,6 +72,7 @@ export default function RewardZone(props) {
     return (
         <Fragment>
             <Back height="226"
+                customerID={customer.CustomerID}
                 fromRewardZone={true}
                 parentProps={props}
                 rewardOpenFn={rewardOpenFn}
@@ -130,26 +115,29 @@ export default function RewardZone(props) {
                         </div>
                     </div>
                 </div>
-                <GCarousel data={props.engagements}
-                    fromGameDetail={false}
-                    centerMode={true}
-                    centerSlidePercentage={80}
-                    carouselItemClick={carouselItemClick} >
-                </GCarousel>
-                <div className="reward-zone-handpicked-header text-bold">Handpick Challenges for you to get Lucky!!</div>
-                {props.engagements && props.engagements.length > 0 &&
-                    <div className="reward-zone-handpicked-items">
-                        {props.engagements.map((obj) => (
-                            <RewardBox 
-                                engagement={obj} 
-                                engagementPlayersAndAmounts={props?.engagementPlayersAndAmounts}
-                                props={props}
-                                gameDetailFn={gameDetailFn} 
-                                customerSavings={topCustomerSavingsOpenFn} 
-                                leaderBoardFn={leaderBoardFn} 
-                            />
-                        ))}
-                    </div>
+                {engagementsLoading?
+                    <img src={dots_progress} height='5%' width='40%' style={{margin:'20% 30%'}}/>
+                    :
+                    <Fragment>
+                        <GCarousel data={props.engagements}
+                            fromGameDetail={false}
+                            centerMode={true}
+                            centerSlidePercentage={80}
+                            carouselItemClick={carouselItemClick} >
+                        </GCarousel>
+                        <div className="reward-zone-handpicked-header text-bold">Handpick Challenges for you to get Lucky!!</div>
+                        <div className="reward-zone-handpicked-items">
+                            {props.engagements && props.engagements.length > 0 &&props.engagements.map((obj) => (
+                                <RewardBox 
+                                    engagement={obj} 
+                                    props={props}
+                                    gameDetailFn={gameDetailFn} 
+                                    customerSavings={topCustomerSavingsOpenFn} 
+                                    leaderBoardFn={leaderBoardFn} 
+                                />
+                            ))}
+                        </div>
+                    </Fragment>
                 }
             </div>
         </Fragment>

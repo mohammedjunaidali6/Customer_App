@@ -4,16 +4,11 @@ import welcome_gift_src from "../../assets/img/landing/giftBox.gif";
 import blaash_logo_src from "../../assets/img/landing/blaash-logo.png";
 import music_progress from "../../assets/img/landing/music_progress.gif";
 import { axiosInstance } from '../../actions/axios-config';
-import { getData, postData } from '../../api/apiHelper';
+import { postData } from '../../api/apiHelper';
 import { 
-    ENGT_PROD_HOST_URI, 
     EVNT_PROD_HOST_URI, 
     SERVICE_TYPE,
-    ACTIVE_ENGAGEMENTS, 
     DUMMY_TENANT_KEY, 
-    REPT_PROD_HOST_URI, 
-    PLAYER_SUMMARY, 
-    ENGAGEMENT_PLAYERS_AND_AMOUNT 
 } from '../../api/apiConstants';
 
 export default function Landing(props) {
@@ -36,33 +31,7 @@ export default function Landing(props) {
                     console.log('** Customer Logged In: ',data);
                     props.landingActionHandler.dispatchCustomerData(data);
                     setLoggedInUser(data);
-                    try{
-                        let obj={
-                            CustomerID:data.CustomerID
-                        }
-                        postData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`,obj, SERVICE_TYPE.REPT)
-                            .then(summary => {
-                                props.rewardZoneActionHandler?.setPlayerSummary(summary);
-                                //Fetch Engagements
-                                getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
-                                    .then(engagementswithGames => {
-                                            props.rewardZoneActionHandler.setEngagements(engagementswithGames);
-                                            //setEngagementsPlayersAndAmounts
-                                            let postObj={
-                                                EngagementIds:engagementswithGames.map(e=>e.EngagementID)
-                                            }
-                                            postData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_PLAYERS_AND_AMOUNT}`,postObj,SERVICE_TYPE.ENGT)
-                                            .then(res=>{
-                                                console.log('***',res)
-                                                props.rewardZoneActionHandler.setEngagementsPlayersAndAmounts(res);
-                                                props.history.push('rewardzone');
-                                            })
-                                    })
-                            })
-                    }catch(error){
-                        console.error('Error in Landing is ',error);
-                        props.history.push('error');
-                    }
+                    props.history.push('rewardZone');
                 } else {
                     setLoggedInUser(null);
                 }
