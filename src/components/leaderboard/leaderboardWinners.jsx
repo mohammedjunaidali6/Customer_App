@@ -1,14 +1,41 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import defaultuser_src from "../../assets/img/gameDetails/default_user.png";
 import coin_src from "../../assets/img/leaderboard/coin.svg";
 import first_src from "../../assets/img/leaderboard/first.svg";
 import secondorthird_src from "../../assets/img/leaderboard/secondorthird.svg";
+import store from '../../store/store';
 
 export default function LeaderBoardWinners(props) {
     // console.log('***',props.parentProps);
+    const [endDT, setEndDT] = useState('');
     var leaders=props.parentProps.leaderboard||[];
 
+    var selectedEngagement=store.getState().RewardZoneReducer.selectedEngagement;
+
+    const getEndDateStr=()=>{
+        let now=new Date().getTime();
+        const endDate=selectedEngagement?.EndDate;
+
+        let timeleft = new Date(endDate)-now;
+        var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+        if(days>2){
+            setEndDT(`Ending on ${selectedEngagement?.EndDate.substring(0,10)}`);
+        }else{
+            setInterval(()=>{
+                now=new Date().getTime();
+                timeleft = new Date(endDate) - now;
+                let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let mins = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+                let secs = Math.floor((timeleft % (1000 * 60)) / 1000);
+                setEndDT(`Ending in ${hours}:${mins}:${secs} secs`);
+            },1000);
+        }
+    }
     const status="Let's start the fun, Play Now to win exciting prize";
+
+    useEffect(()=>{
+        getEndDateStr();
+    },[])
 
     return (
         <div id="leaderboard-winners-container">
@@ -64,6 +91,9 @@ export default function LeaderBoardWinners(props) {
                         }
                     </div>
                 </div>
+            </div>
+            <div style={{fontSize: '14px', color: '#5d79f6', fontFamily: 'Roboto',textAlign:'center'}}>
+                {selectedEngagement?.EngagementStatusID===1?endDT:''}
             </div>
             <div className="w-100 disp-flex-root leaderboard-winners-list mt-4 mb-4">
                 {leaders && leaders.length > 3 &&

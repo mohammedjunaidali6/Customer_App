@@ -62,6 +62,7 @@ export default function LeaderBoard(props) {
                     yourScore?`You are just ${rank20?.Score}-${yourScore} points away.`:
                         `Players are competing hard`;
     
+
     return (
         <div id="leaderboard-outer-container">
             <Back parentProps={props} fromLeaderBoard={true} backTitle={backTitle} />

@@ -62,7 +62,7 @@ export default function GameDetailScratchNow(props) {
                 let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 let mins = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
                 let secs = Math.floor((timeleft % (1000 * 60)) / 1000);
-                setStartDT(`Starting in ${hours}:${mins}:${secs} secs`);
+                setStartDT(`Starting in ${hours}:${mins}:${secs}`);
             },1000);
         }
     }
@@ -81,7 +81,7 @@ export default function GameDetailScratchNow(props) {
                 let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 let mins = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
                 let secs = Math.floor((timeleft % (1000 * 60)) / 1000);
-                setEndDT(`Ending in ${hours}:${mins}:${secs} secs`);
+                setEndDT(`Ending in ${hours}:${mins}:${secs}`);
             },1000);
         }
     }
@@ -146,9 +146,10 @@ export default function GameDetailScratchNow(props) {
             <Fragment>
                 {engagement.IsTournament&&
                     <div>
-                        <span style={{color:'#FFFFFF',fontSize:'12px',fontFamily:'Roboto',padding:'2px',backgroundColor:'red'}}>
-                            Tournament
-                        </span>
+                        <span className='tournament-labels'>Tournament</span>
+                        {engagement.EngagementStatusID===1&&
+                            <span className='tournament-labels' style={{marginLeft:'30%'}}>{endDT}</span>
+                        }
                     </div>
                 }
                 <div className="scratchnow-big-header">{engagement?.DisplayName || ''}</div>
@@ -194,7 +195,7 @@ export default function GameDetailScratchNow(props) {
                 <div id="btn-scratch-now-container" className="mt-3">
                     {engagement?.IsTournament?
                         <button id="btn-scratch-now" className={`${disablePlayBtn?'disable-btn':'enable-btn'}`} onClick={onPlayNow} disabled={engagement.EngagementStatusID!=1}>
-                            {engagement.EngagementStatusID===1&&<span className="button-text">{endDT}</span>}
+                            {engagement.EngagementStatusID===1&&<span className="button-text">Play Now</span>}
                             {engagement.EngagementStatusID===4&&<span className="button-text" style={{color:'#000000'}}>{startDT}</span>}
                         </button>
                         :

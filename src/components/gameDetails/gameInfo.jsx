@@ -21,7 +21,7 @@ export default function GameDetailGameInfo(props) {
                 </div>
                 <div className="w-50 float-right">
                     <div className="gamedetail-gameinfo-count">{engagementSummary?.CustomersCount}</div>
-                    <div className="gamedetail-gameinfo-count-desc">Winners</div>
+                    <div className="gamedetail-gameinfo-count-desc">Players</div>
                 </div>
             </div>
             <div className="common-divider float-left" style={{ height: "44px" }}></div>
