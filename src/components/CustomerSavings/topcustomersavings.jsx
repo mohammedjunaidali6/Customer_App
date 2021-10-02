@@ -29,7 +29,6 @@ export default function TopCustomerSavings(props) {
         postData(`${ENGT_PROD_HOST_URI}${TOP_CUSTOMER_SAVINGS}`,data, SERVICE_TYPE.ENGT)
             .then(data=>{
                 if(data){
-                    console.log('***',data)
                     props.topcustomerSavingsActionHandler.dispatchTopCustomerSavings(data);
                 }
             });

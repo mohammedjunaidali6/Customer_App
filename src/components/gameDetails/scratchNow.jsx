@@ -50,7 +50,7 @@ export default function GameDetailScratchNow(props) {
     const getStartDateStr=()=>{
         let now=new Date().getTime();
         const startDate=engagement?.StartDate;
-        console.log('***',startDate)
+
         let timeleft = new Date(startDate)-now;
         var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
         if(days>2){
@@ -69,7 +69,7 @@ export default function GameDetailScratchNow(props) {
     const getEndDateStr=()=>{
         let now=new Date().getTime();
         const endDate=engagement?.EndDate;
-        console.log('***',endDate)
+
         let timeleft = new Date(endDate)-now;
         var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
         if(days>2){
@@ -91,14 +91,11 @@ export default function GameDetailScratchNow(props) {
             LastNumberOfDays:engagement?.LastNumberOfDays,
             PurchaseRuleValue:engagement?.PurchaseValue
         }
-        console.log('***',obj);
         postData(`${EVNT_PROD_HOST_URI}${PURCHASE_RULE_AMOUNT}`,obj,SERVICE_TYPE.EVNT)
         .then(res=>{
             if(res){
-                console.log('***',res);
                 let percentage=engagement.PurchaseValue>res?(res.ToBePurchasedToRuleAmount/engagement?.PurchaseValue)*100:100;
                 setPerc(percentage);
-                console.log('***',percentage);
             }
         });
     }
@@ -109,6 +106,7 @@ export default function GameDetailScratchNow(props) {
     
         disablePlayBtn=disablePlayBtn|| perc<100;
 
+        disablePlayBtn=disablePlayBtn||(engagement.EngagementStatusID==4);
 
     useEffect(() => {
         getStartDateStr();
@@ -142,12 +140,15 @@ export default function GameDetailScratchNow(props) {
         }
     }, [props.engagementDetails?.JourneyTasks])
 
+
     return (
         <div className="gamedetail-scratchnow-items">
             <Fragment>
                 {engagement.IsTournament&&
                     <div>
-                        <span style={{color:'#FFFFFF',fontSize:'12px',fontFamily:'Roboto',padding:'2px',backgroundColor:'red'}}>Tournament</span>
+                        <span style={{color:'#FFFFFF',fontSize:'12px',fontFamily:'Roboto',padding:'2px',backgroundColor:'red'}}>
+                            Tournament
+                        </span>
                     </div>
                 }
                 <div className="scratchnow-big-header">{engagement?.DisplayName || ''}</div>
@@ -192,7 +193,7 @@ export default function GameDetailScratchNow(props) {
                 </div>
                 <div id="btn-scratch-now-container" className="mt-3">
                     {engagement?.IsTournament?
-                        <button id="btn-scratch-now" className={`${engagement.EngagementStatusID==1?'enable-btn':'disable-btn'}`} onClick={onPlayNow} disabled={engagement.EngagementStatusID!=1}>
+                        <button id="btn-scratch-now" className={`${disablePlayBtn?'disable-btn':'enable-btn'}`} onClick={onPlayNow} disabled={engagement.EngagementStatusID!=1}>
                             {engagement.EngagementStatusID===1&&<span className="button-text">{endDT}</span>}
                             {engagement.EngagementStatusID===4&&<span className="button-text" style={{color:'#000000'}}>{startDT}</span>}
                         </button>

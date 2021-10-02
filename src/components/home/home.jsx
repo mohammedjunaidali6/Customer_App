@@ -22,7 +22,6 @@ export default function Home(props) {
   }, [page]);
 
   function testFn() {
-    console.log(props);
     Global.ConsoleFn("/test");
     props.history.push('/test');
   }

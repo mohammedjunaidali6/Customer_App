@@ -15,12 +15,11 @@ import {
 
 
 export default function Tournaments(props) {
-    console.log('***',props);
+    // console.log('***',props);
     const [customerParticipatedEngagements,setCustomerParticipatedEngagements]=useState([]);
     const [customerNotParticipatedEngagements,setCustomerNotParticipatedEngagements]=useState([]);
     const customer=getCustomerDetails();
     const rewardZoneReducer=store.getState()?.RewardZoneReducer;
-    console.log('***',rewardZoneReducer)
     let engagements=rewardZoneReducer?.engagements;
 
 
