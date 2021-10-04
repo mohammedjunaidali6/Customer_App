@@ -4,11 +4,15 @@
     /* padding: 0 2%; */
     margin-bottom: 16px;
 }
+.reward-rect-box{
+    width: 100%;
+    margin-bottom: 16px;
+}
 .reward-whole-box:nth-of-type(odd) {
-    padding: 0 2% 0 0;
+    padding: 0 2%;
 }
 .reward-whole-box:nth-of-type(even) {
-    padding: 0 0 0 2%;
+    padding: 0 2%;
 }
 .reward-mask-box {
     width: 100%;
@@ -50,7 +54,7 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 45px;
+    height: 34px;
 }
 .curve-div {
     position: absolute;
@@ -109,13 +113,12 @@
     text-align: center;
 }
 .tourn-label{
-    margin-top: -8px;
-    margin-left: 6%;
     margin-right: 60%;
     background-color: rgb(255, 87, 87);
-    border-radius: 5px;
-    font-size: 7px;
+    /* border-radius: 5px; */
+    font-size: 8px;
     font-weight: 400;
     color: #FFFFFF;
     letter-spacing: 0.5px;
+    padding-left: 2px;
 }

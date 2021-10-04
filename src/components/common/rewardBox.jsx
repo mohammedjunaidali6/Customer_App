@@ -61,6 +61,9 @@ export default function RewardBox(props) {
                 <div className="curve-div reward-item-box-top reward-item-box-left"></div>
                 <div className="curve-div reward-item-box-top reward-item-box-right"></div>
                 <div className="w-100 reward-item-box-content mt-2">
+                    {/* {engagement?.IsTournament&&
+                        <div className='tourn-label'><span>Tournament</span></div>
+                    } */}
                     <span className="text-rank-of">{engagement.DisplayName?.length>40?engagement.DisplayName?.substring(0,40)+'...':engagement.DisplayName}</span>
                 </div>
                 <div className="w-86 ml-2 mr-2">
@@ -78,15 +81,12 @@ export default function RewardBox(props) {
                         onClick={onPlayNow}
                     ><span className="button-text">EXPLORE</span>
                     </button>
-                    {engagement?.IsTournament&&
-                        <div className='tourn-label'><span>Tournament</span></div>
-                    }
                 </div>
                 <div className="w-100 dashed-line-div"></div>
                 <div className="w-100 reward-item-box-content pt-2 pb-3">
                     <div className="w-50 float-left clearfix text-winners" onClick={() => props.leaderBoardFn(engagement)}>
                         <div className="">
-                            <img style={{ width: "12px", float: "left", marginRight: "8px" }} src={trophy_src} />
+                            <img style={{ width: "12px", float: "left", marginRight: "8px",height:'10px' }} src={trophy_src} />
                         </div>
                         <div>
                             <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
