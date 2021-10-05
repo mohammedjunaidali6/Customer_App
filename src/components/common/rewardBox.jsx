@@ -52,6 +52,10 @@ export default function RewardBox(props) {
     
     return (
         <div className="reward-whole-box">
+            <div className='engagement-header-label'>
+                <span className='eng-h-tourn'>{engagement?.IsTournament?'Tournament':''}</span>
+                <span className='eng-h-cost'>Cost: {engagement.cost||'Free'}</span>
+            </div>
             <div className="reward-mask-box">
                 <img src={`${game?.BannerImageUrl}` || mask_src} alt="Mask" style={{ height: '88px' }} />
                 <div className="curve-div reward-item-box-bottom reward-item-box-left"></div>
@@ -61,9 +65,6 @@ export default function RewardBox(props) {
                 <div className="curve-div reward-item-box-top reward-item-box-left"></div>
                 <div className="curve-div reward-item-box-top reward-item-box-right"></div>
                 <div className="w-100 reward-item-box-content mt-2">
-                    {/* {engagement?.IsTournament&&
-                        <div className='tourn-label'><span>Tournament</span></div>
-                    } */}
                     <span className="text-rank-of">{engagement.DisplayName?.length>40?engagement.DisplayName?.substring(0,40)+'...':engagement.DisplayName}</span>
                 </div>
                 <div className="w-86 ml-2 mr-2">

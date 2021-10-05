@@ -141,6 +141,10 @@ export default function RewardZone(props) {
                                 />
                                 :
                                 <div className="reward-rect-box">
+                                    <div className='engagement-header-label'>
+                                        <span className='eng-h-tourn'>{obj?.IsTournament?'Tournament':''}</span>
+                                        <span className='eng-h-cost'>Cost: {obj.cost||'Free'}</span>
+                                    </div>
                                     <div className="reward-mask-box">
                                         <img src={`${obj.Game?.RectangleImageUrl}`} alt="Mask" style={{ height: '100%' }} />
                                         <div className="curve-div reward-item-box-bottom reward-item-box-left"></div>
@@ -179,7 +183,7 @@ export default function RewardZone(props) {
                                                         <div style={{color: "#808A8F", fontSize: "10px"}}>Players</div>
                                                     </div>
                                                 </div>
-                                                <div className="w-50 float-left clearfix text-winners" style={{marginLeft:'76%',marginTop:'-3%'}}   onClick={() => {}}>
+                                                <div className="w-50 float-left clearfix text-winners" style={{marginLeft:'80%',marginTop:'-3%'}}   onClick={() => {}}>
                                                     <div className="">
                                                         <img style={{ width: "12px", float: "left", marginRight: "8px" }} src={rupee_src} />
                                                     </div>

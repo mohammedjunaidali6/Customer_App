@@ -39,6 +39,22 @@
     overflow: hidden;
     margin-top: -11px;
 }
+.engagement-header-label{
+    font-size: 11px;
+    font-weight: 500;
+    background-color: #FFFFFF;
+    padding: 1%;
+    display: flow-root;
+}
+.eng-h-tourn{
+    float:left;
+    color:crimson;
+}
+.eng-h-cost{
+    float:right;
+    padding-right: 2px;
+    color:coral;
+}
 .reward-item-box-content {
     padding: 10px 13px;
     color: #3F4045;
