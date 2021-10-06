@@ -41,7 +41,7 @@ export default function RewardBox(props) {
         .then(res=>{
             if(res){
                 setAmountToBePerchased(Math.round(res.FormattedToBePurchasedToRuleAmount));
-                let percentage=engagement.PurchaseValue>res?(res.ToBePurchasedToRuleAmount/engagement?.PurchaseValue)*100:100;
+                let percentage=engagement.PurchaseValue>res.PurchasedAmount?(res.PurchasedAmount/engagement?.PurchaseValue)*100:100;
                 setPerc(percentage);
             }
         })

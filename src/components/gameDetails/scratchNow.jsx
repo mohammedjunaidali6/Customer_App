@@ -20,6 +20,7 @@ import {
     JOURNEY_TASK_STATUS,
     PURCHASE_RULE_AMOUNT,
 } from '../../api/apiConstants';
+import store from '../../store/store';
 
 
 export default function GameDetailScratchNow(props) {
@@ -29,14 +30,20 @@ export default function GameDetailScratchNow(props) {
     const [loadingTasks, setLoadingTasks] = useState(false);
     const [startDT, setStartDT] = useState('');
     const [endDT, setEndDT] = useState('');
+    const [shopMoreAmount,setShopMoreAmount]=useState(0);
     const [perc,setPerc]=useState(0);
     
+    var summary = store.getState().RewardZoneReducer?.playerSummary;
     const token = props.engagementDetails?.GamePlay?.Token;
     const engagement=props.selectedGameDetail;
     var customer=getCustomerDetails();
 
 
     const onPlayNow = () => {
+        if(engagement.CostToPlay>summary.TotalPoints){
+            alert(`Insufficient Balance, need ${engagement.CostToPlay} bCoins to Participate`);
+            return;
+        }
         var data = {
             GameID: engagement?.Game?.GameID,
             EngagementID: engagement.EngagementID,
@@ -93,8 +100,10 @@ export default function GameDetailScratchNow(props) {
         }
         postData(`${EVNT_PROD_HOST_URI}${PURCHASE_RULE_AMOUNT}`,obj,SERVICE_TYPE.EVNT)
         .then(res=>{
+            console.log('***',res);
             if(res){
-                let percentage=engagement.PurchaseValue>res?(res.ToBePurchasedToRuleAmount/engagement?.PurchaseValue)*100:100;
+                let percentage=engagement.PurchaseValue>res.PurchasedAmount?(res.PurchasedAmount/engagement?.PurchaseValue)*100:100;
+                setShopMoreAmount(res.ToBePurchasedToRuleAmount);
                 setPerc(percentage);
             }
         });
@@ -107,6 +116,7 @@ export default function GameDetailScratchNow(props) {
         disablePlayBtn=disablePlayBtn|| perc<100;
 
         disablePlayBtn=disablePlayBtn||(engagement.EngagementStatusID==4);
+        disablePlayBtn=disablePlayBtn||(engagement.CostToPlay>summary.TotalPoints);
 
     useEffect(() => {
         getStartDateStr();
@@ -136,7 +146,7 @@ export default function GameDetailScratchNow(props) {
                     setLoadingTasks(false);
                 })
         } else {
-            setTaskStatuses([]);
+                setTaskStatuses([]);
         }
     }, [props.engagementDetails?.JourneyTasks])
 
@@ -210,13 +220,12 @@ export default function GameDetailScratchNow(props) {
                             id="btn-scratch-now" 
                             className={`${disablePlayBtn?'disable-btn':'enable-btn'}`} 
                             onClick={onPlayNow}
-                        ><span className="button-text">PLAY NOW</span>
+                        ><span className="button-text">{perc<100?`Shop more for ${shopMoreAmount} to Participate`:'PLAY NOW'}</span>
                         </button>
                     }
                 </div>
                 {iFrameClick &&
                     <div id="g-d-iFrame-sec" style={{backgroundColor:'black'}}>
-                        {/* <AiOutlineClose id="iFrame-close" title="Close Game" size={24} onClick={()=>setIFrameClick(false)}/> */}
                         <img src={close_btn} alt='close game' width={20} height={20} onClick={()=>setIFrameClick(false)} style={{margin:'4px 4px 0 0',float:'right'}}/>
                         <iframe
                             id="g-d-iFrame"
