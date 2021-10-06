@@ -59,12 +59,14 @@ export default function RewardZone(props) {
     }
 
     useEffect(() => {
-        setEngagementsLoading(true);
-        getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
-            .then(engagementswithGames => {
-                props.rewardZoneActionHandler.setEngagements(engagementswithGames);
-                setEngagementsLoading(false);
-            })
+        if(!props.engagements||props.engagements.length<=0){
+            setEngagementsLoading(true);
+            getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
+                .then(engagementswithGames => {
+                    props.rewardZoneActionHandler.setEngagements(engagementswithGames);
+                    setEngagementsLoading(false);
+                })
+        }
         props.rewardZoneActionHandler.setEngagementsRuleAmounts([]);
     }, []);
 

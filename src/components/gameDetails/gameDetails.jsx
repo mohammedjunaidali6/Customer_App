@@ -77,7 +77,7 @@ export default function GameDetail(props) {
                     parentProps={props}
                 />
                 <div className="w-90 disp-flex-root common-divider float-left ml-4" style={{ marginBottom: "12px" }}></div>
-                <GameDetailRewards rewards={engagementDetails?.Rewards} />
+                <GameDetailRewards engagement={selectedEngagement} rewards={engagementDetails.Rewards} />
                 <GameDetailWhoElseplaying />
                 <GameDetailHowToPlay />
             </div>

@@ -32,6 +32,7 @@ export default function LeaderBoardWinners(props) {
         }
     }
     const status="Let's start the fun, Play Now to win exciting prize";
+    const note="Ranks are on the based on time of Participation";
 
     useEffect(()=>{
         getEndDateStr();
@@ -118,7 +119,11 @@ export default function LeaderBoardWinners(props) {
                         </div>
                     ))
                 }
-                {leaders.length==0&&<span style={{fontSize: '14px', color: '#5d79f6', fontFamily: 'Roboto'}}>{status}</span>}
+                {leaders.length==0?
+                    <span style={{fontSize: '14px', color: '#5d79f6', fontFamily: 'Roboto'}}>{status}</span>
+                    :
+                    <span style={{fontSize: '14px', color: '#5d79f6', fontFamily: 'Roboto'}}>{note}</span>
+                }
             </div>
         </div>
     )

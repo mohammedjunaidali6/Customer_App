@@ -30,6 +30,8 @@ export default function Landing(props) {
                 if(data){
                     console.log('** Customer Logged In: ',data);
                     props.landingActionHandler.dispatchCustomerData(data);
+                    props.rewardZoneActionHandler.setEngagements(null);
+                    props.rewardZoneActionHandler.setPlayerSummary(null);
                     setLoggedInUser(data);
                     props.history.push('rewardZone');
                 } else {
