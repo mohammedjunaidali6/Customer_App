@@ -1,16 +1,14 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import Back from "../common/back";
-import rupee_src from '../../assets/img/rewardZone/amountwon_home_small.svg';
-import trophy_src from '../../assets/img/rewardZone/trophy_home.svg';
-import ProgressBar from "../common/progressBar";
 import './rewardZone.css';
 import {WhatsappIcon,WhatsappShareButton} from 'react-share'
 import dots_progress from '../../assets/img/dots-progress.gif';
 import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
+import RewardRectBox from '../common/rewardRectBox';
 import GCarousel from '../common/carousel';
 import { getCustomerDetails } from '../common/getStoreData';
-import { getData, postData } from '../../api/apiHelper';
+import { getData } from '../../api/apiHelper';
 import {
     ENGT_PROD_HOST_URI,
     SERVICE_TYPE,
@@ -61,14 +59,12 @@ export default function RewardZone(props) {
     }
 
     useEffect(() => {
-        if(!Array.isArray(props.engagements)){
-            setEngagementsLoading(true);
-            getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
-                .then(engagementswithGames => {
-                    props.rewardZoneActionHandler.setEngagements(engagementswithGames);
-                    setEngagementsLoading(false);
-                })
-        }
+        setEngagementsLoading(true);
+        getData(`${ENGT_PROD_HOST_URI}${ACTIVE_ENGAGEMENTS}`, SERVICE_TYPE.ENGT)
+            .then(engagementswithGames => {
+                props.rewardZoneActionHandler.setEngagements(engagementswithGames);
+                setEngagementsLoading(false);
+            })
         props.rewardZoneActionHandler.setEngagementsRuleAmounts([]);
     }, []);
 
@@ -140,63 +136,13 @@ export default function RewardZone(props) {
                                     leaderBoardFn={leaderBoardFn} 
                                 />
                                 :
-                                <div className="reward-rect-box">
-                                    <div className='engagement-header-label'>
-                                        <span className='eng-h-tourn'>{obj?.IsTournament?'Tournament':''}</span>
-                                        <span className='eng-h-cost'>Cost: {obj.cost||'Free'}</span>
-                                    </div>
-                                    <div className="reward-mask-box">
-                                        <img src={`${obj.Game?.RectangleImageUrl}`} alt="Mask" style={{ height: '100%' }} />
-                                        <div className="curve-div reward-item-box-bottom reward-item-box-left"></div>
-                                        <div className="curve-div reward-item-box-bottom reward-item-box-right"></div>
-                                    </div>
-                                    <div className="reward-item-box">
-                                        <div className="curve-div reward-item-box-top reward-item-box-left"></div>
-                                            <div className="curve-div reward-item-box-top reward-item-box-right"></div>
-                                            <div className="w-100 reward-item-box-content mt-2">
-                                                <span className="text-rank-of">{obj.DisplayName?.length>40?obj.DisplayName?.substring(0,40)+'...':obj.DisplayName}</span>
-                                            </div>
-                                            <div className="w-86 ml-2 mr-2">
-                                                <ProgressBar height={'7px'} percentage={90} style={{width:'90%'}}/>
-                                            </div>
-                                            <div className="reward-item-box-progress-msg">
-                                                    <span>Shop for {1000} to Play</span>
-                                            </div>
-                                            <div className="w-100 text-center">
-                                                <button
-                                                    type="button" 
-                                                    className='btn-reward-item-playnow enable-btn'
-                                                    onClick={()=>{}}
-                                                ><span className="button-text">EXPLORE</span>
-                                                </button>
-                                            </div>
-                                            <div className="w-100 dashed-line-div"></div>
-                                            <div className="w-100 reward-item-box-content pt-2 pb-3">
-                                                <div className="w-50 float-left clearfix text-winners" style={{marginLeft:'4%'}} onClick={() => {}}>
-                                                    <div className="">
-                                                        <img style={{ width: "12px", float: "left", marginRight: "8px",height:'10px' }} src={trophy_src} />
-                                                    </div>
-                                                    <div>
-                                                        <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
-                                                            {0}
-                                                        </div>
-                                                        <div style={{color: "#808A8F", fontSize: "10px"}}>Players</div>
-                                                    </div>
-                                                </div>
-                                                <div className="w-50 float-left clearfix text-winners" style={{marginLeft:'80%',marginTop:'-3%'}}   onClick={() => {}}>
-                                                    <div className="">
-                                                        <img style={{ width: "12px", float: "left", marginRight: "8px" }} src={rupee_src} />
-                                                    </div>
-                                                    <div>
-                                                        <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
-                                                            {0}
-                                                        </div>
-                                                        <div style={{color: "#808A8F",fontSize: "10px"}}>Amount Won</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </div>
-                                </div>
+                                <RewardRectBox
+                                    engagement={obj} 
+                                    props={props}
+                                    gameDetailFn={gameDetailFn} 
+                                    customerSavings={topCustomerSavingsOpenFn} 
+                                    leaderBoardFn={leaderBoardFn} 
+                                />
                             )}
                         </div>
                     </Fragment>

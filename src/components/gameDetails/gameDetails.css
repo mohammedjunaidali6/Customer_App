@@ -365,9 +365,13 @@
 
 .tournament-labels{
     color: rgb(255, 255, 255);
-    font-size: 12px;
+    font-size: 13px;
     font-family: Roboto;
-    background-color: rgb(255 84 84);
     padding: 0 2%;
     border-radius: 2px;
+}
+
+.bcoins-label{
+    float: right;
+    color: #63cf63;
 }

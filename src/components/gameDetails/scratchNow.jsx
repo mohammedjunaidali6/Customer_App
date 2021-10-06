@@ -1,14 +1,14 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import ProgressBar from "../common/progressBar";
-import { AiOutlineClose } from 'react-icons/ai';
-import store from '../../store/store';
-import { date } from 'yup';
 import number1bw from '../../assets/img/gameDetails/number_1_bw.svg';
 import number2bw from '../../assets/img/gameDetails/number_2_bw.svg';
 import number3bw from '../../assets/img/gameDetails/number_3_bw.svg';
 import number1colored from '../../assets/img/gameDetails/number_1_colored.svg';
 import number2colored from '../../assets/img/gameDetails/number_2_colored.svg';
 import number3colored from '../../assets/img/gameDetails/number_3_colored.svg';
+import close_btn from '../../assets/img/close-btn.png';
+import coin_src from '../../assets/img/coin-btn.png';
+import tourn_label from '../../assets/img/TournamentLabel.png';
 import { postData } from '../../api/apiHelper';
 import Loader from '../common/Spinner/spinner';
 import { getCustomerDetails } from '../common/getStoreData';
@@ -144,14 +144,16 @@ export default function GameDetailScratchNow(props) {
     return (
         <div className="gamedetail-scratchnow-items">
             <Fragment>
-                {engagement.IsTournament&&
-                    <div>
-                        <span className='tournament-labels'>Tournament</span>
-                        {engagement.EngagementStatusID===1&&
-                            <span className='tournament-labels' style={{marginLeft:'30%'}}>{endDT}</span>
-                        }
-                    </div>
-                }
+                <div className='w-100'>
+                    {engagement.IsTournament&&<img src={tourn_label} width={100} height={20}/>}
+                    {engagement.CostToPlay?
+                        <span className='bcoins-label'>bCoins {engagement.CostToPlay}&nbsp;
+                            <img src={coin_src} height={16} width={16} className='mb-1'/>
+                        </span>
+                        :
+                        <span className='bcoins-label mr-2'>Free*</span>
+                    }
+                </div>
                 <div className="scratchnow-big-header">{engagement?.DisplayName || ''}</div>
                 <div className="scratchnow-item-container">
                     <Loader show={loadingTasks} radius={26} />
@@ -194,10 +196,15 @@ export default function GameDetailScratchNow(props) {
                 </div>
                 <div id="btn-scratch-now-container" className="mt-3">
                     {engagement?.IsTournament?
-                        <button id="btn-scratch-now" className={`${disablePlayBtn?'disable-btn':'enable-btn'}`} onClick={onPlayNow} disabled={engagement.EngagementStatusID!=1}>
-                            {engagement.EngagementStatusID===1&&<span className="button-text">Play Now</span>}
-                            {engagement.EngagementStatusID===4&&<span className="button-text" style={{color:'#000000'}}>{startDT}</span>}
-                        </button>
+                        <>
+                            <button id="btn-scratch-now" className={`${disablePlayBtn?'disable-btn':'enable-btn'}`} onClick={onPlayNow} disabled={engagement.EngagementStatusID!=1}>
+                                {engagement.EngagementStatusID===1&&<span className="button-text">Play Now</span>}
+                                {engagement.EngagementStatusID===4&&<span className="button-text" style={{color:'#000000'}}>{startDT}</span>}
+                            </button>
+                            {engagement.EngagementStatusID===1&&
+                                <span className='tournament-labels' style={{marginLeft:'50%',color:'green'}}>{endDT}</span>
+                            }
+                        </>
                         :
                         <button 
                             id="btn-scratch-now" 
@@ -208,8 +215,9 @@ export default function GameDetailScratchNow(props) {
                     }
                 </div>
                 {iFrameClick &&
-                    <div id="g-d-iFrame-sec">
+                    <div id="g-d-iFrame-sec" style={{backgroundColor:'black'}}>
                         {/* <AiOutlineClose id="iFrame-close" title="Close Game" size={24} onClick={()=>setIFrameClick(false)}/> */}
+                        <img src={close_btn} alt='close game' width={20} height={20} onClick={()=>setIFrameClick(false)} style={{margin:'4px 4px 0 0',float:'right'}}/>
                         <iframe
                             id="g-d-iFrame"
                             src={`${engagement?.Game?.GameUrl}?token=${token}`}

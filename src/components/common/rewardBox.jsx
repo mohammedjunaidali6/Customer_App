@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import mask_src from '../../assets/img/Mask.svg';
 import rupee_src from '../../assets/img/rewardZone/amountwon_home_small.svg';
 import trophy_src from '../../assets/img/rewardZone/trophy_home.svg';
+import tourn_src from '../../assets/img/TournamentLabel.png';
+import coin_src from '../../assets/img/coin-btn.png';
 import '../../assets/css/rewardBox.css';
 import ProgressBar from "../common/progressBar";
 import { getData, postData } from '../../api/apiHelper';
@@ -53,8 +55,14 @@ export default function RewardBox(props) {
     return (
         <div className="reward-whole-box">
             <div className='engagement-header-label'>
-                <span className='eng-h-tourn'>{engagement?.IsTournament?'Tournament':''}</span>
-                <span className='eng-h-cost'>Cost: {engagement.cost||'Free'}</span>
+                <span className='eng-h-tourn'>{engagement?.IsTournament?<img src={tourn_src} width={80} height={16}/>:''}</span>
+                {engagement.CostToPlay?
+                    <span className='eng-h-cost'>bCoins: {engagement.CostToPlay}&nbsp;
+                        <img src={coin_src} width={8} height={8}/>
+                    </span>
+                    :
+                    <span  className='eng-h-cost'>Free*</span>
+                }
             </div>
             <div className="reward-mask-box">
                 <img src={`${game?.BannerImageUrl}` || mask_src} alt="Mask" style={{ height: '88px' }} />
