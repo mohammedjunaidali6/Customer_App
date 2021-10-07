@@ -8,7 +8,7 @@ import store from '../../store/store';
 export default function LeaderBoardWinners(props) {
     // console.log('***',props.parentProps);
     const [endDT, setEndDT] = useState('');
-    var leaders=props.parentProps.leaderboard||[];
+    var leaders=props.parentProps||[];
 
     var selectedEngagement=store.getState().RewardZoneReducer.selectedEngagement;
 
