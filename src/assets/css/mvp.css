@@ -336,11 +336,17 @@ button[disabled]{
 }
 .disable-btn{
   background-color: rgb(96, 96, 238);
-  opacity: 0.4;
-  pointer-events: none;
+  color:black;
+  opacity: 0.6;
+  pointer-events:none;
+  cursor: progress;
 }
 .enable-btn{
   background-color: rgb(96, 96, 238);
+  color: #D7DCDE;
+}
+.clear-both{
+  clear: both;
 }
 .ranking-item-box .text-offer {
     color: #5F6165;

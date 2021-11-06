@@ -3,7 +3,8 @@ import {
   SELECTED_ENGAGEMENT, 
   SET_PLAYER_SUMMARY,
   SET_ENGAGEMENT_SUMMARY,
-  SET_ENGAGEMENTS_RULE_AMOUNTS
+  SET_ENGAGEMENTS_RULE_AMOUNTS,
+  SET_AMOUNT_TO_BE_PURCHASED
  } from '../../constants/actionTypes';
 
 export function setEngagements(data) {
@@ -46,6 +47,14 @@ export function setEngagementsRuleAmounts(data) {
     dispatch({
       type: SET_ENGAGEMENTS_RULE_AMOUNTS,
       payload: data,
+    })
+  }
+}
+export function setAmountToBePurchased(data) {
+  return (dispatch) =>{
+    dispatch({
+      type: SET_AMOUNT_TO_BE_PURCHASED,
+      payload: data
     })
   }
 }

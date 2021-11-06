@@ -9,7 +9,7 @@ export default function GameDetailRewards(props) {
     // console.log('****',props);
     const rewards=props.rewards;
     const isTourn=props.engagement?.IsTournament;
-    console.log('***',props.rewards)
+    // console.log('***',props.rewards)
     const getWinPositionString = (position) => {
         switch (position) {
             case 1:
@@ -30,9 +30,11 @@ export default function GameDetailRewards(props) {
             case 'Percentage':
                 return value+'%';
             case 'Fixed':
-                return value;
+                return "FLAT "+value+" Off";
+            case 'Points':
+                return value+" Points";
             default:
-                return value+'';
+                return value;
         }
     }
     const getOfferStr=(rewardType,discountType,discountValue)=>{
@@ -65,9 +67,9 @@ export default function GameDetailRewards(props) {
                                 </div>
                                 <div className="w-70 rewards-item-right" >
                                     <div className="rewards-discount-detail">
-                                        {/* <div className="rewards-discount-detail-name">{getWinPositionString(obj.WinPosition)}</div> */}
+                                        {isTourn && <div className="rewards-discount-detail-name">{getWinPositionString(obj.WinPosition)}</div>}
                                         <div className="rewards-discount-detail-desc">{obj.DisplayName}</div>
-                                        <div className="rewards-discount-detail-name mt-1">{obj.NumberOfWinners&&`First ${obj.NumberOfWinners} winners`}</div>
+                                        {isTourn && <div className="rewards-discount-detail-name mt-1">{obj.NumberOfWinners ? obj.NumberOfWinners : ''}</div>}
                                         <div className="rewards-discount-detail-TC">T&C apply</div>
                                         <div className="curve-div reward-item-box-top reward-item-box-left"></div>
                                         <div className="curve-div reward-item-box-bottom reward-item-box-left"></div>

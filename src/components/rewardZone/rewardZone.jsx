@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import Back from "../common/back";
 import './rewardZone.css';
-import {WhatsappIcon,WhatsappShareButton} from 'react-share'
+import {WhatsappIcon, WhatsappShareButton} from 'react-share';
 import dots_progress from '../../assets/img/dots-progress.gif';
 import { containerHeightCalcFn } from "../common/global";
 import RewardBox from "../common/rewardBox";
@@ -20,7 +20,7 @@ export default function RewardZone(props) {
     // console.log('**', props);
     const [engagementsLoading,setEngagementsLoading]=useState(false);
     var customer=getCustomerDetails();
-    
+
     var referralLink=`${customer?.SignUpUrl}?refcode=${customer?.ReferralCode}`;
     var referralMessage="Shopping is more exciting now, Play Games and Win Exciting Rewards, Come Join the fun at -"+referralLink;
 
@@ -71,7 +71,8 @@ export default function RewardZone(props) {
     }, []);
 
     return (
-        <Fragment>
+        <Fragment style={{"height":"500px"}}>
+            {/* {console.log("pros",props)} */}
             <Back height="226"
                 customerID={customer.CustomerID}
                 fromRewardZone={true}
@@ -128,7 +129,7 @@ export default function RewardZone(props) {
                         </GCarousel>
                         <div className="reward-zone-handpicked-header text-bold">Handpick Challenges for you to get Lucky!!</div>
                         <div className="reward-zone-handpicked-items">
-                            {props.engagements && props.engagements.length > 0 &&props.engagements.map((obj,i) => 
+                            {props.engagements && props.engagements.length > 0 && props.engagements.map((obj,i) => 
                                 i%5!=0?
                                 <RewardBox 
                                     engagement={obj} 
@@ -136,8 +137,10 @@ export default function RewardZone(props) {
                                     gameDetailFn={gameDetailFn} 
                                     customerSavings={topCustomerSavingsOpenFn} 
                                     leaderBoardFn={leaderBoardFn} 
-                                />
+                                    />
                                 :
+                                <>
+                                <div className="clear-both"></div>
                                 <RewardRectBox
                                     engagement={obj} 
                                     props={props}
@@ -145,6 +148,7 @@ export default function RewardZone(props) {
                                     customerSavings={topCustomerSavingsOpenFn} 
                                     leaderBoardFn={leaderBoardFn} 
                                 />
+                                </>
                             )}
                         </div>
                     </Fragment>

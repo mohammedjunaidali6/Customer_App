@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import rupee_src from '../../assets/img/rewardZone/amountwon_home_small.svg';
 import trophy_src from '../../assets/img/rewardZone/trophy_home.svg';
-import tourn_src from '../../assets/img/TournamentLabel.png';
+import tourn_src from '../../assets/img/tournament.png';
 import coin_src from '../../assets/img/coin-btn.png';
 import '../../assets/css/rewardBox.css';
 import ProgressBar from "../common/progressBar";
 import { getData, postData } from '../../api/apiHelper';
+import free from '../../assets/img/free.png'
 import { getCustomerDetails } from './getStoreData';
 import {  
     SERVICE_TYPE,
@@ -31,6 +32,7 @@ export default function RewardRectBox(props) {
 
 
     useEffect(()=>{
+        if(!props.props.purchaseRuleValue){
         let obj={
             CustomerID:customerData?.CustomerID,
             LastNumberOfDays:engagement?.LastNumberOfDays,
@@ -44,23 +46,34 @@ export default function RewardRectBox(props) {
                 setPerc(percentage);
             }
         })
+        } else{
+            setAmountToBePerchased(Math.round(props.props.purchaseRuleValue.FormattedToBePurchasedToRuleAmount));
+            let percentage=engagement.PurchaseValue>props.props.purchaseRuleValue.PurchasedAmount?(props.props.purchaseRuleValue.PurchasedAmount/engagement?.PurchaseValue)*100:100;
+            setPerc(percentage);
+        }
+        if(!props.props.engagementSummary){
         getData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_SUMMARY}${engagement?.EngagementID}`,SERVICE_TYPE.ENGT)
         .then(res=>{
                 setSummary(res);
             })
+        } else{
+            setSummary(props.props.engagementSummary)
+        }
     },[])
 
     
   return (
     <div className="reward-rect-box">
       <div className='engagement-header-label'>
-      <span className='eng-h-tourn'>{engagement?.IsTournament?<img src={tourn_src} width={80} height={16}/>:''}</span>
-      {engagement.CostToPlay?
-          <span className='eng-h-cost'>bCoins: {engagement.CostToPlay}&nbsp;
-              <img src={coin_src} width={8} height={8}/>
-          </span>
-          :
-          <span  className='eng-h-cost'>Free*</span>
+        <span className='eng-h-tourn'>{engagement?.IsTournament?<img src={tourn_src} className="free-img" />:''}</span>
+        {engagement.CostToPlay?
+            <span className='eng-h-cost'>bCoins: {engagement.CostToPlay}&nbsp;
+                <img src={coin_src} width={8} height={8}/>
+            </span>
+            :
+            <span  className='eng-h-cost'>
+                <img src={free} alt="Free*" className="free-img"/>
+            </span>
       }
       </div>
       <div className="reward-mask-box">
@@ -75,7 +88,7 @@ export default function RewardRectBox(props) {
                   <span className="text-rank-of">{engagement.DisplayName?.length>40?engagement.DisplayName?.substring(0,40)+'...':engagement.DisplayName}</span>
               </div>
               <div className="w-86 ml-2 mr-2">
-                  <ProgressBar height={'7px'} percentage={perc} style={{width:'90%'}}/>
+                  {(engagement?.PurchaseRuleID >0) && <ProgressBar height={'7px'} percentage={perc} style={{width:'90%'}}/>}
               </div>
               <div className="reward-item-box-progress-msg">
                   {amountToBePurchased>0&&

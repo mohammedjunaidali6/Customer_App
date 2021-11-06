@@ -56,7 +56,7 @@ const reducer = combineReducers({
   StatusReducer: StatusReducer
 });
 
-// To persist your Store use sessionStorage after hard reoad
+// To persist your Store use sessionStorage after hard reload
 const persistedStore = loadFromSessionStorage();
 const store = createStore(reducer, persistedStore, compose(applyMiddleware(thunk)));
 store.subscribe(() => saveToSessionStorage(store.getState()));

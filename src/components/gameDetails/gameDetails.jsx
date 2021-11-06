@@ -10,6 +10,7 @@ import GameDetailWhoElseplaying from "./whoElsePlaying";
 import GameDetailHowToPlay from "./howToPlay";
 import GCarousel from '../common/carousel';
 import { getCustomerDetails } from '../common/getStoreData';
+import dots_progress from '../../assets/img/dots-progress.gif';
 import { getData, postData } from '../../api/apiHelper';
 import {
     ENGT_PROD_HOST_URI,
@@ -26,6 +27,9 @@ export default function GameDetail(props) {
     const [selectedEngagement, setSelectedEngagement] = useState(rewardZoneReducerData.selectedEngagement);
     const [engagementDetails, setEngagementDetails] = useState({});
     const [engagementSummary,setEngagementSummary]=useState({});
+    const [loadingRewards, setLoadingRewards] = useState(true);
+    const [loadingSummary, setLoadingSummary] = useState(true);
+
 
     var customer=getCustomerDetails();
 
@@ -35,6 +39,7 @@ export default function GameDetail(props) {
     }
 
     useEffect(() => {
+        setLoadingRewards(true)
         var requestData = {
             EngagementID: selectedEngagement.EngagementID,
             IsTournament:selectedEngagement.IsTournament,
@@ -46,13 +51,16 @@ export default function GameDetail(props) {
             .then(engagementDetails => {
                 setEngagementDetails(engagementDetails);
             })
+        setLoadingRewards(false)
     }, [selectedEngagement])
 
     useEffect(()=>{
+        setLoadingSummary(true)
         getData(`${ENGT_PROD_HOST_URI}${ENGAGEMENT_SUMMARY}${selectedEngagement?.EngagementID}`,SERVICE_TYPE.ENGT)
         .then(res=>{
                 setEngagementSummary(res);
             })
+        setLoadingSummary(false)
     },[])
 
 
@@ -66,18 +74,26 @@ export default function GameDetail(props) {
                 carouselItemClick={carouselItemClick} >
             </GCarousel> */}
             <img className='g-d-carousel' style={{height:'28%',width:'100%'}} src={selectedEngagement.Game?.BannerImageUrl} alt='Game Banner'/>
+             
+            {loadingSummary ? 
+            <img src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}}/> :
             <GameDetailGameInfo
                 parentProps={props}
                 engagementSummary={engagementSummary}
-            />
+                isTourn={selectedEngagement?.IsTournament}
+                />  }
             <div style={{ height: containerHeightCalcFn(348), overflowY: 'auto' }}>
                 <GameDetailScratchNow
                     selectedGameDetail={selectedEngagement}
                     engagementDetails={engagementDetails}
                     parentProps={props}
                 />
-                <div className="w-90 disp-flex-root common-divider float-left ml-4" style={{ marginBottom: "12px" }}></div>
-                <GameDetailRewards engagement={selectedEngagement} rewards={engagementDetails.Rewards} />
+                <div className="w-90 disp-flex-root common-divider float-left ml-4" style={{ marginBottom: "12px" }}></div> 
+                <div height="100px">
+                    {loadingRewards ?
+                    <img src={dots_progress} alt="Loading..." height='20%' width='40%' style={{margin:'20% 30%'}}/>:
+                    <GameDetailRewards engagement={selectedEngagement} rewards={engagementDetails?.Rewards} /> }
+                </div>
                 <GameDetailWhoElseplaying />
                 <GameDetailHowToPlay />
             </div>

@@ -10,6 +10,8 @@ const mapStateToProps = state => ({
   selectedEngagement: state.RewardZoneReducer.selectedEngagement,
   playerSummary: state.RewardZoneReducer.playerSummary,
   engagementRuleAmounts:state.RewardZoneReducer.engagementRuleAmounts,
+  purchaseRuleValue:state.RewardZoneReducer.purchaseRuleValue,
+  engagementSummary: state.RewardZoneReducer.engagementSummary
 });
 
 const mapDispatchToProps = dispatch => ({

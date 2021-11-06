@@ -15,9 +15,9 @@ import RouteContatiner from './containers/routeContainer';
 ReactDOM.render(
   <React.StrictMode>
     <Suspense fallback={(<div>loading</div>)}>
-    <Provider store={store}>
-      <RouteContatiner />
-    </Provider>
+      <Provider store={store}>
+        <RouteContatiner />
+      </Provider>
     </Suspense>
   </React.StrictMode>,
   document.getElementById('root')

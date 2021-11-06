@@ -10,7 +10,8 @@ import close_btn from '../../assets/img/close-btn.png';
 import coin_src from '../../assets/img/coin-btn.png';
 import tourn_label from '../../assets/img/TournamentLabel.png';
 import { postData } from '../../api/apiHelper';
-import Loader from '../common/Spinner/spinner';
+import dots_progress from '../../assets/img/dots-progress.gif';
+// import Loader from '../common/Spinner/spinner';
 import { getCustomerDetails } from '../common/getStoreData';
 import {
     SERVICE_TYPE,
@@ -27,7 +28,7 @@ export default function GameDetailScratchNow(props) {
     // console.log('****',props);
     const [iFrameClick, setIFrameClick] = useState(false);
     const [taskStatuses, setTaskStatuses] = useState([]);
-    const [loadingTasks, setLoadingTasks] = useState(false);
+    const [loadingTasks, setLoadingTasks] = useState(true);
     const [startDT, setStartDT] = useState('');
     const [endDT, setEndDT] = useState('');
     const [shopMoreAmount,setShopMoreAmount]=useState(0);
@@ -36,6 +37,7 @@ export default function GameDetailScratchNow(props) {
     var summary = store.getState().RewardZoneReducer?.playerSummary;
     const token = props.engagementDetails?.GamePlay?.Token;
     const engagement=props.selectedGameDetail;
+    // console.log(engagement)
     var customer=getCustomerDetails();
 
 
@@ -100,7 +102,7 @@ export default function GameDetailScratchNow(props) {
         }
         postData(`${EVNT_PROD_HOST_URI}${PURCHASE_RULE_AMOUNT}`,obj,SERVICE_TYPE.EVNT)
         .then(res=>{
-            console.log('***',res);
+            // console.log('***',res);
             if(res){
                 let percentage=engagement.PurchaseValue>res.PurchasedAmount?(res.PurchasedAmount/engagement?.PurchaseValue)*100:100;
                 setShopMoreAmount(res.ToBePurchasedToRuleAmount);
@@ -108,20 +110,11 @@ export default function GameDetailScratchNow(props) {
             }
         });
     }
-
-    var disablePlayBtn = Array.isArray(taskStatuses) &&
-        taskStatuses.length > 0 &&
-        taskStatuses.map(task => !task.HasCompleted).length > 0;
     
-        disablePlayBtn=disablePlayBtn|| perc<100;
-
-        disablePlayBtn=disablePlayBtn||(engagement.EngagementStatusID==4);
-        disablePlayBtn=disablePlayBtn||(engagement.CostToPlay>summary.TotalPoints);
+    
+    var disablePlayBtn = true;
 
     useEffect(() => {
-        getStartDateStr();
-        getEndDateStr();
-        getPurchaseRuleValuePerc();
 
         if (Array.isArray(props.engagementDetails?.JourneyTasks)) {
             setLoadingTasks(true);
@@ -148,26 +141,40 @@ export default function GameDetailScratchNow(props) {
         } else {
                 setTaskStatuses([]);
         }
+        getStartDateStr();
+        getEndDateStr();
+        getPurchaseRuleValuePerc();
     }, [props.engagementDetails?.JourneyTasks])
+
+
+    disablePlayBtn = (loadingTasks && Array.isArray(taskStatuses) &&
+        taskStatuses.length > 0 &&
+        taskStatuses.map(task => !task.HasCompleted).length > 0)
+        ||perc<100
+        ||(engagement.CostToPlay>summary.TotalPoints)
+        // ||engagement?.PurchaseValue
 
 
     return (
         <div className="gamedetail-scratchnow-items">
             <Fragment>
                 <div className='w-100'>
-                    {engagement.IsTournament&&<img src={tourn_label} width={100} height={20}/>}
+                    {engagement.IsTournament&&<img src={tourn_label} alt="Tournment Label" width={100} height={20}/>}
                     {engagement.CostToPlay?
-                        <span className='bcoins-label'>bCoins {engagement.CostToPlay}&nbsp;
+                        <span className='bcoins-label'>bCoins {engagement.CostToPlay} &nbsp;
                             <img src={coin_src} height={16} width={16} className='mb-1'/>
                         </span>
                         :
-                        <span className='bcoins-label mr-2'>Free*</span>
+                        <span className='bcoins-label mr-2'>
+                            Free*
+                        </span>
                     }
                 </div>
                 <div className="scratchnow-big-header">{engagement?.DisplayName || ''}</div>
                 <div className="scratchnow-item-container">
-                    <Loader show={loadingTasks} radius={26} />
-                    {Array.isArray(taskStatuses) && taskStatuses.length > 0 &&
+                    {/* <Loader show={loadingTasks} radius={26} /> */}
+                    { loadingTasks ? <img src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}}/> :
+                    Array.isArray(taskStatuses) && taskStatuses.length > 0 &&
                         <div className={taskStatuses.length < 3 ? 'scratchnow-items-center' : ''}>
                             {taskStatuses.map((taskStatus, idx) => (
                                 <div key={idx} className={`float-left clearfix scratchnow-box`} >
@@ -199,16 +206,16 @@ export default function GameDetailScratchNow(props) {
                     {Array.isArray(taskStatuses) && taskStatuses.length > 0 &&
                         <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
                     }
-                    <div className="w-100 float-left lbl-percentage">{perc}%</div>
+                    {engagement.PurchaseRuleID>0 && <><div className="w-100 float-left lbl-percentage">{perc}%</div>
                     <div className="w-90 ml-3 float-left progress-bar-outer">
                         <ProgressBar height={'10px'} percentage={perc}/>
-                    </div>
+                    </div></>}
                 </div>
                 <div id="btn-scratch-now-container" className="mt-3">
                     {engagement?.IsTournament?
                         <>
-                            <button id="btn-scratch-now" className={`${disablePlayBtn?'disable-btn':'enable-btn'}`} onClick={onPlayNow} disabled={engagement.EngagementStatusID!=1}>
-                                {engagement.EngagementStatusID===1&&<span className="button-text">Play Now</span>}
+                            <button id="btn-scratch-now" onClick={onPlayNow} disabled={disablePlayBtn} className={disablePlayBtn?'disable-btn':'enable-btn'}>
+                                {engagement.EngagementStatusID===1&&<span className="button-text" >Play Now</span>}
                                 {engagement.EngagementStatusID===4&&<span className="button-text" style={{color:'#000000'}}>{startDT}</span>}
                             </button>
                             {engagement.EngagementStatusID===1&&
@@ -218,9 +225,11 @@ export default function GameDetailScratchNow(props) {
                         :
                         <button 
                             id="btn-scratch-now" 
-                            className={`${disablePlayBtn?'disable-btn':'enable-btn'}`} 
+                            className={disablePlayBtn?'disable-btn':'enable-btn'}
                             onClick={onPlayNow}
-                        ><span className="button-text">{perc<100?`Shop more for ${shopMoreAmount} to Participate`:'PLAY NOW'}</span>
+                            disabled={disablePlayBtn}
+                            style={{"color":"black"}}
+                        ><span className="button-text" className={disablePlayBtn?'disable-btn':'enable-btn'} >{perc<100?`Shop more for ${shopMoreAmount} to Participate`:'PLAY NOW'}</span>
                         </button>
                     }
                 </div>

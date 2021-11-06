@@ -66,8 +66,8 @@ export default function LeaderBoard(props) {
     return (
         <div id="leaderboard-outer-container">
             <Back parentProps={props} fromLeaderBoard={true} backTitle={backTitle} />
-            <div id="leaderboard-container" style={{height: containerHeightCalcFn()}}>
-                <div className="urs-leaderboard">
+            <div id="leaderboard-container text-center" style={{height: containerHeightCalcFn()}}>
+                <div className="urs-leaderboard text-center">
                     <div className="w-100 float-left clearfix urs-leaderboard-content">
                         <div className="w-15 float-left clearfix text-center">
                             <img src={defaultuser_src} className="urs-leaderboard-logo p-1" />

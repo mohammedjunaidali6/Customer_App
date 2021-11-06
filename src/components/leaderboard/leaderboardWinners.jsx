@@ -41,7 +41,7 @@ export default function LeaderBoardWinners(props) {
     return (
         <div id="leaderboard-winners-container">
             <div className="w-100 disp-flex leaderboard-winners-top mt-4 mb-2">
-                <div className="w-33 text-center float-left m-0-auto" style={{paddingTop: "27px"}} >
+                <div className="w-33 float-left m-0-auto" style={{paddingTop: "27px"}} >
                     <div className="leaderboard-winners-box" >
                         <div className="float-left clearfix text-center leaderboard-winners-box-logo">
                             <img src={defaultuser_src} className="p-1" />

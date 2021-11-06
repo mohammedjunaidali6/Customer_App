@@ -16,7 +16,7 @@ import {
 } from '../../api/apiConstants';
 
 export default function Back(props) {
-    // console.log('****',props);
+    // console.log('**from back**',props);
     const [open, setOpen] = useState(false);
     const [summaryLoading, setSummaryLoading] = useState(false);
 
@@ -48,18 +48,18 @@ export default function Back(props) {
     }
 
     useEffect(()=>{
-        if(props.fromRewardZone&&!props?.parentProps?.playerSummary){
+        // if(props.fromRewardZone && !props?.parentProps?.playerSummary){
             setSummaryLoading(true);
             let data={
                 CustomerID:props.customerID
             }
             postData(`${REPT_PROD_HOST_URI}${PLAYER_SUMMARY}`,data, SERVICE_TYPE.REPT)
                 .then(summary => {
-                    props.parentProps.rewardZoneActionHandler.setPlayerSummary(summary);
+                    props?.parentProps?.rewardZoneActionHandler?.setPlayerSummary(summary);
                     setSummaryLoading(false);
                })
-        }
-    },[props.customerID]);
+        // }
+    },[]);
 
     return (
         // default back container height will be 128px
