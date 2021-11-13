@@ -11,6 +11,8 @@ import coin_src from '../../assets/img/coin-btn.png';
 import tourn_label from '../../assets/img/TournamentLabel.png';
 import { postData } from '../../api/apiHelper';
 import dots_progress from '../../assets/img/dots-progress.gif';
+import tourn_src from '../../assets/img/tournament.png';
+import free from '../../assets/img/free.png'
 // import Loader from '../common/Spinner/spinner';
 import { getCustomerDetails } from '../common/getStoreData';
 import {
@@ -159,14 +161,16 @@ export default function GameDetailScratchNow(props) {
         <div className="gamedetail-scratchnow-items">
             <Fragment>
                 <div className='w-100'>
-                    {engagement.IsTournament&&<img src={tourn_label} alt="Tournment Label" width={100} height={20}/>}
+                    {engagement.IsTournament&&<img src={tourn_src} alt="Tournment Label" width={100} height={20}/>}
                     {engagement.CostToPlay?
                         <span className='bcoins-label'>bCoins {engagement.CostToPlay} &nbsp;
                             <img src={coin_src} height={16} width={16} className='mb-1'/>
                         </span>
                         :
                         <span className='bcoins-label mr-2'>
-                            Free*
+                            <span  className='eng-h-cost'>
+                                <img src={free} alt="Free*" className="free-img"/>
+                            </span>
                         </span>
                     }
                 </div>

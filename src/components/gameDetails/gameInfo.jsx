@@ -5,7 +5,7 @@ import rupee_src from '../../assets/img/gameDetails/rupee.svg';
 export default function GameDetailGameInfo(props) {
 
     const engagementSummary=props?.engagementSummary;
-    console.log(props)
+    // console.log(props)
 
     function leaderBoardFn() {
         props.parentProps.history.push('/leaderboard');
@@ -17,7 +17,7 @@ export default function GameDetailGameInfo(props) {
     return (
         <div className="disp-flex-root gamedetail-gameinfo-items">
             <div className="w-48 float-left gamedetail-gameinfo-left" onClick={() => leaderBoardFn()}>
-                {props.IsTournment ? <><div className="w-50 float-left">
+                {props.isTourn? <><div className="w-50 float-left">
                     <img src={trophy_src} alt={trophy_src} className="float-right mt-2 mr-2" />
                 </div>
                 <div className="w-50 float-right">
