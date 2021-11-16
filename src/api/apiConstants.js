@@ -53,6 +53,7 @@ export const PURCHASE_RULE_AMOUNT='/evnt/purchaseRuleAmount';
 export const GAME_LAUNCH = '/game/gameLaunch';
 export const CREATE_GAME_PLAY = '/game/createGamePlay';
 export const GAME_EXIT = '/game/gameExit';
+export const GET_GAME_RULES = '/game/getgamerules?game_id=';
 export const PLAYER_POINTS_BALANCE = '/game/getPlayerPointsBalance';
 export const GAMEPLAYS_BY_CUSTOMER='/game/gamePlaysByCustomer?customer_id=';
 

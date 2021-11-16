@@ -6,9 +6,10 @@ import reward4_src from '../../assets/img/gameDetails/reward4.svg';
 
 
 export default function GameDetailRewards(props) {
-    // console.log('****',props);
+    console.log('****',props);
     const rewards=props.rewards;
     const isTourn=props.engagement?.IsTournament;
+    // const tenantId = props.engagement?.tenantId;
     // console.log('***',props.rewards)
     const getWinPositionString = (position) => {
         switch (position) {
@@ -25,16 +26,18 @@ export default function GameDetailRewards(props) {
         }
     }
     const getDiscountString=(type,value)=>{
-        value=value||'';
-        switch(type){
-            case 'Percentage':
+        // value=value||'';
+        if(value){
+            switch(type){
+                case 'Percentage':
                 return value+'%';
-            case 'Fixed':
+                case 'Fixed':
                 return "FLAT "+value+" Off";
-            case 'Points':
+                case 'Points':
                 return value+" Points";
-            default:
+                default:
                 return value;
+            }
         }
     }
     const getOfferStr=(rewardType,discountType,discountValue)=>{
@@ -59,7 +62,7 @@ export default function GameDetailRewards(props) {
                                 {isTourn&& <img className="reward-place" src={obj.WinPosition === 1 ? reward1_src : (obj.WinPosition === 2 ? reward2_src : (obj.WinPosition === 3 ? reward3_src : reward4_src))} /> }
                                 <div className="w-30 rewards-item-left" >
                                     <div className="rewards-discount">
-                                        <div className="rewards-discount-header">{getDiscountString(obj.DiscountType,obj.DiscountValue)}</div>
+                                        <div className="rewards-discount-header">{obj.FormattedDiscountValue? getDiscountString(obj.DiscountType,obj.FormattedDiscountValue) :getDiscountString(obj.DiscountType,obj.DiscountValue)}</div>
                                         <div className="rewards-discount-desc">{getOfferStr(obj.RewardType,obj.DiscountType,obj.DiscountValue)}</div>
                                         <div className="curve-div reward-item-box-top reward-item-box-right"></div>
                                         <div className="curve-div reward-item-box-bottom reward-item-box-right"></div>

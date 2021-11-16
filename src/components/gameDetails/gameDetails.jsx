@@ -95,7 +95,7 @@ export default function GameDetail(props) {
                     <GameDetailRewards engagement={selectedEngagement} rewards={engagementDetails?.Rewards} /> }
                 </div>
                 <GameDetailWhoElseplaying />
-                <GameDetailHowToPlay />
+                <GameDetailHowToPlay gameId={selectedEngagement?.Game.GameID}/>
             </div>
         </Fragment>
     )
