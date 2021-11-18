@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import './landing.css';
 import welcome_gift_src from "../../assets/img/landing/giftBox.gif";
+import whenLogin from "../../assets/img/landing/WhenLogin.gif";
 import blaash_logo_src from "../../assets/img/landing/blaash-logo.png";
 import music_progress from "../../assets/img/landing/music_progress.gif";
 import { axiosInstance } from '../../actions/axios-config';
@@ -51,11 +52,11 @@ export default function Landing(props) {
     return (
         <div id="landing-container">
             <div className="welcome-top-sec">
-                <img src={welcome_gift_src} style={{ height: '75%', paddingTop: "64px" }} />
+                <img src={welcome_gift_src} style={{ height: '60%', paddingTop: "60px", marginTop:"5%" }} alt="" />
             </div>
             {loggedInUser?
                 <Fragment>
-                    <img src={music_progress} className='music-spinner' />
+                    <img src={music_progress} className='music-spinner' alt="" />
                     <div className="landing-text">
                         <p>Please Hold on! </p>
                         <p>Handpicking entertainment for you..</p>
@@ -63,13 +64,14 @@ export default function Landing(props) {
                 </Fragment>
                 :
                 <Fragment>
+                    <img src={whenLogin} className='whenlogin' alt="" />
                     <div className="landing-text">
                         <p>Please Login to see</p>
                         <p>Handpicked Entertainment for you</p>
                     </div>
-                    <button type="button" className="surface" onClick={loginClickFn}>
+                    {/* <button type="button" className="surface" onClick={loginClickFn}>
                         <span className="button-text">LOGIN</span>
-                    </button>
+                    </button> */}
                 </Fragment>
             }
             <div className='powered'>

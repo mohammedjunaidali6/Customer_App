@@ -8,7 +8,7 @@ import GameDetailScratchNow from "./scratchNow";
 import GameDetailRewards from "./rewards";
 import GameDetailWhoElseplaying from "./whoElsePlaying";
 import GameDetailHowToPlay from "./howToPlay";
-import GCarousel from '../common/carousel';
+// import GCarousel from '../common/carousel';
 import { getCustomerDetails } from '../common/getStoreData';
 import dots_progress from '../../assets/img/dots-progress.gif';
 import { getData, postData } from '../../api/apiHelper';
@@ -76,7 +76,7 @@ export default function GameDetail(props) {
             <img className='g-d-carousel' style={{height:'28%',width:'100%'}} src={selectedEngagement.Game?.BannerImageUrl} alt='Game Banner'/>
              
             {loadingSummary ? 
-            <img src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}}/> :
+            <img src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}} alt="" /> :
             <GameDetailGameInfo
                 parentProps={props}
                 engagementSummary={engagementSummary}

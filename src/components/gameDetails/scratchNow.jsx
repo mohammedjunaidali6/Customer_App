@@ -170,7 +170,7 @@ export default function GameDetailScratchNow(props) {
                     {engagement.IsTournament&&<img src={tourn_src} alt="Tournment Label" width={100} height={20}/>}
                     {engagement.CostToPlay?
                         <span className='bcoins-label'>bCoins {engagement?.CostToPlay} &nbsp;
-                            <img src={coin_src} height={16} width={16} className='mb-1'/>
+                            <img src={coin_src} height={16} width={16} className='mb-1' alt="" />
                         </span>
                         :
                         <span className='bcoins-label mr-2'>
@@ -183,7 +183,7 @@ export default function GameDetailScratchNow(props) {
                 <div className="scratchnow-big-header">{engagement?.DisplayName || ''}</div>
                 <div className="scratchnow-item-container">
                     {/* <Loader show={loadingTasks} radius={26} /> */}
-                    { loadingTasks ? <img src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}}/> :
+                    { loadingTasks && Array.isArray(props.engagementDetails?.JourneyTasks) ? <img src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}} alt="" /> :
                     Array.isArray(taskStatuses) && taskStatuses.length > 0 &&
                         <div className={taskStatuses.length < 3 ? 'scratchnow-items-center' : ''}>
                             {taskStatuses.map((taskStatus, idx) => (
@@ -226,7 +226,7 @@ export default function GameDetailScratchNow(props) {
                         <>
                             <button id="btn-scratch-now" onClick={onPlayNow} disabled={disablePlayBtn} className={disablePlayBtn?'disable-btn':'enable-btn'}>
                                 {engagement.EngagementStatusID===1&&<span className="button-text" >Play Now</span>}
-                                {engagement.EngagementStatusID===4&&<span className="button-text" style={{color:'#000000'}}>{startDT}</span>}
+                                {engagement.EngagementStatusID===4&&<span className="button-text" >{startDT}</span>}
                             </button>
                             {engagement.EngagementStatusID===1&&
                                 <span className='tournament-labels' style={{marginLeft:'50%',color:'green'}}>{endDT}</span>
@@ -239,7 +239,7 @@ export default function GameDetailScratchNow(props) {
                             onClick={onPlayNow}
                             disabled={disablePlayBtn}
                             style={{"color":"black"}}
-                        ><span className="button-text" className={disablePlayBtn?'disable-btn':'enable-btn'} >{perc<100?`Shop more for ${shopMoreAmount} to Participate`:'PLAY NOW'}</span>
+                        ><span className={disablePlayBtn?'disable-btn button-text':'button-text enable-btn'} > {perc<100?`Shop more for ${shopMoreAmount} to Participate`:'PLAY NOW'}</span>
                         </button>
                     }
                 </div>

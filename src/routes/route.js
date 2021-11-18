@@ -14,7 +14,7 @@ import NotificationContainer from "../containers/notification/notificationContai
 import StatusContainer from "../containers/status/statusContainer";
 import CustomerSavingsContatiner from '../containers/CustomerSavings/CustomerSavingsContainer';
 import LandingContainer from '../containers/landingContainer';
-import LoadingContainer from '../containers/loadingContainer';
+// import LoadingContainer from '../containers/loadingContainer';
 import Ranking from '../components/ranking/ranking';
 import Loader from '../components/common/Spinner/spinner';
 import Exception from '../components/Exception';
