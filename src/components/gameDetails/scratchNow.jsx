@@ -8,7 +8,6 @@ import number2colored from '../../assets/img/gameDetails/number_2_colored.svg';
 import number3colored from '../../assets/img/gameDetails/number_3_colored.svg';
 import close_btn from '../../assets/img/close-btn.png';
 import coin_src from '../../assets/img/coin-btn.png';
-import tourn_label from '../../assets/img/TournamentLabel.png';
 import { postData } from '../../api/apiHelper';
 import dots_progress from '../../assets/img/dots-progress.gif';
 import tourn_src from '../../assets/img/tournament.png';
@@ -61,9 +60,12 @@ export default function GameDetailScratchNow(props) {
     const getStartDateStr=()=>{
         let now=new Date().getTime();
         const startDate=engagement?.StartDate;
-
-        let timeleft = new Date(startDate)-now;
+        const sDate = new Date(startDate)
+        let timeleft = sDate-now;
         var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+        // console.log(sDate.getMonth()+1)
+        // console.log(sDate.getDate()+"-"+(sDate.getMonth()+1)+'-'+sDate.getFullYear())
+        // console.log(sDate.getHours())
         if(days>2){
             setStartDT(`Starting on ${startDate?.substring(0,10)}`);
         }else{
@@ -73,6 +75,9 @@ export default function GameDetailScratchNow(props) {
                 let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 let mins = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
                 let secs = Math.floor((timeleft % (1000 * 60)) / 1000);
+                [hours, mins, secs].map((s)=>{
+                    if(s <= 9 ) return('0'+s)
+                })
                 setStartDT(`Starting in ${hours}:${mins}:${secs}`);
             },1000);
         }
@@ -149,21 +154,22 @@ export default function GameDetailScratchNow(props) {
     }, [props.engagementDetails?.JourneyTasks])
 
 
-    disablePlayBtn = (loadingTasks && Array.isArray(taskStatuses) &&
-        taskStatuses.length > 0 &&
-        taskStatuses.map(task => !task.HasCompleted).length > 0)
-        ||perc<100
-        ||(engagement.CostToPlay>summary.TotalPoints)
+    disablePlayBtn = loadingTasks 
+        || (Array.isArray(taskStatuses) && taskStatuses.map(task => !task.HasCompleted).length > 0)
+        || perc<100
+        || (engagement.CostToPlay>summary.TotalPoints)
         // ||engagement?.PurchaseValue
 
-
+        // console.log(disablePlayBtn)
+        // console.log(taskStatuses.map(task => !task.HasCompleted).length > 0)
+        // console.log(taskStatuses.length>0)
     return (
         <div className="gamedetail-scratchnow-items">
             <Fragment>
                 <div className='w-100'>
                     {engagement.IsTournament&&<img src={tourn_src} alt="Tournment Label" width={100} height={20}/>}
                     {engagement.CostToPlay?
-                        <span className='bcoins-label'>bCoins {engagement.CostToPlay} &nbsp;
+                        <span className='bcoins-label'>bCoins {engagement?.CostToPlay} &nbsp;
                             <img src={coin_src} height={16} width={16} className='mb-1'/>
                         </span>
                         :

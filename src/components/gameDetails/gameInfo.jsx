@@ -16,14 +16,14 @@ export default function GameDetailGameInfo(props) {
     
     return (
         <div className="disp-flex-root gamedetail-gameinfo-items">
-            <div className="w-48 float-left gamedetail-gameinfo-left" onClick={() => leaderBoardFn()}>
-                {props.isTourn? <><div className="w-50 float-left">
-                    <img src={trophy_src} alt={trophy_src} className="float-right mt-2 mr-2" />
+            <div className={props.isTourn?"w-48 float-left gamedetail-gameinfo-left" : "w-48 float-left gamedetail-gameinfo-left hidden" } onClick={() => leaderBoardFn()}>
+                <div className="w-50 float-left">
+                    <img src={trophy_src} alt={trophy_src}  className='float-right mt-2 mr-2 '/>
                 </div>
                 <div className="w-50 float-right">
                     <div className="gamedetail-gameinfo-count">{engagementSummary?.CustomersCount}</div>
                     <div className="gamedetail-gameinfo-count-desc">Players</div>
-                </div></>: <div className="w-100 float-left"></div>}
+                </div>
             </div>
             <div className="common-divider float-left" style={{ height: "44px" }}></div>
             <div className="w-50 float-left gamedetail-gameinfo-right" onClick={()=>customerSavingsOpenFn()}>

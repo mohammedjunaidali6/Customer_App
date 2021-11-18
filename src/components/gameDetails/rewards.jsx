@@ -19,10 +19,8 @@ export default function GameDetailRewards(props) {
                 return '2nd Prize';
             case 3:
                 return '3rd Prize';
-            case 4:
-                return '4th Prize';
             default:
-                return '_ Prize';
+                return position+'th Prize';
         }
     }
     const getDiscountString=(type,value)=>{
@@ -70,7 +68,7 @@ export default function GameDetailRewards(props) {
                                 </div>
                                 <div className="w-70 rewards-item-right" >
                                     <div className="rewards-discount-detail">
-                                        {isTourn && <div className="rewards-discount-detail-name">{getWinPositionString(obj.WinPosition)}</div>}
+                                        {isTourn && <div className="rewards-discount-detail-name">No. of Awards : {getWinPositionString(obj.WinPosition)}</div>}
                                         <div className="rewards-discount-detail-desc">{obj.DisplayName}</div>
                                         {isTourn && <div className="rewards-discount-detail-name mt-1">{obj.NumberOfWinners ? obj.NumberOfWinners : ''}</div>}
                                         <div className="rewards-discount-detail-TC">T&C apply</div>

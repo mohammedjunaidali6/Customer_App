@@ -35,6 +35,10 @@ input[type="button"] {
     background: white !important;
     box-shadow: 0 1px 4px 0 rgb(30 36 39 / 30%);
 }
+.hidden{
+  /* display: none; */
+  visibility: hidden;
+}
 .mvp-link { text-decoration: underline; cursor: pointer;}
 button:disabled,
 button[disabled]{

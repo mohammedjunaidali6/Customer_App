@@ -2,6 +2,9 @@ import React, { Fragment, useEffect, useState } from 'react';
 import defaultuser_src from "../../assets/img/gameDetails/default_user.png";
 import coin_src from "../../assets/img/leaderboard/coin.svg";
 import first_src from "../../assets/img/leaderboard/first.svg";
+import No1 from "../../assets/img/Number1.png";
+import No2 from "../../assets/img/Number2.png";
+import No3 from "../../assets/img/Number3.png";
 import secondorthird_src from "../../assets/img/leaderboard/secondorthird.svg";
 import store from '../../store/store';
 
@@ -37,22 +40,23 @@ export default function LeaderBoardWinners(props) {
     useEffect(()=>{
         getEndDateStr();
     },[])
-
+    var numbers = [No1, No2, No3];
     return (
         <div id="leaderboard-winners-container">
             <div className="w-100 disp-flex leaderboard-winners-top mt-4 mb-2">
                 <div className="w-33 float-left m-0-auto" style={{paddingTop: "27px"}} >
                     <div className="leaderboard-winners-box" >
                         <div className="float-left clearfix text-center leaderboard-winners-box-logo">
-                            <img src={defaultuser_src} className="p-1" />
+                            <img src={defaultuser_src} className="p-1" alt="" />
                         </div>
                         <div className="w-b-img-container-2">
-                            <img src={secondorthird_src} />
+                            <img src={numbers[1]} alt="" className="w-b-img-container-img-no" />                            
+                            <img src={secondorthird_src} className="w-b-img-container-img-cup" alt=""/>
                         </div>
                         {leaders.length>1&&
                             <div className="leaderboard-winners-box-title text-center">
                                 <div className="winner-box-name">{leaders[1].PlayerName||''}</div>
-                                <img src={coin_src} style={{marginBottom: "3px"}} />
+                                <img src={coin_src} style={{marginBottom: "3px"}} alt="" />
                                 <span className="leaderboard-winners-list-lbl-coins pl-1">{leaders[1].Score?.toLocaleString()||''}</span>
                             </div>
                         }
@@ -64,7 +68,8 @@ export default function LeaderBoardWinners(props) {
                             <img src={defaultuser_src} className="p-1" />
                         </div>
                         <div className="w-b-img-container-1">
-                            <img src={first_src} />
+                            <img src={numbers[0]} className="w-b-img-container-img-no" />                                                       
+                            <img src={first_src} className="w-b-img-container-img-cup"  alt=""/>
                         </div>
                         {leaders.length>0&&
                             <div className="leaderboard-winners-box-title-middle">
@@ -81,7 +86,8 @@ export default function LeaderBoardWinners(props) {
                             <img src={defaultuser_src} className="p-1" />
                         </div>
                         <div className="w-b-img-container-2">
-                            <img src={secondorthird_src} />
+                            <img src={numbers[2]} className="w-b-img-container-img-no" />                            
+                            <img src={secondorthird_src} className="w-b-img-container-img-cup" />
                         </div>
                         {leaders.length>2&&
                             <div className="leaderboard-winners-box-title">
