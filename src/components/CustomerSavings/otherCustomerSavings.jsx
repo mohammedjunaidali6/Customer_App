@@ -69,7 +69,7 @@ export default function OthersSavings(props) {
                     {tempArray.map((obj) => (
                         <div key={obj.id} className="top-savings-othersplaying-sec">
                             <div className="w-10 float-left clearfix text-center leaderboard-othersplaying-logo pr-1">
-                                <img src={defaultuser_src} className="top-savings-logo p-1" />
+                                <img  alt="" src={defaultuser_src} className="top-savings-logo p-1" />
                             </div>
                             <div className="w-90 float-left clearfix leaderboard-othersplaying pl-4">
                                 <div className="top-savings-othersplaying-header">{obj.header}</div>

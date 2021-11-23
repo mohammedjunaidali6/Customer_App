@@ -26,9 +26,9 @@ function TabCotainer(props) {
 export default function TransactionHistory(props) {
     const [activeIndex, setactiveIndex] = useState(0);
     const [lastXDaysHistory,setLastXDaysHistory] = useState();
-    const [last7DaysPoints, setLast7DaysPoints] = useState();
-    const [lastMonthPoints, setLastMonthPoints] = useState();
-    const [last6MonthsPoints, setLast6MonthsPoints] = useState();
+    // const [last7DaysPoints, setLast7DaysPoints] = useState();
+    // const [lastMonthPoints, setLastMonthPoints] = useState();
+    // const [last6MonthsPoints, setLast6MonthsPoints] = useState();
 
     var customer=getCustomerDetails();
 
@@ -59,7 +59,7 @@ export default function TransactionHistory(props) {
     const filterPointsBalance = (activeIndex) => {
         handleLoader(true);
         setactiveIndex(activeIndex)
-        let LastxDays = activeIndex == 1 ? LastXDays.LastMonth : activeIndex == 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
+        let LastxDays = activeIndex === 1 ? LastXDays.LastMonth : activeIndex === 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
         let data={
             CustomerID:customer.CustomerID,
             FetchLastX:LastxDays
@@ -122,7 +122,7 @@ export default function TransactionHistory(props) {
                                 {lastXDaysHistory.map(obj => (
                                     <div className="t-h-box">
                                         <div className="w-15 float-left clearfix t-h-b-logobox">
-                                            <img src={gem_small_src} />
+                                            <img alt="" src={gem_small_src} />
                                         </div>
                                         <div className="common-divider float-left clearfix" style={{ height: "54px" }}></div>
                                         <div className="w-82 float-left clearfix t-h-b-contentbox">

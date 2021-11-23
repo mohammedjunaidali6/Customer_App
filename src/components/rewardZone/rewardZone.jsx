@@ -72,7 +72,6 @@ export default function RewardZone(props) {
 
     return (
         <Fragment style={{"height":"500px"}}>
-            {/* {console.log("pros",props)} */}
             <Back height="226"
                 customerID={customer.CustomerID}
                 fromRewardZone={true}
@@ -118,7 +117,7 @@ export default function RewardZone(props) {
                     </div>
                 </div>
                 {engagementsLoading?
-                    <img src={dots_progress} height='5%' width='40%' style={{margin:'20% 30%'}}/>
+                    <img alt="" src={dots_progress} height='5%' width='40%' style={{margin:'20% 30%'}}/>
                     :
                     <Fragment>
                         <GCarousel data={props.engagements}
@@ -130,7 +129,7 @@ export default function RewardZone(props) {
                         <div className="reward-zone-handpicked-header text-bold">Handpick Challenges for you to get Lucky!!</div>
                         <div className="reward-zone-handpicked-items">
                             {props.engagements && props.engagements.length > 0 && props.engagements.map((obj,i) => 
-                                i%5!=0?
+                                i%5!==0?
                                 <RewardBox 
                                     engagement={obj} 
                                     props={props}
