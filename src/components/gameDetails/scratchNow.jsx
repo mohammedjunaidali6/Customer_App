@@ -148,18 +148,10 @@ export default function GameDetailScratchNow(props) {
     }, [props.engagementDetails?.JourneyTasks])
 
 
-<<<<<<< Updated upstream
-    disablePlayBtn = (loadingTasks && Array.isArray(taskStatuses) &&
-        taskStatuses.length > 0 &&
-        taskStatuses.map(task => !task.HasCompleted).length > 0)
-        ||perc<100
-        ||(engagement.CostToPlay>summary.TotalPoints)
-=======
     disablePlayBtn = loadingTasks 
         || (Array.isArray(taskStatuses) && taskStatuses.map(task => !task.HasCompleted).length > 0)
         || perc<100
         || (engagement.CostToPlay>summary?.TotalPoints)
->>>>>>> Stashed changes
         // ||engagement?.PurchaseValue
 
 
@@ -183,11 +175,7 @@ export default function GameDetailScratchNow(props) {
                 <div className="scratchnow-big-header">{engagement?.DisplayName || ''}</div>
                 <div className="scratchnow-item-container">
                     {/* <Loader show={loadingTasks} radius={26} /> */}
-<<<<<<< Updated upstream
-                    { loadingTasks ? <img src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}}/> :
-=======
                     { loadingTasks ? <img src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}} alt="" /> :
->>>>>>> Stashed changes
                     Array.isArray(taskStatuses) && taskStatuses.length > 0 &&
                         <div className={taskStatuses.length < 3 ? 'scratchnow-items-center' : ''}>
                             {taskStatuses.map((taskStatus, idx) => (
