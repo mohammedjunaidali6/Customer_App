@@ -73,7 +73,7 @@ export default function GameDetail(props) {
                 centerSlidePercentage={80}
                 carouselItemClick={carouselItemClick} >
             </GCarousel> */}
-            <img className='g-d-carousel' style={{height:'28%',width:'100%'}} src={selectedEngagement.Game?.BannerImageUrl} alt='Game Banner'/>
+            <img className='g-d-carousel' style={{height:'20%',width:'100%'}} src={selectedEngagement.Game?.BannerImageUrl} alt='Game Banner'/>
              
             {loadingSummary ? 
             <img src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}} alt="" /> :
