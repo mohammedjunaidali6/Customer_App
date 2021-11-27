@@ -29,16 +29,16 @@ export default function GameDetailScratchNow(props) {
     // console.log('****',props);
     const [iFrameClick, setIFrameClick] = useState(false);
     const [taskStatuses, setTaskStatuses] = useState([]);
-    const [loadingTasks, setLoadingTasks] = useState(true);
+    const [loadingTasks, setLoadingTasks] = useState();
     const [startDT, setStartDT] = useState('');
     const [endDT, setEndDT] = useState('');
     const [shopMoreAmount,setShopMoreAmount]=useState(0);
     const [perc,setPerc]=useState(0);
     
-    var summary = store.getState().RewardZoneReducer?.playerSummary;
+    var summary = store.getState().RewardZoneReducer?.playerSummary
+    // console.log(props?.props?.parentProps?.playerSummary)
     const token = props.engagementDetails?.GamePlay?.Token;
     const engagement=props.selectedGameDetail;
-    // console.log(engagement)
     var customer=getCustomerDetails();
 
 
@@ -122,7 +122,6 @@ export default function GameDetailScratchNow(props) {
     var disablePlayBtn = true;
 
     useEffect(() => {
-
         if (Array.isArray(props.engagementDetails?.JourneyTasks)) {
             setLoadingTasks(true);
             var data = {
@@ -157,7 +156,7 @@ export default function GameDetailScratchNow(props) {
     disablePlayBtn = loadingTasks 
         || (Array.isArray(taskStatuses) && taskStatuses.map(task => !task.HasCompleted).length > 0)
         || perc<100
-        || (engagement.CostToPlay>summary.TotalPoints)
+        || (engagement.CostToPlay>summary?.TotalPoints)
         // ||engagement?.PurchaseValue
 
         // console.log(disablePlayBtn)
@@ -183,7 +182,7 @@ export default function GameDetailScratchNow(props) {
                 <div className="scratchnow-big-header">{engagement?.DisplayName || ''}</div>
                 <div className="scratchnow-item-container">
                     {/* <Loader show={loadingTasks} radius={26} /> */}
-                    { loadingTasks && Array.isArray(props.engagementDetails?.JourneyTasks) ? <img src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}} alt="" /> :
+                    { loadingTasks ? <img src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}} alt="" /> :
                     Array.isArray(taskStatuses) && taskStatuses.length > 0 &&
                         <div className={taskStatuses.length < 3 ? 'scratchnow-items-center' : ''}>
                             {taskStatuses.map((taskStatus, idx) => (

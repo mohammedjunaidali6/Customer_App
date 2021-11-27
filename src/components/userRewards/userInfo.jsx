@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import store from '../../../src/store/store';
 import default_user_src from "../../assets/img/gameDetails/default_user.png";
 import { getCustomerDetails } from '../common/getStoreData';
@@ -9,14 +9,14 @@ export default function UserRewardsUserInfo(props) {
     var customer=getCustomerDetails();
 
     const ExpiredRewardsCount = () => {
-        return playerData?.filter(p => p.Status == 2)?.length || 0;
+        return playerData?.filter(p => p.Status === 2)?.length || 0;
     }
 
     return (
         <div id="userrewards-user-info-container">
             <div className="userrewards-user-info">
                 <div className="text-center urd-user-info-logo">
-                    <img src={default_user_src} />
+                    <img src={default_user_src} alt="" />
                 </div>
                 <div className="urd-user-info-name text-center">{customer?.FirstName+' '+customer?.LastName}</div>
                 {/* <div className="urd-user-info-edit text-center">
