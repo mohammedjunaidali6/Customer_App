@@ -110,7 +110,7 @@ export default function RewardBox(props) {
                 <div className="w-100 reward-item-box-content pt-2 pb-3">
                     <div className="w-50 float-left clearfix text-winners" onClick={() => props.leaderBoardFn(engagement)}>
                         <div className="">
-                            <img style={{ width: "12px", float: "left", marginRight: "8px",height:'10px' }} src={trophy_src} />
+                            <img  alt="" style={{ width: "12px", float: "left", marginRight: "8px",height:'10px' }} src={trophy_src} />
                         </div>
                         <div>
                             <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>
@@ -121,7 +121,7 @@ export default function RewardBox(props) {
                     </div>
                     <div className="w-50 float-left clearfix text-winners"  onClick={() => props.customerSavings(engagement)}>
                         <div className="">
-                            <img style={{ width: "12px", float: "left", marginRight: "8px" }} src={rupee_src} />
+                            <img alt="" style={{ width: "12px", float: "left", marginRight: "8px" }} src={rupee_src} />
                         </div>
                         <div>
                             <div style={{ marginBottom: "2px", fontSize: "12px", color: "#3F4045" }}>

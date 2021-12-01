@@ -27,9 +27,9 @@ function TabCotainer(props) {
 export default function CustomerSavings(props) {
     const [activeIndex, setactiveIndex] = useState(0);
     const [lastXDaysSavings,setLastXDaysSavings] = useState();
-    const [last7DaysSavings, setLast7DaysSavings] = useState();
-    const [lastMonthSavings, setLastMonthSavings] = useState();
-    const [last6MonthsSavings, setLast6MonthsSavings] = useState();
+    // const [last7DaysSavings, setLast7DaysSavings] = useState();
+    // const [lastMonthSavings, setLastMonthSavings] = useState();
+    // const [last6MonthsSavings, setLast6MonthsSavings] = useState();
 
     var customer=getCustomerDetails();
 
@@ -60,7 +60,7 @@ export default function CustomerSavings(props) {
     const filterCustomerSavings = (activeIndex) => {
         handleLoader(true);
         setactiveIndex(activeIndex)
-        let LastxDays = activeIndex == 1 ? LastXDays.LastMonth : activeIndex == 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
+        let LastxDays = activeIndex === 1 ? LastXDays.LastMonth : activeIndex === 2 ? LastXDays.Last6Month : LastXDays.Last7Days;
         let data={
             CustomerID:customer.CustomerID,
             FetchLastX:LastxDays

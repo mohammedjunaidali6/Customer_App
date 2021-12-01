@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment, useState } from 'react';
-import { BsFillBellFill } from "react-icons/bs";
+// import { BsFillBellFill } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import { Modal } from 'react-responsive-modal';
 import point_box_src from '../../assets/img/rewardZone/gem_home.svg';
@@ -14,6 +14,7 @@ import {
     REPT_PROD_HOST_URI,
     PLAYER_SUMMARY,
 } from '../../api/apiConstants';
+// import store from '../../store/store';
 
 export default function Back(props) {
     // console.log('**from back**',props);
@@ -110,32 +111,32 @@ export default function Back(props) {
                     <div id="reward-zone-detail-box-container">
                         {props.fromRewardZone &&
                             (summaryLoading?
-                            <img src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}}/>
+                            <img  alt="" src={dots_progress} height='20%' width='40%' style={{margin:'20% 30%'}}/>
                             :
                             <Fragment>
                                 <div id="point-box" className="detail-box-content mb-3" onClick={() => props.pointsOpenFn()}>
-                                    <img className="float-left" src={point_box_src} />
+                                    <img alt="" className="float-left" src={point_box_src} />
                                     <div className="float-left pl-2">
                                         <div className="rzdb-header" >{summary?.FormattedTotalPoints || ''}</div>
                                         <div className="rzdb-desc" >Points</div>
                                     </div>
                                 </div>
                                 <div id="amount-saved-box" className="detail-box-content mb-3 float-right" onClick={() => props.customerSavingsOpenFn()}>
-                                    <img className="float-left" src={rupee_src} />
+                                    <img alt="" className="float-left" src={rupee_src} />
                                     <div className="float-left pl-2">
                                         <div className="rzdb-header" >{`${summary?.FormattedTotalSavings || ''}`}</div>
                                         <div className="rzdb-desc" >Amount Saved</div>
                                     </div>
                                 </div>
                                 <div id="rewards-box" className="detail-box-content" onClick={() => props.rewardOpenFn()}>
-                                    <img className="float-left" src={trophy_src} />
+                                    <img alt="" className="float-left" src={trophy_src} />
                                     <div className="float-left pl-2">
                                         <div className="rzdb-header">{summary?.TotalActiveRewards}</div>
                                         <div className="rzdb-desc" >Rewards</div>
                                     </div>
                                 </div>
                                 <div id="rank-box" className="detail-box-content float-right"  style={{paddingBottom:'10px'}} onClick={props.tournamentsOpenFn}>
-                                    <img className="float-left" src={rank_src} />
+                                    <img alt="" className="float-left" src={rank_src} />
                                     <div className="float-left pl-2">
                                         <div className="rzdb-desc" style={{textAlign:'center'}}>My</div>
                                         <div className="rzdb-desc" style={{textAlign:'center'}}>Tournaments</div>

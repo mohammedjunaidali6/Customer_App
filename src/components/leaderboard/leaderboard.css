@@ -241,32 +241,33 @@
     background: linear-gradient(36.11deg, #eaeaed 0%, #bfc0c7 100%);
     border-radius: 10px;
 }
-.w-b-img-container-1 img {
+.w-b-img-container-img-cup {
     position: absolute;
     top:50%;
     bottom: 0;
-    left: 0;
+    left: 22%;
     right: 0;
-    margin-left: auto;
-    margin-right: 2%;
+    margin: 2px 0;
 }
-.w-b-img-container-2 img {
+.w-b-img-container-img-no {
     position: absolute;
+    height: 80px;
     bottom: 0;
-    top:50%;
-    left: 0;
+    top:15%;
+
+    left: 30%;
     right: 0;
-    margin-left: auto;
-    margin-right: 10%;
-}
-.w-b-img-container-3 img {
+    /* margin-left: auto; */
+    /* margin-right: 10%; */
+}/*
+.w-b-img-container-img {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-}
+} */
 .leaderboard-winners-box-logo {
     position: absolute;
     z-index: 1;

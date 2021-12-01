@@ -48,18 +48,17 @@ export default function LeaderBoard(props) {
 
     const leadersBoard=props.leaderboard?.LeadersBoard||[];
     const yourScore=props.leaderboard?.CurrentPlayerScore<0?0:props.leaderboard?.CurrentPlayerScore;
-
-    const you=leadersBoard?.length&&leadersBoard.find(l=>l.PlayerID==customer.CustomerID);
-    const rank1=leadersBoard?.length&&leadersBoard.find(l=>l.Rank==1);
-    const rank20=leadersBoard?.length&&leadersBoard.find(l=>l.Rank==20);
+    const you=leadersBoard?.length&&leadersBoard.find(l=>l.PlayerID===customer.CustomerID);
+    const rank1=leadersBoard?.length&&leadersBoard.find(l=>l.Rank===1);
+    const rank20=leadersBoard?.length&&leadersBoard.find(l=>l.Rank===20);
     
-    const yourPosition=you?(you.Rank==1?'1st':you.Rank==2?'2nd':you.Rank==3?'3rd':you.Rank+'th'):'';
+    const yourPosition=you?(you.Rank===1?'1st':you.Rank===2?'2nd':you.Rank===3?'3rd':you.Rank+'th'):'';
     const status1= you?`Your rank is ${yourPosition||''}, you are playing great.` :
                     yourScore?`You are playing great, Play like a Champion.`:
                                 'You are missing all the fun, participate now!!';
 
-    const status2=you?(you.Rank==1?"You are playing great, Win the Game.":`You are Just ${rank1?.Score}-${yourScore} to Win the Game.`):
-                    yourScore?`You are just ${rank20?.Score}-${yourScore} points away.`:
+    const status2=you?(you.Rank===1?"You are playing great, Win the Game.":`You are Just ${rank1?.Score - you?.Score} to Win the Game.`):
+                    yourScore?`You are just ${rank20?.Score}-${you?.Score} points away.`:
                         `Players are competing hard`;
     
 

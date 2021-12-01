@@ -112,6 +112,10 @@
     padding-top: 32px;
     padding-bottom: 10%;
 }
+.whenlogin{
+    height: 200px;
+    align-content: center;
+}
 .landing-text{
     font-size: 16px;
     font-family: Roboto;

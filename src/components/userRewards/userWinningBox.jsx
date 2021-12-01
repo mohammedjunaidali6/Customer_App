@@ -9,7 +9,7 @@ export default function UserWinningBox(props) {
         var str = '';
         if (days > 0) {
             str = `Expire in ${days} days`;
-        } else if (days == 0) {
+        } else if (days === 0) {
             str = `Expiring today`;
         } else {
             str = `Expired ${-days} days ago`;
@@ -47,7 +47,7 @@ export default function UserWinningBox(props) {
                                 <div className="w-100 wbb-middle-box">
                                     <div className="wbb-middle-code text-center">
                                         {obj.RewardCode}
-                                        <img src={copy_src} className="wbb-middle-code-copy" />
+                                        <img alt="" src={copy_src} className="wbb-middle-code-copy" />
                                     </div>
                                 </div>
                                 <div className="w-100">

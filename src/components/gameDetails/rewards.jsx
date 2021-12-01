@@ -19,10 +19,8 @@ export default function GameDetailRewards(props) {
                 return '2nd Prize';
             case 3:
                 return '3rd Prize';
-            case 4:
-                return '4th Prize';
             default:
-                return '_ Prize';
+                return position+'th Prize';
         }
     }
     const getDiscountString=(type,value)=>{
@@ -59,7 +57,7 @@ export default function GameDetailRewards(props) {
                         <div className="rewards-header">Rewards</div>
                         {rewards.map((obj, i) => (
                             <div className={`rewards-item rewards-item-${i + 1}`} key={`reward-item${obj.RewardMasterID}`}>
-                                {isTourn&& <img className="reward-place" src={obj.WinPosition === 1 ? reward1_src : (obj.WinPosition === 2 ? reward2_src : (obj.WinPosition === 3 ? reward3_src : reward4_src))} /> }
+                                {isTourn&& <img className="reward-place" alt="" src={obj.WinPosition === 1 ? reward1_src : (obj.WinPosition === 2 ? reward2_src : (obj.WinPosition === 3 ? reward3_src : reward4_src))} /> }
                                 <div className="w-30 rewards-item-left" >
                                     <div className="rewards-discount">
                                         <div className="rewards-discount-header">{obj.FormattedDiscountValue? getDiscountString(obj.DiscountType,obj.FormattedDiscountValue) :getDiscountString(obj.DiscountType,obj.DiscountValue)}</div>
@@ -70,9 +68,9 @@ export default function GameDetailRewards(props) {
                                 </div>
                                 <div className="w-70 rewards-item-right" >
                                     <div className="rewards-discount-detail">
-                                        {isTourn && <div className="rewards-discount-detail-name">{getWinPositionString(obj.WinPosition)}</div>}
+                                        {isTourn && <div className="rewards-discount-detail-name"> {getWinPositionString(obj.WinPosition)}</div>}
                                         <div className="rewards-discount-detail-desc">{obj.DisplayName}</div>
-                                        {isTourn && <div className="rewards-discount-detail-name mt-1">{obj.NumberOfWinners ? obj.NumberOfWinners : ''}</div>}
+                                        {isTourn && <div className="rewards-discount-detail-name mt-1">No. of Awards : {obj.NumberOfWinners ? obj.NumberOfWinners : ''}</div>}
                                         <div className="rewards-discount-detail-TC">T&C apply</div>
                                         <div className="curve-div reward-item-box-top reward-item-box-left"></div>
                                         <div className="curve-div reward-item-box-bottom reward-item-box-left"></div>
