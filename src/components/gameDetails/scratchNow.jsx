@@ -213,7 +213,16 @@ export default function GameDetailScratchNow(props) {
                 </div>
                 <div className="w-100 float-left clearfix ">
                     {Array.isArray(taskStatuses) && taskStatuses.length > 0 &&
-                        <div className="scratchnow-complete-the-journey">Complete the journey to participate</div>
+                        <div className="scratchnow-complete-the-journey">
+                        {/* <button 
+                            id="btn-scratch-now" 
+                            className={disablePlayBtn?'disable-btn':'enable-btn'}
+                            onClick={onPlayNow}
+                            disabled={disablePlayBtn}
+                            style={{"color":"black"}}
+                        ><span className={disablePlayBtn?'disable-btn button-text':'button-text enable-btn'} > {perc<100?`Complete Pending Tasks to Play`:'PLAY NOW'}</span>
+                        </button> */}
+                        </div>
                     }
                     {engagement.PurchaseRuleID>0 && <><div className="w-100 float-left lbl-percentage">{perc}%</div>
                     <div className="w-90 ml-3 float-left progress-bar-outer">
@@ -226,6 +235,7 @@ export default function GameDetailScratchNow(props) {
                             <button id="btn-scratch-now" onClick={onPlayNow} disabled={disablePlayBtn} className={disablePlayBtn?'disable-btn':'enable-btn'}>
                                 {engagement.EngagementStatusID===1&&<span className="button-text" >Play Now</span>}
                                 {engagement.EngagementStatusID===4&&<span className="button-text" >{startDT}</span>}
+                                {engagement.PurchaseRuleID===3&&<span className='button-text'>{perc}</span>}
                             </button>
                             {engagement.EngagementStatusID===1&&
                                 <span className='tournament-labels' style={{marginLeft:'50%',color:'green'}}>{endDT}</span>
@@ -233,13 +243,33 @@ export default function GameDetailScratchNow(props) {
                         </>
                         :
                         <button 
-                            id="btn-scratch-now" 
-                            className={disablePlayBtn?'disable-btn':'enable-btn'}
-                            onClick={onPlayNow}
-                            disabled={disablePlayBtn}
-                            style={{"color":"black"}}
-                        ><span className={disablePlayBtn?'disable-btn button-text':'button-text enable-btn'} > {perc<100?`Shop more for ${shopMoreAmount} to Participate`:'PLAY NOW'}</span>
-                        </button>
+                        id="btn-scratch-now" 
+                        className={disablePlayBtn?'disable-btn':'enable-btn'}
+                        onClick={onPlayNow}
+                        disabled={disablePlayBtn}
+                        style={{"color":"black"}}
+                    ><span className={disablePlayBtn?'disable-btn button-text':'button-text enable-btn'} > {`Complete Pending Tasks to Play`}</span>
+                    </button>
+                    //     ?
+                    //     <>
+                    //     <button 
+                    //     id="btn-scratch-now" 
+                    //     className={disablePlayBtn?'disable-btn':'enable-btn'}
+                    //     onClick={onPlayNow}
+                    //     disabled={disablePlayBtn}
+                    //     style={{"color":"black"}}
+                    // ><span className={disablePlayBtn?'disable-btn button-text':'button-text enable-btn'} >{perc<100?`Shop more for ${shopMoreAmount} to Play`:'PLAY NOW'}</span>
+                    // </button>
+                    // </>
+                    // :
+                //     <button 
+                //     id="btn-scratch-now" 
+                //     className={disablePlayBtn?'disable-btn':'enable-btn'}
+                //     onClick={onPlayNow}
+                //     disabled={disablePlayBtn}
+                //     style={{"color":"black"}}
+                // ><span className={disablePlayBtn?'disable-btn button-text':'button-text enable-btn'} >{perc<100?`Shop more to gain Points`:'PLAY NOW'}</span>
+                // </button>
                     }
                 </div>
                 {iFrameClick &&
