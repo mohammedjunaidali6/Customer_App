@@ -212,7 +212,7 @@ export default function GameDetailScratchNow(props) {
                     }
                 </div>
                 <div className="w-100 float-left clearfix ">
-                    {Array.isArray(taskStatuses) && taskStatuses.length > 0 &&
+                    {Array.isArray(taskStatuses) && taskStatuses.length > 0 && 
                         <div className="scratchnow-complete-the-journey">
                         {/* <button 
                             id="btn-scratch-now" 
